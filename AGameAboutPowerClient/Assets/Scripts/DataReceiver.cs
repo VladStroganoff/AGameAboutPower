@@ -36,8 +36,8 @@ namespace Assets.Scripts
             int index = buffer.ReadInt();
             buffer.Dispose();
 
-            UnityThread.executeInUpdate(() => NetworkManager.instance.InstantiatePlayer(index));
-            //NetworkManager.instance.InstantiatePlayer(index);
+            //UnityThread.executeInUpdate(() => NetworkManager.instance.InstantiatePlayer(index));
+            NetworkManager.instance.InstantiatePlayer(index);
         }
 
 

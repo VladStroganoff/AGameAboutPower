@@ -40,7 +40,6 @@ namespace GameServer
 
         }
 
-
         public static void SendDataTo(int connectionID, byte[] data)
         {
             ByteBuffer buffer = new ByteBuffer();

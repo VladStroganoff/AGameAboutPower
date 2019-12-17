@@ -52,6 +52,7 @@ namespace Assets.Scripts
                     playerBuffer.ReadInt();
                     data = playerBuffer.ReadByteArray(packetLength);
                     HandleDataPacket(data);
+                    playerBuffer.Clear();
                 }
 
                 packetLength = 0;

@@ -57,14 +57,11 @@ namespace Assets.Scripts
                 {
                     ClientHandleData.HandleData(newBytes);
                 });
-
-
-
-
+                myStream.BeginRead(receiveBuffer, 0, 4096 * 2, ReceiveCallback, null);
             }
             catch(Exception)
             {
-                throw;
+                return;
             }
         }
 

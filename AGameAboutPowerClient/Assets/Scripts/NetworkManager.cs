@@ -23,7 +23,9 @@ public class NetworkManager : MonoBehaviour
         UnityThread.initUnityThread();
         ClientHandleData.InitializePackets();
         ClientTCP.InitializeNetworking();
+
     }
+
 
     private void OnApplicationQuit()
     {

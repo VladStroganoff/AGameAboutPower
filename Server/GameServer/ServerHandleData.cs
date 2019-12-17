@@ -11,6 +11,8 @@ namespace GameServer
 
         public delegate void Packet(int connectionID, byte[] data);
         public static Dictionary<int, Packet> Packets = new Dictionary<int, Packet>();
+        static int i = 0;
+
 
         public static void InitializePackets()
         {
@@ -19,6 +21,9 @@ namespace GameServer
 
         public static void HandleData(int connectionID, byte[] data)
         {
+            Console.WriteLine("was here" + i);
+            i++;
+
             byte[] buffer = (byte[])data.Clone();
             int packetLength = 0;
 
@@ -43,13 +48,14 @@ namespace GameServer
                 }
             }
 
-            while(packetLength > 0 && packetLength <= ClientManager.Client[connectionID].Buffer.Length() -4)
+            while(packetLength > 0 & packetLength <= ClientManager.Client[connectionID].Buffer.Length() -4)
             {
                 if(packetLength <= ClientManager.Client[connectionID].Buffer.Length() - 4)
                 {
                     ClientManager.Client[connectionID].Buffer.ReadInt();
                     data = ClientManager.Client[connectionID].Buffer.ReadByteArray(packetLength);
                     HandleDataPacket(connectionID, data);
+                    ClientManager.Client[connectionID].Buffer.Clear();
                 }
 
                 packetLength = 0;

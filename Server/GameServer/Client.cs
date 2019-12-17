@@ -24,6 +24,7 @@ namespace GameServer
 
         private void OnReceiveData(IAsyncResult result)
         {
+           
             try
             {
                 int length = Stream.EndRead(result);

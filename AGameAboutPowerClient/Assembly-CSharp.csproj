@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E53E7B8A-53CA-19E5-EB0D-DE2CFA1F400E}</ProjectGuid>
+    <ProjectGuid>{969C3578-2991-ADD8-DCA8-4F35361F3F13}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -71,31 +71,31 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\NetworkManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/AGameAboutPowerComcept/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
