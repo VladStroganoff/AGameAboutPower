@@ -23,8 +23,6 @@ namespace Assets.Scripts
             string message = buffer.ReadString();
             buffer.Dispose();
 
-            Debug.Log(message);
-
             DataSender.SendHelloServer();
         }
 
@@ -36,7 +34,6 @@ namespace Assets.Scripts
             int index = buffer.ReadInt();
             buffer.Dispose();
 
-            //UnityThread.executeInUpdate(() => NetworkManager.instance.InstantiatePlayer(index));
             NetworkManager.instance.InstantiatePlayer(index);
         }
 

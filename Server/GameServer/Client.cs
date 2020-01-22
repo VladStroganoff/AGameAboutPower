@@ -7,6 +7,7 @@ namespace GameServer
     class Client
     {
         public int ConnectionID;
+        public PlayerData PlayerData = new PlayerData();
         public TcpClient Socket;
         public NetworkStream Stream;
         private byte[] receiveBuffer;
@@ -48,6 +49,14 @@ namespace GameServer
 
         private void CloseConnection()
         {
+            if (ClientManager.Clients.ContainsKey(ConnectionID))
+            {
+                ClientManager.Clients.Remove(ConnectionID);
+                Console.WriteLine("Removed player from list");
+            }
+
+
+
             Console.WriteLine("Connection from {0} has been terminated.", Socket.Client.RemoteEndPoint.ToString());
             Socket.Close();
         }

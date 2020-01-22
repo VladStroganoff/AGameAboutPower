@@ -64,12 +64,14 @@
   <ItemGroup>
     <Compile Include="Assets\External\ByteBuffer.cs" />
     <Compile Include="Assets\External\UnityThread.cs" />
-    <Compile Include="Assets\Scripts\ClientHandleData.cs" />
-    <Compile Include="Assets\Scripts\ClientTCP.cs" />
-    <Compile Include="Assets\Scripts\DataReceiver.cs" />
-    <Compile Include="Assets\Scripts\DataSender.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\NetworkManager.cs" />
+    <Compile Include="Assets\Scripts\Client\ClientHandleData.cs" />
+    <Compile Include="Assets\Scripts\Client\ClientTCP.cs" />
+    <Compile Include="Assets\Scripts\Client\DataReceiver.cs" />
+    <Compile Include="Assets\Scripts\Client\DataSender.cs" />
+    <Compile Include="Assets\Scripts\Client\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Client\NetworkManager.cs" />
+    <Compile Include="Assets\Scripts\ClientModels\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\Input\PlayerNavigationView.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

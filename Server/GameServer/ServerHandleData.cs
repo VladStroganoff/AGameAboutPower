@@ -17,55 +17,55 @@ namespace GameServer
         public static void InitializePackets()
         {
             Packets.Add((int)ClientPackets.CHelloServer, DataRecevier.HandleHelloServer);
+            Packets.Add((int)ClientPackets.PlayerUpdate, DataRecevier.HandleHelloServer);
         }
 
         public static void HandleData(int connectionID, byte[] data)
         {
-            Console.WriteLine("was here" + i);
             i++;
 
             byte[] buffer = (byte[])data.Clone();
             int packetLength = 0;
 
-            if (ClientManager.Client[connectionID].Buffer == null)
-                ClientManager.Client[connectionID].Buffer = new ByteBuffer();
+            if (ClientManager.Clients[connectionID].Buffer == null)
+                ClientManager.Clients[connectionID].Buffer = new ByteBuffer();
 
-            ClientManager.Client[connectionID].Buffer.WriteBytes(buffer);
+            ClientManager.Clients[connectionID].Buffer.WriteBytes(buffer);
 
-            if(ClientManager.Client[connectionID].Buffer.Count() == 0)
+            if(ClientManager.Clients[connectionID].Buffer.Count() == 0)
             {
-                ClientManager.Client[connectionID].Buffer.Clear();
+                ClientManager.Clients[connectionID].Buffer.Clear();
                 return;
             }
 
-            if(ClientManager.Client[connectionID].Buffer.Length() >= 4)
+            if(ClientManager.Clients[connectionID].Buffer.Length() >= 4)
             {
-                packetLength = ClientManager.Client[connectionID].Buffer.ReadInt(false);
+                packetLength = ClientManager.Clients[connectionID].Buffer.ReadInt(false);
                 if(packetLength <= 0)
                 {
-                    ClientManager.Client[connectionID].Buffer.Clear();
+                    ClientManager.Clients[connectionID].Buffer.Clear();
                     return;
                 }
             }
 
-            while(packetLength > 0 & packetLength <= ClientManager.Client[connectionID].Buffer.Length() -4)
+            while(packetLength > 0 & packetLength <= ClientManager.Clients[connectionID].Buffer.Length() -4)
             {
-                if(packetLength <= ClientManager.Client[connectionID].Buffer.Length() - 4)
+                if(packetLength <= ClientManager.Clients[connectionID].Buffer.Length() - 4)
                 {
-                    ClientManager.Client[connectionID].Buffer.ReadInt();
-                    data = ClientManager.Client[connectionID].Buffer.ReadByteArray(packetLength);
+                    ClientManager.Clients[connectionID].Buffer.ReadInt();
+                    data = ClientManager.Clients[connectionID].Buffer.ReadByteArray(packetLength);
                     HandleDataPacket(connectionID, data);
-                    ClientManager.Client[connectionID].Buffer.Clear();
+                    ClientManager.Clients[connectionID].Buffer.Clear();
                 }
 
                 packetLength = 0;
 
-                if(ClientManager.Client[connectionID].Buffer.Length() >=4)
+                if(ClientManager.Clients[connectionID].Buffer.Length() >=4)
                 {
-                    packetLength = ClientManager.Client[connectionID].Buffer.ReadInt(false);
+                    packetLength = ClientManager.Clients[connectionID].Buffer.ReadInt(false);
                     if(packetLength <= 0)
                     {
-                        ClientManager.Client[connectionID].Buffer.Clear();
+                        ClientManager.Clients[connectionID].Buffer.Clear();
                         return;
                     }
                 }
@@ -74,7 +74,7 @@ namespace GameServer
 
             if(packetLength <= 1)
             {
-                ClientManager.Client[connectionID].Buffer.Clear();
+                ClientManager.Clients[connectionID].Buffer.Clear();
             }
         }
 

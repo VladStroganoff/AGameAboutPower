@@ -24,6 +24,8 @@ namespace Assets.Scripts
             byte[] buffer = (byte[])data.Clone();
             int packetLength = 0;
 
+            NetworkManager.instance.ErrorMessage(buffer.Length.ToString());
+
             if (playerBuffer == null)
                 playerBuffer = new ByteBuffer();
 
@@ -72,6 +74,33 @@ namespace Assets.Scripts
             if (packetLength <= 1)
             {
                 playerBuffer.Clear();
+            }
+        }
+
+        public static void FelixHandleData(byte[] data)
+        {
+            byte[] buffer = (byte[])data.Clone();
+            int packetLength = 0;
+
+            if (playerBuffer == null)
+                playerBuffer = new ByteBuffer();
+
+            playerBuffer.WriteBytes(buffer);
+
+            if (playerBuffer.Count() == 0) // the packzge was empty
+            {
+                playerBuffer.Clear();
+                return;
+            }
+
+            if (playerBuffer.Length() >= 4)
+            {
+                packetLength = playerBuffer.ReadInt(false);
+                if (packetLength <= 0)
+                {
+                    playerBuffer.Clear();
+                    return;
+                }
             }
         }
 

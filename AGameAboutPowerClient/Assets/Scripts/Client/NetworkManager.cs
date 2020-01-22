@@ -32,11 +32,22 @@ public class NetworkManager : MonoBehaviour
         ClientTCP.Disconnect();
     }
 
+    public void UpdatePlayerPosition(PlayerData data)
+    {
+        DataSender.SendPlayerUpdate(data);
+    }
 
     public void InstantiatePlayer(int index)
     {
         GameObject pureyeruh = Instantiate(PlayerPrefab);
         pureyeruh.name = "Player: " + index;
         PlayerList.Add(index, pureyeruh);
+
+
+    }
+
+    public void ErrorMessage(string msg)
+    {
+        Debug.Log(msg);
     }
 }
