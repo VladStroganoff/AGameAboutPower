@@ -24,7 +24,7 @@ namespace GameServer
             buffer.WriteString("Hello, Welcome to the server!");
             ClientManager.SendDataTo(connectionID, buffer.ToArray());
 
-            Console.WriteLine("message should be: " + buffer.ToArray().Length.ToString());
+            Console.WriteLine("first message should be: " + buffer.ToArray().Length.ToString());
 
             buffer.Dispose();
         }
@@ -35,6 +35,9 @@ namespace GameServer
             buffer.WriteInt((int)ServerPackets.SPlayerData);
             buffer.WriteInt(index);
             ClientManager.SendDataTo(connectionID, buffer.ToArray());
+
+            Console.WriteLine("seconf message should be: " + buffer.ToArray().Length.ToString());
+
             buffer.Dispose();
         }
 

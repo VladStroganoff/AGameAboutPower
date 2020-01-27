@@ -21,6 +21,7 @@ namespace Assets.Scripts
             buffer.WriteBytes(data);
             int packetID = buffer.ReadInt();
             string message = buffer.ReadString();
+            Debug.Log(message);
             buffer.Dispose();
 
             DataSender.SendHelloServer();

@@ -13,6 +13,8 @@ namespace Assets.Scripts
         public delegate void Packet(byte[] data);
         public static Dictionary<int, Packet> Packets = new Dictionary<int, Packet>();
 
+        private static int refLengt = 0;
+
         public static void InitializePackets()
         {
             Packets.Add((int)ServerPackets.SInstantiatePlayer, DataReceiver.HandleInstansiatePlayer);
@@ -26,20 +28,21 @@ namespace Assets.Scripts
 
             NetworkManager.instance.ErrorMessage(buffer.Length.ToString());
 
-            if (playerBuffer == null)
-                playerBuffer = new ByteBuffer();
+            playerBuffer = new ByteBuffer();
+            refLengt = 0;
 
             playerBuffer.WriteBytes(buffer);
 
-            if (playerBuffer.Count() == 0)
+            if (playerBuffer.Count() == 0) //is buffer empty?
             {
                 playerBuffer.Clear();
                 return;
             }
 
-            if (playerBuffer.Length() >= 4)
+            if (playerBuffer.Length() >= 4) // is buffer marked with length 0?
             {
                 packetLength = playerBuffer.ReadInt(false);
+                refLengt = packetLength;
                 if (packetLength <= 0)
                 {
                     playerBuffer.Clear();
@@ -47,7 +50,7 @@ namespace Assets.Scripts
                 }
             }
 
-            while (packetLength > 0 && packetLength <= playerBuffer.Length() - 1)
+            while (packetLength > 0 && packetLength <= playerBuffer.Length() - 1)  // this needs to execute before the above HandleData
             {
                 if (packetLength <= playerBuffer.Length() - 4)
                 {
@@ -71,38 +74,29 @@ namespace Assets.Scripts
 
             }
 
+            if (refLengt < data.Length)
+            {
+                byte[] otherHalf = new byte[data.Length - refLengt];
+
+
+                int j = 0;
+                for(int i = refLengt; i < data.Length; i++)
+                {
+                    otherHalf[j] = data[i - 4];
+                    j++;
+                }
+
+                HandleData(otherHalf);
+            }
+
+           
+
             if (packetLength <= 1)
             {
                 playerBuffer.Clear();
             }
         }
 
-        public static void FelixHandleData(byte[] data)
-        {
-            byte[] buffer = (byte[])data.Clone();
-            int packetLength = 0;
-
-            if (playerBuffer == null)
-                playerBuffer = new ByteBuffer();
-
-            playerBuffer.WriteBytes(buffer);
-
-            if (playerBuffer.Count() == 0) // the packzge was empty
-            {
-                playerBuffer.Clear();
-                return;
-            }
-
-            if (playerBuffer.Length() >= 4)
-            {
-                packetLength = playerBuffer.ReadInt(false);
-                if (packetLength <= 0)
-                {
-                    playerBuffer.Clear();
-                    return;
-                }
-            }
-        }
 
         private static void HandleDataPacket(byte[] data)
         {
