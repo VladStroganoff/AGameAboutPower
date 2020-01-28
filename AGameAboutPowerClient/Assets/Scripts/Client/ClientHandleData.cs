@@ -50,7 +50,7 @@ namespace Assets.Scripts
                 }
             }
 
-            while (packetLength > 0 && packetLength <= playerBuffer.Length() - 1)  // this needs to execute before the above HandleData
+            while (packetLength > 0 && packetLength <= playerBuffer.Length() - 1)  
             {
                 if (packetLength <= playerBuffer.Length() - 4)
                 {
@@ -74,29 +74,31 @@ namespace Assets.Scripts
 
             }
 
-            if (refLengt < data.Length)
+
+            CheckIfThereIsMoreData(buffer);
+
+
+
+            
+        }
+
+        private static void CheckIfThereIsMoreData(byte[] buffer)
+        {
+            if (refLengt < buffer.Length)
             {
-                byte[] otherHalf = new byte[data.Length - refLengt];
+                byte[] otherHalf = new byte[buffer.Length - (refLengt + 4)];
 
 
                 int j = 0;
-                for(int i = refLengt; i < data.Length; i++)
+                for (int i = refLengt + 4; i < buffer.Length; i++)
                 {
-                    otherHalf[j] = data[i - 4];
+                    otherHalf[j] = buffer[i];
                     j++;
                 }
 
                 HandleData(otherHalf);
             }
-
-           
-
-            if (packetLength <= 1)
-            {
-                playerBuffer.Clear();
-            }
         }
-
 
         private static void HandleDataPacket(byte[] data)
         {

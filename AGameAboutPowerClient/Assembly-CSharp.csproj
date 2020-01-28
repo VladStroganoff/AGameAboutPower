@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Client\NetworkManager.cs" />
     <Compile Include="Assets\Scripts\ClientModels\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Input\PlayerNavigationView.cs" />
+    <None Include="Assets\UnityHDRI\Gareoult\Info.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

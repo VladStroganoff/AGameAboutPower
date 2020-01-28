@@ -12,7 +12,7 @@ namespace GameServer
         public delegate void Packet(int connectionID, byte[] data);
         public static Dictionary<int, Packet> Packets = new Dictionary<int, Packet>();
         static int i = 0;
-
+        private static int refLengt = 0;
 
         public static void InitializePackets()
         {
@@ -72,9 +72,32 @@ namespace GameServer
 
             }
 
-            if(packetLength <= 1)
+            CheckIfThereIsMoreData(buffer, connectionID);
+
+
+
+            if (packetLength <= 1)
             {
                 ClientManager.Clients[connectionID].Buffer.Clear();
+            }
+        }
+
+
+        private static void CheckIfThereIsMoreData(byte[] buffer, int connectionID)
+        {
+            if (refLengt < buffer.Length)
+            {
+                byte[] otherHalf = new byte[buffer.Length - (refLengt + 4)];
+
+
+                int j = 0;
+                for (int i = refLengt + 4; i < buffer.Length; i++)
+                {
+                    otherHalf[j] = buffer[i];
+                    j++;
+                }
+
+                HandleData(connectionID, otherHalf);
             }
         }
 
