@@ -6,9 +6,8 @@ using Assets.Scripts;
 public class NetworkManager : MonoBehaviour
 {
     public static NetworkManager instance;
-
-
     public GameObject PlayerPrefab;
+    public int localPlayerID;
 
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
 
@@ -23,7 +22,6 @@ public class NetworkManager : MonoBehaviour
         UnityThread.initUnityThread();
         ClientHandleData.InitializePackets();
         ClientTCP.InitializeNetworking();
-
     }
 
 
@@ -39,11 +37,16 @@ public class NetworkManager : MonoBehaviour
 
     public void InstantiatePlayer(int index)
     {
-        GameObject pureyeruh = Instantiate(PlayerPrefab);
-        pureyeruh.name = "Player: " + index;
-        PlayerList.Add(index, pureyeruh);
+        GameObject player = Instantiate(PlayerPrefab);
+        player.name = "Player: " + index;
+        PlayerList.Add(index, player);
+        player.GetComponent<PlayerNameSignView>().Inject(index);
+        player.GetComponent<PlayerNetworkController>().Inject(localPlayerID, index);
+    }
 
-
+    public void LocalPlayerConnectionID(int id)
+    {
+        localPlayerID = id;
     }
 
     public void ErrorMessage(string msg)

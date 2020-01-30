@@ -12,3 +12,10 @@ D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\ob
 D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
 D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\obj\Debug\GameServer.exe
 D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\obj\Debug\GameServer.pdb
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\bin\Debug\GameServer.exe.config
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\bin\Debug\GameServer.exe
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\bin\Debug\GameServer.pdb
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\obj\Debug\GameServer.csprojAssemblyReference.cache
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\obj\Debug\GameServer.exe
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\obj\Debug\GameServer.pdb

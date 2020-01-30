@@ -21,7 +21,7 @@ namespace GameServer
         {
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteInt((int)ServerPackets.SWelcomeMessage);
-            buffer.WriteString("Hello, Welcome to the server!");
+            buffer.WriteString(connectionID.ToString());
             ClientManager.SendDataTo(connectionID, buffer.ToArray());
 
             Console.WriteLine("first message should be: " + buffer.ToArray().Length.ToString());

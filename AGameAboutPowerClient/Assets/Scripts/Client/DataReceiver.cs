@@ -21,6 +21,9 @@ namespace Assets.Scripts
             buffer.WriteBytes(data);
             int packetID = buffer.ReadInt();
             string message = buffer.ReadString();
+            int id = 0;
+            int.TryParse(message, out id);
+            NetworkManager.instance.LocalPlayerConnectionID(id);
             Debug.Log(message);
             buffer.Dispose();
 

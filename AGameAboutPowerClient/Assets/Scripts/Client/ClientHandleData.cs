@@ -26,7 +26,6 @@ namespace Assets.Scripts
             byte[] buffer = (byte[])data.Clone();
             int packetLength = 0;
 
-            NetworkManager.instance.ErrorMessage(buffer.Length.ToString());
 
             playerBuffer = new ByteBuffer();
             refLengt = 0;
