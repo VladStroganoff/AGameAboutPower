@@ -27,6 +27,8 @@ namespace GameServer
             byte[] buffer = (byte[])data.Clone();
             int packetLength = 0;
 
+            refLengt = 0;
+
             if (ClientManager.Clients[connectionID].Buffer == null)
                 ClientManager.Clients[connectionID].Buffer = new ByteBuffer();
 
@@ -41,7 +43,8 @@ namespace GameServer
             if(ClientManager.Clients[connectionID].Buffer.Length() >= 4)
             {
                 packetLength = ClientManager.Clients[connectionID].Buffer.ReadInt(false);
-                if(packetLength <= 0)
+                refLengt = packetLength;
+                if (packetLength <= 0)
                 {
                     ClientManager.Clients[connectionID].Buffer.Clear();
                     return;

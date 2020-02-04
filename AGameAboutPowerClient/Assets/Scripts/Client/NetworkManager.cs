@@ -40,8 +40,9 @@ public class NetworkManager : MonoBehaviour
         GameObject player = Instantiate(PlayerPrefab);
         player.name = "Player: " + index;
         PlayerList.Add(index, player);
-        player.GetComponent<PlayerNameSignView>().Inject(index);
         player.GetComponent<PlayerNetworkController>().Inject(localPlayerID, index);
+        player.GetComponent<PlayerNameSignView>().Inject(index);
+
     }
 
     public void LocalPlayerConnectionID(int id)

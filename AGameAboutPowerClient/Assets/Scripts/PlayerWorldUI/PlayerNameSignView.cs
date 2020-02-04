@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerNameSignView : MonoBehaviour
 {
+
     public RectTransform PlayerCanvas;
     public TextMeshProUGUI Text;
     public Camera mainCamera;
