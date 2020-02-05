@@ -6,16 +6,17 @@ using UnityEngine;
 public class PlayerNetworkController : MonoBehaviour
 {
     public vThirdPersonInput playerInput;
+    public Camera Camera;
 
-    public void Inject(int localID, int id)
+    public void Inject(bool isLocal)
     {
-        if(id != localID)
+        if(isLocal)
         {
-            playerInput.isLocalPlayer = false;
+            playerInput.isLocalPlayer = true;
         }
         else
         {
-            playerInput.isLocalPlayer = true;
+            playerInput.isLocalPlayer = false;
         }
     }
 

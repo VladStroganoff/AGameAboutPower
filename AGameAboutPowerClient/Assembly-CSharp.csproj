@@ -109,6 +109,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -121,14 +124,11 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPower/AGameAboutPowerClient/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

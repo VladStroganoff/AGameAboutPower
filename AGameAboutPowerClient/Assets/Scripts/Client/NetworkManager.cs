@@ -38,9 +38,21 @@ public class NetworkManager : MonoBehaviour
     public void InstantiatePlayer(int index)
     {
         GameObject player = Instantiate(PlayerPrefab);
+
+
+        if (localPlayerID != index)
+        {
+            Destroy(player.GetComponent<PlayerNetworkController>().Camera.gameObject);
+            player.GetComponent<PlayerNetworkController>().Inject(false);
+        }
+        else
+        {
+            player.GetComponent<PlayerNetworkController>().Inject(true);
+        }
+
+
         player.name = "Player: " + index;
         PlayerList.Add(index, player);
-        player.GetComponent<PlayerNetworkController>().Inject(localPlayerID, index);
         player.GetComponent<PlayerNameSignView>().Inject(index);
 
     }
@@ -53,5 +65,14 @@ public class NetworkManager : MonoBehaviour
     public void ErrorMessage(string msg)
     {
         Debug.Log(msg);
+    }
+
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

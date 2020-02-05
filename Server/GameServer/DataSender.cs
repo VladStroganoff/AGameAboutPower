@@ -12,6 +12,7 @@ namespace GameServer
     { 
         SWelcomeMessage = 1,
         SPlayerData =2,
+
     }
 
 

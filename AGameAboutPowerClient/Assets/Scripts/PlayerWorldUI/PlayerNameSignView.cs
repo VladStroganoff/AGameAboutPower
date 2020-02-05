@@ -21,6 +21,13 @@ public class PlayerNameSignView : MonoBehaviour
 
     void Update()
     {
+        if (!mainCamera.transform == null)
+        {
+            this.enabled = false;
+            return;
+        }
+
+
         PlayerCanvas.transform.LookAt(mainCamera.transform);
     }
 }

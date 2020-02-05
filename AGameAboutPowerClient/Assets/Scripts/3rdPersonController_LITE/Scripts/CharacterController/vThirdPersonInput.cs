@@ -32,12 +32,8 @@ namespace Invector.vCharacterController
 
         protected virtual void FixedUpdate()
         {
-            if (!isLocalPlayer)
-            {
-                Destroy(this);
+            if (isLocalPlayer == false)
                 return;
-            }
-
 
             cc.UpdateMotor();               // updates the ThirdPersonMotor methods
             cc.ControlLocomotionType();     // handle the controller locomotion type and movespeed
@@ -46,12 +42,8 @@ namespace Invector.vCharacterController
 
         protected virtual void Update()
         {
-            if (!isLocalPlayer)
-            {
-                Destroy(this);
+            if (isLocalPlayer == false)
                 return;
-            }
-
 
             InputHandle();                  // update the input methods
             cc.UpdateAnimator();            // updates the Animator Parameters
@@ -67,7 +59,6 @@ namespace Invector.vCharacterController
 
         protected virtual void InitilizeController()
         {
-
             cc = GetComponent<vThirdPersonController>();
 
             if (cc != null)
@@ -76,7 +67,6 @@ namespace Invector.vCharacterController
 
         protected virtual void InitializeTpCamera()
         {
-
             if (tpCamera == null)
             {
                 tpCamera = FindObjectOfType<vThirdPersonCamera>();
@@ -92,7 +82,6 @@ namespace Invector.vCharacterController
 
         protected virtual void InputHandle()
         {
-
             MoveInput();
             CameraInput();
             SprintInput();

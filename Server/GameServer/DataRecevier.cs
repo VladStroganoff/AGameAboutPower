@@ -9,7 +9,8 @@ namespace GameServer
     public enum ClientPackets
     {
         CHelloServer = 1,
-        PlayerUpdate = 2,
+        CPlayerUpdate = 2,
+        CDisconnectPlayer = 3,
     }
     static class DataRecevier
     {
