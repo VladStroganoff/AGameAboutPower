@@ -75,10 +75,6 @@ namespace Assets.Scripts
 
 
             CheckIfThereIsMoreData(buffer);
-
-
-
-            
         }
 
         private static void CheckIfThereIsMoreData(byte[] buffer)

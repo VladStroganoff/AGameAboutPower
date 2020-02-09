@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ namespace GameServer
     { 
         SWelcomeMessage = 1,
         SPlayerData =2,
-
     }
 
 
@@ -24,23 +24,23 @@ namespace GameServer
             buffer.WriteInt((int)ServerPackets.SWelcomeMessage);
             buffer.WriteString(connectionID.ToString());
             ClientManager.SendDataTo(connectionID, buffer.ToArray());
-
-            Console.WriteLine("first message should be: " + buffer.ToArray().Length.ToString());
-
             buffer.Dispose();
         }
 
-        public static void SendInstansiatePlayer (int index, int connectionID)
+        public static void SendPlayer (PlayerData player, int connectionID)
         {
+            player.ConnectionID = connectionID;
+            string json = JsonConvert.SerializeObject(player);
+
+
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteInt((int)ServerPackets.SPlayerData);
-            buffer.WriteInt(index);
+            buffer.WriteString(json);
             ClientManager.SendDataTo(connectionID, buffer.ToArray());
-
-            Console.WriteLine("seconf message should be: " + buffer.ToArray().Length.ToString());
 
             buffer.Dispose();
         }
+
 
     }
 }

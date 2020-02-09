@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading.Tasks;
+using GameServer.World;
 
 namespace GameServer
 {
     static class ClientManager
     {
         public static Dictionary<int, Client> Clients = new Dictionary<int, Client>();
+
 
         public static void CreateNewConnection(TcpClient tempClient)
         {
@@ -20,25 +22,25 @@ namespace GameServer
 
             DataSender.SendWelcomeMessage(newClient.ConnectionID);
 
-
-
-            InstasiatePlayer(newClient.ConnectionID);
+            PlayerData newPlayer = new PlayerData();
+            newPlayer.ConnectionID = newClient.ConnectionID;
+            WorldController.instance.AddPlayerToWorld(newPlayer);
         }
 
 
-        public static void InstasiatePlayer(int connectionID)
+        public static void PlayerUpdate(PlayerData player)
         {
             foreach(var item in Clients)
             {
-                if(item.Key != connectionID)
+                if(item.Key != player.ConnectionID)
                 {
-                    DataSender.SendInstansiatePlayer(item.Key, connectionID);
+                    DataSender.SendPlayer(player, item.Key);
                 }
             }
 
             foreach(var item in Clients)
             {
-                DataSender.SendInstansiatePlayer(connectionID, item.Key);
+                DataSender.SendPlayer(player, item.Key);
             }
 
         }

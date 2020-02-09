@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameServer
 {
-    class PlayerData
+    public class PlayerData
     {
         public int ConnectionID;
         public string Name;
@@ -14,5 +14,6 @@ namespace GameServer
         public float Xpos;
         public float Ypos;
         public float Zpos;
+
     }
 }

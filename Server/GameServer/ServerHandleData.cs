@@ -16,8 +16,7 @@ namespace GameServer
 
         public static void InitializePackets()
         {
-            Packets.Add((int)ClientPackets.CHelloServer, DataRecevier.HandleHelloServer);
-            Packets.Add((int)ClientPackets.CPlayerUpdate, DataRecevier.HandleHelloServer);
+            Packets.Add((int)ClientPackets.StringMessage, DataRecevier.HandleStringMessage);
         }
 
         public static void HandleData(int connectionID, byte[] data)

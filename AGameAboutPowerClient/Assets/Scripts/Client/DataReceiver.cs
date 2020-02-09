@@ -27,7 +27,7 @@ namespace Assets.Scripts
             Debug.Log(message);
             buffer.Dispose();
 
-            DataSender.SendHelloServer();
+            DataSender.SendServerMessage("Hello Server");
         }
 
         public static void HandleInstansiatePlayer(byte[] data)
@@ -35,10 +35,10 @@ namespace Assets.Scripts
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteBytes(data);
             int packetID = buffer.ReadInt();
-            int index = buffer.ReadInt();
+            string message = buffer.ReadString();
+            PlayerData playerData = JsonUtility.FromJson<PlayerData>(message);
             buffer.Dispose();
-
-            NetworkManager.instance.InstantiatePlayer(index);
+            NetworkManager.instance.InstantiatePlayer(playerData.ConnectionID);
         }
 
 

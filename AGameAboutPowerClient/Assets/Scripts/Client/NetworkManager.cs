@@ -8,8 +8,10 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager instance;
     public GameObject PlayerPrefab;
     public int localPlayerID;
+    public GameObject player;
 
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
+    bool updatePlayer;
 
     void Awake()
     {
@@ -32,12 +34,15 @@ public class NetworkManager : MonoBehaviour
 
     public void UpdatePlayerPosition(PlayerData data)
     {
-        DataSender.SendPlayerUpdate(data);
+        string json = JsonUtility.ToJson(data);
+
+        DataSender.SendServerMessage(json);
+        Quaternion q = new Quaternion();
     }
 
     public void InstantiatePlayer(int index)
     {
-        GameObject player = Instantiate(PlayerPrefab);
+        player = Instantiate(PlayerPrefab);
 
 
         if (localPlayerID != index)
@@ -54,6 +59,10 @@ public class NetworkManager : MonoBehaviour
         player.name = "Player: " + index;
         PlayerList.Add(index, player);
         player.GetComponent<PlayerNameSignView>().Inject(index);
+
+
+        updatePlayer = true;
+        StartCoroutine("SendUpdate");
 
     }
 
@@ -73,6 +82,25 @@ public class NetworkManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+    }
+
+    IEnumerator SendUpdate()
+    {
+        while(updatePlayer)
+        {
+            PlayerData data = new PlayerData(); // just testing player update 
+            data.ConnectionID = localPlayerID;
+            data.Name = player.gameObject.name;
+            data.Xpos = PlayerList[localPlayerID].transform.GetChild(0).position.x;
+            data.Ypos = PlayerList[localPlayerID].transform.GetChild(0).position.y;
+            data.Zpos = PlayerList[localPlayerID].transform.GetChild(0).position.y;
+
+            string json = JsonUtility.ToJson(data);
+
+            DataSender.SendServerMessage(json);
+
+            yield return new WaitForSeconds(1);
         }
     }
 }
