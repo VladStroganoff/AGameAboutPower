@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBuffer.cs" />
-    <Compile Include="Helpers\Quaternion.cs" />
-    <Compile Include="Helpers\Vector3.cs" />
+    <Compile Include="Player\Quaternion.cs" />
+    <Compile Include="Player\Vector3.cs" />
     <Compile Include="World\WorldController.cs" />
     <Compile Include="World\WorldModel.cs" />
-    <Compile Include="PlayerData.cs" />
+    <Compile Include="Player\PlayerData.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="DataRecevier.cs" />

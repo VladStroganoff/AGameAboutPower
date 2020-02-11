@@ -163,7 +163,7 @@ ScriptsOnlyBuild:
     className: vAnimateUV
   - hash:
       serializedVersion: 2
-      Hash: fd23290e536353db287cf3306cecf406
+      Hash: 80eabc2576225fee2679e4026acbf80f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -391,7 +391,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 0e1c53d63a5b6a6993a4c0e45b010090
+      Hash: 34f963c9582664b136b4dd499ef6acca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerNavigationView

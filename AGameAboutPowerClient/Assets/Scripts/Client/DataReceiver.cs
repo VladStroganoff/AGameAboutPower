@@ -24,6 +24,7 @@ namespace Assets.Scripts
             int id = 0;
             int.TryParse(message, out id);
             NetworkManager.instance.LocalPlayerConnectionID(id);
+            Debug.Log("My connection is: " + id);
             Debug.Log(message);
             buffer.Dispose();
 
@@ -38,6 +39,9 @@ namespace Assets.Scripts
             string message = buffer.ReadString();
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(message);
             buffer.Dispose();
+
+            Debug.Log("Instansiating player: " + playerData.ConnectionID);
+
             NetworkManager.instance.InstantiatePlayer(playerData.ConnectionID);
         }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using GameServer.Player;
 
 namespace GameServer
 {
@@ -20,8 +22,18 @@ namespace GameServer
             string message = buffer.ReadString();
 
 
+            PlayerData player = new PlayerData();
 
-            Console.WriteLine(message);
+            if (message != "Hello Server")
+            {
+                player = JsonConvert.DeserializeObject<PlayerData>(message);
+            }
+
+
+            if(player.Name != "")
+                Console.WriteLine(player.Name + " is at position: " + player.position.x + ", " + player.position.y + ", " + player.position.z + " and rotation: " + player.rotation.x + ", " + player.rotation.y + ", " + player.rotation.z);
+            
+
         }
     }
 }

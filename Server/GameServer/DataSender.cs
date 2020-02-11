@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameServer.Player;
+
 
 namespace GameServer
 {
@@ -29,13 +31,12 @@ namespace GameServer
 
         public static void SendPlayer (PlayerData player, int connectionID)
         {
-            player.ConnectionID = connectionID;
             string json = JsonConvert.SerializeObject(player);
-
-
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteInt((int)ServerPackets.SPlayerData);
             buffer.WriteString(json);
+
+
             ClientManager.SendDataTo(connectionID, buffer.ToArray());
 
             buffer.Dispose();

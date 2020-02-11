@@ -80,7 +80,10 @@
     <Compile Include="Assets\Scripts\Client\DataSender.cs" />
     <Compile Include="Assets\Scripts\Client\GameManager.cs" />
     <Compile Include="Assets\Scripts\Client\NetworkManager.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\ClientModels\Player\Make.cs" />
+    <Compile Include="Assets\Scripts\ClientModels\Player\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\ClientModels\Player\SQuaterion.cs" />
+    <Compile Include="Assets\Scripts\ClientModels\Player\SVector3.cs" />
     <Compile Include="Assets\Scripts\Input\PlayerNavigationView.cs" />
     <Compile Include="Assets\Scripts\PlayerWorldUI\PlayerNameSignView.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

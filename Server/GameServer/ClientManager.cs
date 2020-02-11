@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading.Tasks;
 using GameServer.World;
+using GameServer.Player;
 
 namespace GameServer
 {
@@ -30,17 +31,24 @@ namespace GameServer
 
         public static void PlayerUpdate(PlayerData player)
         {
-            foreach(var item in Clients)
+
+            // send everyone to new player except himself
+
+            foreach(KeyValuePair<int, Client> item in Clients)
             {
+                
+
                 if(item.Key != player.ConnectionID)
                 {
                     DataSender.SendPlayer(player, item.Key);
                 }
             }
 
-            foreach(var item in Clients)
+            // send new player to everyone including himself
+
+            foreach(KeyValuePair<int, Client> item in Clients)
             {
-                DataSender.SendPlayer(player, item.Key);
+                DataSender.SendPlayer(WorldController.instance.Model.Players[item.Key], player.ConnectionID);
             }
 
         }
@@ -50,7 +58,9 @@ namespace GameServer
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteInt(data.GetUpperBound(0) - data.GetLowerBound(0) + 1);
             buffer.WriteBytes(data);
+
             Clients[connectionID].Stream.BeginWrite(buffer.ToArray(), 0, buffer.ToArray().Length, null, null);
+
             buffer.Dispose();
         }
     }
