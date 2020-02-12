@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - Invector.vCharacterController.vThirdPersonController
     - Invector.vCharacterController.vThirdPersonInput
     - NetworkManager
+    - PlayerController
     - PlayerNameSignView
     - PlayerNetworkController
     - UnityThread
@@ -87,37 +88,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11196}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11348}
     - Class: 114
-      Script: {instanceID: 11386}
+      Script: {instanceID: 11388}
     - Class: 114
-      Script: {instanceID: 11464}
+      Script: {instanceID: 11466}
     - Class: 114
-      Script: {instanceID: 11780}
+      Script: {instanceID: 11782}
     - Class: 114
-      Script: {instanceID: 11806}
+      Script: {instanceID: 11808}
     - Class: 114
-      Script: {instanceID: 11906}
+      Script: {instanceID: 11908}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11976}
     - Class: 114
-      Script: {instanceID: 12038}
+      Script: {instanceID: 12040}
     - Class: 114
-      Script: {instanceID: 12396}
+      Script: {instanceID: 12400}
     - Class: 114
-      Script: {instanceID: 12410}
+      Script: {instanceID: 12414}
     - Class: 114
-      Script: {instanceID: 12450}
+      Script: {instanceID: 12454}
     - Class: 114
-      Script: {instanceID: 12568}
+      Script: {instanceID: 12572}
     - Class: 114
-      Script: {instanceID: 12596}
+      Script: {instanceID: 12600}
     - Class: 114
-      Script: {instanceID: 12658}
+      Script: {instanceID: 12662}
     - Class: 114
-      Script: {instanceID: 12808}
+      Script: {instanceID: 12812}
     - Class: 114
-      Script: {instanceID: 13014}
+      Script: {instanceID: 13020}
+    - Class: 114
+      Script: {instanceID: 33166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -163,7 +166,7 @@ ScriptsOnlyBuild:
     className: vAnimateUV
   - hash:
       serializedVersion: 2
-      Hash: 80eabc2576225fee2679e4026acbf80f
+      Hash: 897dea69d188336c34512cc880642c1e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -379,7 +382,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: f2a7e7d78f13620acb2410cf7c53d771
+      Hash: 35559e3182658a3c796e181ac401c866
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerNetworkController
@@ -653,6 +656,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 92ebf1d25b076137bac0285d438b4193
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerController
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

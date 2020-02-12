@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerNetworkController : MonoBehaviour
 {
     public vThirdPersonInput playerInput;
-    public Camera Camera;
 
     public void Inject(bool isLocal)
     {

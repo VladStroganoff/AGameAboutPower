@@ -41,8 +41,7 @@ namespace Assets.Scripts
             buffer.Dispose();
 
             Debug.Log("Instansiating player: " + playerData.ConnectionID);
-
-            NetworkManager.instance.InstantiatePlayer(playerData.ConnectionID);
+            NetworkManager.instance.HandlePlayer(playerData);
         }
 
 

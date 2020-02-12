@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using GameServer.Player;
+using GameServer.World;
 
 namespace GameServer
 {
@@ -27,13 +28,12 @@ namespace GameServer
             if (message != "Hello Server")
             {
                 player = JsonConvert.DeserializeObject<PlayerData>(message);
+                WorldController.instance.UpdatePlayerInWorld(player);
             }
-
-
-            if(player.Name != "")
-                Console.WriteLine(player.Name + " is at position: " + player.position.x + ", " + player.position.y + ", " + player.position.z + " and rotation: " + player.rotation.x + ", " + player.rotation.y + ", " + player.rotation.z);
-            
-
+            else
+            {
+                Console.Write(message);
+            }
         }
     }
 }

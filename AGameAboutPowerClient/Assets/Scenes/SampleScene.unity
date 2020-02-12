@@ -4894,11 +4894,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5628720322539662363, guid: 9a9230a32135ffe4da85654b42caba23,
-        type: 3}
-      propertyPath: PlayerPrefab
-      value: 
-      objectReference: {fileID: 2751108440572264847, guid: b3d9e894061c7fb44a9d6254e2f35a6b,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a9230a32135ffe4da85654b42caba23, type: 3}

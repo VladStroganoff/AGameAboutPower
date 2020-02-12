@@ -14,14 +14,14 @@ public class PlayerNameSignView : MonoBehaviour
 
     public void Inject(int playerID)
     {
-        mainCamera = Camera.main;
+        mainCamera = Camera.current;
         ID = playerID;
         Text.text = playerID.ToString();
     }
 
     void Update()
     {
-        if (!mainCamera.transform == null)
+        if (mainCamera.transform != null)
         {
             this.enabled = false;
             return;

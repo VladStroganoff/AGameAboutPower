@@ -6,12 +6,13 @@ using Assets.Scripts;
 public class NetworkManager : MonoBehaviour
 {
     public static NetworkManager instance;
-    public GameObject PlayerPrefab;
-    public int localPlayerID;
-    public GameObject player;
+    public PlayerData localPlayer;
 
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
-    bool updatePlayer;
+    public bool updatePlayer { get; set; }
+
+    public PlayerController PlayerControl;
+
 
     void Awake()
     {
@@ -38,35 +39,23 @@ public class NetworkManager : MonoBehaviour
         DataSender.SendServerMessage(json);
     }
 
-    public void InstantiatePlayer(int index)
+    public void HandlePlayer(PlayerData player)
     {
-        player = Instantiate(PlayerPrefab);
-
-
-        if (localPlayerID != index)
+        if(PlayerList.Count > 1 || PlayerList.ContainsKey(player.ConnectionID))
         {
-            Destroy(player.GetComponent<PlayerNetworkController>().Camera.gameObject);
-            player.GetComponent<PlayerNetworkController>().Inject(false);
+            PlayerControl.UpdatePlayer(player);
         }
         else
         {
-            player.GetComponent<PlayerNetworkController>().Inject(true);
+            PlayerControl.InstansiateNewPlayer(player);
         }
-
-
-        player.name = "Player: " + index;
-        PlayerList.Add(index, player);
-        player.GetComponent<PlayerNameSignView>().Inject(index);
-
-
-        updatePlayer = true;
-        StartCoroutine("SendUpdate");
-
     }
 
     public void LocalPlayerConnectionID(int id)
     {
-        localPlayerID = id;
+        PlayerData newPlayer = new PlayerData();
+        newPlayer.ConnectionID = id;
+        localPlayer = newPlayer;
     }
 
     public void ErrorMessage(string msg)
@@ -75,21 +64,15 @@ public class NetworkManager : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-    }
+   
 
     IEnumerator SendUpdate()
     {
         while(updatePlayer)
         {
-            PlayerData player = Make.NewPlyer(PlayerList[localPlayerID].transform.GetChild(0).transform, localPlayerID, "Player: " + localPlayerID.ToString()); // I want to keep construction out of the player class for it to be used both on client and server. 
+            localPlayer = Make.PlayerUpdate(localPlayer, PlayerList[localPlayer.ConnectionID].transform.GetChild(0).transform);
 
-            string json = JsonUtility.ToJson(player);
+            string json = JsonUtility.ToJson(localPlayer);
 
             DataSender.SendServerMessage(json);
 

@@ -29,15 +29,13 @@ namespace GameServer
         }
 
 
-        public static void PlayerUpdate(PlayerData player)
+        public static void NewPlayer(PlayerData player)
         {
 
             // send everyone to new player except himself
 
             foreach(KeyValuePair<int, Client> item in Clients)
             {
-                
-
                 if(item.Key != player.ConnectionID)
                 {
                     DataSender.SendPlayer(player, item.Key);
@@ -51,6 +49,17 @@ namespace GameServer
                 DataSender.SendPlayer(WorldController.instance.Model.Players[item.Key], player.ConnectionID);
             }
 
+        }
+
+        public static void UpdatePlayer(PlayerData player)
+        {
+            foreach (KeyValuePair<int, Client> item in Clients)
+            {
+                if (item.Key != player.ConnectionID)
+                {
+                    DataSender.SendPlayer(player, item.Key);
+                }
+            }
         }
 
         public static void SendDataTo(int connectionID, byte[] data)

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameServer.Player;
-using GameServer.World;
 
 namespace GameServer.World
 {
@@ -18,20 +17,15 @@ namespace GameServer.World
         public void AddPlayerToWorld(PlayerData newPlayer)
         {
             Model.Players.Add(newPlayer.ConnectionID, newPlayer);
-            ClientManager.PlayerUpdate(newPlayer);
+            ClientManager.NewPlayer(newPlayer);
         }
 
-        public void UpdatePlayerInWorld(PlayerData newPlayer)
+        public void UpdatePlayerInWorld(PlayerData player)
         {
-            if (!Model.Players.ContainsKey(newPlayer.ConnectionID))
+            if (Model.Players.ContainsKey(player.ConnectionID))
             {
-                ClientManager.PlayerUpdate(newPlayer);
-                Model.Players.Add(newPlayer.ConnectionID, newPlayer);
-            }
-            else
-            {
-                ClientManager.PlayerUpdate(newPlayer);
-                Model.Players[newPlayer.ConnectionID] = newPlayer;
+                ClientManager.UpdatePlayer(player);
+                Model.Players[player.ConnectionID] = player;
             }
         }
 

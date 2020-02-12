@@ -23,4 +23,18 @@ public static class Make
         return player;
     }
 
+    public static PlayerData PlayerUpdate(PlayerData data, Transform transform)
+    {
+        data.position.x = transform.GetChild(0).position.x;
+        data.position.y = transform.GetChild(0).position.y;
+        data.position.z = transform.GetChild(0).position.z;
+
+        data.rotation.x = transform.GetChild(0).rotation.x;
+        data.rotation.y = transform.GetChild(0).rotation.y;
+        data.rotation.z = transform.GetChild(0).rotation.z;
+        data.rotation.w = transform.GetChild(0).rotation.w;
+
+        return data;
+    }
+
 }
