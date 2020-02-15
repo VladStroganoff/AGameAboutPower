@@ -23,8 +23,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -118,9 +120,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12812}
     - Class: 114
-      Script: {instanceID: 13020}
+      Script: {instanceID: 12952}
     - Class: 114
-      Script: {instanceID: 33166}
+      Script: {instanceID: 13022}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -382,7 +384,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 35559e3182658a3c796e181ac401c866
+      Hash: b6696b78da1a7c93a58e40f1c34f324f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerNetworkController
@@ -580,6 +582,12 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
+      Hash: 92ebf1d25b076137bac0285d438b4193
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerController
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -656,12 +664,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 92ebf1d25b076137bac0285d438b4193
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerController
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

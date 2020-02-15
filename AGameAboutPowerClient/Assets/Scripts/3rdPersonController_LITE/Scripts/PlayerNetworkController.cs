@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class PlayerNetworkController : MonoBehaviour
 {
-    public vThirdPersonInput playerInput;
+    public vThirdPersonInput PlayerInput;
+    public Rigidbody PlayerPhysics;
 
     public void Inject(bool isLocal)
     {
         if(isLocal)
         {
-            playerInput.isLocalPlayer = true;
+            PlayerInput.isLocalPlayer = true;
         }
         else
         {
-            playerInput.isLocalPlayer = false;
+            PlayerInput.isLocalPlayer = false;
+            Destroy(PlayerPhysics);
         }
     }
 

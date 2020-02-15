@@ -56,6 +56,12 @@ namespace GameServer
                 Console.WriteLine("Removed player from list");
             }
 
+            if(World.WorldController.instance.Model.Players.ContainsKey(ConnectionID))
+            {
+                World.WorldController.instance.Model.Players[ConnectionID].Online = false;
+                ClientManager.UpdatePlayer(World.WorldController.instance.Model.Players[ConnectionID]);
+            }
+
 
 
             Console.WriteLine("Connection from {0} has been terminated.", Socket.Client.RemoteEndPoint.ToString());

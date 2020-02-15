@@ -13,14 +13,15 @@ namespace Assets.Scripts
         private static NetworkStream myStream;
         private static byte[] receiveBuffer;
 
-        public static void InitializeNetworking()
+
+        public static void InitializeNetworking(string ip, int port)
         {
             clientSocket = new TcpClient();
             clientSocket.ReceiveBufferSize = 4096;
             clientSocket.SendBufferSize = 4096;
             receiveBuffer = new byte[4096 * 2];
 
-            clientSocket.BeginConnect("10.0.0.4", 5587, new AsyncCallback(ClientConnectCallback), clientSocket);
+            clientSocket.BeginConnect(ip, port, new AsyncCallback(ClientConnectCallback), clientSocket);
         }
 
         private static void ClientConnectCallback(IAsyncResult result)

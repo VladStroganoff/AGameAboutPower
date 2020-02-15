@@ -14,7 +14,7 @@ public class PlayerNameSignView : MonoBehaviour
 
     public void Inject(int playerID)
     {
-        mainCamera = Camera.current;
+        mainCamera = FindObjectOfType<Camera>();
         ID = playerID;
         Text.text = playerID.ToString();
     }

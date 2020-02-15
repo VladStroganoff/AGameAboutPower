@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class NetworkManager : MonoBehaviour
     public bool updatePlayer { get; set; }
 
     public PlayerController PlayerControl;
-
+    public InputField IpField;
+    public InputField PortField;
 
     void Awake()
     {
@@ -23,8 +25,17 @@ public class NetworkManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         UnityThread.initUnityThread();
+
+
+        IpField.text = "10.0.0.4";
+        PortField.text = "5587";
+    }
+
+    public void TryInitializeConnection()
+    {
+
         ClientHandleData.InitializePackets();
-        ClientTCP.InitializeNetworking();
+        ClientTCP.InitializeNetworking(IpField.text, int.Parse(PortField.text));
     }
 
 

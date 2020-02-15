@@ -24,8 +24,10 @@ namespace Invector.vCharacterController
 
         #endregion
 
-        protected virtual void Start()
+        public void Setup(vThirdPersonCamera camera)
         {
+            tpCamera = camera;
+
             InitilizeController();
             InitializeTpCamera();
         }
