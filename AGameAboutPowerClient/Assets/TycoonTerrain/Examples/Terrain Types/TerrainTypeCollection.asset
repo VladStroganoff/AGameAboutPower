@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ced37c7d046dfa84199eb0d2f05eb9ab, type: 2}
   - {fileID: 11400000, guid: c956136b03e59ab4dbd73b1bf9acfc72, type: 2}
   - {fileID: 11400000, guid: 499ae14ca6f27ea41ab95ceb75abaf1e, type: 2}
-  WaterMaterial: {fileID: 2100000, guid: b5924ac7d830f0143a09d9b92dd0c6ef, type: 2}
+  WaterMaterial: {fileID: 2100000, guid: 81d270bf385fce841b92c00ce4958e45, type: 2}
   WaterCliffMaterial: {fileID: 2100000, guid: b5924ac7d830f0143a09d9b92dd0c6ef, type: 2}
