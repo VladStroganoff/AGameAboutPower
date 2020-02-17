@@ -188,6 +188,7 @@
     <None Include="Assets\AmplifyShaderEditor\Examples\Official\SimpleBlur\SimpleBlur.shader" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_FunctionInputNode.shader" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_TFHCFlipBookUVAnimation.shader" />
+    <None Include="Assets\Shaders\Terrain.shader" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_ObjectToClipPos.shader" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_FresnelNode.shader" />
     <None Include="Assets\AmplifyShaderEditor\Examples\Official\SimplePotionLiquid\SimplePotionLiquid.shader" />
