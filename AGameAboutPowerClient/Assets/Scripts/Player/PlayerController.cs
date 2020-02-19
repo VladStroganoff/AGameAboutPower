@@ -1,20 +1,41 @@
-﻿using Invector.vCharacterController;
+﻿using Assets.Scripts;
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int MyConnectionID;
+    public NetworkedEntity localPlayer;
+    public bool updatePlayer { get; set; }
+
 
     public GameObject PlayerPrefab;
     public GameObject Camera;
     public GameObject Player;
 
-    public void InstansiateNewPlayer(PlayerData player)
+    public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
+
+
+    public void HandlePlayer(NetworkedEntity player)
+    {
+        if (PlayerList.Count > 1 || PlayerList.ContainsKey(NetworkManager.instance.ConnectionID))
+        {
+            UpdatePlayer(player);
+        }
+        else
+        {
+            InstansiateNewPlayer(player);
+        }
+    }
+
+
+    public void InstansiateNewPlayer(NetworkedEntity player)
     {
         GameObject playerGO = Instantiate(PlayerPrefab);
 
-        if (NetworkManager.instance.localPlayer.ConnectionID != player.ConnectionID)
+        if (MyConnectionID != NetworkManager.instance.ConnectionID)
         {
             playerGO.transform.GetChild(0).GetComponent<vThirdPersonInput>().isLocalPlayer = false;
         }
@@ -26,14 +47,16 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        playerGO.name = "Player: " + player.ConnectionID;
-        playerGO.GetComponent<PlayerNameSignView>().Inject(player.ConnectionID);
+        playerGO.name = "Player: " + NetworkManager.instance.ConnectionID;
+        playerGO.GetComponent<PlayerNameSignView>().Inject(NetworkManager.instance.ConnectionID);
 
 
-        NetworkManager.instance.PlayerList.Add(player.ConnectionID, playerGO);
+        PlayerList.Add(NetworkManager.instance.ConnectionID, playerGO);
+        localPlayer = player;
 
-        NetworkManager.instance.updatePlayer = true;
-        NetworkManager.instance.StartCoroutine("SendUpdate");
+
+        updatePlayer = true;
+        StartCoroutine("SendUpdate");
     }
 
     void SetupCamera(GameObject playerGO)
@@ -49,19 +72,19 @@ public class PlayerController : MonoBehaviour
         playerGO.transform.GetChild(0).GetComponent<vThirdPersonInput>().Setup(cam.GetComponent<vThirdPersonCamera>());
     }
 
-    public void UpdatePlayer(PlayerData player)
+    public void UpdatePlayer(NetworkedEntity player)
     {
         if(player.Online != false)
         {
-            Vector3 newPos = new Vector3(player.position.x, player.position.y, player.position.z);
-            Quaternion newRot = new Quaternion(player.rotation.x, player.rotation.y, player.rotation.z, player.rotation.w);
+            Vector3 newPos = new Vector3(player.Transform.position.x, player.Transform.position.y, player.Transform.position.z);
+            Quaternion newRot = new Quaternion(player.Transform.rotation.x, player.Transform.rotation.y, player.Transform.rotation.z, player.Transform.rotation.w);
 
-            NetworkManager.instance.PlayerList[player.ConnectionID].transform.GetChild(0).position = newPos;
-            NetworkManager.instance.PlayerList[player.ConnectionID].transform.GetChild(0).rotation = newRot;
+            PlayerList[player.ConnectionID].transform.GetChild(0).position = newPos;
+            PlayerList[player.ConnectionID].transform.GetChild(0).rotation = newRot;
         }
         else
         {
-            Destroy(NetworkManager.instance.PlayerList[player.ConnectionID]);
+            Destroy(PlayerList[player.ConnectionID]);
         }
       
     }
@@ -71,6 +94,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+    }
+
+    IEnumerator SendUpdate()
+    {
+        while (updatePlayer)
+        {
+            localPlayer = MakeEntity.PlayerUpdate(localPlayer, PlayerList[localPlayer.ConnectionID].transform.GetChild(0).transform);
+
+            string json = JsonUtility.ToJson(localPlayer);
+
+            DataSender.SendServerMessage(json);
+
+            yield return new WaitForSeconds(3);
         }
     }
 }

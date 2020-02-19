@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameServer.Player;
+using GameServer.Entity;
 
 namespace GameServer.World
 {
@@ -14,21 +14,36 @@ namespace GameServer.World
 
         public WorldModel Model { get; set; } = new WorldModel();
 
-        public void AddPlayerToWorld(PlayerData newPlayer)
+        public void AddPlayerToWorld(int connectionID)
         {
-            Model.Players.Add(newPlayer.ConnectionID, newPlayer);
-            ClientManager.NewPlayer(newPlayer);
+
+            NetworkedEntity newEntity = CreatePlayer(connectionID);
+            
+
+            Model.Players.Add(newEntity.ConnectionID, newEntity);
+            ClientManager.NewPlayer(newEntity);
         }
 
-        public void UpdatePlayerInWorld(PlayerData player)
+        public void UpdatePlayerInWorld(NetworkedEntity entity)
         {
-            if (Model.Players.ContainsKey(player.ConnectionID))
+            if (Model.Players.ContainsKey(entity.ConnectionID))
             {
-                ClientManager.UpdatePlayer(player);
-                Model.Players[player.ConnectionID] = player;
+                ClientManager.UpdatePlayer(entity);
+                Model.Players[entity.ConnectionID] = entity;
             }
         }
 
+         NetworkedEntity CreatePlayer(int id)
+        {
+            PlayerData data = new PlayerData("Player name");
+
+            NetworkedEntity entity = new NetworkedEntity(data);
+            entity.ConnectionID = id;
+            entity.Online = true;
+            entity.PrefabName = "Player";
+
+            return entity;
+        }
 
     }
 }

@@ -4,22 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameServer.Player
+namespace GameServer.Entity
 {
-    public class SQuaternion
+    public class SVector3
     {
-        public float w;
         public float x;
         public float y;
         public float z;
 
-        public SQuaternion()
+        public SVector3()
         {
-            w = 0;
             x = 0;
             y = 0;
             z = 0;
         }
-
     }
 }

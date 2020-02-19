@@ -31,17 +31,17 @@ namespace Assets.Scripts
             DataSender.SendServerMessage("Hello Server");
         }
 
-        public static void HandleInstansiatePlayer(byte[] data)
+        public static void HandleInstansiateEntity(byte[] data)
         {
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteBytes(data);
             int packetID = buffer.ReadInt();
             string message = buffer.ReadString();
-            PlayerData playerData = JsonUtility.FromJson<PlayerData>(message);
+            NetworkedEntity entity = JsonUtility.FromJson<NetworkedEntity>(message);
             buffer.Dispose();
 
-            Debug.Log("Instansiating player: " + playerData.ConnectionID);
-            NetworkManager.instance.HandlePlayer(playerData);
+            Debug.Log("Instansiating player: " + entity.ConnectionID);
+            NetworkManager.instance.HandleEntity(entity);
         }
 
 

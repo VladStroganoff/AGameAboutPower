@@ -22,3 +22,6 @@ D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Serv
 D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\bin\Debug\Newtonsoft.Json.dll
 D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\bin\Debug\Newtonsoft.Json.xml
 D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPower\Server\GameServer\obj\Debug\GameServer.csproj.CopyComplete
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\bin\Debug\Newtonsoft.Json.dll
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\bin\Debug\Newtonsoft.Json.xml
+D:\NormalDrive\Projects\A Game About Power\Development\Repo\Server\GameServer\obj\Debug\GameServer.csproj.CopyComplete

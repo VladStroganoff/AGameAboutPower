@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
-using GameServer.Player;
+using GameServer.Entity;
 
 
 namespace GameServer
@@ -8,7 +8,6 @@ namespace GameServer
     class Client
     {
         public int ConnectionID;
-        public PlayerData PlayerData = new PlayerData();
         public TcpClient Socket;
         public NetworkStream Stream;
         private byte[] receiveBuffer;

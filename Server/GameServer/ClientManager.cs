@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading.Tasks;
 using GameServer.World;
-using GameServer.Player;
+using GameServer.Entity;
 
 namespace GameServer
 {
@@ -23,22 +23,20 @@ namespace GameServer
 
             DataSender.SendWelcomeMessage(newClient.ConnectionID);
 
-            PlayerData newPlayer = new PlayerData();
-            newPlayer.ConnectionID = newClient.ConnectionID;
-            WorldController.instance.AddPlayerToWorld(newPlayer);
+            WorldController.instance.AddPlayerToWorld(newClient.ConnectionID);
         }
 
 
-        public static void NewPlayer(PlayerData player)
+        public static void NewPlayer(NetworkedEntity entity)
         {
 
             // send everyone to new player except himself
 
             foreach(KeyValuePair<int, Client> item in Clients)
             {
-                if(item.Key != player.ConnectionID)
+                if(item.Key != entity.ConnectionID)
                 {
-                    DataSender.SendPlayer(player, item.Key);
+                    DataSender.SendPlayer(entity, item.Key);
                 }
             }
 
@@ -46,18 +44,18 @@ namespace GameServer
 
             foreach(KeyValuePair<int, Client> item in Clients)
             {
-                DataSender.SendPlayer(WorldController.instance.Model.Players[item.Key], player.ConnectionID);
+                DataSender.SendPlayer(WorldController.instance.Model.Players[item.Key], entity.ConnectionID);
             }
 
         }
 
-        public static void UpdatePlayer(PlayerData player)
+        public static void UpdatePlayer(NetworkedEntity entity)
         {
             foreach (KeyValuePair<int, Client> item in Clients)
             {
-                if (item.Key != player.ConnectionID)
+                if (item.Key != entity.ConnectionID)
                 {
-                    DataSender.SendPlayer(player, item.Key);
+                    DataSender.SendPlayer(entity, item.Key);
                 }
             }
         }

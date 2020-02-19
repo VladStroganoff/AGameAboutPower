@@ -9,15 +9,5 @@ public class PlayerNavigationView : MonoBehaviour
 
     void Update()
     {
-
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            PlayerData data = new PlayerData();
-
-            data.Name = "My name?";
-
-            NetManager.UpdatePlayerPosition(data);
-        }
     }
 }

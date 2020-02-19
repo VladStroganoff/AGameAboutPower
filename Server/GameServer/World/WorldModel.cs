@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameServer.Player;
+using GameServer.Entity;
 
 namespace GameServer.World
 {
     public class WorldModel
     {
-        public Dictionary<int, PlayerData> Players = new Dictionary<int, PlayerData>();
+        public Dictionary<int, NetworkedEntity> Players = new Dictionary<int, NetworkedEntity>();
     }
 }

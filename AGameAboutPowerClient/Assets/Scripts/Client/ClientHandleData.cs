@@ -17,7 +17,7 @@ namespace Assets.Scripts
 
         public static void InitializePackets()
         {
-            Packets.Add((int)ServerPackets.SInstantiatePlayer, DataReceiver.HandleInstansiatePlayer);
+            Packets.Add((int)ServerPackets.SInstantiatePlayer, DataReceiver.HandleInstansiateEntity);
             Packets.Add((int)ServerPackets.SWelcomeMessage, DataReceiver.HandleWlcomeMessage);
         }
 
