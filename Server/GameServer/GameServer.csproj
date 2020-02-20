@@ -47,15 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBuffer.cs" />
-    <Compile Include="Entity\CustomData\NetworkedCustomData.cs" />
+    <Compile Include="Entity\IComponent.cs" />
+    <Compile Include="Entity\MakeEntity.cs" />
     <Compile Include="Entity\NetworkedAnimator.cs" />
     <Compile Include="Entity\NetworkedEntity.cs" />
     <Compile Include="Entity\NetworkedTransform.cs" />
-    <Compile Include="Entity\Quaternion.cs" />
-    <Compile Include="Entity\Vector3.cs" />
     <Compile Include="World\WorldController.cs" />
     <Compile Include="World\WorldModel.cs" />
-    <Compile Include="Entity\CustomData\PlayerData.cs" />
+    <Compile Include="Entity\PlayerData.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientManager.cs" />
     <Compile Include="DataRecevier.cs" />
@@ -70,5 +69,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

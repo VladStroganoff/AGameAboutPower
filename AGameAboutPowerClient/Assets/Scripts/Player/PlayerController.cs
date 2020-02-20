@@ -76,8 +76,10 @@ public class PlayerController : MonoBehaviour
     {
         if(player.Online != false)
         {
-            Vector3 newPos = new Vector3(player.Transform.position.x, player.Transform.position.y, player.Transform.position.z);
-            Quaternion newRot = new Quaternion(player.Transform.rotation.x, player.Transform.rotation.y, player.Transform.rotation.z, player.Transform.rotation.w);
+            NetworkedTransform transform = MakeEntity.GetTransform(player);
+
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Quaternion newRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
 
             PlayerList[player.ConnectionID].transform.GetChild(0).position = newPos;
             PlayerList[player.ConnectionID].transform.GetChild(0).rotation = newRot;
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         while (updatePlayer)
         {
-            localPlayer = MakeEntity.PlayerUpdate(localPlayer, PlayerList[localPlayer.ConnectionID].transform.GetChild(0).transform);
+            localPlayer = MakeEntity.UpdateTransform(localPlayer, PlayerList[localPlayer.ConnectionID].transform.GetChild(0).transform);
 
             string json = JsonUtility.ToJson(localPlayer);
 

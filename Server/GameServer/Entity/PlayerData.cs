@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entity
 {
-    [System.Serializable]
-    public abstract class NetworkedCustomData
+    public struct PlayerData : IComponent
     {
+        public string Name;
+        public string PrefabName;
+       
     }
 }

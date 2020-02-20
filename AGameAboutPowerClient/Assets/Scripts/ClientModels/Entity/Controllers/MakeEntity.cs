@@ -5,36 +5,99 @@ using UnityEngine;
 public static class MakeEntity 
 {
 
-    public static NetworkedEntity NewPlyer(Transform transform, int ID, string name)
+    public static NetworkedEntity NewEntity(int ID)
     {
-        NetworkedEntity entity = new NetworkedEntity(new PlayerData("Player TestName"));
-        entity.ConnectionID = ID;
-        entity.Transform.position.x = transform.GetChild(0).position.x;
-        entity.Transform.position.y = transform.GetChild(0).position.y;
-        entity.Transform.position.z = transform.GetChild(0).position.z;
-
-        entity.Transform.rotation.x = transform.GetChild(0).rotation.x;
-        entity.Transform.rotation.y = transform.GetChild(0).rotation.y;
-        entity.Transform.rotation.z = transform.GetChild(0).rotation.z;
-        entity.Transform.rotation.w = transform.GetChild(0).rotation.w;
-
-
+        NetworkedEntity entity = new NetworkedEntity();
+        entity.Online = true;
 
         return entity;
     }
 
-    public static NetworkedEntity PlayerUpdate(NetworkedEntity data, Transform transform)
+    public static NetworkedEntity AddPlayerComponent(NetworkedEntity entity, string prefabName)
     {
-        data.Transform.position.x = transform.GetChild(0).position.x;
-        data.Transform.position.y = transform.GetChild(0).position.y;
-        data.Transform.position.z = transform.GetChild(0).position.z;
 
-        data.Transform.rotation.x = transform.GetChild(0).rotation.x;
-        data.Transform.rotation.y = transform.GetChild(0).rotation.y;
-        data.Transform.rotation.z = transform.GetChild(0).rotation.z;
-        data.Transform.rotation.w = transform.GetChild(0).rotation.w;
+        entity = AddOneComponent(entity);
 
-        return data;
+        PlayerData data = new PlayerData();
+
+        data.PrefabName = prefabName;
+        data.Name = "Player Name";
+
+        entity.Components[entity.Components.Length] = data;
+
+        return entity;
     }
 
+    public static NetworkedEntity AddTransformComponent(NetworkedEntity entity, Transform transform)
+    {
+        entity = AddOneComponent(entity);
+
+        NetworkedTransform temp = new NetworkedTransform();
+
+        temp.position.x = transform.GetChild(0).position.x;
+        temp.position.y = transform.GetChild(0).position.y;
+        temp.position.z = transform.GetChild(0).position.z;
+
+        temp.rotation.x = transform.GetChild(0).rotation.x;
+        temp.rotation.y = transform.GetChild(0).rotation.y;
+        temp.rotation.z = transform.GetChild(0).rotation.z;
+        temp.rotation.w = transform.GetChild(0).rotation.w;
+
+        entity.Components[entity.Components.Length] = temp;
+
+        return entity;
+    }
+
+    public static NetworkedTransform GetTransform(NetworkedEntity entity)
+    {
+        foreach(IComponent component in entity.Components)
+        {
+            if(component is NetworkedTransform)
+            {
+                return (NetworkedTransform)component;
+            }
+                
+        }
+
+
+        return new NetworkedTransform();
+
+    }
+
+    public static NetworkedEntity UpdateTransform(NetworkedEntity entity, Transform transform)
+    {
+        for(int i = 0; i < entity.Components.Length; i++)
+        {
+            if(entity.Components[i] is NetworkedTransform)
+            {
+                NetworkedTransform temp = (NetworkedTransform)entity.Components[i];
+
+                temp.position.x = transform.GetChild(0).position.x;
+                temp.position.y = transform.GetChild(0).position.y;
+                temp.position.z = transform.GetChild(0).position.z;
+
+                temp.rotation.x = transform.GetChild(0).rotation.x;
+                temp.rotation.y = transform.GetChild(0).rotation.y;
+                temp.rotation.z = transform.GetChild(0).rotation.z;
+                temp.rotation.w = transform.GetChild(0).rotation.w;
+
+                entity.Components[i] = temp;
+            }
+        }
+
+      
+
+        return entity;
+    }
+
+    static NetworkedEntity AddOneComponent(NetworkedEntity entity)
+    {
+        IComponent[] components = new IComponent[entity.Components.Length + 1];
+
+        System.Array.Copy(entity.Components, 0, components, 0, entity.Components.Length);
+
+        entity.Components = components;
+
+        return entity;
+    }
 }

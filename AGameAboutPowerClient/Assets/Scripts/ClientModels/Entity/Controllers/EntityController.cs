@@ -8,7 +8,9 @@ public class EntityController : MonoBehaviour
 
     public void HandleEntity(NetworkedEntity entity)
     {
-        if(entity.CustomData is PlayerData)
+        foreach(IComponent component in entity.Components)
+
+        if(component is PlayerData)
         {
             PlayerControl.HandlePlayer(entity);
         }
