@@ -1042,6 +1042,10 @@
       <Project>{238ABE21-A81B-291B-1A1D-1A3385D0C79E}</Project>
       <Name>TycoonTerrainAssembly</Name>
     </ProjectReference>
+    <ProjectReference Include="Tests.csproj">
+      <Project>{B4D65D55-1D98-444B-A002-B3BEFE4E4C69}</Project>
+      <Name>Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

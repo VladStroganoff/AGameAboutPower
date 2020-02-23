@@ -17,24 +17,60 @@ namespace GameServer.Entity
             return entity;
         }
 
-        public static NetworkedEntity AddPlayerComponent(NetworkedEntity entity, string prefabName)
+        public static void AddComponent(NetworkedEntity entity, IComponent component)
         {
 
-            entity = AddOneComponent(entity);
-
-            PlayerData data = new PlayerData();
-
-            data.PrefabName = prefabName;
-            data.Name = "Player Name";
-
-            entity.Components[entity.Components.Length] = data;
-
-            return entity;
+            AddOneComponent(entity);
+            entity.Components[entity.Components.Length] = component;
         }
+
+        public static IComponent GetComponent <T>(NetworkedEntity entity, T request) where T : class, IComponent
+        {
+            if (T == null)
+                return null;
+
+            if(request is PlayerData)
+            {
+             foreach(IComponent component in entity.Components)
+                {
+                    if(component is PlayerData)
+                    {
+                        return component;
+                    }
+                }
+            }
+
+            if (request is NetworkedTransform)
+            {
+                foreach (IComponent component in entity.Components)
+                {
+                    if (component is NetworkedTransform)
+                    {
+                        return component;
+                    }
+                }
+            }
+
+            if (request is NetworkedAnimator)
+            {
+                foreach (IComponent component in entity.Components)
+                {
+                    if (component is NetworkedAnimator)
+                    {
+                        return component;
+                    }
+                }
+            }
+
+            return null;
+
+        }
+
+
 
         public static NetworkedEntity AddTransformComponent(NetworkedEntity entity, NetworkedTransform transform)
         {
-            entity = AddOneComponent(entity);
+            AddOneComponent(entity);
 
             NetworkedTransform temp = new NetworkedTransform();
 
@@ -94,15 +130,13 @@ namespace GameServer.Entity
             return entity;
         }
 
-        static NetworkedEntity AddOneComponent(NetworkedEntity entity)
+        static void AddOneComponent(NetworkedEntity entity)
         {
             IComponent[] components = new IComponent[entity.Components.Length + 1];
 
             System.Array.Copy(entity.Components, 0, components, 0, entity.Components.Length);
 
             entity.Components = components;
-
-            return entity;
         }
     }
 

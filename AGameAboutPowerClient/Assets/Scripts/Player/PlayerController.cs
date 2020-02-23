@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int MyConnectionID;
-    public NetworkedEntity localPlayer;
+    public NetEntity localPlayer;
     public bool updatePlayer { get; set; }
 
 
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
 
 
-    public void HandlePlayer(NetworkedEntity player)
+    public void HandlePlayer(NetEntity player)
     {
         if (PlayerList.Count > 1 || PlayerList.ContainsKey(NetworkManager.instance.ConnectionID))
         {
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void InstansiateNewPlayer(NetworkedEntity player)
+    public void InstansiateNewPlayer(NetEntity player)
     {
         GameObject playerGO = Instantiate(PlayerPrefab);
 
@@ -72,11 +72,11 @@ public class PlayerController : MonoBehaviour
         playerGO.transform.GetChild(0).GetComponent<vThirdPersonInput>().Setup(cam.GetComponent<vThirdPersonCamera>());
     }
 
-    public void UpdatePlayer(NetworkedEntity player)
+    public void UpdatePlayer(NetEntity player)
     {
         if(player.Online != false)
         {
-            NetworkedTransform transform = MakeEntity.GetTransform(player);
+            NetTransform transform = MakeEntity.GetComponent<NetTransform>(player);
 
             Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Quaternion newRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);

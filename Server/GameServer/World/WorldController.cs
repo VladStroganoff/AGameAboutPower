@@ -35,12 +35,14 @@ namespace GameServer.World
 
          NetworkedEntity CreatePlayer(int id)
         {
-            PlayerData data = new PlayerData("Player name");
+            PlayerData data = new PlayerData();
+            data.Name = "Player name";
+            data.PrefabName = "Player"; 
 
-            NetworkedEntity entity = new NetworkedEntity(data);
+            NetworkedEntity entity = new NetworkedEntity();
             entity.ConnectionID = id;
             entity.Online = true;
-            entity.PrefabName = "Player";
+            MakeEntity.AddComponent(entity, data);
 
             return entity;
         }

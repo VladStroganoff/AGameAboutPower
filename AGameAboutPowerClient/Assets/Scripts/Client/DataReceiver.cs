@@ -37,7 +37,7 @@ namespace Assets.Scripts
             buffer.WriteBytes(data);
             int packetID = buffer.ReadInt();
             string message = buffer.ReadString();
-            NetworkedEntity entity = JsonUtility.FromJson<NetworkedEntity>(message);
+            NetEntity entity = JsonUtility.FromJson<NetEntity>(message);
             buffer.Dispose();
 
             Debug.Log("Instansiating player: " + entity.ConnectionID);

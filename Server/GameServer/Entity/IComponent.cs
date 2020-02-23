@@ -2,7 +2,7 @@
 
 namespace GameServer.Entity
 {
-    public interface IComponent
+    public class Component
     {
     }
 }

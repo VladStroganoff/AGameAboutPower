@@ -1,7 +1,7 @@
 ﻿
 
 [System.Serializable]
-public struct PlayerData : IComponent
+public class PlayerData : NetComponent
 {
     public string Name;
     public string PrefabName;

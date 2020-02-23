@@ -1,6 +1,6 @@
 ﻿
 [System.Serializable]
-public struct NetworkedAnimator
+public class NetworkedAnimator : NetComponent
 {
     public string CurrentState;
 }

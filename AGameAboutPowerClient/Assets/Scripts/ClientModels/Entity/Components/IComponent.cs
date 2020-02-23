@@ -1,6 +1,11 @@
 ﻿
 
 
-public interface IComponent 
+using System.Collections.Generic;
+
+public class NetComponent
 {
 }
+
+
+

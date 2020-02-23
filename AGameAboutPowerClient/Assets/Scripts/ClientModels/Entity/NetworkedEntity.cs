@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class NetworkedEntity
+public class NetEntity
 {
     public int ConnectionID;
     public bool Online;
-    public IComponent[] Components; 
+    public NetComponent[] Components; 
 }

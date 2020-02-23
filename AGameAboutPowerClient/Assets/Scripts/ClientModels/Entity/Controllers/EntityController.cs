@@ -6,9 +6,9 @@ public class EntityController : MonoBehaviour
 {
     public PlayerController PlayerControl;
 
-    public void HandleEntity(NetworkedEntity entity)
+    public void HandleEntity(NetEntity entity)
     {
-        foreach(IComponent component in entity.Components)
+        foreach(NetComponent component in entity.Components)
 
         if(component is PlayerData)
         {

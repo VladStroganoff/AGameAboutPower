@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameServer.Entity
 {
-    public struct NetworkedAnimator
+    public struct NetworkedAnimator : IComponent
     {
         public string CurrentState;
     }

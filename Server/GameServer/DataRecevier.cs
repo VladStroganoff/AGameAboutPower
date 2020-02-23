@@ -26,7 +26,7 @@ namespace GameServer
 
             if (message != "Hello Server")
             {
-                NetworkedEntity entity = new NetworkedEntity(new PlayerData("temp"));
+                NetworkedEntity entity = new NetworkedEntity();
                 entity = JsonConvert.DeserializeObject<NetworkedEntity>(message);
                 WorldController.instance.UpdatePlayerInWorld(entity);
             }

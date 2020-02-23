@@ -1,103 +1,123 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public static class MakeEntity 
+public static class MakeEntity
 {
 
-    public static NetworkedEntity NewEntity(int ID)
+    public static NetEntity NewEntity(int ID)
     {
-        NetworkedEntity entity = new NetworkedEntity();
+        NetEntity entity = new NetEntity();
         entity.Online = true;
 
         return entity;
     }
 
-    public static NetworkedEntity AddPlayerComponent(NetworkedEntity entity, string prefabName)
+    public static void AddComponent(NetEntity entity, NetComponent component)
     {
 
-        entity = AddOneComponent(entity);
-
-        PlayerData data = new PlayerData();
-
-        data.PrefabName = prefabName;
-        data.Name = "Player Name";
-
-        entity.Components[entity.Components.Length] = data;
-
-        return entity;
+        AddOneComponent(entity);
+        entity.Components[entity.Components.Length - 1] = component;
     }
 
-    public static NetworkedEntity AddTransformComponent(NetworkedEntity entity, Transform transform)
+    public static T GetComponent<T>(NetEntity entity) where T : NetComponent
     {
-        entity = AddOneComponent(entity);
 
-        NetworkedTransform temp = new NetworkedTransform();
+        if (typeof(T) == null)
+            return null;
 
-        temp.position.x = transform.GetChild(0).position.x;
-        temp.position.y = transform.GetChild(0).position.y;
-        temp.position.z = transform.GetChild(0).position.z;
+        foreach (NetComponent component in entity.Components)
+        {
+            T requestedType = component as T;
 
-        temp.rotation.x = transform.GetChild(0).rotation.x;
-        temp.rotation.y = transform.GetChild(0).rotation.y;
-        temp.rotation.z = transform.GetChild(0).rotation.z;
-        temp.rotation.w = transform.GetChild(0).rotation.w;
+            if (requestedType != null)
+                return requestedType;
+        }
+
+        return null;
+
+    }
+
+
+
+    public static NetEntity AddTransformComponent(NetEntity entity, NetTransform transform)
+    {
+        AddOneComponent(entity);
+
+        NetTransform temp = new NetTransform();
+
+        temp.position.x = transform.position.x;
+        temp.position.y = transform.position.y;
+        temp.position.z = transform.position.z;
+
+        temp.rotation.x = transform.rotation.x;
+        temp.rotation.y = transform.rotation.y;
+        temp.rotation.z = transform.rotation.z;
+        temp.rotation.w = transform.rotation.w;
 
         entity.Components[entity.Components.Length] = temp;
 
         return entity;
     }
 
-    public static NetworkedTransform GetTransform(NetworkedEntity entity)
+    public static NetTransform GetTransform(NetEntity entity)
     {
-        foreach(IComponent component in entity.Components)
+        foreach (NetComponent component in entity.Components)
         {
-            if(component is NetworkedTransform)
+            if (component is NetTransform)
             {
-                return (NetworkedTransform)component;
+                return (NetTransform)component;
             }
-                
+
         }
 
 
-        return new NetworkedTransform();
+        return new NetTransform();
 
     }
 
-    public static NetworkedEntity UpdateTransform(NetworkedEntity entity, Transform transform)
+    public static NetEntity UpdateTransform(NetEntity entity, Transform transform)
     {
-        for(int i = 0; i < entity.Components.Length; i++)
+        for (int i = 0; i < entity.Components.Length; i++)
         {
-            if(entity.Components[i] is NetworkedTransform)
+            if (entity.Components[i] is NetTransform)
             {
-                NetworkedTransform temp = (NetworkedTransform)entity.Components[i];
+                NetTransform temp = (NetTransform)entity.Components[i];
 
-                temp.position.x = transform.GetChild(0).position.x;
-                temp.position.y = transform.GetChild(0).position.y;
-                temp.position.z = transform.GetChild(0).position.z;
+                temp.position.x = transform.position.x;
+                temp.position.y = transform.position.y;
+                temp.position.z = transform.position.z;
 
-                temp.rotation.x = transform.GetChild(0).rotation.x;
-                temp.rotation.y = transform.GetChild(0).rotation.y;
-                temp.rotation.z = transform.GetChild(0).rotation.z;
-                temp.rotation.w = transform.GetChild(0).rotation.w;
+                temp.rotation.x = transform.rotation.x;
+                temp.rotation.y = transform.rotation.y;
+                temp.rotation.z = transform.rotation.z;
+                temp.rotation.w = transform.rotation.w;
 
                 entity.Components[i] = temp;
             }
         }
 
-      
+
 
         return entity;
     }
 
-    static NetworkedEntity AddOneComponent(NetworkedEntity entity)
+    static void AddOneComponent(NetEntity entity)
     {
-        IComponent[] components = new IComponent[entity.Components.Length + 1];
+        if (entity.Components == null)
+        {
+            entity.Components = new NetComponent[1];
+            return;
+        }
+
+        NetComponent[] components = new NetComponent[entity.Components.Length + 1];
 
         System.Array.Copy(entity.Components, 0, components, 0, entity.Components.Length);
 
         entity.Components = components;
-
-        return entity;
     }
 }
+

@@ -1,7 +1,6 @@
 ﻿
-
 [System.Serializable]
-public struct NetworkedTransform : IComponent
+public class NetTransform : NetComponent
 {
     public SVector3 position;
     public SQuaternion rotation;
