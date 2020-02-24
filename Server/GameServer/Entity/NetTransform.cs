@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameServer.Entity
-{
-    public struct NetworkedTransform : IComponent
+﻿
+    [System.Serializable]
+    public class NetTransform : NetComponent
     {
         public SVector3 position;
         public SQuaternion rotation;
@@ -31,4 +25,3 @@ namespace GameServer.Entity
 
     }
 
-}

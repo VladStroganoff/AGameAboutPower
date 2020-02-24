@@ -6,19 +6,18 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class MakeENtityTest
+    public class NetEntityTest
     {
         // A Test behaves as an ordinary method
         [Test]
-        public void MakeENtityTestSimplePasses()
+        public void NetEntityTestSimplePasses()
         {
-            // Use the Assert class to test conditions
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator MakeENtityTestWithEnumeratorPasses()
+        public IEnumerator NetEntityTestWithEnumeratorPasses()
         {
             // Use the Assert class to test conditions.
             // Use yield to skip a frame.

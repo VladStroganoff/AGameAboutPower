@@ -17,14 +17,14 @@ namespace GameServer.World
         public void AddPlayerToWorld(int connectionID)
         {
 
-            NetworkedEntity newEntity = CreatePlayer(connectionID);
+            NetEntity newEntity = CreatePlayer(connectionID);
             
 
             Model.Players.Add(newEntity.ConnectionID, newEntity);
             ClientManager.NewPlayer(newEntity);
         }
 
-        public void UpdatePlayerInWorld(NetworkedEntity entity)
+        public void UpdatePlayerInWorld(NetEntity entity)
         {
             if (Model.Players.ContainsKey(entity.ConnectionID))
             {
@@ -33,13 +33,13 @@ namespace GameServer.World
             }
         }
 
-         NetworkedEntity CreatePlayer(int id)
+        NetEntity CreatePlayer(int id)
         {
             PlayerData data = new PlayerData();
             data.Name = "Player name";
-            data.PrefabName = "Player"; 
+            data.PrefabName = "Player";
 
-            NetworkedEntity entity = new NetworkedEntity();
+            NetEntity entity = new NetEntity();
             entity.ConnectionID = id;
             entity.Online = true;
             MakeEntity.AddComponent(entity, data);

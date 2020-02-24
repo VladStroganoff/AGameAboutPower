@@ -9,6 +9,6 @@ namespace GameServer.World
 {
     public class WorldModel
     {
-        public Dictionary<int, NetworkedEntity> Players = new Dictionary<int, NetworkedEntity>();
+        public Dictionary<int, NetEntity> Players = new Dictionary<int, NetEntity>();
     }
 }

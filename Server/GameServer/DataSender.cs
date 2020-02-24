@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameServer.Entity;
-
-
-namespace GameServer
-{
+using GameServer;
 
 
     public enum ServerPackets
@@ -29,9 +25,15 @@ namespace GameServer
             buffer.Dispose();
         }
 
-        public static void SendPlayer (NetworkedEntity entity, int connectionID)
+        public static void SendPlayer (NetEntity entity, int connectionID)
         {
-            string json = JsonConvert.SerializeObject(entity);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            string json = JsonConvert.SerializeObject(entity, settings);
+
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteInt((int)ServerPackets.SPlayerData);
             buffer.WriteString(json);
@@ -44,4 +46,3 @@ namespace GameServer
 
 
     }
-}

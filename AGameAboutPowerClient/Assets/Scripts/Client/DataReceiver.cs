@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Assets.Scripts
 {
@@ -37,7 +34,14 @@ namespace Assets.Scripts
             buffer.WriteBytes(data);
             int packetID = buffer.ReadInt();
             string message = buffer.ReadString();
-            NetEntity entity = JsonUtility.FromJson<NetEntity>(message);
+            
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            NetEntity entity = JsonConvert.DeserializeObject<NetEntity>(message, settings);
+
             buffer.Dispose();
 
             Debug.Log("Instansiating player: " + entity.ConnectionID);

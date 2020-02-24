@@ -8,6 +8,12 @@ public class EntityController : MonoBehaviour
 
     public void HandleEntity(NetEntity entity)
     {
+        if(entity.Components == null)
+        {
+            Debug.Log("Components where null on player" + entity.ConnectionID);
+            return;
+        }
+
         foreach(NetComponent component in entity.Components)
 
         if(component is PlayerData)

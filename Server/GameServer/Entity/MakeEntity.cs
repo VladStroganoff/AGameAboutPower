@@ -1,143 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameServer.Entity
+﻿
+public static class MakeEntity
 {
-    public static class MakeEntity
+
+    public static NetEntity NewEntity(int ID)
     {
+        NetEntity entity = new NetEntity();
+        entity.Online = true;
 
-        public static NetworkedEntity NewEntity(int ID)
-        {
-            NetworkedEntity entity = new NetworkedEntity();
-            entity.Online = true;
-
-            return entity;
-        }
-
-        public static void AddComponent(NetworkedEntity entity, IComponent component)
-        {
-
-            AddOneComponent(entity);
-            entity.Components[entity.Components.Length] = component;
-        }
-
-        public static IComponent GetComponent <T>(NetworkedEntity entity, T request) where T : class, IComponent
-        {
-            if (T == null)
-                return null;
-
-            if(request is PlayerData)
-            {
-             foreach(IComponent component in entity.Components)
-                {
-                    if(component is PlayerData)
-                    {
-                        return component;
-                    }
-                }
-            }
-
-            if (request is NetworkedTransform)
-            {
-                foreach (IComponent component in entity.Components)
-                {
-                    if (component is NetworkedTransform)
-                    {
-                        return component;
-                    }
-                }
-            }
-
-            if (request is NetworkedAnimator)
-            {
-                foreach (IComponent component in entity.Components)
-                {
-                    if (component is NetworkedAnimator)
-                    {
-                        return component;
-                    }
-                }
-            }
-
-            return null;
-
-        }
-
-
-
-        public static NetworkedEntity AddTransformComponent(NetworkedEntity entity, NetworkedTransform transform)
-        {
-            AddOneComponent(entity);
-
-            NetworkedTransform temp = new NetworkedTransform();
-
-            temp.position.x = transform.position.x;
-            temp.position.y = transform.position.y;
-            temp.position.z = transform.position.z;
-
-            temp.rotation.x = transform.rotation.x;
-            temp.rotation.y = transform.rotation.y;
-            temp.rotation.z = transform.rotation.z;
-            temp.rotation.w = transform.rotation.w;
-
-            entity.Components[entity.Components.Length] = temp;
-
-            return entity;
-        }
-
-        public static NetworkedTransform GetTransform(NetworkedEntity entity)
-        {
-            foreach (IComponent component in entity.Components)
-            {
-                if (component is NetworkedTransform)
-                {
-                    return (NetworkedTransform)component;
-                }
-
-            }
-
-
-            return new NetworkedTransform();
-
-        }
-
-        public static NetworkedEntity UpdateTransform(NetworkedEntity entity, NetworkedTransform transform)
-        {
-            for (int i = 0; i < entity.Components.Length; i++)
-            {
-                if (entity.Components[i] is NetworkedTransform)
-                {
-                    NetworkedTransform temp = (NetworkedTransform)entity.Components[i];
-
-                    temp.position.x = transform.position.x;
-                    temp.position.y = transform.position.y;
-                    temp.position.z = transform.position.z;
-
-                    temp.rotation.x = transform.rotation.x;
-                    temp.rotation.y = transform.rotation.y;
-                    temp.rotation.z = transform.rotation.z;
-                    temp.rotation.w = transform.rotation.w;
-
-                    entity.Components[i] = temp;
-                }
-            }
-
-
-
-            return entity;
-        }
-
-        static void AddOneComponent(NetworkedEntity entity)
-        {
-            IComponent[] components = new IComponent[entity.Components.Length + 1];
-
-            System.Array.Copy(entity.Components, 0, components, 0, entity.Components.Length);
-
-            entity.Components = components;
-        }
+        return entity;
     }
 
+    public static void AddComponent(NetEntity entity, NetComponent component)
+    {
+
+        AddOneComponent(entity);
+        entity.Components[entity.Components.Length - 1] = component;
+    }
+
+    public static T GetComponent<T>(NetEntity entity) where T : NetComponent
+    {
+
+        if (typeof(T) == null)
+            return null;
+
+        foreach (NetComponent component in entity.Components)
+        {
+            T requestedType = component as T;
+
+            if (requestedType != null)
+                return requestedType;
+        }
+
+        return null;
+
+    }
+
+
+
+    public static NetEntity AddTransformComponent(NetEntity entity, NetTransform transform)
+    {
+        AddOneComponent(entity);
+
+        NetTransform temp = new NetTransform();
+
+        temp.position.x = transform.position.x;
+        temp.position.y = transform.position.y;
+        temp.position.z = transform.position.z;
+
+        temp.rotation.x = transform.rotation.x;
+        temp.rotation.y = transform.rotation.y;
+        temp.rotation.z = transform.rotation.z;
+        temp.rotation.w = transform.rotation.w;
+
+        entity.Components[entity.Components.Length] = temp;
+
+        return entity;
+    }
+
+    public static NetTransform GetTransform(NetEntity entity)
+    {
+        foreach (NetComponent component in entity.Components)
+        {
+            if (component is NetTransform)
+            {
+                return (NetTransform)component;
+            }
+
+        }
+
+
+        return new NetTransform();
+
+    }
+
+    public static NetEntity UpdateTransform(NetEntity entity, NetTransform transform)
+    {
+        for (int i = 0; i < entity.Components.Length; i++)
+        {
+            if (entity.Components[i] is NetTransform)
+            {
+                NetTransform temp = (NetTransform)entity.Components[i];
+
+                temp.position.x = transform.position.x;
+                temp.position.y = transform.position.y;
+                temp.position.z = transform.position.z;
+
+                temp.rotation.x = transform.rotation.x;
+                temp.rotation.y = transform.rotation.y;
+                temp.rotation.z = transform.rotation.z;
+                temp.rotation.w = transform.rotation.w;
+
+                entity.Components[i] = temp;
+            }
+        }
+
+
+
+        return entity;
+    }
+
+    static void AddOneComponent(NetEntity entity)
+    {
+        if (entity.Components == null)
+        {
+            entity.Components = new NetComponent[1];
+            return;
+        }
+
+        NetComponent[] components = new NetComponent[entity.Components.Length + 1];
+
+        System.Array.Copy(entity.Components, 0, components, 0, entity.Components.Length);
+
+        entity.Components = components;
+    }
 }
+

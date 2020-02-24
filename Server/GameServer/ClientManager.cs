@@ -27,7 +27,7 @@ namespace GameServer
         }
 
 
-        public static void NewPlayer(NetworkedEntity entity)
+        public static void NewPlayer(NetEntity entity)
         {
 
             // send everyone to new player except himself
@@ -49,7 +49,7 @@ namespace GameServer
 
         }
 
-        public static void UpdatePlayer(NetworkedEntity entity)
+        public static void UpdatePlayer(NetEntity entity)
         {
             foreach (KeyValuePair<int, Client> item in Clients)
             {
