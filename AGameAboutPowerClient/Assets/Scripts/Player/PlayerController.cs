@@ -1,8 +1,8 @@
-﻿using Assets.Scripts;
-using Invector.vCharacterController;
+﻿using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class PlayerController : MonoBehaviour
 {

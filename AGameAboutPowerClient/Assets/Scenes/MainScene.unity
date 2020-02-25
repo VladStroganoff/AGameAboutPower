@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b86db50fd84e74387db51c8c862bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerControl: {fileID: 5628720322295936401}
 --- !u!1 &340886832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityControl: {fileID: 304496844}
+  ConnectionID: 0
   PlayerControl: {fileID: 5628720322295936401}
   IpField: {fileID: 525941008}
   PortField: {fileID: 11435053}
@@ -3002,17 +3004,8 @@ MonoBehaviour:
   MyConnectionID: 0
   localPlayer:
     ConnectionID: 0
-    Name: 
     Online: 1
-    position:
-      x: 0
-      y: 0
-      z: 0
-    rotation:
-      w: 0
-      x: 0
-      y: 0
-      z: 0
+    Components: []
   PlayerPrefab: {fileID: 2751108440572264847, guid: b3d9e894061c7fb44a9d6254e2f35a6b,
     type: 3}
   Camera: {fileID: 2700874171910072504, guid: 330efb0e9eed825408809c121441b8a5, type: 3}
