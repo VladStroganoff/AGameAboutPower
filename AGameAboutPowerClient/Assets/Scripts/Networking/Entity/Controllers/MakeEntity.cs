@@ -63,29 +63,29 @@ public static class MakeEntity
         return entity;
     }
 
-    public static NetTransform GetTransform(NetEntity entity)
+    public static NetEntity UpdateTransform(NetEntity entity, Transform transform)
     {
-        foreach (NetComponent component in entity.Components)
+        bool foundTransform = false;
+        foreach(NetComponent comp in entity.Components)
         {
-            if (component is NetTransform)
+            if(comp is NetTransform)
             {
-                return (NetTransform)component;
+                foundTransform = true;
             }
-
         }
 
 
-        return new NetTransform();
+        if (!foundTransform)
+            AddOneComponent(entity);
 
-    }
 
-    public static NetEntity UpdateTransform(NetEntity entity, Transform transform)
-    {
+
+
         for (int i = 0; i < entity.Components.Length; i++)
         {
-            if (entity.Components[i] is NetTransform)
+            if (entity.Components[i] is NetTransform || entity.Components[i] == null)
             {
-                NetTransform temp = (NetTransform)entity.Components[i];
+                NetTransform temp = new NetTransform();
 
                 temp.position.x = transform.position.x;
                 temp.position.y = transform.position.y;

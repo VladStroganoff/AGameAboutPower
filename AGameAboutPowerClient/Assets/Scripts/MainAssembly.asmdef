@@ -1,10 +1,10 @@
 {
     "name": "MainAssembly",
     "references": [
-        "GUID:f4097ddbe83cf3747938377e2798b713",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:d8b63aba1907145bea998dd612889d6b",
-        "GUID:e0cd26848372d4e5c891c569017e11f1"
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:b75d3cd3037d383a8d1e2f9a26d73d8a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

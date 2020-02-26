@@ -73,34 +73,6 @@
     <Compile Include="Assets\AmplifyShaderEditor\Examples\Official\Smear\Smear.cs" />
     <Compile Include="Assets\AmplifyShaderEditor\Examples\Official\TemplateExamples\PostProcess\Sobel\PostProcessExample.cs" />
     <Compile Include="Assets\AmplifyShaderEditor\Examples\Official\TemplateExamples\Sprites\SpriteMask\SpriteMaskController.cs" />
-    <Compile Include="Assets\External\ByteBuffer.cs" />
-    <Compile Include="Assets\External\UnityThread.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\3D Models\Others\HealthItem\vAnimateUV.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\Camera\vThirdPersonCamera.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonAnimator.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonController.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonInput.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\CharacterController\vThirdPersonMotor.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\Generic\Utils\vComment.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\Generic\Utils\vExtensions.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\Generic\Utils\vPickupItem.cs" />
-    <Compile Include="Assets\Scripts\3rdPersonController_LITE\Scripts\PlayerNetworkController.cs" />
-    <Compile Include="Assets\Scripts\Client\ClientHandleData.cs" />
-    <Compile Include="Assets\Scripts\Client\ClientTCP.cs" />
-    <Compile Include="Assets\Scripts\Client\DataReceiver.cs" />
-    <Compile Include="Assets\Scripts\Client\DataSender.cs" />
-    <Compile Include="Assets\Scripts\Client\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Client\NetworkManager.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\Entity\Components\NetAnimator.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\Entity\Components\NetTransform.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\Entity\Components\PlayerData.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\Entity\Controllers\EntityController.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\Entity\Controllers\MakeEntity.cs" />
-    <Compile Include="Assets\Scripts\ClientModels\Entity\NetEntity.cs" />
-    <Compile Include="Assets\Scripts\Input\PlayerNavigationView.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerNameSignView.cs" />
-    <Compile Include="Assets\Scripts\UI\LoginUIView.cs" />
     <Compile Include="Assets\TycoonTerrain\Examples\Scripts\AudioController.cs" />
     <Compile Include="Assets\TycoonTerrain\Examples\Scripts\DemoPaintUI.cs" />
     <Compile Include="Assets\TycoonTerrain\Examples\Scripts\DemoUI.cs" />
@@ -218,7 +190,6 @@
     <None Include="Assets\AmplifyShaderEditor\Examples\Official\CubemapReflections\CubemapReflections.shader" />
     <None Include="Assets\AmplifyShaderEditor\Examples\Credits.txt" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_SimpleTimeNode.shader" />
-    <None Include="Assets\Scripts\3rdPersonController_LITE\README_Basic.txt" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_ObjectScaleNode.shader" />
     <None Include="Assets\AmplifyShaderEditor\Examples\Official\TemplateExamples\Sprites\SpriteMask\SpritesMask.shader" />
     <None Include="Assets\AmplifyShaderEditor\Plugins\EditorResources\Previews\Preview_RoundOpNode.shader" />
@@ -675,14 +646,14 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Assets/Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/PackageCache/com.unity.burst@1.2.1/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Library/PackageCache/com.unity.collections@0.5.1-preview.11/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/NormalDrive/Projects/A Game About Power/Development/Repo/AGameAboutPowerClient/Assets/Scripts/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -1043,6 +1014,10 @@
     <ProjectReference Include="TycoonTerrainAssembly.csproj">
       <Project>{238ABE21-A81B-291B-1A1D-1A3385D0C79E}</Project>
       <Name>TycoonTerrainAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="MainAssembly.csproj">
+      <Project>{B0B73D19-A7CD-65E8-697D-E6BCD34778A9}</Project>
+      <Name>MainAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

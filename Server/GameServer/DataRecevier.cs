@@ -27,7 +27,14 @@ namespace GameServer
             if (message != "Hello Server")
             {
                 NetEntity entity = new NetEntity();
-                entity = JsonConvert.DeserializeObject<NetEntity>(message);
+
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
+
+                entity = JsonConvert.DeserializeObject<NetEntity>(message, settings);
+
                 WorldController.instance.UpdatePlayerInWorld(entity);
             }
             else

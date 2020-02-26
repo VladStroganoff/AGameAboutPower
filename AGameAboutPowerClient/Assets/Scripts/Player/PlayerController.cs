@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
+using Newtonsoft.Json;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject PlayerPrefab;
     public GameObject Camera;
-    public GameObject Player;
+    private GameObject Player;
+
+    public Transform SpawnPoint;
 
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
 
@@ -33,9 +36,9 @@ public class PlayerController : MonoBehaviour
 
     public void InstansiateNewPlayer(NetEntity player)
     {
-        GameObject playerGO = Instantiate(PlayerPrefab);
+        GameObject playerGO = Instantiate(PlayerPrefab, SpawnPoint.position, SpawnPoint.rotation);
 
-        if (MyConnectionID != NetworkManager.instance.ConnectionID)
+        if (player.ConnectionID != NetworkManager.instance.ConnectionID)
         {
             playerGO.transform.GetChild(0).GetComponent<vThirdPersonInput>().isLocalPlayer = false;
         }
@@ -105,7 +108,12 @@ public class PlayerController : MonoBehaviour
         {
             localPlayer = MakeEntity.UpdateTransform(localPlayer, PlayerList[localPlayer.ConnectionID].transform.GetChild(0).transform);
 
-            string json = JsonUtility.ToJson(localPlayer);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            string json = JsonConvert.SerializeObject(localPlayer, settings);
 
             DataSender.SendServerMessage(json);
 

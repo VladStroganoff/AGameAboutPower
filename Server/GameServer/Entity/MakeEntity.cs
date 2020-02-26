@@ -75,11 +75,27 @@ public static class MakeEntity
 
     public static NetEntity UpdateTransform(NetEntity entity, NetTransform transform)
     {
+        bool foundTransform = false;
+        foreach (NetComponent comp in entity.Components)
+        {
+            if (comp is NetTransform)
+            {
+                foundTransform = true;
+            }
+        }
+
+
+        if (!foundTransform)
+            AddOneComponent(entity);
+
+
+
+
         for (int i = 0; i < entity.Components.Length; i++)
         {
-            if (entity.Components[i] is NetTransform)
+            if (entity.Components[i] is NetTransform || entity.Components[i] == null)
             {
-                NetTransform temp = (NetTransform)entity.Components[i];
+                NetTransform temp = new NetTransform();
 
                 temp.position.x = transform.position.x;
                 temp.position.y = transform.position.y;

@@ -30,6 +30,10 @@ namespace GameServer.World
             {
                 ClientManager.UpdatePlayer(entity);
                 Model.Players[entity.ConnectionID] = entity;
+
+                NetTransform trans = MakeEntity.GetComponent<NetTransform>(entity);
+                if(trans != null)
+                    Console.WriteLine("Updates Player: " + entity.ConnectionID + " position: " + trans.position.x + ", " + trans.position.y + ", " + trans.position.z);
             }
         }
 

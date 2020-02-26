@@ -21,7 +21,11 @@ namespace Tests
 
             entity.ConnectionID = 123456789;
             entity.Online = true;
-            Assert.That(entity.ConnectionID != null && entity.ConnectionID == 123456789);
+            Assert.That(entity.ConnectionID == 123456789);
+
+            PlayerData();
+            NetTransfrom();
+            NetAnimator();
         }
 
         [Test]
@@ -83,8 +87,12 @@ namespace Tests
             Assert.That(entity.Components.Length > 2);
 
             Assert.That(entity.Components[1] != null);
+
+            NetTransform trans = MakeEntity.GetComponent<NetTransform>(entity);
+
+            Assert.That(trans != null);
+
         }
-
-
     }
+     
 }
