@@ -10,7 +10,7 @@ public class EntityController : MonoBehaviour
     {
         if(entity.Components == null)
         {
-            Debug.Log("Components where null on player" + entity.ConnectionID);
+            FDebug.Log.Message("Components where null on player" + entity.ConnectionID);
             return;
         }
 

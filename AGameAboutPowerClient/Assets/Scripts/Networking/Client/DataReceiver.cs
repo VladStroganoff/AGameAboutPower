@@ -21,8 +21,8 @@ namespace Assets.Scripts
             int id = 0;
             int.TryParse(message, out id);
             NetworkManager.instance.LocalPlayerConnectionID(id);
-            Debug.Log("My connection is: " + id);
-            Debug.Log(message);
+            FDebug.Log.Message("My connection is: " + id);
+            FDebug.Log.Message(message);
             buffer.Dispose();
 
             DataSender.SendServerMessage("Hello Server");
@@ -44,7 +44,7 @@ namespace Assets.Scripts
 
             buffer.Dispose();
 
-            Debug.Log("Instansiating player: " + entity.ConnectionID);
+            FDebug.Log.Message("Instansiating player: " + entity.ConnectionID);
             NetworkManager.instance.HandleEntity(entity);
         }
 

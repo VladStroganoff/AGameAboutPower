@@ -1,17 +1,56 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp-Editor.dll:
+    - AmplifyShaderEditor.TemplateMultiPass
+    - AmplifyShaderEditor.TemplatesManager
     - Invector.vCharacterController.vEditorStartupPrefs
     Assembly-CSharp.dll:
+    - Assets.TycoonTerrain.Examples.Scripts.AudioController
+    - Assets.TycoonTerrain.Examples.Scripts.DemoUIAudio
+    - DemoPaintUI
+    - DemoUI
+    - TestTerrains
+    - UnityTemplateProjects.SimpleCameraController
+    - WaterToolPreviewer
+    MainAssembly.dll:
+    - EntityController
     - Invector.Utils.vComment
     - Invector.vCharacterController.vThirdPersonController
     - Invector.vCharacterController.vThirdPersonInput
+    - LoginUIView
     - NetworkManager
     - PlayerController
     - PlayerNameSignView
-    - PlayerNetworkController
     - UnityThread
     - vThirdPersonCamera
+    TycoonTerrainAssembly.dll:
+    - Assets.TycoonTerrain.Scripts.Core.TerrainTypeCollectionAsset
+    - PainterTool
+    - TycoonTerrain.Core.TerrainTypeDefinition
+    - TycoonTerrain.Core.TycoonTileMap
+    - TycoonTerrain.TerraformingTool
+    - TycoonTerrain.TerrainPainterPreviewer
+    - TycoonTerrain.TerrainSelectionPreviewer
+    - TycoonTerrain.WaterTool
+    - TycoonTileCollider
+    - TycoonTileRaycaster
+    - TycoonTileRenderer
+    Unity.Postprocessing.Runtime.dll:
+    - UnityEngine.Rendering.PostProcessing.AmbientOcclusion
+    - UnityEngine.Rendering.PostProcessing.AutoExposure
+    - UnityEngine.Rendering.PostProcessing.Bloom
+    - UnityEngine.Rendering.PostProcessing.ChromaticAberration
+    - UnityEngine.Rendering.PostProcessing.ColorGrading
+    - UnityEngine.Rendering.PostProcessing.DepthOfField
+    - UnityEngine.Rendering.PostProcessing.Grain
+    - UnityEngine.Rendering.PostProcessing.LensDistortion
+    - UnityEngine.Rendering.PostProcessing.MotionBlur
+    - UnityEngine.Rendering.PostProcessing.PostProcessLayer
+    - UnityEngine.Rendering.PostProcessing.PostProcessProfile
+    - UnityEngine.Rendering.PostProcessing.PostProcessResources
+    - UnityEngine.Rendering.PostProcessing.PostProcessVolume
+    - UnityEngine.Rendering.PostProcessing.ScreenSpaceReflections
+    - UnityEngine.Rendering.PostProcessing.Vignette
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -23,24 +62,28 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    - UnityEditor.TestTools.TestRunner.TestRunnerWindow
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/MainScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -65,11 +108,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
-    - Class: 65
+    - Class: 72
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
@@ -86,48 +133,108 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11176}
+      Script: {instanceID: 11830}
     - Class: 114
-      Script: {instanceID: 11196}
+      Script: {instanceID: 11866}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11894}
     - Class: 114
-      Script: {instanceID: 11388}
+      Script: {instanceID: 12180}
     - Class: 114
-      Script: {instanceID: 11466}
+      Script: {instanceID: 12186}
     - Class: 114
-      Script: {instanceID: 11782}
+      Script: {instanceID: 12208}
     - Class: 114
-      Script: {instanceID: 11808}
+      Script: {instanceID: 12274}
     - Class: 114
-      Script: {instanceID: 11908}
+      Script: {instanceID: 12416}
     - Class: 114
-      Script: {instanceID: 11976}
+      Script: {instanceID: 12424}
     - Class: 114
-      Script: {instanceID: 12040}
+      Script: {instanceID: 12480}
     - Class: 114
-      Script: {instanceID: 12400}
+      Script: {instanceID: 12702}
     - Class: 114
-      Script: {instanceID: 12414}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 12454}
+      Script: {instanceID: 13014}
     - Class: 114
-      Script: {instanceID: 12572}
+      Script: {instanceID: 13078}
     - Class: 114
-      Script: {instanceID: 12600}
+      Script: {instanceID: 13208}
     - Class: 114
-      Script: {instanceID: 12662}
+      Script: {instanceID: 13232}
     - Class: 114
-      Script: {instanceID: 12812}
+      Script: {instanceID: 13288}
     - Class: 114
-      Script: {instanceID: 12952}
+      Script: {instanceID: 13338}
     - Class: 114
-      Script: {instanceID: 13022}
+      Script: {instanceID: 13494}
+    - Class: 114
+      Script: {instanceID: 13590}
+    - Class: 114
+      Script: {instanceID: 13632}
+    - Class: 114
+      Script: {instanceID: 13806}
+    - Class: 114
+      Script: {instanceID: 13880}
+    - Class: 114
+      Script: {instanceID: 14240}
+    - Class: 114
+      Script: {instanceID: 14246}
+    - Class: 114
+      Script: {instanceID: 14250}
+    - Class: 114
+      Script: {instanceID: 14308}
+    - Class: 114
+      Script: {instanceID: 14314}
+    - Class: 114
+      Script: {instanceID: 14334}
+    - Class: 114
+      Script: {instanceID: 14418}
+    - Class: 114
+      Script: {instanceID: 14650}
+    - Class: 114
+      Script: {instanceID: 14692}
+    - Class: 114
+      Script: {instanceID: 14804}
+    - Class: 114
+      Script: {instanceID: 14844}
+    - Class: 114
+      Script: {instanceID: 14976}
+    - Class: 114
+      Script: {instanceID: 15056}
+    - Class: 114
+      Script: {instanceID: 15112}
+    - Class: 114
+      Script: {instanceID: 15154}
+    - Class: 114
+      Script: {instanceID: 15208}
+    - Class: 114
+      Script: {instanceID: 15264}
+    - Class: 114
+      Script: {instanceID: 15322}
+    - Class: 114
+      Script: {instanceID: 15326}
+    - Class: 114
+      Script: {instanceID: 15340}
+    - Class: 114
+      Script: {instanceID: 15352}
+    - Class: 114
+      Script: {instanceID: 15364}
+    - Class: 114
+      Script: {instanceID: 15424}
+    - Class: 114
+      Script: {instanceID: 15474}
+    - Class: 114
+      Script: {instanceID: 15512}
+    - Class: 114
+      Script: {instanceID: 15572}
     - Class: 115
       Script: {instanceID: 0}
-    - Class: 128
+    - Class: 124
       Script: {instanceID: 0}
-    - Class: 135
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -156,22 +263,40 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: a1f19ad47d3094e235f21b74dfc423a8
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessLayer
+  - hash:
+      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
   - hash:
       serializedVersion: 2
+      Hash: 726fcf7961cbb4108aa5be5e55b8c8bf
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ColorGrading
+  - hash:
+      serializedVersion: 2
       Hash: c2e0f7ee02e95e22297f779e2348fc9a
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: Invector
     className: vAnimateUV
   - hash:
       serializedVersion: 2
-      Hash: 897dea69d188336c34512cc880642c1e
-    assemblyName: Assembly-CSharp.dll
+      Hash: 7ea477807c48f82d701d832061047f18
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: NetworkManager
+  - hash:
+      serializedVersion: 2
+      Hash: b13de7a0a457cb8e026d4237dc1b5797
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: LensDistortion
   - hash:
       serializedVersion: 2
       Hash: 3c08375166df118bd1801438fc36b92f
@@ -192,10 +317,22 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 71f7f12b8d0f4fd73590db8bcb6d453c
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Bloom
+  - hash:
+      serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: af93f9c42e90877a9ba31e37adfd900c
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: MotionBlur
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -208,6 +345,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 1c92057a4956e118cb188560c6ad2b72
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: LoginUIView
+  - hash:
+      serializedVersion: 2
+      Hash: 6daa598a2924a2c20e5b06a8dcb574c2
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: TycoonTerrain
+    className: TerrainSelectionPreviewer
   - hash:
       serializedVersion: 2
       Hash: 72712369a7c681ad84fc255a5ec0b333
@@ -246,10 +395,22 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
+      Hash: f542c1afca5bb4022f91fdda19b8d622
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: DepthOfField
+  - hash:
+      serializedVersion: 2
       Hash: 234235b9fb07320d11497e08a726cc56
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TFHC_Shader_Samples
+    className: highlightAnimated
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
@@ -258,8 +419,20 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 4ccb3507a96a63f0d63542f0ea89b571
+      Hash: e8b960265987b882f89959dad76cf4b7
     assemblyName: Assembly-CSharp.dll
+    namespaceName: TFHC_ForceShield_Shader_Sample
+    className: ForceShieldShootBall
+  - hash:
+      serializedVersion: 2
+      Hash: 63d7b9b64a11859f416d72ba9a3c3fec
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ScreenSpaceReflections
+  - hash:
+      serializedVersion: 2
+      Hash: 4ccb3507a96a63f0d63542f0ea89b571
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: vThirdPersonCamera
   - hash:
@@ -276,6 +449,12 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 38bcb4d3f9a1812fd650f92e87a4cf64
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessProfile
+  - hash:
+      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -288,10 +467,22 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: e82c0521cdfe8cb6a168ef7208a98d4a
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Vignette
+  - hash:
+      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TFHC_ForceShield_Shader_Sample
+    className: ForceShieldImpactDetection
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -312,6 +503,18 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 0d4ca046088b1dbbc5d3f293d7e1c3e7
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: TycoonTerrain
+    className: TerraformingTool
+  - hash:
+      serializedVersion: 2
+      Hash: 9f25e8109959b5a320087b832e25e87e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Assets.TycoonTerrain.Examples.Scripts
+    className: DemoUIAudio
+  - hash:
+      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -330,10 +533,22 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d3bbd1f86b55a6168b664522b2cf57b3
     assemblyName: Assembly-CSharp.dll
+    namespaceName: TFHC_ForceShield_Shader_Sample
+    className: ForceShieldDestroyBall
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 7e6ed836cbaa230e56d6a2bbae1b9bb5
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessEffectSettings
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -366,10 +581,34 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 3eed13b8ec97613db681fe47b3aaae0f
+      Hash: 38878f7c7c7b4ed3514b6bce16f2cac2
     assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DemoPaintUI
+  - hash:
+      serializedVersion: 2
+      Hash: 897dea69d188336c34512cc880642c1e
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: EntityController
+  - hash:
+      serializedVersion: 2
+      Hash: 61b9d9b6f4b6a222dfea8b131b3d3227
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ChromaticAberration
+  - hash:
+      serializedVersion: 2
+      Hash: 3eed13b8ec97613db681fe47b3aaae0f
+    assemblyName: MainAssembly.dll
     namespaceName: Invector.vCharacterController
     className: vThirdPersonInput
+  - hash:
+      serializedVersion: 2
+      Hash: eacb0cd63b8ac5245518a9eabef3e048
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DemoUI
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -385,9 +624,15 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: b6696b78da1a7c93a58e40f1c34f324f
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: PlayerNetworkController
+  - hash:
+      serializedVersion: 2
+      Hash: 6daa598a2924a2c20e5b06a8dcb574c2
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: TycoonTerrain
+    className: TerrainPainterPreviewer
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -397,21 +642,45 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 34f963c9582664b136b4dd499ef6acca
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: PlayerNavigationView
   - hash:
       serializedVersion: 2
-      Hash: 717ba4fa266856f0da95f974dba1c541
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Pixelize
+  - hash:
+      serializedVersion: 2
+      Hash: 717ba4fa266856f0da95f974dba1c541
+    assemblyName: MainAssembly.dll
     namespaceName: Invector.Utils
     className: vComment
+  - hash:
+      serializedVersion: 2
+      Hash: 340ccdb19c568d6ee916fb0c6f5b48f9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Smear
+  - hash:
+      serializedVersion: 2
+      Hash: d6fc8d3165070298511ec776ea575626
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessResources
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: a53651ee3996fbba20dfe0fce02f0b23
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: AutoExposure
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -421,9 +690,21 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: UnityThread
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TestTerrains
+  - hash:
+      serializedVersion: 2
+      Hash: 50c443b12ccc0b475183318b5088bcc5
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessDebug
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -445,7 +726,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: fc96211713513ee3d1b3ccba2d817b1d
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: Invector.vCharacterController
     className: vThirdPersonAnimator
   - hash:
@@ -456,10 +737,34 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 04be7c99b2995968495dfd90246b77ab
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PostProcessExample
+  - hash:
+      serializedVersion: 2
+      Hash: cc58244422a4957810806615ac70ed26
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SimpleGPUInstancingExample
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: 
+    className: TycoonTileCollider
+  - hash:
+      serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 0244efe2a78a14b71a19f062dcd9e1f2
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: TycoonTerrain.Core
+    className: TerrainTypeDefinition
   - hash:
       serializedVersion: 2
       Hash: c9a8b80298a116835b51ba1cf9284367
@@ -499,9 +804,15 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: fc96211713513ee3d1b3ccba2d817b1d
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: Invector.vCharacterController
     className: vThirdPersonController
+  - hash:
+      serializedVersion: 2
+      Hash: f4085ac96a989ea758b34b65909722ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SimpleMoveExample
   - hash:
       serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
@@ -511,13 +822,19 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 9304ec324eeb2352dc40133327ca103f
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: vPickupItem
   - hash:
       serializedVersion: 2
-      Hash: 4a3ef9077a826171642af7006b0b1a1b
+      Hash: 91cf1f49fc7a01b7ecf3deda152e5ced
     assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VolumetricSphere
+  - hash:
+      serializedVersion: 2
+      Hash: 4a3ef9077a826171642af7006b0b1a1b
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: PlayerNameSignView
   - hash:
@@ -540,10 +857,28 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 93b4615fb5a555dee0b5ac7987996434
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Assets.TycoonTerrain.Examples.Scripts
+    className: AudioController
+  - hash:
+      serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 8804e8972abd56c1e50ddabf822a7941
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: 
+    className: TycoonTileRenderer
+  - hash:
+      serializedVersion: 2
+      Hash: 389a64f2cbf52e73e080f409ddecee61
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: 
+    className: TycoonTileRaycaster
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -558,6 +893,42 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: 4157c22926cf5d3a6aff28e66c9202b3
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: Assets.TycoonTerrain.Scripts.Core
+    className: TerrainTypeCollectionAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.PerformanceTesting.dll
+    namespaceName: Unity.PerformanceTesting.Measurements
+    className: ProfilerMarkerMeasurement
+  - hash:
+      serializedVersion: 2
+      Hash: 8860633d29a22ff64e02e18da3716cdf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UnityTemplateProjects
+    className: SimpleCameraController
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpriteMaskController
+  - hash:
+      serializedVersion: 2
+      Hash: d5630f96bd5a6a6eed7e1754c3fb8703
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessVolume
+  - hash:
+      serializedVersion: 2
+      Hash: d0987ce3e9092dbe0fa30d73f333fffa
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Grain
+  - hash:
+      serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -570,10 +941,34 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
+      Hash: 144e8dbb60c05c969bf88d0d9e1be3b2
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: 
+    className: PainterTool
+  - hash:
+      serializedVersion: 2
+      Hash: 08ef66c98200051d5b30147fdce6cbed
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: TycoonTerrain.Core
+    className: TycoonTileMap
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayModeRunnerCallback
+  - hash:
+      serializedVersion: 2
+      Hash: ac6acd886c54c48c599ab5fed5781ea7
+    assemblyName: Unity.Postprocessing.Runtime.dll
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: AmbientOcclusion
+  - hash:
+      serializedVersion: 2
+      Hash: 6ae39e64b11c18788dc09fe656b38ba7
+    assemblyName: TycoonTerrainAssembly.dll
+    namespaceName: TycoonTerrain
+    className: WaterTool
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -582,8 +977,8 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 92ebf1d25b076137bac0285d438b4193
-    assemblyName: Assembly-CSharp.dll
+      Hash: b3dfb6755ddc7b90a63a6fc0d5e1b4f8
+    assemblyName: MainAssembly.dll
     namespaceName: 
     className: PlayerController
   - hash:
@@ -624,6 +1019,12 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 71a43f76a466b1f192aefb10077ad04f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WaterToolPreviewer
+  - hash:
+      serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -655,7 +1056,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: fc96211713513ee3d1b3ccba2d817b1d
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: MainAssembly.dll
     namespaceName: Invector.vCharacterController
     className: vThirdPersonMotor
   - hash:
@@ -666,5 +1067,5 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 5
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/MainScene.unity
   playerPath: D:/NormalDrive/Projects/A Game About Power/Development/Builds/Client_01/AGameAboutPowerComcept.exe
