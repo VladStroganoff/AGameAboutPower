@@ -38,7 +38,9 @@ public class NetworkManager : MonoBehaviour
     {
 
         ClientHandleData.InitializePackets();
+        FDebug.Log.Message("Initializing Packets...");
         ClientTCP.InitializeNetworking(IpField.text, int.Parse(PortField.text));
+        FDebug.Log.Message("Initializing Networking...");
     }
 
 

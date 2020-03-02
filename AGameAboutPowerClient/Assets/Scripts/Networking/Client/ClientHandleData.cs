@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Assets.Scripts.DataReceiver;
+
+
 
 namespace Assets.Scripts
 {
@@ -14,6 +15,8 @@ namespace Assets.Scripts
         public static Dictionary<int, Packet> Packets = new Dictionary<int, Packet>();
 
         private static int refLengt = 0;
+
+
 
         public static void InitializePackets()
         {

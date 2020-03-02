@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandlePlayer(NetEntity player)
     {
-        if (PlayerList.Count > 1 || PlayerList.ContainsKey(NetworkManager.instance.ConnectionID))
+        if (PlayerList.ContainsKey(player.ConnectionID))
         {
             UpdatePlayer(player);
         }
@@ -47,15 +47,15 @@ public class PlayerController : MonoBehaviour
             playerGO.transform.GetChild(0).GetComponent<vThirdPersonInput>().isLocalPlayer = true;
             Player = playerGO;
             SetupCamera(playerGO);
+            localPlayer = player;
         }
 
 
-        playerGO.name = "Player: " + NetworkManager.instance.ConnectionID;
-        playerGO.GetComponent<PlayerNameSignView>().Inject(NetworkManager.instance.ConnectionID);
+        playerGO.name = "Player: " + player.ConnectionID;
+        playerGO.GetComponent<PlayerNameSignView>().Inject(player.ConnectionID);
 
 
-        PlayerList.Add(NetworkManager.instance.ConnectionID, playerGO);
-        localPlayer = player;
+        PlayerList.Add(player.ConnectionID, playerGO);
 
 
         updatePlayer = true;

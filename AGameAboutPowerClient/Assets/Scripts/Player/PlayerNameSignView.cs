@@ -21,6 +21,9 @@ public class PlayerNameSignView : MonoBehaviour
 
     void Update()
     {
+        if (mainCamera == null)
+            return;
+
         if (mainCamera.transform != null)
         {
             this.enabled = false;

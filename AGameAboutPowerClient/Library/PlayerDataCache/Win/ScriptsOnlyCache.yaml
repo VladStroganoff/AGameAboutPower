@@ -14,6 +14,7 @@ ScriptsOnlyBuild:
     - WaterToolPreviewer
     MainAssembly.dll:
     - EntityController
+    - FDebug
     - Invector.Utils.vComment
     - Invector.vCharacterController.vThirdPersonController
     - Invector.vCharacterController.vThirdPersonInput
@@ -173,63 +174,65 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13590}
     - Class: 114
-      Script: {instanceID: 13632}
+      Script: {instanceID: 13622}
     - Class: 114
-      Script: {instanceID: 13806}
+      Script: {instanceID: 13634}
     - Class: 114
-      Script: {instanceID: 13880}
+      Script: {instanceID: 13808}
     - Class: 114
-      Script: {instanceID: 14240}
+      Script: {instanceID: 13882}
     - Class: 114
-      Script: {instanceID: 14246}
+      Script: {instanceID: 14242}
     - Class: 114
-      Script: {instanceID: 14250}
+      Script: {instanceID: 14248}
     - Class: 114
-      Script: {instanceID: 14308}
+      Script: {instanceID: 14252}
     - Class: 114
-      Script: {instanceID: 14314}
+      Script: {instanceID: 14310}
     - Class: 114
-      Script: {instanceID: 14334}
+      Script: {instanceID: 14316}
     - Class: 114
-      Script: {instanceID: 14418}
+      Script: {instanceID: 14336}
     - Class: 114
-      Script: {instanceID: 14650}
+      Script: {instanceID: 14420}
     - Class: 114
-      Script: {instanceID: 14692}
+      Script: {instanceID: 14652}
     - Class: 114
-      Script: {instanceID: 14804}
+      Script: {instanceID: 14694}
     - Class: 114
-      Script: {instanceID: 14844}
+      Script: {instanceID: 14806}
     - Class: 114
-      Script: {instanceID: 14976}
+      Script: {instanceID: 14846}
     - Class: 114
-      Script: {instanceID: 15056}
+      Script: {instanceID: 14978}
     - Class: 114
-      Script: {instanceID: 15112}
+      Script: {instanceID: 15058}
     - Class: 114
-      Script: {instanceID: 15154}
+      Script: {instanceID: 15114}
     - Class: 114
-      Script: {instanceID: 15208}
+      Script: {instanceID: 15156}
     - Class: 114
-      Script: {instanceID: 15264}
+      Script: {instanceID: 15210}
     - Class: 114
-      Script: {instanceID: 15322}
+      Script: {instanceID: 15266}
     - Class: 114
-      Script: {instanceID: 15326}
+      Script: {instanceID: 15324}
     - Class: 114
-      Script: {instanceID: 15340}
+      Script: {instanceID: 15328}
     - Class: 114
-      Script: {instanceID: 15352}
+      Script: {instanceID: 15342}
     - Class: 114
-      Script: {instanceID: 15364}
+      Script: {instanceID: 15354}
     - Class: 114
-      Script: {instanceID: 15424}
+      Script: {instanceID: 15366}
     - Class: 114
-      Script: {instanceID: 15474}
+      Script: {instanceID: 15426}
     - Class: 114
-      Script: {instanceID: 15512}
+      Script: {instanceID: 15476}
     - Class: 114
-      Script: {instanceID: 15572}
+      Script: {instanceID: 15514}
+    - Class: 114
+      Script: {instanceID: 15574}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -663,6 +666,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Smear
+  - hash:
+      serializedVersion: 2
+      Hash: 16e1a9f238e0982dbf4c53be5857e203
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: FDebug
   - hash:
       serializedVersion: 2
       Hash: d6fc8d3165070298511ec776ea575626
