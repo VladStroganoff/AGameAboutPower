@@ -3371,6 +3371,7 @@ MonoBehaviour:
     ConnectionID: 0
     Online: 1
     Components: []
+  UpdateIntervals: 3
   PlayerPrefab: {fileID: 2751108440572264847, guid: b3d9e894061c7fb44a9d6254e2f35a6b,
     type: 3}
   Camera: {fileID: 2700874171910072504, guid: 330efb0e9eed825408809c121441b8a5, type: 3}

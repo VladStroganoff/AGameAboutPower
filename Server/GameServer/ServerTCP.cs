@@ -14,6 +14,7 @@ namespace GameServer
             ServerHandleData.InitializePackets();
             serverSocket.Start();
             serverSocket.BeginAcceptTcpClient(new AsyncCallback(OnClientConnect), null);
+
         }
 
         private static void OnClientConnect(IAsyncResult result)

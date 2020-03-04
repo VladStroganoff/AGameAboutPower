@@ -20,6 +20,8 @@ ScriptsOnlyBuild:
     - Invector.vCharacterController.vThirdPersonInput
     - LoginUIView
     - NetworkManager
+    - NetworkedAnimator
+    - NetworkedTransform
     - PlayerController
     - PlayerNameSignView
     - UnityThread
@@ -63,8 +65,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -134,105 +139,109 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11830}
+      Script: {instanceID: 11836}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11872}
     - Class: 114
-      Script: {instanceID: 11894}
+      Script: {instanceID: 11900}
     - Class: 114
-      Script: {instanceID: 12180}
+      Script: {instanceID: 12188}
     - Class: 114
-      Script: {instanceID: 12186}
+      Script: {instanceID: 12194}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 12216}
     - Class: 114
-      Script: {instanceID: 12274}
-    - Class: 114
-      Script: {instanceID: 12416}
+      Script: {instanceID: 12282}
     - Class: 114
       Script: {instanceID: 12424}
     - Class: 114
-      Script: {instanceID: 12480}
+      Script: {instanceID: 12432}
     - Class: 114
-      Script: {instanceID: 12702}
+      Script: {instanceID: 12488}
     - Class: 114
-      Script: {instanceID: 12740}
+      Script: {instanceID: 12710}
     - Class: 114
-      Script: {instanceID: 13014}
+      Script: {instanceID: 12748}
     - Class: 114
-      Script: {instanceID: 13078}
+      Script: {instanceID: 13022}
     - Class: 114
-      Script: {instanceID: 13208}
+      Script: {instanceID: 13086}
     - Class: 114
-      Script: {instanceID: 13232}
+      Script: {instanceID: 13216}
     - Class: 114
-      Script: {instanceID: 13288}
+      Script: {instanceID: 13240}
     - Class: 114
-      Script: {instanceID: 13338}
+      Script: {instanceID: 13296}
     - Class: 114
-      Script: {instanceID: 13494}
+      Script: {instanceID: 13346}
     - Class: 114
-      Script: {instanceID: 13590}
+      Script: {instanceID: 13502}
     - Class: 114
-      Script: {instanceID: 13622}
+      Script: {instanceID: 13600}
     - Class: 114
-      Script: {instanceID: 13634}
+      Script: {instanceID: 13632}
     - Class: 114
-      Script: {instanceID: 13808}
+      Script: {instanceID: 13644}
     - Class: 114
-      Script: {instanceID: 13882}
+      Script: {instanceID: 13818}
     - Class: 114
-      Script: {instanceID: 14242}
+      Script: {instanceID: 13890}
     - Class: 114
-      Script: {instanceID: 14248}
+      Script: {instanceID: 14250}
     - Class: 114
-      Script: {instanceID: 14252}
+      Script: {instanceID: 14256}
     - Class: 114
-      Script: {instanceID: 14310}
+      Script: {instanceID: 14260}
     - Class: 114
-      Script: {instanceID: 14316}
+      Script: {instanceID: 14318}
     - Class: 114
-      Script: {instanceID: 14336}
+      Script: {instanceID: 14324}
     - Class: 114
-      Script: {instanceID: 14420}
+      Script: {instanceID: 14334}
     - Class: 114
-      Script: {instanceID: 14652}
+      Script: {instanceID: 14346}
     - Class: 114
-      Script: {instanceID: 14694}
+      Script: {instanceID: 14432}
     - Class: 114
-      Script: {instanceID: 14806}
+      Script: {instanceID: 14664}
     - Class: 114
-      Script: {instanceID: 14846}
+      Script: {instanceID: 14706}
     - Class: 114
-      Script: {instanceID: 14978}
+      Script: {instanceID: 14820}
     - Class: 114
-      Script: {instanceID: 15058}
+      Script: {instanceID: 14860}
     - Class: 114
-      Script: {instanceID: 15114}
+      Script: {instanceID: 14992}
     - Class: 114
-      Script: {instanceID: 15156}
+      Script: {instanceID: 15072}
     - Class: 114
-      Script: {instanceID: 15210}
+      Script: {instanceID: 15128}
     - Class: 114
-      Script: {instanceID: 15266}
+      Script: {instanceID: 15170}
     - Class: 114
-      Script: {instanceID: 15324}
+      Script: {instanceID: 15224}
     - Class: 114
-      Script: {instanceID: 15328}
+      Script: {instanceID: 15280}
+    - Class: 114
+      Script: {instanceID: 15338}
     - Class: 114
       Script: {instanceID: 15342}
     - Class: 114
-      Script: {instanceID: 15354}
+      Script: {instanceID: 15356}
     - Class: 114
-      Script: {instanceID: 15366}
+      Script: {instanceID: 15368}
     - Class: 114
-      Script: {instanceID: 15426}
+      Script: {instanceID: 15380}
     - Class: 114
-      Script: {instanceID: 15476}
+      Script: {instanceID: 15440}
     - Class: 114
-      Script: {instanceID: 15514}
+      Script: {instanceID: 15490}
     - Class: 114
-      Script: {instanceID: 15574}
+      Script: {instanceID: 15528}
+    - Class: 114
+      Script: {instanceID: 15588}
+    - Class: 114
+      Script: {instanceID: 30480}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -794,6 +803,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 6d6fb10fcd0f4d80c8018ff6a7aefa74
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: NetworkedAnimator
+  - hash:
+      serializedVersion: 2
       Hash: e1300922cc039f41ab46a47f4cb05898
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -986,7 +1001,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: b3dfb6755ddc7b90a63a6fc0d5e1b4f8
+      Hash: 9d8a9957550ee61c29833345c0d2dbb2
     assemblyName: MainAssembly.dll
     namespaceName: 
     className: PlayerController
@@ -1074,6 +1089,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: ab005c4e77a77bd37c8eaf74290bae83
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: NetworkedTransform
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainScene.unity

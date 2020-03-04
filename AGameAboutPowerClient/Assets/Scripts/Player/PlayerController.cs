@@ -2,21 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts;
-using Newtonsoft.Json;
 
 public class PlayerController : MonoBehaviour
 {
     public int MyConnectionID;
     public NetEntity localPlayer;
-    public bool updatePlayer { get; set; }
-
 
     public GameObject PlayerPrefab;
     public GameObject Camera;
     private GameObject Player;
 
     public Transform SpawnPoint;
+
+    public NetworkedTransform NetworkedTransform;
+    public NetworkedAnimator NetworkedAnimator;
 
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
 
@@ -29,6 +28,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            FDebug.Log.Message("Instansiating player: " + player.ConnectionID);
             InstansiateNewPlayer(player);
         }
     }
@@ -48,8 +48,11 @@ public class PlayerController : MonoBehaviour
             Player = playerGO;
             SetupCamera(playerGO);
             localPlayer = player;
+          
         }
 
+        NetworkedTransform = playerGO.transform.GetChild(0).GetComponent<NetworkedTransform>().Inject(this);
+        NetworkedAnimator = playerGO.transform.GetChild(0).GetComponent<NetworkedAnimator>().Inject(this);
 
         playerGO.name = "Player: " + player.ConnectionID;
         playerGO.GetComponent<PlayerNameSignView>().Inject(player.ConnectionID);
@@ -58,8 +61,8 @@ public class PlayerController : MonoBehaviour
         PlayerList.Add(player.ConnectionID, playerGO);
 
 
-        updatePlayer = true;
-        StartCoroutine("SendUpdate");
+        NetworkedTransform.updatePlayer = true;
+        NetworkedTransform.StartCoroutine("SendTransform");
     }
 
     void SetupCamera(GameObject playerGO)
@@ -79,13 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         if(player.Online != false)
         {
-            NetTransform transform = MakeEntity.GetComponent<NetTransform>(player);
-
-            Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            Quaternion newRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
-
-            PlayerList[player.ConnectionID].transform.GetChild(0).position = newPos;
-            PlayerList[player.ConnectionID].transform.GetChild(0).rotation = newRot;
+            NetworkedTransform.ReceiveTransform(player);
         }
         else
         {
@@ -102,22 +99,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator SendUpdate()
-    {
-        while (updatePlayer)
-        {
-            localPlayer = MakeEntity.UpdateTransform(localPlayer, PlayerList[localPlayer.ConnectionID].transform.GetChild(0).transform);
-
-            JsonSerializerSettings settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All
-            };
-
-            string json = JsonConvert.SerializeObject(localPlayer, settings);
-
-            DataSender.SendServerMessage(json);
-
-            yield return new WaitForSeconds(3);
-        }
-    }
+    
 }

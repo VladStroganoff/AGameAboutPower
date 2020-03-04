@@ -173,6 +173,48 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1414450067038559048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965717294061695511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bddd54a596a01f41b3ecb68e90d2745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoolParameters:
+  - name: IsGrounded
+    state: 1
+  - name: IsStrafing
+    state: 0
+  - name: IsSprinting
+    state: 0
+  FloatParameters:
+  - name: InputHorizontal
+    value: 0
+  - name: InputVertical
+    value: 0
+  - name: InputMagnitude
+    value: 0
+  - name: GroundDistance
+    value: 0
+  CharacterController: {fileID: 0}
+--- !u!114 &8071916213169369017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965717294061695511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3085d7c3873bd4e962fde2479c2583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateIntervals: 3
 --- !u!1 &2751108440572264847
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +488,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc9b148a2950aaf4cba8422632222c5d, type: 3}
+--- !u!1 &1965717294061695511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4425428723088313499, guid: fc9b148a2950aaf4cba8422632222c5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2751108440039292556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1965717294061695505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4425428723088313501, guid: fc9b148a2950aaf4cba8422632222c5d,

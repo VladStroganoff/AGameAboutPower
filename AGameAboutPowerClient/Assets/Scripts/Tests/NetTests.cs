@@ -11,7 +11,7 @@ namespace Tests
         NetEntity entity;
         PlayerData playerData;
         NetTransform transform;
-        NetAnimator animator;
+       // NetAnimator animator;
 
         [Test]
         public void Entity()
@@ -25,7 +25,7 @@ namespace Tests
 
             PlayerData();
             NetTransfrom();
-            NetAnimator();
+            //NetAnimator();
         }
 
         [Test]
@@ -59,17 +59,17 @@ namespace Tests
             Assert.That(transform != null && transform.position.x == 25.1f && transform.rotation.z == 57.15f);
         }
 
-        [Test]
-        public void NetAnimator()
-        {
-            animator = new NetAnimator();
+        //[Test]
+        //public void NetAnimator()
+        //{
+        //    animator = new NetAnimator();
 
 
-            animator.CurrentState = "Bananas";
+        //    animator.CurrentState = "Bananas";
 
-            Assert.That(animator != null && animator.CurrentState == "Bananas");
+        //    Assert.That(animator != null && animator.CurrentState == "Bananas");
 
-        }
+        //}
 
         [Test]
         public void EntityComponents()
@@ -82,7 +82,7 @@ namespace Tests
 
             Assert.That(entity.Components.Length > 1);
 
-            MakeEntity.AddComponent(entity, animator);
+            //MakeEntity.AddComponent(entity, animator);
 
             Assert.That(entity.Components.Length > 2);
 

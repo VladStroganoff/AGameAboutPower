@@ -48,7 +48,6 @@ static class DataReceiver
 
         buffer.Dispose();
 
-        FDebug.Log.Message("Instansiating player: " + entity.ConnectionID);
         NetworkManager.instance.HandleEntity(entity);
     }
 

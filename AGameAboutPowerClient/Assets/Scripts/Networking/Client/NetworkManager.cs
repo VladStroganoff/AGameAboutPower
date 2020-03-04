@@ -49,11 +49,6 @@ public class NetworkManager : MonoBehaviour
         ClientTCP.Disconnect();
     }
 
-    public void UpdatePlayerPosition(PlayerData data)
-    {
-        string json = JsonUtility.ToJson(data);
-        DataSender.SendServerMessage(json);
-    }
 
     public void HandleEntity(NetEntity entity)
     {
