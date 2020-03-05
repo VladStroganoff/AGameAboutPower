@@ -11,7 +11,7 @@ public class NetworkManager : MonoBehaviour
     public EntityController EntityControl;
     public int ConnectionID;
 
-    public PlayerController PlayerControl;
+    public WorldController PlayerControl;
     public InputField IpField;
     public InputField PortField;
 

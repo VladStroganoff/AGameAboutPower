@@ -1,4 +1,5 @@
-﻿using Invector.vCharacterController;
+﻿using Assets.Scripts;
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,83 +7,62 @@ using UnityEngine;
 [System.Serializable]
 public class NetworkedAnimator : MonoBehaviour
 {
-
-    public List<NetAnimatorBool> BoolParameters = new List<NetAnimatorBool>();
-    public List<NetAnomatorFloat> FloatParameters = new List<NetAnomatorFloat>();
-
     private Animator Animator;
-    private AnimatorControllerParameter[] AnimParams;
 
     public vThirdPersonInput CharacterController;
-    PlayerController playerController;
+    WorldController playerController;
+    NetEntity myEntity;
+    public bool updatePlayer { get; set; }
+    public float UpdateIntervals = 3;
 
 
-    public NetworkedAnimator Inject(PlayerController controller)
+    public void Inject(WorldController controller, NetEntity netEnt)
     {
         playerController = controller;
-        return this;
-    }
-
-    private void Reset()
-    {
-        SetupAnimator();
-    }
-
-    void SetupAnimator()
-    {
+        playerController.UpdateNetEnts += ReceiveAnimationData;
+        myEntity = netEnt;
         Animator = GetComponent<Animator>();
-        AnimParams = Animator.parameters;
 
-        foreach (AnimatorControllerParameter param in AnimParams)
+        //updatePlayer = true;
+        //StartCoroutine("SendAnimationData");
+    }
+
+    IEnumerator SendAnimationData()
+    {
+        while (updatePlayer)
         {
-            switch (param.type)
+
+            myEntity = MakeEntity.UpdateAnimator(myEntity, Animator);
+
+            DataSender.SendServerMessage(myEntity);
+
+            yield return new WaitForSeconds(UpdateIntervals);
+        }
+    }
+
+    void ReceiveAnimationData(NetEntity entity)
+    {
+        if (entity.ConnectionID != myEntity.ConnectionID)
+            return;
+
+        foreach(NetComponent component in entity.Components)
+        {
+            if(component is NetworkedAnimator)
             {
-                case AnimatorControllerParameterType.Bool:
-                    {
-                        NetAnimatorBool newBool = new NetAnimatorBool();
-                        newBool.name = param.name;
-                        newBool.state = param.defaultBool;
-                        BoolParameters.Add(newBool);
-                        continue;
-                    }
-                case AnimatorControllerParameterType.Float:
-                    {
-                        NetAnomatorFloat newFloat = new NetAnomatorFloat();
-                        newFloat.name = param.name;
-                        newFloat.value = param.defaultFloat;
-                        FloatParameters.Add(newFloat);
-                        continue;
-                    }
-                case AnimatorControllerParameterType.Trigger:
-                    {
-                        Debug.Log("Trigger animtor parameter found but not added");
-                        continue;
-                    }
-                case AnimatorControllerParameterType.Int:
-                    {
-                        Debug.Log("Int animtor parameter found but not added");
-                        continue;
-                    }
+                FDebug.Log.Message("Recevied animation data from: " + entity.ConnectionID);
+
+                NetAnimator animator = component as NetAnimator;
+
+                foreach(NetAnimatorComponent parameter in  animator.Parameters)
+                {
+                    FDebug.Log.Message(parameter.name);
+                }
+          
+
             }
-
         }
-    }
 
-    private void Start()
-    {
-        ScyncAnimationData();
-    }
-
-    void ScyncAnimationData()
-    {
-        if(CharacterController.isLocalPlayer == true)
-        {
-
-        }
-        else
-        {
-
-        }
+       
     }
 
    

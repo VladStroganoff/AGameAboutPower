@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
-using Assets.Scripts;
+
 
 
 
@@ -10,13 +10,18 @@ public class NetworkedTransform : MonoBehaviour
 {
     public bool updatePlayer { get; set; }
     public float UpdateIntervals = 3;
-    PlayerController playerController;
+    WorldController playerController;
+    NetEntity myEntity;
 
 
-    public NetworkedTransform Inject(PlayerController controller)
+
+    public void Inject(WorldController controller, NetEntity netEnt)
     {
         playerController = controller;
-        return this;
+        playerController.UpdateNetEnts += ReceiveTransform;
+        myEntity = netEnt;
+        updatePlayer = true;
+        StartCoroutine("SendTransform");
     }
 
 
@@ -24,16 +29,10 @@ public class NetworkedTransform : MonoBehaviour
     {
         while (updatePlayer)
         {
-            playerController.localPlayer = MakeEntity.UpdateTransform(playerController.localPlayer, transform);
 
-            JsonSerializerSettings settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All
-            };
+            myEntity = MakeEntity.UpdateTransform(myEntity, transform);
 
-            string json = JsonConvert.SerializeObject(playerController.localPlayer, settings);
-
-            DataSender.SendServerMessage(json);
+            DataSender.SendServerMessage(myEntity);
 
             yield return new WaitForSeconds(UpdateIntervals);
         }
@@ -41,6 +40,9 @@ public class NetworkedTransform : MonoBehaviour
 
     public void ReceiveTransform(NetEntity player)
     {
+        if (player.ConnectionID != myEntity.ConnectionID)
+            return;
+
         NetTransform netTransform = MakeEntity.GetComponent<NetTransform>(player);
 
         Vector3 newPos = new Vector3(netTransform.position.x, netTransform.position.y, netTransform.position.z);
@@ -51,5 +53,10 @@ public class NetworkedTransform : MonoBehaviour
 
         if (Quaternion.Angle(newRot, playerController.PlayerList[player.ConnectionID].transform.GetChild(0).rotation) > 0.1f)
             transform.rotation = newRot;
+    }
+
+    private void OnDisable()
+    {
+        playerController.UpdateNetEnts -= ReceiveTransform;
     }
 }

@@ -22,9 +22,9 @@ ScriptsOnlyBuild:
     - NetworkManager
     - NetworkedAnimator
     - NetworkedTransform
-    - PlayerController
     - PlayerNameSignView
     - UnityThread
+    - WorldController
     - vThirdPersonCamera
     TycoonTerrainAssembly.dll:
     - Assets.TycoonTerrain.Scripts.Core.TerrainTypeCollectionAsset
@@ -65,11 +65,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -183,65 +180,65 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13644}
     - Class: 114
-      Script: {instanceID: 13818}
+      Script: {instanceID: 13700}
     - Class: 114
-      Script: {instanceID: 13890}
+      Script: {instanceID: 13820}
     - Class: 114
-      Script: {instanceID: 14250}
+      Script: {instanceID: 13892}
     - Class: 114
-      Script: {instanceID: 14256}
+      Script: {instanceID: 14252}
     - Class: 114
-      Script: {instanceID: 14260}
+      Script: {instanceID: 14258}
     - Class: 114
-      Script: {instanceID: 14318}
+      Script: {instanceID: 14262}
     - Class: 114
-      Script: {instanceID: 14324}
+      Script: {instanceID: 14320}
     - Class: 114
-      Script: {instanceID: 14334}
+      Script: {instanceID: 14326}
     - Class: 114
-      Script: {instanceID: 14346}
+      Script: {instanceID: 14336}
     - Class: 114
-      Script: {instanceID: 14432}
+      Script: {instanceID: 14348}
     - Class: 114
-      Script: {instanceID: 14664}
+      Script: {instanceID: 14434}
     - Class: 114
-      Script: {instanceID: 14706}
+      Script: {instanceID: 14666}
     - Class: 114
-      Script: {instanceID: 14820}
+      Script: {instanceID: 14708}
     - Class: 114
-      Script: {instanceID: 14860}
+      Script: {instanceID: 14822}
     - Class: 114
-      Script: {instanceID: 14992}
+      Script: {instanceID: 14862}
     - Class: 114
-      Script: {instanceID: 15072}
+      Script: {instanceID: 14994}
     - Class: 114
-      Script: {instanceID: 15128}
+      Script: {instanceID: 15074}
     - Class: 114
-      Script: {instanceID: 15170}
+      Script: {instanceID: 15130}
     - Class: 114
-      Script: {instanceID: 15224}
+      Script: {instanceID: 15172}
     - Class: 114
-      Script: {instanceID: 15280}
+      Script: {instanceID: 15226}
     - Class: 114
-      Script: {instanceID: 15338}
+      Script: {instanceID: 15282}
     - Class: 114
-      Script: {instanceID: 15342}
+      Script: {instanceID: 15340}
     - Class: 114
-      Script: {instanceID: 15356}
+      Script: {instanceID: 15344}
     - Class: 114
-      Script: {instanceID: 15368}
+      Script: {instanceID: 15358}
     - Class: 114
-      Script: {instanceID: 15380}
+      Script: {instanceID: 15370}
     - Class: 114
-      Script: {instanceID: 15440}
+      Script: {instanceID: 15382}
     - Class: 114
-      Script: {instanceID: 15490}
+      Script: {instanceID: 15442}
     - Class: 114
-      Script: {instanceID: 15528}
+      Script: {instanceID: 15492}
     - Class: 114
-      Script: {instanceID: 15588}
+      Script: {instanceID: 15530}
     - Class: 114
-      Script: {instanceID: 30480}
+      Script: {instanceID: 15590}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -299,7 +296,7 @@ ScriptsOnlyBuild:
     className: vAnimateUV
   - hash:
       serializedVersion: 2
-      Hash: 7ea477807c48f82d701d832061047f18
+      Hash: 2f76168e56f161b6e9aac99c7962b327
     assemblyName: MainAssembly.dll
     namespaceName: 
     className: NetworkManager
@@ -599,7 +596,7 @@ ScriptsOnlyBuild:
     className: DemoPaintUI
   - hash:
       serializedVersion: 2
-      Hash: 897dea69d188336c34512cc880642c1e
+      Hash: 1804eff296ae199d42f3ef8d646b78f1
     assemblyName: MainAssembly.dll
     namespaceName: 
     className: EntityController
@@ -693,6 +690,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: ab005c4e77a77bd37c8eaf74290bae83
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: NetworkedTransform
   - hash:
       serializedVersion: 2
       Hash: a53651ee3996fbba20dfe0fce02f0b23
@@ -803,7 +806,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 6d6fb10fcd0f4d80c8018ff6a7aefa74
+      Hash: 0a84cf3987abcc9f926c98b965bdb561
     assemblyName: MainAssembly.dll
     namespaceName: 
     className: NetworkedAnimator
@@ -1001,10 +1004,10 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 9d8a9957550ee61c29833345c0d2dbb2
+      Hash: b3dfb6755ddc7b90a63a6fc0d5e1b4f8
     assemblyName: MainAssembly.dll
     namespaceName: 
-    className: PlayerController
+    className: WorldController
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -1089,12 +1092,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: ab005c4e77a77bd37c8eaf74290bae83
-    assemblyName: MainAssembly.dll
-    namespaceName: 
-    className: NetworkedTransform
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainScene.unity

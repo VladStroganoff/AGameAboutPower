@@ -14,17 +14,27 @@ public class NetAnimator : NetComponent
 [System.Serializable]
 public class NetAnimatorComponent
 {
-
+    public string name;
 }
 [System.Serializable]
 public class NetAnimatorBool : NetAnimatorComponent
 {
-    public string name;
     public bool state;
 }
 [System.Serializable]
-public class NetAnomatorFloat : NetAnimatorComponent
+public class NetAnimatorFloat : NetAnimatorComponent
 {
-    public string name;
     public float value;
+}
+
+[System.Serializable]
+public class NetAnimatorTrigger : NetAnimatorComponent
+{
+    public bool state;
+}
+
+[System.Serializable]
+public class NetAnimatorInt : NetAnimatorComponent
+{
+    public int value;
 }

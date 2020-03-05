@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace Assets.Scripts
 {
@@ -13,8 +9,25 @@ namespace Assets.Scripts
     }
 
 
+
     static class DataSender
     {
+        public static void SendServerMessage(NetEntity myEntity)
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            string json = JsonConvert.SerializeObject(myEntity, settings);
+
+            ByteBuffer buffer = new ByteBuffer();
+            buffer.WriteInt((int)ClientPackets.CHelloServer);
+            buffer.WriteString(json);
+            ClientTCP.SendingData(buffer.ToArray());
+            buffer.Dispose();
+        }
+
         public static void SendServerMessage(string message)
         {
             ByteBuffer buffer = new ByteBuffer();

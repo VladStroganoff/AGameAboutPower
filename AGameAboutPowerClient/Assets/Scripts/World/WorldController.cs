@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class WorldController : MonoBehaviour
 {
     public int MyConnectionID;
     public NetEntity localPlayer;
@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform SpawnPoint;
 
-    public NetworkedTransform NetworkedTransform;
-    public NetworkedAnimator NetworkedAnimator;
+
+    public delegate void UpdateNetEntitys(NetEntity entity);
+    public UpdateNetEntitys UpdateNetEnts;
+
 
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
 
@@ -51,18 +53,14 @@ public class PlayerController : MonoBehaviour
           
         }
 
-        NetworkedTransform = playerGO.transform.GetChild(0).GetComponent<NetworkedTransform>().Inject(this);
-        NetworkedAnimator = playerGO.transform.GetChild(0).GetComponent<NetworkedAnimator>().Inject(this);
+        playerGO.transform.GetChild(0).GetComponent<NetworkedTransform>().Inject(this, player);
+        playerGO.transform.GetChild(0).GetComponent<NetworkedAnimator>().Inject(this, player);
 
         playerGO.name = "Player: " + player.ConnectionID;
         playerGO.GetComponent<PlayerNameSignView>().Inject(player.ConnectionID);
 
 
         PlayerList.Add(player.ConnectionID, playerGO);
-
-
-        NetworkedTransform.updatePlayer = true;
-        NetworkedTransform.StartCoroutine("SendTransform");
     }
 
     void SetupCamera(GameObject playerGO)
@@ -82,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if(player.Online != false)
         {
-            NetworkedTransform.ReceiveTransform(player);
+            UpdateNetEnts.Invoke(player);
         }
         else
         {

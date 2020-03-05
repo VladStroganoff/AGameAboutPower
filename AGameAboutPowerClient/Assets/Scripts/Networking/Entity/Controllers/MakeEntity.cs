@@ -105,6 +105,76 @@ public static class MakeEntity
         return entity;
     }
 
+    public static NetEntity UpdateAnimator(NetEntity entity, Animator animator)
+    {
+
+        bool foundTransform = false;
+        foreach (NetComponent comp in entity.Components)
+        {
+            if (comp is NetAnimator)
+            {
+                foundTransform = true;
+            }
+        }
+
+
+        if (!foundTransform)
+            AddOneComponent(entity);
+
+        for (int i = 0; i < entity.Components.Length; i++)
+        {
+            if (entity.Components[i] is NetAnimator || entity.Components[i] == null)
+            {
+                NetAnimator temp = new NetAnimator();
+                temp.Parameters = new NetAnimatorComponent[animator.parameters.Length];
+
+                for(int j =0; j < animator.parameters.Length; j++)
+                {
+                    switch (animator.parameters[j].type)
+                    {
+                        case AnimatorControllerParameterType.Bool:
+                            {
+                                NetAnimatorBool animBool = new NetAnimatorBool();
+                                animBool.name = animator.parameters[j].name;
+                                animBool.state = animator.parameters[j].defaultBool;
+                                temp.Parameters[j] = animBool;
+                                continue;
+                            }
+                        case AnimatorControllerParameterType.Float:
+                            {
+                                NetAnimatorFloat animfloat = new NetAnimatorFloat();
+                                animfloat.name = animator.parameters[j].name;
+                                animfloat.value = animator.parameters[j].defaultFloat;
+                                temp.Parameters[j] = animfloat;
+                                continue;
+                            }
+                        case AnimatorControllerParameterType.Trigger:
+                            {
+                                NetAnimatorTrigger animfloat = new NetAnimatorTrigger();
+                                animfloat.name = animator.parameters[j].name;
+                                animfloat.state = animator.parameters[j].defaultBool;
+                                temp.Parameters[j] = animfloat;
+                                continue;
+                            }
+                        case AnimatorControllerParameterType.Int:
+                            {
+                                NetAnimatorInt animfloat = new NetAnimatorInt();
+                                animfloat.name = animator.parameters[j].name;
+                                animfloat.value = animator.parameters[j].defaultInt;
+                                temp.Parameters[j] = animfloat;
+                                continue;
+                            }
+                    }
+
+                }
+                entity.Components[i] = temp;
+            }
+        }
+
+
+        return entity;
+    }
+
     static void AddOneComponent(NetEntity entity)
     {
         if (entity.Components == null)

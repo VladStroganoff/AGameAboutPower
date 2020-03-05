@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    public PlayerController PlayerControl;
+    public WorldController PlayerControl;
 
     public void HandleEntity(NetEntity entity)
     {
