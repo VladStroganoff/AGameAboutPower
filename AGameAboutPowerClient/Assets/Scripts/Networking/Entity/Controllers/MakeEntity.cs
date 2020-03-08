@@ -13,6 +13,9 @@ public static class MakeEntity
         NetEntity entity = new NetEntity();
         entity.Online = true;
 
+        System.Random rnd = new System.Random();
+        entity.ID = rnd.Next(11111, 99999);
+
         return entity;
     }
 
@@ -136,7 +139,7 @@ public static class MakeEntity
                             {
                                 NetAnimatorBool animBool = new NetAnimatorBool();
                                 animBool.name = animator.parameters[j].name;
-                                animBool.state = animator.parameters[j].defaultBool;
+                                animBool.state = animator.GetBool(animator.parameters[j].name);
                                 temp.Parameters[j] = animBool;
                                 continue;
                             }
@@ -144,24 +147,24 @@ public static class MakeEntity
                             {
                                 NetAnimatorFloat animfloat = new NetAnimatorFloat();
                                 animfloat.name = animator.parameters[j].name;
-                                animfloat.value = animator.parameters[j].defaultFloat;
+                                animfloat.value = animator.GetFloat(animator.parameters[j].name) ;
                                 temp.Parameters[j] = animfloat;
                                 continue;
                             }
                         case AnimatorControllerParameterType.Trigger:
                             {
-                                NetAnimatorTrigger animfloat = new NetAnimatorTrigger();
-                                animfloat.name = animator.parameters[j].name;
-                                animfloat.state = animator.parameters[j].defaultBool;
-                                temp.Parameters[j] = animfloat;
+                                NetAnimatorTrigger animtrigger = new NetAnimatorTrigger();
+                                animtrigger.name = animator.parameters[j].name;
+                                animtrigger.state = animator.parameters[j].defaultBool;
+                                temp.Parameters[j] = animtrigger;
                                 continue;
                             }
                         case AnimatorControllerParameterType.Int:
                             {
-                                NetAnimatorInt animfloat = new NetAnimatorInt();
-                                animfloat.name = animator.parameters[j].name;
-                                animfloat.value = animator.parameters[j].defaultInt;
-                                temp.Parameters[j] = animfloat;
+                                NetAnimatorInt animint = new NetAnimatorInt();
+                                animint.name = animator.parameters[j].name;
+                                animint.value = animator.GetInteger(animator.parameters[j].name);
+                                temp.Parameters[j] = animint;
                                 continue;
                             }
                     }

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 public static class MakeEntity
 {
 
@@ -6,6 +8,11 @@ public static class MakeEntity
     {
         NetEntity entity = new NetEntity();
         entity.Online = true;
+
+
+        Random rnd = new Random();
+        entity.ID = rnd.Next(11111, 99999);
+
 
         return entity;
     }

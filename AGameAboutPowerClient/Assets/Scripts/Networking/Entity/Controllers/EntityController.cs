@@ -18,7 +18,7 @@ public class EntityController : MonoBehaviour
 
         if(component is PlayerData)
         {
-            PlayerControl.HandlePlayer(entity);
+            PlayerControl.HandleEntity(entity);
         }
         else
         {

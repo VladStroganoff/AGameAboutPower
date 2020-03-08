@@ -23,15 +23,15 @@ public class NetworkedAnimator : MonoBehaviour
         myEntity = netEnt;
         Animator = GetComponent<Animator>();
 
-        //updatePlayer = true;
-        //StartCoroutine("SendAnimationData");
+
+        updatePlayer = true;
+        StartCoroutine("SendAnimationData");
     }
 
     IEnumerator SendAnimationData()
     {
         while (updatePlayer)
         {
-
             myEntity = MakeEntity.UpdateAnimator(myEntity, Animator);
 
             DataSender.SendServerMessage(myEntity);
@@ -47,23 +47,41 @@ public class NetworkedAnimator : MonoBehaviour
 
         foreach(NetComponent component in entity.Components)
         {
-            if(component is NetworkedAnimator)
+            if(component is NetAnimator)
             {
-                FDebug.Log.Message("Recevied animation data from: " + entity.ConnectionID);
-
                 NetAnimator animator = component as NetAnimator;
 
                 foreach(NetAnimatorComponent parameter in  animator.Parameters)
                 {
-                    FDebug.Log.Message(parameter.name);
+                    if(parameter is NetAnimatorBool)
+                    {
+                        NetAnimatorBool boolio = parameter as NetAnimatorBool;
+                        Animator.SetBool(boolio.name, boolio.state);
+                    }
+                    else if(parameter is NetAnimatorFloat)
+                    {
+                        NetAnimatorFloat floatio = parameter as NetAnimatorFloat;
+                        Animator.SetFloat(floatio.name, floatio.value);
+                    }
+                    else if (parameter is NetAnimatorInt)
+                    {
+                        NetAnimatorInt intelio = parameter as NetAnimatorInt;
+                        Animator.SetInteger(intelio.name, intelio.value);
+                    }
+                    else if (parameter is NetAnimatorTrigger)
+                    {
+                        NetAnimatorTrigger triggero = parameter as NetAnimatorTrigger;
+                        Animator.SetTrigger(triggero.name);
+                    }
                 }
-          
-
             }
         }
 
        
     }
+    private void OnDisable()
+    {
+        playerController.UpdateNetEnts -= ReceiveAnimationData;
+    }
 
-   
 }

@@ -22,7 +22,7 @@ public class WorldController : MonoBehaviour
     public Dictionary<int, GameObject> PlayerList = new Dictionary<int, GameObject>();
 
 
-    public void HandlePlayer(NetEntity player)
+    public void HandleEntity(NetEntity player)
     {
         if (PlayerList.ContainsKey(player.ConnectionID))
         {

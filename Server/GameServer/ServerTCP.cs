@@ -15,6 +15,17 @@ namespace GameServer
             serverSocket.Start();
             serverSocket.BeginAcceptTcpClient(new AsyncCallback(OnClientConnect), null);
 
+
+
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    Console.WriteLine("ip: " + ip.ToString()  + " socket: 55087" ) ;
+                }
+            }
+
         }
 
         private static void OnClientConnect(IAsyncResult result)

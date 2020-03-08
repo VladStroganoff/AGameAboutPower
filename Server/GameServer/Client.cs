@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Sockets;
-using GameServer.Entity;
 
 
 namespace GameServer
@@ -15,10 +14,10 @@ namespace GameServer
 
         public void Start()
         {
-            Socket.SendBufferSize = 4096;
-            Socket.ReceiveBufferSize = 4096;
+            Socket.SendBufferSize = 8196;
+            Socket.ReceiveBufferSize = 8196;
             Stream = Socket.GetStream();
-            receiveBuffer = new byte[4096];
+            receiveBuffer = new byte[8196];
             Stream.BeginRead(receiveBuffer, 0, Socket.ReceiveBufferSize, OnReceiveData, null);
             Console.WriteLine("Incomming connection from '{0}'. ", Socket.Client.RemoteEndPoint.ToString());
         }

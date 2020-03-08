@@ -192,53 +192,53 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14262}
     - Class: 114
-      Script: {instanceID: 14320}
+      Script: {instanceID: 14322}
     - Class: 114
-      Script: {instanceID: 14326}
+      Script: {instanceID: 14328}
     - Class: 114
-      Script: {instanceID: 14336}
+      Script: {instanceID: 14338}
     - Class: 114
-      Script: {instanceID: 14348}
+      Script: {instanceID: 14350}
     - Class: 114
-      Script: {instanceID: 14434}
+      Script: {instanceID: 14436}
     - Class: 114
-      Script: {instanceID: 14666}
+      Script: {instanceID: 14668}
     - Class: 114
-      Script: {instanceID: 14708}
+      Script: {instanceID: 14710}
     - Class: 114
-      Script: {instanceID: 14822}
+      Script: {instanceID: 14824}
     - Class: 114
-      Script: {instanceID: 14862}
+      Script: {instanceID: 14864}
     - Class: 114
-      Script: {instanceID: 14994}
+      Script: {instanceID: 14996}
     - Class: 114
-      Script: {instanceID: 15074}
+      Script: {instanceID: 15076}
     - Class: 114
-      Script: {instanceID: 15130}
+      Script: {instanceID: 15132}
     - Class: 114
-      Script: {instanceID: 15172}
+      Script: {instanceID: 15174}
     - Class: 114
-      Script: {instanceID: 15226}
+      Script: {instanceID: 15228}
     - Class: 114
-      Script: {instanceID: 15282}
+      Script: {instanceID: 15284}
     - Class: 114
-      Script: {instanceID: 15340}
+      Script: {instanceID: 15342}
     - Class: 114
-      Script: {instanceID: 15344}
+      Script: {instanceID: 15346}
     - Class: 114
-      Script: {instanceID: 15358}
+      Script: {instanceID: 15360}
     - Class: 114
-      Script: {instanceID: 15370}
+      Script: {instanceID: 15372}
     - Class: 114
-      Script: {instanceID: 15382}
+      Script: {instanceID: 15384}
     - Class: 114
-      Script: {instanceID: 15442}
+      Script: {instanceID: 15444}
     - Class: 114
-      Script: {instanceID: 15492}
+      Script: {instanceID: 15494}
     - Class: 114
-      Script: {instanceID: 15530}
+      Script: {instanceID: 15532}
     - Class: 114
-      Script: {instanceID: 15590}
+      Script: {instanceID: 15592}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -794,6 +794,12 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: MainAssembly.dll
+    namespaceName: 
+    className: NetworkedPlayer
+  - hash:
+      serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1004,7 +1010,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: b3dfb6755ddc7b90a63a6fc0d5e1b4f8
+      Hash: 32270f288b9008eeb2b642b729fb6c76
     assemblyName: MainAssembly.dll
     namespaceName: 
     className: WorldController

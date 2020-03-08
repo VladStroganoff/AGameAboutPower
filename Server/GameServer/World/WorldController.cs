@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameServer.Entity;
 
 namespace GameServer.World
 {
@@ -34,6 +33,35 @@ namespace GameServer.World
                 NetTransform trans = MakeEntity.GetComponent<NetTransform>(entity);
                 if(trans != null)
                     Console.WriteLine("Updates Player: " + entity.ConnectionID + " position: " + trans.position.x + ", " + trans.position.y + ", " + trans.position.z);
+
+
+                NetAnimator anim = MakeEntity.GetComponent<NetAnimator>(entity);
+                if (anim != null)
+                {
+                    foreach (NetAnimatorComponent component in anim.Parameters)
+                    {
+                        if (component is NetAnimatorBool)
+                        {
+                            NetAnimatorBool boolio = component as NetAnimatorBool;
+                            Console.WriteLine(boolio.name + ", " + boolio.state);
+                        }
+                        else if (component is NetAnimatorFloat)
+                        {
+                            NetAnimatorFloat floatio = component as NetAnimatorFloat;
+                            Console.WriteLine(floatio.name + ", " + floatio.value);
+                        }
+                        else if (component is NetAnimatorInt)
+                        {
+                            NetAnimatorInt intelio = component as NetAnimatorInt;
+                            Console.WriteLine(intelio.name + ", " + intelio.value);
+                        }
+                        else if (component is NetAnimatorTrigger)
+                        {
+                            NetAnimatorTrigger triggero = component as NetAnimatorTrigger;
+                            Console.WriteLine(triggero.name + ", " + triggero.state);
+                        }
+                    }
+                }
             }
         }
 
