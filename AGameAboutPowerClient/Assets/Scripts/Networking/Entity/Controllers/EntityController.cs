@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    public WorldController PlayerControl;
+    public WorldController WorldControl;
 
     public void HandleEntity(NetEntity entity)
     {
@@ -18,7 +18,7 @@ public class EntityController : MonoBehaviour
 
         if(component is PlayerData)
         {
-            PlayerControl.HandleEntity(entity);
+            WorldControl.HandlePlayer(entity);
         }
         else
         {

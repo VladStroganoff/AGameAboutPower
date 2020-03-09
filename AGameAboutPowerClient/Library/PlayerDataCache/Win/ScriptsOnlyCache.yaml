@@ -1,8 +1,6 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp-Editor.dll:
-    - AmplifyShaderEditor.TemplateMultiPass
-    - AmplifyShaderEditor.TemplatesManager
     - Invector.vCharacterController.vEditorStartupPrefs
     Assembly-CSharp.dll:
     - Assets.TycoonTerrain.Examples.Scripts.AudioController
@@ -23,7 +21,6 @@ ScriptsOnlyBuild:
     - NetworkedAnimator
     - NetworkedTransform
     - PlayerNameSignView
-    - UnityThread
     - WorldController
     - vThirdPersonCamera
     TycoonTerrainAssembly.dll:

@@ -53,8 +53,8 @@ namespace Invector.vCharacterController
 
         public virtual void OnAnimatorMove()
         {
-
-            cc.ControlAnimatorRootMotion(); // handle root motion animations 
+            if(cc != null)
+                cc.ControlAnimatorRootMotion(); // handle root motion animations 
         }
 
         #region Basic Locomotion Inputs

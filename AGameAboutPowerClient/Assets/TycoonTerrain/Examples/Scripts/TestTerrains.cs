@@ -19,75 +19,75 @@ public class TestTerrains : MonoBehaviour {
 	private NativeArray<byte> heightmap;
 	private int2 heightMapDimensions;
 
-    // Start is called before the first frame update
-    void Awake() {
-	    terrain = GetComponent<TycoonTileMap>();
+	// Start is called before the first frame update
+	void Awake() {
+		terrain = GetComponent<TycoonTileMap>();
 
-	    
-    }
+		
+	}
 
-    void Start() {
+	void Start() {
 		ExampleTerrain();
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update()
+	{
 		//Execute terrain modifications based on user input.
-	    if (Input.GetKeyUp(KeyCode.Alpha1)) {
+		if (Input.GetKeyUp(KeyCode.Alpha1)) {
 			ExampleTerrain();
-	    }
+		}
 
-	    if (Input.GetKeyUp(KeyCode.Alpha2)) {
+		if (Input.GetKeyUp(KeyCode.Alpha2)) {
 			FlatTerrain();
-	    }
+		}
 
-	    if (Input.GetKeyUp(KeyCode.Alpha2)) {
-		    WaterTestTerrain();
-	    }
-    }
+		if (Input.GetKeyUp(KeyCode.Alpha2)) {
+			WaterTestTerrain();
+		}
+	}
 
 	/// <summary>
 	/// Generates an example terrain.
 	/// </summary>
-    private void ExampleTerrain() {
+	private void ExampleTerrain() {
 		heightMapDimensions = new int2(terrain.Width, terrain.Length) + new int2(1);
 		heightmap = new NativeArray<byte>(heightMapDimensions.x * heightMapDimensions.y, Allocator.TempJob);
 		terrainGenerationJob = new TerrainGenerationJob(heightmap, heightMapDimensions).Schedule();
 
-	    terrainGenerationJob.Complete();
-	    terrain.ScheduleOperation(new CopyHeightMapOperation(heightmap, heightMapDimensions));
-	    heightmap.Dispose();
+		terrainGenerationJob.Complete();
+		terrain.ScheduleOperation(new CopyHeightMapOperation(heightmap, heightMapDimensions));
+		heightmap.Dispose();
 
-	    var positions = new NativeList<int2>(Allocator.TempJob);
-	    terrain.ScheduleOperation(new BeachCheckOperation(7, positions));
+		var positions = new NativeList<int2>(Allocator.TempJob);
+		terrain.ScheduleOperation(new BeachCheckOperation(7, positions));
 
-	    var result = new NativeList<int2>(Allocator.Temp);
-	    TrimBeach(positions, result);
-	    positions.Dispose();
-	    terrain.SchedulePaintOperation(new BeachPaintOperation(result, 2));
+		var result = new NativeList<int2>(Allocator.Temp);
+		TrimBeach(positions, result);
+		positions.Dispose();
+		terrain.SchedulePaintOperation(new BeachPaintOperation(result, 2));
 
-	    int2 waterSetPosition = new int2(81, 89);
-	    terrain.ScheduleOperation(new CreateWaterBodyFloodOperation(waterSetPosition, 26, terrain.WaterHeightStepsPerTileHeight));
-    }
+		int2 waterSetPosition = new int2(81, 89);
+		terrain.ScheduleOperation(new CreateWaterBodyFloodOperation(waterSetPosition, 26, terrain.WaterHeightStepsPerTileHeight));
+	}
 
 	/// <summary>
 	/// Generates a flat terrain.
 	/// </summary>
-    private void FlatTerrain() {
-	    byte height = (byte)(terrain.MaxHeight / 2);
+	private void FlatTerrain() {
+		byte height = (byte)(terrain.MaxHeight / 2);
 
 		terrain.ScheduleOperation(new ExecuteTileJobOperation<SetHeightOperation>(new SetHeightOperation(height), terrain.Bounds));
-    }
+	}
 
 	/// <summary>
 	/// Creates a test terrain with 4 mountains in a square.
 	/// </summary>
-    private void WaterTestTerrain() {
-	    byte height = (byte) (terrain.MaxHeight * 3 / 4);
+	private void WaterTestTerrain() {
+		byte height = (byte) (terrain.MaxHeight * 3 / 4);
 
-	    int a = 8;
-	    int b = 16;
+		int a = 8;
+		int b = 16;
 
 		terrain.ScheduleOperation(new MaxHeightSmooth(new int2(a,a), height));
 		terrain.ScheduleOperation(new MaxHeightSmooth(new int2(a,b), height));
@@ -95,35 +95,35 @@ public class TestTerrains : MonoBehaviour {
 		terrain.ScheduleOperation(new MaxHeightSmooth(new int2(b,b), height));
 
 		terrain.SchedulePaintOperation(new PaintTerrainBoundsOperation(new IntBound(new int2(a), new int2(b)), 1));
-    }
+	}
 
 	/// <summary>
 	/// Removes the outer beach tile positions.
 	/// </summary>
-    private void TrimBeach(NativeArray<int2> beach, NativeList<int2> result) {
-	    HashSet<int2> positions = new HashSet<int2>(beach);
-	    NativeArray<int2> offsets = new NativeArray<int2>(4, Allocator.Temp);
-	    offsets[0] = CardinalDirection.North.ToVector();
+	private void TrimBeach(NativeArray<int2> beach, NativeList<int2> result) {
+		HashSet<int2> positions = new HashSet<int2>(beach);
+		NativeArray<int2> offsets = new NativeArray<int2>(4, Allocator.Temp);
+		offsets[0] = CardinalDirection.North.ToVector();
 		offsets[1] = CardinalDirection.East.ToVector();
 		offsets[2] = CardinalDirection.South.ToVector();
 		offsets[3] = CardinalDirection.West.ToVector();
 
-	    for (int i = 0; i < beach.Length; i++) {
-		    int2 pos = beach[i];
+		for (int i = 0; i < beach.Length; i++) {
+			int2 pos = beach[i];
 
-		    int count = 0;
-		    for (int j = 0; j < 4; j++) {
-			    int2 neighbourPos = pos + offsets[j];
+			int count = 0;
+			for (int j = 0; j < 4; j++) {
+				int2 neighbourPos = pos + offsets[j];
 
-			    if (positions.Contains(neighbourPos) || !terrain.IsInBounds(neighbourPos)) {
-				    count++;
-			    }
-		    }
+				if (positions.Contains(neighbourPos) || !terrain.IsInBounds(neighbourPos)) {
+					count++;
+				}
+			}
 
 			if(count == 4)
 				result.Add(pos);
-	    }
-    }
+		}
+	}
 
 	/// <summary>
 	/// Generates tile positions for the beach based on height

@@ -17,7 +17,7 @@ namespace TycoonTerrain.Core {
 		public int WaterHeightStepsPerTileHeight;
 
 		[SerializeField]
-		private NativeArray<LandTile> map;
+		public NativeArray<LandTile> map;
 
 		public IntBound Bounds { get; }
 

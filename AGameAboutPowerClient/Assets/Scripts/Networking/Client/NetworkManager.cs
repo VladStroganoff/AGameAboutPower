@@ -28,10 +28,6 @@ public class NetworkManager : MonoBehaviour
 
         IpField.text = "10.0.0.4";
         PortField.text = "5587";
-
-
-        
-
     }
 
     public void TryInitializeConnection()
