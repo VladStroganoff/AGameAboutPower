@@ -148,5 +148,10 @@ namespace TycoonTerrain.Core {
 		public void RegisterDirtyChunkListener(IChunkListener listener) {
 			chunkListeners.Add(listener);
 		}
+
+        public TerrainGrid GetGrid()
+        {
+            return grid;
+        }
 	}
 }
