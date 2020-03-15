@@ -39,7 +39,7 @@ namespace TycoonTerrain.Core {
 		/// <summary>
 		/// Gets the heights of all corners in the form of a vector, in the order (x = NorthEast, y = SouthEast, z = SouthWest, w = NorthWest)
 		/// </summary>
-		public int4 Heights => new int4(cornerNE, cornerSE, cornerSW, cornerNW);
+		public int4 Heights { get { return new int4(cornerNE, cornerSE, cornerSW, cornerNW); } }
 
 		public LandTile(byte ne, byte se, byte sw, byte nw, ushort water = 0) {
 			cornerNE = ne;
@@ -94,7 +94,7 @@ namespace TycoonTerrain.Core {
 		/// <returns></returns>
 		public int IncreaseHeight(CardinalDirection edge) {
 			return IncreaseHeight(CornerIndex.GetCornerOfDirection(edge, true)) +
-			       IncreaseHeight(CornerIndex.GetCornerOfDirection(edge, false));
+				   IncreaseHeight(CornerIndex.GetCornerOfDirection(edge, false));
 		}
 
 		/// <summary>

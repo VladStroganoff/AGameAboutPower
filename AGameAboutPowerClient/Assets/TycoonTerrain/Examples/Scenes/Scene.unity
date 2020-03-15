@@ -685,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 164516486}
+  url: D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPowerClient\Assets\Content\SaveFiles\map.json
 --- !u!1 &164516482
 GameObject:
   m_ObjectHideFlags: 0
