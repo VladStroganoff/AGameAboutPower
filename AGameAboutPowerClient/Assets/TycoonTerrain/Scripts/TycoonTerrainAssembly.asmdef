@@ -2,14 +2,16 @@
     "name": "TycoonTerrainAssembly",
     "references": [
         "Unity.Mathematics",
-        "Unity.Collections"
+        "Unity.Collections",
+        "MainAssembly"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
