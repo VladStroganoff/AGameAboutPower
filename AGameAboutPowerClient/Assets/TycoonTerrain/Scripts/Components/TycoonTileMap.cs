@@ -28,7 +28,7 @@ namespace TycoonTerrain.Core {
 		public int WaterHeightStepsPerTileHeight = 4;
 
 		/// <summary>
-		/// A reference to the underlying terrain grid.
+		/// A reference to the underlying terrain grid
 		/// </summary>
 		[SerializeField] private TerrainGrid grid;
 
@@ -74,7 +74,7 @@ namespace TycoonTerrain.Core {
 			dirtyChunks.MarkAllChunksDirty();
 		}
 
-		private void OnValidate() {
+        private void OnValidate() {
 			if (Width < 0)
 				Width = 0;
 

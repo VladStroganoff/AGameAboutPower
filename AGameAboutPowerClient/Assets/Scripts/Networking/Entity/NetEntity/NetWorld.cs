@@ -15,6 +15,7 @@ public class NetLandTile
     [SerializeField] public byte cornerNW;
     [SerializeField] public ushort waterHeight;
 
+
     [SerializeField] public ushort tileType;
 }
 

@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e072b945c7fad4a9e820b4e77eb6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 164516486}
+  TycoonMap: {fileID: 164516486}
   url: D:\NormalDrive\Projects\A Game About Power\Development\Repo\AGameAboutPowerClient\Assets\Content\SaveFiles\map.json
 --- !u!1 &164516482
 GameObject:
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164516482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb3b6d68e8e40b24db78a7363d9b3753, type: 3}
   m_Name: 

@@ -22,8 +22,6 @@ public class TestTerrains : MonoBehaviour {
 	// Start is called before the first frame update
 	void Awake() {
 		terrain = GetComponent<TycoonTileMap>();
-
-		
 	}
 
 	void Start() {

@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TycoonTerrain.Core.TerrainOperations;
+using TycoonTerrain.Core.Generation;
 using Unity.Collections;
+using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -29,7 +32,7 @@ namespace TycoonTerrain.Core
             save = new NetWorld();
             int2 pos = new int2(0, 0);
 
-            for (int i =0; i< MapGrid.Length; i++)
+            for (int i = 0; i < MapGrid.Length; i++)
             {
                 for (int j = 0; j < MapGrid.Width; j++)
                 {
@@ -45,9 +48,9 @@ namespace TycoonTerrain.Core
 
             save.LandTiles = new NetLandTile[pos.x, pos.y];
 
-            for(int i = 0; i < pos.x; i++)
+            for (int i = 0; i < pos.x; i++)
             {
-                for(int j = 0; j < pos.y; j++)
+                for (int j = 0; j < pos.y; j++)
                 {
                     int2 key = new int2(i, j);
                     NetLandTile theTile = new NetLandTile();
@@ -74,7 +77,6 @@ namespace TycoonTerrain.Core
 
         public void LoadMap()
         {
-
             if (!File.Exists(url))
             {
                 FDebug.Log.Message("could not find file at: " + url);
@@ -84,23 +86,16 @@ namespace TycoonTerrain.Core
             string text = File.ReadAllText(url);
 
             NetWorld worldSave = JsonConvert.DeserializeObject<NetWorld>(text);
-            int size = worldSave.LandTiles.GetLength(0) * worldSave.LandTiles.GetLength(1);
 
-            for (int x = 0; x < worldSave.LandTiles.GetLength(0); x++)
-            {
-                for (int z = 0; z < worldSave.LandTiles.GetLength(1); z++)
-                {
-                    //heightData[x + size * z] = worldSave.LandTiles[x,z];
-                }
-            }
+
+            TycoonMap.ScheduleOperation(new LoadTerrainOperation(worldSave.LandTiles));
+            TycoonMap.SchedulePaintOperation(new BeachLoadOperation(worldSave.LandTiles));
 
         }
     }
 
 
-
-
-   
-
 }
+
+
 
