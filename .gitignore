@@ -9,6 +9,13 @@ AGameAboutPowerClient/[Bb]uild/
 AGameAboutPowerClient/[Bb]uilds/
 AGameAboutPowerClient/[Ll]ogs/
 
+GAP_Game/[Ll]ibrary/
+GAP_Game/[Tt]emp/
+GAP_Game/[Oo]bj/
+GAP_Game/[Bb]uild/
+GAP_Game/[Bb]uilds/
+GAP_Game/[Ll]ogs/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 AGameAboutPowerClient/[Mm]emoryCaptures/

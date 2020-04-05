@@ -63,7 +63,8 @@ namespace TycoonTerrain.Core.TerrainOperations
 
         public void Execute(ref TerrainTypeTable terrainTypeTable, ref ChunkSet dirtyChunks)
         {
-            for (int x = 0; x < positions.Length; x++)
+
+            for (int x = 0; x < positions.GetLength(0); x++)
             {
                 for(int y = 0; y < positions.GetLength(0); y++)
                 {
@@ -74,4 +75,4 @@ namespace TycoonTerrain.Core.TerrainOperations
         }
     }
 
-}
+    }
