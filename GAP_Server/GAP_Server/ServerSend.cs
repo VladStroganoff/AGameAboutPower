@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace GAP_Server
 {
@@ -10,6 +11,12 @@ namespace GAP_Server
         {
             _packet.WriteLength();
             Server.clients[_toClient].tcp.SendData(_packet);
+        }
+
+        private static void SendUDPData(int toClient, Packet packet)
+        {
+            packet.WriteLength();
+            Server.clients[toClient].udp.SendData(packet);
         }
 
         private static void SendTCPDataToAll(Packet _packet)
@@ -36,6 +43,30 @@ namespace GAP_Server
 
         }
 
+        private static void SendUDPDataToAll(Packet _packet)
+        {
+            _packet.WriteLength();
+
+            for (int i = 0; i < Server.MaxPlayers; i++)
+            {
+                Server.clients[i].udp.SendData(_packet);
+            }
+
+        }
+
+
+        private static void SendUDPDataToAll(int _exception, Packet _packet)
+        {
+            _packet.WriteLength();
+
+            for (int i = 0; i < Server.MaxPlayers; i++)
+            {
+                if (i != _exception)
+                    Server.clients[i].udp.SendData(_packet);
+            }
+
+        }
+
 
         public static void Welcome(int _toClient, string _msg)
         {
@@ -45,6 +76,19 @@ namespace GAP_Server
                 _packet.Write(_toClient);
 
                 SendTCPData(_toClient, _packet);
+            }
+        }
+
+        public static void SpawnPlayer(int toClient, Player player)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.spawnplayer))
+            {
+                packet.Write(player.ID);
+                packet.Write(player.name);
+                packet.Write(player.position);
+                packet.Write(player.rotation);
+
+                SendTCPData(toClient, packet);
             }
         }
 

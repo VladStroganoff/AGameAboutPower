@@ -11,6 +11,13 @@ public class ClientSend : MonoBehaviour
 
     }
 
+
+    public static void SendUDP(Packet packet)
+    {
+        packet.WriteLength();
+        Client.instance.udp.SendData(packet);
+    }
+
     public static void WelcomeReceived()
     {
         using (Packet packet = new Packet((int)ClientPackets.welcomeReceived))
@@ -21,4 +28,6 @@ public class ClientSend : MonoBehaviour
             SendTCPData(packet);
         }
     }
+
+    
 }

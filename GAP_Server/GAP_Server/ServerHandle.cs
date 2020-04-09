@@ -11,12 +11,15 @@ namespace GAP_Server
             int clientIDCheck = packet.ReadInt();
             string welcomeMessage = packet.ReadString();
 
-            Console.WriteLine(welcomeMessage);
+            Console.WriteLine("PLayer: " + welcomeMessage + " joined the server.");
 
             if(fromClient != clientIDCheck)
             {
                 Console.WriteLine("there's a mole... at the highest level of the Circus...");
             }
+
+            Server.clients[fromClient].SendIntoGame(welcomeMessage);
+
         }
     }
 }

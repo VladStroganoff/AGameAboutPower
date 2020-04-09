@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Numerics;
 
 namespace GAP_Server
 {
@@ -11,12 +12,15 @@ namespace GAP_Server
         public static int dataBufferSize = 4096;
 
         public int id;
+        public Player player;
         public TCP tcp;
+        public UDP udp;
 
         public Client(int _clientId)
         {
             id = _clientId;
             tcp = new TCP(id);
+            udp = new UDP(id);
         }
 
         public class TCP
@@ -53,12 +57,12 @@ namespace GAP_Server
             {
                 try
                 {
-                    if(socket != null)
+                    if (socket != null)
                     {
                         stream.BeginWrite(_packet.ToArray(), 0, _packet.Length(), null, null);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -132,6 +136,71 @@ namespace GAP_Server
 
                 return false;
             }
+        }
+
+        public class UDP
+        {
+            public IPEndPoint endPoint;
+            private int clientID;
+
+            public UDP(int id)
+            {
+                clientID = id;
+            }
+
+            public void Connect(IPEndPoint _endPoint)
+            {
+                endPoint = _endPoint;
+            }
+
+
+            public void SendData(Packet packet)
+            {
+                Server.SendUDPData(endPoint, packet);
+            }
+
+            public void HandleData(Packet packetData)
+            {
+                int packetLength = packetData.ReadInt();
+                byte[] packetBytes = packetData.ReadBytes(packetLength);
+
+                ThreadManager.ExecuteOnMainThread(() =>
+                    {
+                        using (Packet packet = new Packet(packetBytes))
+                        {
+                            int packetId = packet.ReadInt();
+                            Server.packetHandlers[packetId](clientID, packet);
+                        }
+                    }
+                );
+
+            }
+
+        }
+
+
+        public void SendIntoGame(string _playerName)
+        {
+            player = new Player(id, _playerName, new Vector3(0, 0, 0));
+
+            foreach(Client client in Server.clients.Values)
+            {
+                if(client.player != null)
+                {
+                    if(client.id != id)
+                        ServerSend.SpawnPlayer(id, client.player);
+                }
+            }
+
+
+            foreach(Client client in Server.clients.Values)
+            {
+                if(client.player != null)
+                {
+                    ServerSend.SpawnPlayer(client.id, player);
+                }
+            }
+
         }
     }
 }
