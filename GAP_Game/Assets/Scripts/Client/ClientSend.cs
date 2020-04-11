@@ -29,5 +29,18 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    
+    public static void SendPlayerMovement(bool[] inputs)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.playerMovement))
+        {
+            packet.Write(inputs.Length);
+            foreach (bool input in inputs)
+            {
+                packet.Write(input);
+            }
+            packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
+            SendUDP(packet);
+        }
+    }
+
 }

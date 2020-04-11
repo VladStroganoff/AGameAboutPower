@@ -116,6 +116,7 @@ namespace GAP_Server
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WelcomeRecieved },
+                {(int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
             };
 
             Console.WriteLine("Packets Initialized... ");

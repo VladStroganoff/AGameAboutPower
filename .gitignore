@@ -16,6 +16,13 @@ GAP_Game/[Bb]uild/
 GAP_Game/[Bb]uilds/
 GAP_Game/[Ll]ogs/
 
+GAP_Unity_Server/[Ll]ibrary/
+GAP_Unity_Server/[Tt]emp/
+GAP_Unity_Server/[Oo]bj/
+GAP_Unity_Server/[Bb]uild/
+GAP_Unity_Server/[Bb]uilds/
+GAP_Unity_Server/[Ll]ogs/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 AGameAboutPowerClient/[Mm]emoryCaptures/

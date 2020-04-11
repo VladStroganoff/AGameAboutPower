@@ -10,7 +10,7 @@ namespace GAP_Server
         welcome = 1,
         spawnplayer,
         playerPosition,
-        plyerRotation,
+        playerRotation,
     }
 
     public enum ClientPackets

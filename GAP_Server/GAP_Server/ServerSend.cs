@@ -23,7 +23,7 @@ namespace GAP_Server
         {
             _packet.WriteLength();
 
-            for(int i = 0; i < Server.MaxPlayers; i++)
+            for(int i = 1; i < Server.MaxPlayers; i++)
             {
                 Server.clients[i].tcp.SendData(_packet);
             }
@@ -35,7 +35,7 @@ namespace GAP_Server
         {
             _packet.WriteLength();
 
-            for (int i = 0; i < Server.MaxPlayers; i++)
+            for (int i = 1; i < Server.MaxPlayers; i++)
             {
                 if(i != _exception)
                     Server.clients[i].tcp.SendData(_packet);
@@ -47,7 +47,7 @@ namespace GAP_Server
         {
             _packet.WriteLength();
 
-            for (int i = 0; i < Server.MaxPlayers; i++)
+            for (int i = 1; i < Server.MaxPlayers; i++)
             {
                 Server.clients[i].udp.SendData(_packet);
             }
@@ -59,7 +59,7 @@ namespace GAP_Server
         {
             _packet.WriteLength();
 
-            for (int i = 0; i < Server.MaxPlayers; i++)
+            for (int i = 1; i < Server.MaxPlayers; i++)
             {
                 if (i != _exception)
                     Server.clients[i].udp.SendData(_packet);
@@ -89,6 +89,26 @@ namespace GAP_Server
                 packet.Write(player.rotation);
 
                 SendTCPData(toClient, packet);
+            }
+        }
+
+        public static void PlayerPosition(Player player)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerPosition))
+            {
+                packet.Write(player.ID);
+                packet.Write(player.position);
+                SendUDPDataToAll(packet);
+            }
+        }
+
+        public static void PlayerRotation(Player player)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerRotation))
+            {
+                packet.Write(player.ID);
+                packet.Write(player.rotation);
+                SendUDPDataToAll(player.ID, packet);
             }
         }
 

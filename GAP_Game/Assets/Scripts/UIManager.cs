@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        usernameField.text = "Player 01";
         if (instance == null)
         {
             instance = this;

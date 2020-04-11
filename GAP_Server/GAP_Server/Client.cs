@@ -75,6 +75,7 @@ namespace GAP_Server
                     int _byteLength = stream.EndRead(_result);
                     if (_byteLength <= 0)
                     {
+                        Server.clients[id].Disconnect();
                         return;
                     }
 
@@ -87,6 +88,7 @@ namespace GAP_Server
                 catch (Exception _ex)
                 {
                     Console.WriteLine($"Error receiving TCP data: {_ex}");
+                    Server.clients[id].Disconnect();
                 }
             }
 
@@ -136,6 +138,16 @@ namespace GAP_Server
 
                 return false;
             }
+
+            public void Disconnect()
+            {
+                socket.Close();
+                stream = null;
+                receiveData = null;
+                receiveBuffer = null;
+                socket = null;
+            }
+
         }
 
         public class UDP
@@ -176,8 +188,11 @@ namespace GAP_Server
 
             }
 
+            public void Disconnect()
+            {
+                endPoint = null;
+            }
         }
-
 
         public void SendIntoGame(string _playerName)
         {
@@ -201,6 +216,14 @@ namespace GAP_Server
                 }
             }
 
+        }
+
+        private void Disconnect()
+        {
+            Console.WriteLine(tcp.socket.Client.RemoteEndPoint + " has disconnected/");
+            player = null;
+            tcp.Disconnect();
+            udp.Disconnect();
         }
     }
 }
