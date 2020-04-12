@@ -39,7 +39,18 @@ public class ClientSend : MonoBehaviour
                 packet.Write(input);
             }
             packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
+            //Debug.Log(inputs[0] + inputs[1].ToString() + inputs[2] + inputs[3]);
             SendUDP(packet);
+        }
+    }
+
+    public static void PlayerShoot(Vector3 facing)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.playerShoot))
+        {
+            packet.Write(facing);
+
+            SendTCPData(packet);
         }
     }
 

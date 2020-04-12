@@ -134,7 +134,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319930986215459094}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafba75b12e504d4cb105c5f24a9259c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 4798014785195243514}
 --- !u!114 &1574435250977645844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,3 +254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   username: 
+  health: 0
+  maxHealth: 100
+  model: {fileID: 1301964258677316945}

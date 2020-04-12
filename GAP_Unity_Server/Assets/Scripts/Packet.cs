@@ -11,12 +11,16 @@ public enum ServerPackets
     spawnplayer,
     playerPosition,
     playerRotation,
+    playerDisconnect,
+    playerHEalth,
+    playerRespawn,
 }
 
 public enum ClientPackets
 {
     welcomeReceived = 1,
     playerMovement,
+    playerShoot,
 }
 
 public class Packet : IDisposable

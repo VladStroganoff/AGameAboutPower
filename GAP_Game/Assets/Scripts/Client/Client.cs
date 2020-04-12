@@ -215,13 +215,13 @@ public class Client : MonoBehaviour
             try
             {
                 packet.InsertInt(instance.myId);
-                if(socket != null)
+                if (socket != null)
                 {
                     socket.BeginSend(packet.ToArray(), packet.Length(), null, null);
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.Log(ex.Message);
             }
@@ -278,7 +278,7 @@ public class Client : MonoBehaviour
             endPoint = null;
             socket = null;
         }
-       
+
     }
 
     private void InitializeClientData()
@@ -289,14 +289,17 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.spawnplayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
+            { (int)ServerPackets.playerDisconnect, ClientHandle.PlayerDisconnected },
+            { (int)ServerPackets.playerHEalth, ClientHandle.PlayerHealth },
+            { (int)ServerPackets.playerRespawn, ClientHandle.PlayerRespawned },
         };
 
         Debug.Log("packets have been initialized...");
     }
 
-   private void Disconnect()
+    private void Disconnect()
     {
-        if(isConnected)
+        if (isConnected)
         {
             isConnected = false;
             tcp.socket.Close();

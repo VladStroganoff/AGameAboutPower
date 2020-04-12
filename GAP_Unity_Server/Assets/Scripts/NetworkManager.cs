@@ -27,14 +27,15 @@ public class NetworkManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
 
-#if UNITY_EDITOR
-        Debug.Log("fuck off, build and run the server! no running the server from the editor you fool.");
-#else
         Server.Start(50, 26950);
 
-#endif
-
     }
+
+    private void OnApplicationQuit()
+    {
+        Server.Stop();
+    }
+
 
     public Player InstantiatePlayer()
     {

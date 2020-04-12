@@ -25,16 +25,20 @@ public class ServerHandle
     {
         bool[] inputs = new bool[packet.ReadInt()];
 
-
         for (int i = 0; i < inputs.Length; i++)
         {
             inputs[i] = packet.ReadBool();
         }
 
-
         Quaternion rotation = packet.ReadQuaternion();
 
         Server.clients[fromClient].player.SetInput(inputs, rotation);
+    }
+
+    public static void PlayerShoot(int fromPlayer, Packet packet)
+    {
+        Vector3 shootDirection = packet.ReadVector3();
+        Server.clients[fromPlayer].player.Shoot(shootDirection);
     }
 
 }

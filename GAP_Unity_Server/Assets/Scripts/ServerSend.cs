@@ -111,4 +111,35 @@ public class ServerSend
             SendUDPDataToAll(player.ID, packet);
         }
     }
+
+    public static void PlayerHealth(Player player)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.playerHEalth))
+        {
+            packet.Write(player.ID);
+            packet.Write(player.health);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerRespawn(Player player)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.playerRespawn))
+        {
+            packet.Write(player.ID);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerDisconnected(int playerId)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.playerDisconnect))
+        {
+            packet.Write(playerId);
+            SendTCPDataToAll(packet);
+        }
+    }
+
 }

@@ -86,7 +86,7 @@ public class Server
         }
         catch (Exception ex)
         {
-            Debug.Log(ex.Message);
+            //Debug.Log(ex.Message);
         }
     }
 
@@ -116,8 +116,15 @@ public class Server
             {
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WelcomeRecieved },
                 {(int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
+                {(int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
             };
 
         Debug.Log("Packets Initialized... ");
+    }
+
+    public static void Stop()
+    {
+        tcpListener.Stop();
+        udpListener.Close();
     }
 }
