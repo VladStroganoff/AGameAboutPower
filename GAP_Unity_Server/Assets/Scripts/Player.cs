@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Invector.vCharacterController;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ public class Player : MonoBehaviour
 {
     public int ID;
     public string name;
-    public CharacterController characterController;
+    public vThirdPersonInput thirdPersonInput;
+    public vThirdPersonMotor thirdPersonMotor;
     public Transform shootOrigin;
     public float gravity = -9.81f;
     public float movespeed = 5f;
@@ -59,30 +61,17 @@ public class Player : MonoBehaviour
             inputDirection.x += 1;
         }
 
-        Move(inputDirection);
 
+        thirdPersonInput.inputs = inputs;
+
+        thirdPersonMotor.moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.y;
+        Debug.Log("what was sent: " + (transform.right * inputDirection.x + transform.forward * inputDirection.y));
+        Debug.Log("thirdPersonMotor.moveDirection: " + thirdPersonMotor.moveDirection);
+        Send();
     }
 
-    private void Move(Vector2 inputDirection)
+    private void Send()
     {
-        Vector3 moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.y;
-        moveDirection *= movespeed;
-
-
-        if(characterController.isGrounded)
-        {
-            yVelocity = 0;
-            if(inputs[4])
-            {
-                yVelocity = jumpspeed;
-            }
-        }
-        yVelocity += gravity;
-
-        moveDirection.y = yVelocity;
-
-        characterController.Move(moveDirection);
-
         ServerSend.PlayerPosition(this);
         ServerSend.PlayerRotation(this);
     }
@@ -116,7 +105,7 @@ public class Player : MonoBehaviour
         if (health <= 0f)
         {
             health = 0;
-            characterController.enabled = false;
+            thirdPersonInput.enabled = false;
             transform.position = new Vector3(0, 15f, 0);
             ServerSend.PlayerPosition(this);
             StartCoroutine(Respawn());
@@ -131,7 +120,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         health = maxHealth;
-        characterController.enabled = true;
+        thirdPersonInput.enabled = true;
         ServerSend.PlayerRespawn(this);
     }
 }
