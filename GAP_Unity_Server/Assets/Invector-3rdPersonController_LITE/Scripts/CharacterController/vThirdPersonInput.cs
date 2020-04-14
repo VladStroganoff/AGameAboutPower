@@ -18,10 +18,11 @@ namespace Invector.vCharacterController
         public string rotateCameraYInput = "Mouse Y";
 
         [HideInInspector] public vThirdPersonController cc;
-        [HideInInspector] public vThirdPersonCamera tpCamera;
+        public vThirdPersonCamera tpCamera;
         [HideInInspector] public Camera cameraMain;
 
         public bool[] inputs { get; set; }
+        bool[] inputsHistory;
         //      inputs[0] = W
         //      inputs[1] = S
         //      inputs[2] = A
@@ -94,6 +95,9 @@ namespace Invector.vCharacterController
             if (inputs == null)
                 return;
 
+            if (inputs == inputsHistory)
+                return;
+
 
             if (inputs[0])
                 cc.input.x = 1;
@@ -110,6 +114,9 @@ namespace Invector.vCharacterController
 
             if (!inputs[2] && !inputs[3])
                 cc.input.z = 0;
+
+
+            inputsHistory = inputs;
 
             //cc.input.x = Input.GetAxis(horizontalInput);
             //cc.input.z = Input.GetAxis(verticallInput);
@@ -136,10 +143,11 @@ namespace Invector.vCharacterController
             if (tpCamera == null)
                 return;
 
-            var Y = Input.GetAxis(rotateCameraYInput);
-            var X = Input.GetAxis(rotateCameraXInput);
 
-            tpCamera.RotateCamera(X, Y);
+
+            //var Y = Input.GetAxis(rotateCameraYInput);
+            //var X = Input.GetAxis(rotateCameraXInput);
+            //tpCamera.RotateCamera(X, Y);
         }
 
         protected virtual void StrafeInput()

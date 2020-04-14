@@ -35,9 +35,7 @@ namespace Invector.vCharacterController
             }
 
             if (!useRootMotion)
-            {
                 MoveCharacter(moveDirection);
-            }
         }
 
         public virtual void ControlRotationType()

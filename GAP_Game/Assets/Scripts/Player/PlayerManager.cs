@@ -8,7 +8,8 @@ public class PlayerManager : MonoBehaviour
     public string username;
     public float health;
     public float maxHealth;
-    public MeshRenderer model;
+    public GameObject model;
+    public GameObject Camera;
 
 
     public void Initialize(int _id, string _username)
@@ -30,12 +31,12 @@ public class PlayerManager : MonoBehaviour
 
     public void Die()
     {
-        model.enabled = false;
+        model.SetActive(false);
     }
 
     public void Respawn()
     {
-        model.enabled = true;
+        model.SetActive(true);
         SetHealth(maxHealth);
     }
 }

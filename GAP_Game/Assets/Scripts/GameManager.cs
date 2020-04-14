@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
 
 
+
     private void Awake()
     {
         if (instance == null)

@@ -41,8 +41,6 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
         Quaternion rotation = packet.ReadQuaternion();
-
-        GameManager.players[id].transform.rotation = rotation;
     }
 
     public static void PlayerDisconnected(Packet packet)

@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         health = maxHealth;
 
         inputs = new bool[5];
+        thirdPersonInput.tpCamera.transform.SetParent(null);
     }
 
 
@@ -64,9 +65,11 @@ public class Player : MonoBehaviour
 
         thirdPersonInput.inputs = inputs;
 
-        thirdPersonMotor.moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.y;
-        Debug.Log("what was sent: " + (transform.right * inputDirection.x + transform.forward * inputDirection.y));
-        Debug.Log("thirdPersonMotor.moveDirection: " + thirdPersonMotor.moveDirection);
+
+        //Vector3 rotation = transform.right * inputDirection.x + transform.forward * inputDirection.y;
+        thirdPersonMotor.moveDirection = thirdPersonInput.tpCamera.transform.right * inputDirection.x + thirdPersonInput.tpCamera.transform.forward * inputDirection.y;
+        //thirdPersonInput.tpCamera.RotateCamera(rotation.x, rotation.y);
+
         Send();
     }
 
@@ -80,7 +83,10 @@ public class Player : MonoBehaviour
     public void SetInput(bool[] _inputs, Quaternion _rotation)
     {
         inputs = _inputs;
-        transform.rotation = _rotation;
+        //thirdPersonInput.tpCamera.RotateCamera(_rotation.x, _rotation.y);
+        thirdPersonInput.tpCamera.transform.rotation = _rotation;
+
+        //transform.rotation = _rotation;
     }
 
     public void Shoot(Vector3 viewDirection)

@@ -20,7 +20,7 @@ namespace Invector.vCharacterController
         [HideInInspector] public vThirdPersonController cc;
         [HideInInspector] public vThirdPersonCamera tpCamera;
         [HideInInspector] public Camera cameraMain;
-
+        public bool isLoca;
         #endregion
 
         protected virtual void Start()
@@ -83,6 +83,9 @@ namespace Invector.vCharacterController
 
         public virtual void MoveInput()
         {
+            if (!isLoca)
+                return;
+
             cc.input.x = Input.GetAxis(horizontalInput);
             cc.input.z = Input.GetAxis(verticallInput);
         }
@@ -141,6 +144,9 @@ namespace Invector.vCharacterController
         /// </summary>
         protected virtual void JumpInput()
         {
+            if (!isLoca)
+                return;
+
             if (Input.GetKeyDown(jumpInput) && JumpConditions())
                 cc.Jump();
         }

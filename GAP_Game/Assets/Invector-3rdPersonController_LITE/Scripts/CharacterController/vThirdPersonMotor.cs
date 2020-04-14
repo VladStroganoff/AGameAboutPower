@@ -182,7 +182,7 @@ namespace Invector.vCharacterController
 
             bool useVerticalVelocity = true;
             if (useVerticalVelocity) targetVelocity.y = _rigidbody.velocity.y;
-            _rigidbody.velocity = targetVelocity;
+            //_rigidbody.velocity = targetVelocity;
         }
 
         public virtual void CheckSlopeLimit()
