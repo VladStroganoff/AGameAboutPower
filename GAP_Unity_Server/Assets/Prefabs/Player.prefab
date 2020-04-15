@@ -3189,6 +3189,7 @@ GameObject:
   - component: {fileID: 279435200752646996}
   - component: {fileID: 279435200752646997}
   - component: {fileID: 2774578089893544571}
+  - component: {fileID: 2547895870361642088}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3319,7 +3320,6 @@ MonoBehaviour:
   sprintInput: 304
   rotateCameraXInput: Mouse X
   rotateCameraYInput: Mouse Y
-  CameraRotation: {x: 0, y: 0, z: 0}
   cc: {fileID: 0}
   tpCamera: {fileID: 8279612667091316734}
   cameraMain: {fileID: 0}
@@ -3375,6 +3375,21 @@ MonoBehaviour:
   jumpspeed: 5
   health: 0
   maxHealth: 100
+--- !u!114 &2547895870361642088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487777697800171302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629908f927f12cd48949efb8abf5bc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetAnimations:
+    Parameters:
+    - Name: 410
 --- !u!1001 &6313054255124531013
 PrefabInstance:
   m_ObjectHideFlags: 0

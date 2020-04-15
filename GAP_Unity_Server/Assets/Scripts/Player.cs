@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float jumpspeed = 5f;
     public float health;
     public float maxHealth;
+    public NetAnimator animator;
 
     private bool[] inputs;
     private float yVelocity = 0;

@@ -12,6 +12,7 @@ public enum ServerPackets
     playerDisconnect,
     playerHEalth,
     playerRespawn,
+    jsonObject,
 }
 
 public enum ClientPackets

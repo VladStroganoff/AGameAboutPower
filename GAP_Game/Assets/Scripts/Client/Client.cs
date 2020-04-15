@@ -292,6 +292,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerDisconnect, ClientHandle.PlayerDisconnected },
             { (int)ServerPackets.playerHEalth, ClientHandle.PlayerHealth },
             { (int)ServerPackets.playerRespawn, ClientHandle.PlayerRespawned },
+            { (int)ServerPackets.jsonObject, ClientHandle.JsonObject },
         };
 
         Debug.Log("packets have been initialized...");

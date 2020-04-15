@@ -41,6 +41,7 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
         Quaternion rotation = packet.ReadQuaternion();
+        GameManager.players[id].transform.rotation = rotation;
     }
 
     public static void PlayerDisconnected(Packet packet)
@@ -62,5 +63,15 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
         GameManager.players[id].Respawn();
+    }
+
+    public static void JsonObject(Packet packet)
+    {
+        int id = packet.ReadInt();
+
+        string json = packet.ReadString();
+        NetAnimator animator = JsonUtility.FromJson<NetAnimator>(json);
+
+        GameManager.players[id].Animator.Set(animator);
     }
 }
