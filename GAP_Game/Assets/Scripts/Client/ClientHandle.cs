@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
+using Newtonsoft.Json;
 
 public class ClientHandle : MonoBehaviour
 {
@@ -68,9 +69,19 @@ public class ClientHandle : MonoBehaviour
     public static void JsonObject(Packet packet)
     {
         int id = packet.ReadInt();
-
         string json = packet.ReadString();
-        NetAnimator animator = JsonUtility.FromJson<NetAnimator>(json);
+
+
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+        NetAnimator animator = JsonConvert.DeserializeObject<NetAnimator>(json, settings);
+
+
+        if (!GameManager.players.ContainsKey(id))
+        {
+            FDebug.Log.Message("Err m8, ID: " + id + ". this was a jason problem");
+            return;
+        }
+
 
         GameManager.players[id].Animator.Set(animator);
     }

@@ -26,7 +26,7 @@ public class NetworkedAnimator : MonoBehaviour
 
 
         GetComponent<Player>().animator = NetAnimations;
-        ServerSend.JsonObject(GetComponent<Player>());
+        ServerSend.PlayerAnimation(GetComponent<Player>());
     }
 
 }

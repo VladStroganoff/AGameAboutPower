@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class NetworkedAnimator : MonoBehaviour
 {
-    Animator Animations;
+    public Animator Animations;
 
-    void Start()
-    {
-        Animations = GetComponent<Animator>();
-    }
 
     public void Set(NetAnimator animator)
     {
+
+        if (Animations == null)
+        {
+            FDebug.Log.Message("animator was null, trying to reset it");
+            Animations = GetComponent<Animator>();
+            return;
+        }
+
         foreach (NetAnimationParam component in animator.Parameters)
         {
             if (component is BoolParam)
@@ -37,4 +41,5 @@ public class NetworkedAnimator : MonoBehaviour
             }
         }
     }
+
 }

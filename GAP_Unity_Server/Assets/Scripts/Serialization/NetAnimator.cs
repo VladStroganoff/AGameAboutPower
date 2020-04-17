@@ -18,30 +18,35 @@ public class NetAnimator
 [System.Serializable]
 public class NetAnimationParam
 {
+    [SerializeField]
     public string Name;
 }
 
 [System.Serializable]
 public class IntigerParam : NetAnimationParam
 {
+    [SerializeField]
     public int State;
 }
 
 [System.Serializable]
 public class FloatParam : NetAnimationParam
 {
+    [SerializeField]
     public float State;
 }
 
 [System.Serializable]
 public class BoolParam : NetAnimationParam
 {
+    [SerializeField]
     public bool State;
 }
 
 [System.Serializable]
 public class TriggerParam : NetAnimationParam
 {
+    [SerializeField]
     public bool State;
 }
 

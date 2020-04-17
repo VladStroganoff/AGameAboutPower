@@ -1138,7 +1138,7 @@ MonoBehaviour:
   maxHealth: 100
   model: {fileID: 4816498497781517703}
   Camera: {fileID: 7884339637435620743}
-  Animator: {fileID: 0}
+  Animator: {fileID: 6973465910217201374}
 --- !u!114 &6973465910217201374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,6 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e774fa71fd2624dae72bd28952983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animations: {fileID: 4816498496395887974}
 --- !u!1 &4816498496401223215
 GameObject:
   m_ObjectHideFlags: 0

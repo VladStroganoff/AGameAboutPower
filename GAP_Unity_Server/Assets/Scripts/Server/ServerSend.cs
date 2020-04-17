@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using Newtonsoft.Json;
 
 public class ServerSend
 {
@@ -123,17 +124,20 @@ public class ServerSend
         }
     }
 
-    public static void JsonObject(Player player)
+    public static void PlayerAnimation(Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.jsonObject))
         {
             packet.Write(player.ID);
 
-            string json = JsonUtility.ToJson(player.animator);
+
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            string json = JsonConvert.SerializeObject(player.animator, settings);
+
 
             packet.Write(json);
 
-            SendTCPDataToAll(player.ID, packet);
+            SendTCPDataToAll(packet);
         }
     }
 

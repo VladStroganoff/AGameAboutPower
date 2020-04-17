@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 4816498496395887970}
   - component: {fileID: 5966806783710079603}
   - component: {fileID: 8012012814851498039}
+  - component: {fileID: 6625369412966278111}
   m_Layer: 0
   m_Name: LocalViking
   m_TagString: Player
@@ -1151,6 +1152,20 @@ MonoBehaviour:
   maxHealth: 100
   model: {fileID: 4816498497781517703}
   Camera: {fileID: 7884339637435620743}
+  Animator: {fileID: 6625369412966278111}
+--- !u!114 &6625369412966278111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816498496395887971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e774fa71fd2624dae72bd28952983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animations: {fileID: 4816498496395887974}
 --- !u!1 &4816498496401223215
 GameObject:
   m_ObjectHideFlags: 0
