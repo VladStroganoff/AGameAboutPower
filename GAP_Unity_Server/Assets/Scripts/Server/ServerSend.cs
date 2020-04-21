@@ -130,12 +130,10 @@ public class ServerSend
         {
             packet.Write(player.ID);
 
-
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             string json = JsonConvert.SerializeObject(player.animator, settings);
-
-
             packet.Write(json);
+
 
             SendTCPDataToAll(packet);
         }

@@ -24,6 +24,12 @@ public class FDebug : MonoBehaviour
         Log = this;
     }
 
+    private void Start()
+    {
+        Toggle();
+    }
+
+
     public void Message(string msg)
     {
         log = log + Environment.NewLine + msg;
@@ -34,20 +40,26 @@ public class FDebug : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.F4))
         {
-
-            if (isDown)
-            {
-                Destination = new Vector3(0, 0, 0);
-            }
-            else
-            {
-                Destination = new Vector3(0, 500, 0);
-            }
-            isDown = !isDown;
-            journeyLength = Vector3.Distance(ConsoleWindow.anchoredPosition, Destination);
-            StartCoroutine(Move());
+            Toggle();
         }
        
+    }
+
+
+    void Toggle()
+    {
+
+        if (isDown)
+        {
+            Destination = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            Destination = new Vector3(0, 500, 0);
+        }
+        isDown = !isDown;
+        journeyLength = Vector3.Distance(ConsoleWindow.anchoredPosition, Destination);
+        StartCoroutine(Move());
     }
 
 
