@@ -24,7 +24,6 @@ public class ClientSend : MonoBehaviour
         {
             packet.Write(Client.instance.myId);
             packet.Write(UIManager.instance.usernameField.text);
-
             SendTCPData(packet);
         }
     }

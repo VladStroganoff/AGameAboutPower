@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int ID;
-    public string name;
+    public string Name;
     public vThirdPersonInput thirdPersonInput;
     public vThirdPersonMotor thirdPersonMotor;
     public Transform shootOrigin;
@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     public NetAnimator animator;
 
     private bool[] inputs;
-    private float yVelocity = 0;
 
 
     private void Start()
@@ -31,7 +30,7 @@ public class Player : MonoBehaviour
     public void Initialize(int id, string username)
     {
         ID = id;
-        name = username;
+        Name = username;
         health = maxHealth;
 
         inputs = new bool[5];
@@ -68,7 +67,7 @@ public class Player : MonoBehaviour
 
 
         //Vector3 rotation = transform.right * inputDirection.x + transform.forward * inputDirection.y;
-        thirdPersonMotor.moveDirection = thirdPersonInput.tpCamera.transform.right * inputDirection.x + thirdPersonInput.tpCamera.transform.forward * inputDirection.y;
+        thirdPersonMotor.SetMoveDirection(thirdPersonInput.tpCamera.transform.right * inputDirection.x + thirdPersonInput.tpCamera.transform.forward * inputDirection.y);
         //thirdPersonInput.tpCamera.RotateCamera(rotation.x, rotation.y);
 
         Send();

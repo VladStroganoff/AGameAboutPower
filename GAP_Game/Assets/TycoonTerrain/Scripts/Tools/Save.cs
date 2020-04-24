@@ -17,12 +17,24 @@ namespace TycoonTerrain.Core
         public TycoonTileMap TycoonMap;
         public TerrainGrid MapGrid;
         public TerrainTypeTable MapTypes;
-        public string url;
+        //public string url;
+
+        public bool LoadOnStart; 
+
 
         private NetWorld save;
         private NativeArray<byte> heightData;
         public Dictionary<int2, LandTile> tiles = new Dictionary<int2, LandTile>();
         public Dictionary<int2, ushort> tileTypes = new Dictionary<int2, ushort>();
+
+
+        public void Start()
+        {
+            if(LoadOnStart)
+            {
+                LoadMap();
+            }
+        }
 
         public void SaveMap()
         {
@@ -67,9 +79,9 @@ namespace TycoonTerrain.Core
             }
 
             string json = JsonConvert.SerializeObject(save);
-            File.WriteAllText(url, json);
+            File.WriteAllText(Application.persistentDataPath + "/map.save", json);
 
-            Debug.Log("ye saved mkay. at: " + url);
+            Debug.Log("ye saved mkay. at: " + Application.persistentDataPath + "/map.save");
 
             tiles = new Dictionary<int2, LandTile>();
             tileTypes = new Dictionary<int2, ushort>();
@@ -77,13 +89,13 @@ namespace TycoonTerrain.Core
 
         public void LoadMap()
         {
-            if (!File.Exists(url))
+            if (!File.Exists(Application.persistentDataPath + "/map.save"))
             {
-                FDebug.Log.Message("could not find file at: " + url);
+                FDebug.Log.Message("could not find file at: " + Application.persistentDataPath + "/map.save");
                 return;
             }
 
-            string text = File.ReadAllText(url);
+            string text = File.ReadAllText(Application.persistentDataPath + "/map.save");
 
             NetWorld worldSave = JsonConvert.DeserializeObject<NetWorld>(text);
 

@@ -86,7 +86,7 @@ public class Server
         }
         catch (Exception ex)
         {
-            //Debug.Log(ex.Message);
+            FDebug.Log.Message(ex.Message);
         }
     }
 
