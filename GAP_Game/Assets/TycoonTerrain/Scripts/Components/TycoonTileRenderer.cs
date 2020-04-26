@@ -83,6 +83,42 @@ public class TycoonTileRenderer : MonoBehaviour, IChunkListener {
 		}
 	}
 
+	public void GenerateMesh(Transform parent)
+	{
+		foreach (ChunkMesh chunkMesh in meshCache.Values)
+		{
+			Vector3 chunkWorldPosition = transform.position;
+			Quaternion chunkWorldRotation = transform.rotation;
+
+			for (int i = 0; i < chunkMesh.SurfaceMesh.subMeshCount; i++)
+			{
+                CreateMeshObject(chunkMesh.SurfaceMesh, chunkWorldPosition, chunkWorldRotation, chunkMesh.GetSurfaceMaterial(TerrainTypes, i), parent, gameObject.layer);
+			}
+
+			for (int i = 0; i < chunkMesh.CliffMesh.subMeshCount; i++)
+			{
+                CreateMeshObject(chunkMesh.CliffMesh, chunkWorldPosition, chunkWorldRotation, chunkMesh.GetCliffMaterial(TerrainTypes, i), parent, gameObject.layer);
+			}
+
+            CreateMeshObject(chunkMesh.WaterMesh, chunkWorldPosition, chunkWorldRotation, TerrainTypes.WaterMaterial, parent, gameObject.layer);
+            CreateMeshObject(chunkMesh.WaterCliffMesh, chunkWorldPosition, chunkWorldRotation, TerrainTypes.WaterCliffMaterial, parent, gameObject.layer);
+		}
+	}
+
+    public void CreateMeshObject(Mesh _mesh, Vector3 pos, Quaternion rot, Material mat, Transform _parent, LayerMask layer)
+	{
+		GameObject obj = new GameObject(_mesh.name);
+		obj.transform.position = pos;
+		obj.transform.rotation = rot;
+		MeshFilter mfilter = obj.AddComponent<MeshFilter>();
+		MeshRenderer mrend = obj.AddComponent<MeshRenderer>();
+		mfilter.mesh = _mesh;
+		mrend.material = mat;
+        obj.layer = layer;
+        obj.transform.SetParent(_parent);
+	}
+
+
 	/// <summary>
 	/// Gets called after completing all operations for this frame. Meshes should be updated in this scope.
 	/// </summary>

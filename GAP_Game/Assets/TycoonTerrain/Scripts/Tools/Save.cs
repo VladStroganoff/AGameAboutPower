@@ -19,9 +19,9 @@ namespace TycoonTerrain.Core
         public TerrainTypeTable MapTypes;
         //public string url;
 
-        public bool LoadOnStart; 
-
-
+        public bool LoadOnStart;
+        public TycoonTileRenderer MapRenderer;
+        public GameObject WorldOrigin;
         private NetWorld save;
         private NativeArray<byte> heightData;
         public Dictionary<int2, LandTile> tiles = new Dictionary<int2, LandTile>();
@@ -106,6 +106,14 @@ namespace TycoonTerrain.Core
             TycoonMap.ScheduleOperation(new CreateWaterBodyFloodOperation(waterSetPosition, 26, TycoonMap.WaterHeightStepsPerTileHeight));
 
         }
+
+
+        public void GenerateMeshOfMap()
+        {
+            WorldOrigin = new GameObject("World");
+            MapRenderer.GenerateMesh(WorldOrigin.transform);
+        }
+
     }
 
 
