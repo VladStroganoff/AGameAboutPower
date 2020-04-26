@@ -92,30 +92,30 @@ public class TycoonTileRenderer : MonoBehaviour, IChunkListener {
 
 			for (int i = 0; i < chunkMesh.SurfaceMesh.subMeshCount; i++)
 			{
-                CreateMeshObject(chunkMesh.SurfaceMesh, chunkWorldPosition, chunkWorldRotation, chunkMesh.GetSurfaceMaterial(TerrainTypes, i), parent, gameObject.layer);
+				CreateMeshObject(chunkMesh.SurfaceMesh, chunkWorldPosition, chunkWorldRotation, chunkMesh.GetSurfaceMaterial(TerrainTypes, i), parent, gameObject.layer, i);
 			}
 
 			for (int i = 0; i < chunkMesh.CliffMesh.subMeshCount; i++)
 			{
-                CreateMeshObject(chunkMesh.CliffMesh, chunkWorldPosition, chunkWorldRotation, chunkMesh.GetCliffMaterial(TerrainTypes, i), parent, gameObject.layer);
+				CreateMeshObject(chunkMesh.CliffMesh, chunkWorldPosition, chunkWorldRotation, chunkMesh.GetCliffMaterial(TerrainTypes, i), parent, gameObject.layer, i);
 			}
 
-            CreateMeshObject(chunkMesh.WaterMesh, chunkWorldPosition, chunkWorldRotation, TerrainTypes.WaterMaterial, parent, gameObject.layer);
-            CreateMeshObject(chunkMesh.WaterCliffMesh, chunkWorldPosition, chunkWorldRotation, TerrainTypes.WaterCliffMaterial, parent, gameObject.layer);
+			CreateMeshObject(chunkMesh.WaterMesh, chunkWorldPosition, chunkWorldRotation, TerrainTypes.WaterMaterial, parent, gameObject.layer, 0);
+			CreateMeshObject(chunkMesh.WaterCliffMesh, chunkWorldPosition, chunkWorldRotation, TerrainTypes.WaterCliffMaterial, parent, gameObject.layer, 0);
 		}
 	}
 
-    public void CreateMeshObject(Mesh _mesh, Vector3 pos, Quaternion rot, Material mat, Transform _parent, LayerMask layer)
+	public void CreateMeshObject(Mesh _mesh, Vector3 pos, Quaternion rot, Material mat, Transform _parent, LayerMask layer, int submesh)
 	{
 		GameObject obj = new GameObject(_mesh.name);
 		obj.transform.position = pos;
 		obj.transform.rotation = rot;
 		MeshFilter mfilter = obj.AddComponent<MeshFilter>();
 		MeshRenderer mrend = obj.AddComponent<MeshRenderer>();
-		mfilter.mesh = _mesh;
+		mfilter.mesh = _mesh.GetSubmesh(submesh);
 		mrend.material = mat;
-        obj.layer = layer;
-        obj.transform.SetParent(_parent);
+		obj.layer = layer;
+		obj.transform.SetParent(_parent);
 	}
 
 

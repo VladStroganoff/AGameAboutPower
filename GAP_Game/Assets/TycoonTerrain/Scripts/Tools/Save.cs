@@ -8,7 +8,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
-
+using UnityEditor;
 
 namespace TycoonTerrain.Core
 {
@@ -112,6 +112,16 @@ namespace TycoonTerrain.Core
         {
             WorldOrigin = new GameObject("World");
             MapRenderer.GenerateMesh(WorldOrigin.transform);
+            foreach(Transform child in transform)
+            {
+                SaveMesh(child.GetComponent<MeshFilter>().mesh); // do this!
+            }
+            
+        }
+
+        void SaveMesh(Mesh _mesh)
+        {
+
         }
 
     }
