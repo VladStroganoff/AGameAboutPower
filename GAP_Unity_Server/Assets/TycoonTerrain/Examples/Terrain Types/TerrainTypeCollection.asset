@@ -1,21 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c2862dd06bf0f94db8f902fd4209385, type: 3}
-  m_Name: TerrainTypeCollection
-  m_EditorClassIdentifier: 
-  Definitions:
-  - {fileID: 11400000, guid: 208372b2d7627d847b007768bbe9f556, type: 2}
-  - {fileID: 11400000, guid: ced37c7d046dfa84199eb0d2f05eb9ab, type: 2}
-  - {fileID: 11400000, guid: c956136b03e59ab4dbd73b1bf9acfc72, type: 2}
-  - {fileID: 11400000, guid: 499ae14ca6f27ea41ab95ceb75abaf1e, type: 2}
-  WaterMaterial: {fileID: 2100000, guid: 81d270bf385fce841b92c00ce4958e45, type: 2}
-  WaterCliffMaterial: {fileID: 2100000, guid: b5924ac7d830f0143a09d9b92dd0c6ef, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fd78ae8b0c6e22efd70f0dd5f649c83bc85aae46d665d9820d94ed38b14d89db
+size 907

@@ -1,16 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ea1e0a020fc564d9564bb0960b91ac, type: 3}
-  m_Name: Grass Terrain Type
-  m_EditorClassIdentifier: 
-  SurfaceMaterial: {fileID: 2100000, guid: f7908b21e3c6ae94e8270bd7093cde7e, type: 2}
-  CliffMaterial: {fileID: 2100000, guid: 921cc78a5dd8bc644b4f357a63a7ecd0, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:16e9e9ce9b346b79fe3fdc5ab595c0b203321c33be394c4a31bc8d46a35b1130
+size 593
