@@ -20,6 +20,7 @@ public class TycoonTileRenderer : MonoBehaviour, IChunkListener {
 
 	public ShadowCastingMode CastShadows = ShadowCastingMode.Off;
 	public bool ReceiveShadows = false;
+	public bool draw = true;
 
 	//Temporary mesh data.
 	List<Vector3> verts = new List<Vector3>();
@@ -66,6 +67,10 @@ public class TycoonTileRenderer : MonoBehaviour, IChunkListener {
 	/// Draw all chunk meshes procedurally every frame.
 	/// </summary>
 	private void LateUpdate() {
+
+		if (!draw)
+			return;
+
 		foreach (ChunkMesh chunkMesh in meshCache.Values) {
 			Vector3 chunkWorldPosition = transform.position;
 			Quaternion chunkWorldRotation = transform.rotation;
@@ -107,7 +112,7 @@ public class TycoonTileRenderer : MonoBehaviour, IChunkListener {
 
 	public void CreateMeshObject(Mesh _mesh, Vector3 pos, Quaternion rot, Material mat, Transform _parent, LayerMask layer, int submesh)
 	{
-		GameObject obj = new GameObject(_mesh.name);
+		GameObject obj = new GameObject(_mesh.name + "_" + submesh);
 		obj.transform.position = pos;
 		obj.transform.rotation = rot;
 		MeshFilter mfilter = obj.AddComponent<MeshFilter>();

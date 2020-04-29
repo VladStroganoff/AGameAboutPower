@@ -11,7 +11,7 @@ using UnityEngine;
 [RequireComponent(typeof(TycoonTileMap))]
 public class TycoonTileCollider : MonoBehaviour, IChunkListener {
 	private TycoonTileMap terrain;
-	private Dictionary<int2, MeshCollider> colliders;
+	public Dictionary<int2, MeshCollider> colliders;
 
 	// Use this for initialization
 	void Awake () {

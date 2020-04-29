@@ -9,6 +9,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 namespace TycoonTerrain.Core
 {
@@ -21,7 +22,11 @@ namespace TycoonTerrain.Core
 
         public bool LoadOnStart;
         public TycoonTileRenderer MapRenderer;
-        public GameObject WorldOrigin;
+        public TycoonTileCollider CollisionGen;
+        GameObject TempGraphics;
+
+        GameObject Colliders;
+        GameObject Graphics;
         private NetWorld save;
         private NativeArray<byte> heightData;
         public Dictionary<int2, LandTile> tiles = new Dictionary<int2, LandTile>();
@@ -30,7 +35,7 @@ namespace TycoonTerrain.Core
 
         public void Start()
         {
-            if(LoadOnStart)
+            if (LoadOnStart)
             {
                 LoadMap();
             }
@@ -110,22 +115,43 @@ namespace TycoonTerrain.Core
 
         public void GenerateMeshOfMap()
         {
-            WorldOrigin = new GameObject("World");
-            MapRenderer.GenerateMesh(WorldOrigin.transform);
-            foreach(Transform child in transform)
+            TempGraphics = new GameObject("Temp");
+            Graphics = new GameObject("Graphics");
+            MapRenderer.GenerateMesh(TempGraphics.transform);
+            foreach (Transform child in TempGraphics.transform)
             {
-                SaveMesh(child.GetComponent<MeshFilter>().mesh); // do this!
+                if (child.GetComponent<MeshFilter>().mesh.triangles.Length > 1)
+                    SaveMesh(child.gameObject, child.GetComponent<MeshFilter>().mesh, child.name);
             }
-            
+
+            AssetDatabase.SaveAssets();
+
+            Destroy(TempGraphics);
         }
 
-        void SaveMesh(Mesh _mesh)
+        void SaveMesh(GameObject go, Mesh _mesh, string name)
         {
+            if (!File.Exists(Application.dataPath + "/TycoonTerrain/BakedTerrain/Meshes/" + "mesh_" + name + ".obj"))
+                ObjExporter.MeshToFile(_mesh, go.GetComponent<MeshRenderer>().materials, Application.dataPath + "/TycoonTerrain/BakedTerrain/Meshes/" + "mesh_" + name + ".obj");
 
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
+            var fullObj = new GameObject(name);
+
+            if (go.GetComponent<MeshRenderer>() != null)
+            {
+                fullObj.transform.SetParent(Graphics.transform);
+                fullObj.transform.position = go.transform.position;
+                fullObj.transform.rotation = Quaternion.Euler(0, -90, 0);
+                fullObj.AddComponent<MeshFilter>();
+                fullObj.GetComponent<MeshFilter>().mesh = AssetDatabase.LoadAssetAtPath<Mesh>("Assets/TycoonTerrain/BakedTerrain/Meshes/" + "mesh_" + name + ".obj");
+                fullObj.AddComponent<MeshRenderer>();
+                fullObj.GetComponent<MeshRenderer>().material = go.GetComponent<MeshRenderer>().sharedMaterial;
+            }
         }
 
     }
-
 
 }
 

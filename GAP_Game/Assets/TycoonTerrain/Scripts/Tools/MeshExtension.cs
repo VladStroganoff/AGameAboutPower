@@ -28,7 +28,7 @@ public static class MeshExtension
             uv4 = CreateList(aMesh.uv4);
             normals = CreateList(aMesh.normals);
             tangents = CreateList(aMesh.tangents);
-            colors = CreateList(aMesh.colors32);
+            //colors = CreateList(aMesh.colors32);
             boneWeights = CreateList(aMesh.boneWeights);
         }
 
@@ -78,6 +78,10 @@ public static class MeshExtension
 
     public static Mesh GetSubmesh(this Mesh aMesh, int aSubMeshIndex)
     {
+        if (aMesh == null)
+            return new Mesh();
+
+
         if (aSubMeshIndex < 0 || aSubMeshIndex >= aMesh.subMeshCount)
             return null;
         int[] indices = aMesh.GetTriangles(aSubMeshIndex);
