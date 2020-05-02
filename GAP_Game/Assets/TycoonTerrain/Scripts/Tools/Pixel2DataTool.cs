@@ -4,6 +4,7 @@ using TycoonTerrain.Core;
 using TycoonTerrain.Core.TerrainOperations;
 using Unity.Mathematics;
 using UnityEngine;
+using System.Linq;
 
 public class Pixel2DataTool : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Pixel2DataTool : MonoBehaviour
                 if (tilePos.y > 1020)
                     Debug.Log("yo");
 
+                //ProcessTile(tile);
                 world.LandTiles[tilePos.x, tilePos.y] = tile;
 
             }
@@ -50,4 +52,11 @@ public class Pixel2DataTool : MonoBehaviour
 
         TycoonMap.ScheduleOperation(new LoadTerrainOperation(world.LandTiles));
     }
+
+    void ProcessTile(NetLandTile tile)
+    {
+        int[] height = {tile.cornerNW, tile.cornerNE, tile.cornerSW, tile.cornerSE};
+        height = height.OrderBy(x => x).ToArray();
+    }
+
 }
