@@ -4,6 +4,12 @@
 public class NetWorld
 {
     public NetLandTile[,] LandTiles;
+
+    public NetWorld(int x, int y)
+    {
+        LandTiles = new NetLandTile[x, y];
+    }
+
 }
 
 [System.Serializable]

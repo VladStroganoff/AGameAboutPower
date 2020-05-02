@@ -74,7 +74,7 @@ namespace TycoonTerrain.Core {
 			dirtyChunks.MarkAllChunksDirty();
 		}
 
-        private void OnValidate() {
+		private void OnValidate() {
 			if (Width < 0)
 				Width = 0;
 
@@ -149,9 +149,9 @@ namespace TycoonTerrain.Core {
 			chunkListeners.Add(listener);
 		}
 
-        public TerrainGrid GetGrid()
-        {
-            return grid;
-        }
+		public TerrainGrid GetGrid()
+		{
+			return grid;
+		}
 	}
 }
