@@ -10,22 +10,11 @@ public class Pixel2DataTool : MonoBehaviour
 {
     public TycoonTileMap TycoonMap;
     public Texture2D HeightMap;
+    public Texture2D BasicCoveridgeMap;
     NetWorld world;
     int2 tilePos;
 
-
-    IDictionary<string, byte> fourCorners = new Dictionary<string, byte>();
-
-    bool top;
-    bool left;
-    bool right;
-    bool bottom;
-    bool topLeft;
-    bool topRight;
-    bool bottomLeft;
-    bool bottomRight;
-
-
+    Dictionary<string, int> RGBA = new Dictionary<string, int>();
 
     public void LoadUpPixels()
     {
@@ -42,10 +31,12 @@ public class Pixel2DataTool : MonoBehaviour
                 if (y != 0)
                     tilePos.y++;
 
-                float cornerSW = HeightMap.GetPixel(x + 1, y).a * 255f;
-                float cornerSE = HeightMap.GetPixel(x, y).a * 255f;
-                float cornerNW = HeightMap.GetPixel(x + 1, y + 1).a * 255f;
-                float cornerNE = HeightMap.GetPixel(x, y + 1).a * 255f;
+
+
+                float cornerSW = HeightMap.GetPixel(x + 1, y).r * 255f;
+                float cornerSE = HeightMap.GetPixel(x, y).r * 255f;
+                float cornerNW = HeightMap.GetPixel(x + 1, y + 1).r * 255f;
+                float cornerNE = HeightMap.GetPixel(x, y + 1).r * 255f;
 
                 NetLandTile tile = new NetLandTile();
                 tile.cornerSW = (byte)cornerSW;
@@ -53,8 +44,7 @@ public class Pixel2DataTool : MonoBehaviour
                 tile.cornerNW = (byte)cornerNW;
                 tile.cornerNE = (byte)cornerNE;
 
-                if (tilePos.y > 1020)
-                    Debug.Log("yo");
+                GetColorValue(tile, x, y);
 
                 InternalSmooth(tile);
                 world.LandTiles[tilePos.x, tilePos.y] = tile;
@@ -63,8 +53,8 @@ public class Pixel2DataTool : MonoBehaviour
             tilePos.y = 0;
         }
 
-        ExternalSmooth(world);
         TycoonMap.ScheduleOperation(new LoadTerrainOperation(world.LandTiles));
+        TycoonMap.SchedulePaintOperation(new BeachLoadOperation(world.LandTiles));
     }
 
     void InternalSmooth(NetLandTile tile)
@@ -85,7 +75,7 @@ public class Pixel2DataTool : MonoBehaviour
 
         foreach (Corner corner in corners)
         {
-            switch (corner.name)
+            switch (corner.name) 
             {
                 case "cornerNW":
                     tile.cornerNW = corner.height;
@@ -101,92 +91,37 @@ public class Pixel2DataTool : MonoBehaviour
                     return;
             }
         }
-    }
+    } // maybe this this is not needed
 
-    void ExternalSmooth(NetWorld world)
+    void GetColorValue(NetLandTile tile, int x, int y)
     {
-        for (int x = 0; x < world.LandTiles.Length; x++)
+
+        RGBA.Add("R", (int)BasicCoveridgeMap.GetPixel(x, y).r * 255);
+        RGBA.Add("G", (int)BasicCoveridgeMap.GetPixel(x, y).g * 255);
+        RGBA.Add("B", (int)BasicCoveridgeMap.GetPixel(x, y).b * 255);
+        RGBA.Add("A", (int)BasicCoveridgeMap.GetPixel(x, y).a * 255);
+
+        var rgbaList = RGBA.ToList();
+
+        rgbaList.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
+        RGBA.Clear();
+
+        switch (rgbaList[3].Key)
         {
-            for (int y = 0; y < world.LandTiles.Length; y++)
-            {
-                if (!AvoidBorder(x, y))
-                    continue;
-
-                top = CheckTile(world.LandTiles[x, y +1]);
-                left = CheckTile(world.LandTiles[x-1, y]);
-                right = CheckTile(world.LandTiles[x+1, y]);
-                bottom = CheckTile(world.LandTiles[x, y-1]);
-                topLeft = CheckTile(world.LandTiles[x-1, y+1]);
-                topRight = CheckTile(world.LandTiles[x+1, y+1]);
-                bottomLeft = CheckTile(world.LandTiles[x-1, y-1]);
-                bottomRight = CheckTile(world.LandTiles[x+1, y-1]);
-
-                bool[] bools = { top, left, right, bottom, topLeft, topRight, bottomLeft, bottomRight };
-
-                foreach(bool answer in bools)
-                {
-                    if (answer == false)
-                        return;
-                }
-
-                byte flatValue = world.LandTiles[x + 1, y].cornerNE;
-
-                world.LandTiles[x, y].cornerNE = flatValue;
-                world.LandTiles[x, y].cornerSE = flatValue;
-                world.LandTiles[x, y].cornerNW = flatValue;
-                world.LandTiles[x, y].cornerSW = flatValue;
-
-
-                ResetBools();
-            }
+            case "R":
+                tile.tileType = 0;
+                break;
+            case "G":
+                tile.tileType = 3;
+                return;
+            case "B":
+                tile.tileType = 2;
+                return;
+            case "A":
+                //tile.tileType = 1;
+                return;
         }
 
-    }
-
-    bool CheckTile(NetLandTile tile)
-    {
-        List<Corner> corners = new List<Corner>();
-
-        corners.Add(new Corner("cornerNW", tile.cornerNW));
-        corners.Add(new Corner("cornerNE", tile.cornerNE));
-        corners.Add(new Corner("cornerSW", tile.cornerSW));
-        corners.Add(new Corner("cornerSE", tile.cornerSE));
-
-        corners.Sort((x, y) => x.height.CompareTo(y.height));
-
-        if (corners[0].height != corners[1].height)
-            return false;
-
-        if (corners[1].height != corners[2].height)
-            return false;
-
-        return true;
-    }
-
-    bool AvoidBorder(int x, int y)
-    {
-        if (y < 1)
-            return false;
-        if (x < 1)
-            return false;
-        if (y > 1024)
-            return false;
-        if (x > 1024)
-            return false;
-
-        return true;
-    }
-
-    void ResetBools()
-    {
-        top = false;
-        left = false;
-        right = false;
-        bottom = false;
-        topLeft = false;
-        topRight = false;
-        bottomLeft = false;
-        bottomRight = false;
     }
 
 }

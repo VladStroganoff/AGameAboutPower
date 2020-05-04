@@ -9,6 +9,7 @@ public class Bake2Mesh : MonoBehaviour
     GameObject TempGraphics;
     GameObject Graphics;
     public TycoonTileRenderer MapRenderer;
+    public bool DebugMode;
 
 
     public void GenerateMeshOfMap()
@@ -20,6 +21,12 @@ public class Bake2Mesh : MonoBehaviour
         {
             if (child.GetComponent<MeshFilter>().mesh.triangles.Length > 1)
                 SaveMesh(child.gameObject, child.GetComponent<MeshFilter>().mesh, child.name);
+
+            if (DebugMode)
+            {
+                Debug.Log("Mesh debug is on.");
+                break;
+            }
         }
 
         AssetDatabase.SaveAssets();
@@ -30,7 +37,7 @@ public class Bake2Mesh : MonoBehaviour
     void SaveMesh(GameObject go, Mesh _mesh, string name)
     {
         if (!File.Exists(Application.dataPath + "/TycoonTerrain/BakedTerrain/Meshes/" + "mesh_" + name + ".obj"))
-            ObjExporter.MeshToFile(_mesh, go.GetComponent<MeshRenderer>().materials, Application.dataPath + "/TycoonTerrain/BakedTerrain/Meshes/" + "mesh_" + name + ".obj");
+            ObjExporter.MeshToFile(_mesh, go.GetComponent<MeshRenderer>().sharedMaterials, Application.dataPath + "/TycoonTerrain/BakedTerrain/Meshes/" + "mesh_" + name + ".obj");
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();

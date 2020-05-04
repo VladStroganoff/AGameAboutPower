@@ -96,11 +96,11 @@ namespace TycoonTerrain.Core
 
             NetWorld worldSave = JsonConvert.DeserializeObject<NetWorld>(text);
 
-
             TycoonMap.ScheduleOperation(new LoadTerrainOperation(worldSave.LandTiles));
             TycoonMap.SchedulePaintOperation(new BeachLoadOperation(worldSave.LandTiles));
             int2 waterSetPosition = new int2(81, 89);
             TycoonMap.ScheduleOperation(new CreateWaterBodyFloodOperation(waterSetPosition, 26, TycoonMap.WaterHeightStepsPerTileHeight));
+            FDebug.Log.Message("Finished Load from: " + Application.persistentDataPath + "/map.save");
 
         }
 

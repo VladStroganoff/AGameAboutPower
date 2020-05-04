@@ -3350,7 +3350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TycoonMap: {fileID: 164516486}
-  HeightMap: {fileID: 2800000, guid: 514335d1d8227c544af2c4f07b9d67dd, type: 3}
+  HeightMap: {fileID: 2800000, guid: 974ba40eced79d94a8ecaea27dee6828, type: 3}
 --- !u!1 &1297720302
 GameObject:
   m_ObjectHideFlags: 0
