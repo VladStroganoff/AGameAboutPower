@@ -9,6 +9,8 @@
     "com.unity.jobs": "0.2.8-preview.3",
     "com.unity.mathematics": "1.1.0",
     "com.unity.postprocessing": "2.3.0",
+    "com.unity.render-pipelines.high-definition": "7.3.1",
+    "com.unity.shadergraph": "7.3.1",
     "com.unity.test-framework": "1.1.13",
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.timeline": "1.2.10",

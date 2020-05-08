@@ -64,7 +64,7 @@ namespace TycoonTerrain.Core {
             float3 sw = GetCornerPosition(ref handle, CornerIndex.SouthWest);
             float3 nw = GetCornerPosition(ref handle, CornerIndex.NorthWest);
             float3 center = handle.CenterPosition + new Vector3(0, handle.CenterSurfaceHeight * tileStepHeight, 0);
-            float step = 1 / handle.Grid.Length;
+            float step = 1f / handle.Grid.Length;
 
             //North triangle
             vertices.Add(ne);
