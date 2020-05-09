@@ -6,19 +6,21 @@ using System;
 
 public class TexturePacker : MonoBehaviour
 {
-    public Texture2D[] Textures;
-    public string SaveLocation = "Assets/TextureArray.tarr";
+
+    public string AlbedoTextureURL = "Assets/Content/Enviroment/Landscaping/AlbedosAndComp.asset";
+
+    public Texture2D[] AlbedoTextures;
 
     public void CreateTextureArray()
     {
-        Texture2DArray array = new Texture2DArray(Textures[0].width, Textures[0].height, Textures.Length, Textures[0].format, false);
+        Texture2DArray array = new Texture2DArray(AlbedoTextures[0].width, AlbedoTextures[0].height, AlbedoTextures.Length, AlbedoTextures[0].format, false);
 
 
-        for (int i = 0; i < Textures.Length; i++)
-            array.SetPixels(Textures[i].GetPixels(), i);
+        for (int i = 0; i < AlbedoTextures.Length; i++)
+            array.SetPixels(AlbedoTextures[i].GetPixels(), i);
 
         array.Apply();
-        AssetDatabase.CreateAsset(array, SaveLocation);
+        AssetDatabase.CreateAsset(array, AlbedoTextureURL);
     }
 }
 
