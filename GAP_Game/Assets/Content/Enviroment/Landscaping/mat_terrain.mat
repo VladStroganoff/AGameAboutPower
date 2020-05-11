@@ -239,7 +239,7 @@ Material:
     - Vector1_21C43AAF: 0.228
     - Vector1_50081DD1: 300
     - Vector1_70CF0E3C: 300
-    - Vector1_DF7022D1: 292.25
+    - Vector1_DF7022D1: 300
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -362,7 +362,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Vector2_2BC7E241: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_2BC7E241: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
