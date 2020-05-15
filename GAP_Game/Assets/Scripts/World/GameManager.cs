@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum GameState { InLobby, InGame}
 
-public class GameManager : MonoBehaviour
+public class GameManager : Controller
 {
     public static GameManager instance;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
     public WorldModel Model { get; private set; }
+
 
     private void Awake()
     {
@@ -49,5 +50,6 @@ public class GameManager : MonoBehaviour
         players.Add(id, player.GetComponent<PlayerManager>());
 
         Model.SetGameState(GameState.InGame);
+        Model.AddPlayer(player);
     }
 }

@@ -59,9 +59,6 @@ public class RTSCamera : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
-        if (Input.GetKeyUp(KeyCode.Z))
-            ResetPosition();
-
         MouseInput();
 
         switch (currentState)
@@ -179,17 +176,4 @@ public class RTSCamera : MonoBehaviour
         transform.LookAt(Target.transform);
         localTarget = transform.InverseTransformPoint(Target.position);
     }
-
-    public void ResetPosition()
-    {
-        transform.position = startCamPos;
-        transform.rotation = stratCamRot;
-
-        Target.transform.position = startCurPos;
-        Target.transform.rotation = stratCurRot;
-
-        localTarget = transform.InverseTransformPoint(startCurPos);
-    }
-
-
 }

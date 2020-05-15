@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
 public class MeshProcessor : AssetPostprocessor
 {
     void OnPreprocessModel()
