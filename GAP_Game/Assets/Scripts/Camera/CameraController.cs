@@ -8,7 +8,7 @@ public interface ICameraController
 { }
 
 
-public class CameraController : ICameraController, IInitializable
+public class CameraController : ScriptableObject, ICameraController, IInitializable
 {
   
 

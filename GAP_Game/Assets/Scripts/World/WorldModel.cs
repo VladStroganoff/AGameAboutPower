@@ -12,7 +12,9 @@ public class WorldModel
     public void SetGameState(GameState newState)
     {
         CurrentState = newState;
-        GameStateChange.Invoke(newState);
+
+        if (GameStateChange!=null)
+            GameStateChange.Invoke(newState);
     }
 
     public void AddPlayer(GameObject player)

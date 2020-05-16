@@ -23,5 +23,6 @@ public class CameraView : MonoBehaviour, ICameraView
 
     public void ActivateTPSCamera()
     {
+
     }
 }

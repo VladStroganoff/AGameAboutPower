@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour, IGameManager
     public GameObject playerPrefab;
     public WorldModel Model { get; set; }
 
+
     private void Start()
     {
+        Model = new WorldModel();
         Model.SetGameState(GameState.InLobby);
     }
 
