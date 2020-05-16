@@ -4,14 +4,19 @@ using UnityEngine;
 
 public enum GameState { InLobby, InGame}
 
-public class GameManager : Controller
+public interface IGameManager
+{
+    WorldModel Model { get; set; }
+}
+
+public class GameManager : MonoBehaviour, IGameManager
 {
     public static GameManager instance;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
-    public WorldModel Model { get; private set; }
+    public WorldModel Model { get; set; }
 
 
     private void Awake()
@@ -23,7 +28,6 @@ public class GameManager : Controller
         }
         else if (instance != this)
         {
-            Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
     }
