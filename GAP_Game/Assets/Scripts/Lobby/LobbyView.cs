@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class LobbyView : MonoBehaviour
 {
 
     public Camera LobbyCamera;
 
+
+    [Inject]
+    IGameManager gameManager;
+
     void Start()
     {
-        GameManager.instance.Model.GameStateChange += CheckState;
+        gameManager.Model.GameStateChange += CheckState;
     }
 
     void CheckState(GameState state)

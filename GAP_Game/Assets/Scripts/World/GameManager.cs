@@ -7,30 +7,16 @@ public enum GameState { InLobby, InGame}
 public interface IGameManager
 {
     WorldModel Model { get; set; }
+    void SpawnPlayer(int id, string username, Vector3 position, Quaternion rotation);
 }
 
 public class GameManager : MonoBehaviour, IGameManager
 {
-    public static GameManager instance;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
     public WorldModel Model { get; set; }
-
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            Model = new WorldModel();
-        }
-        else if (instance != this)
-        {
-            Destroy(this);
-        }
-    }
 
     private void Start()
     {

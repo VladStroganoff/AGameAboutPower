@@ -7,5 +7,6 @@ public class ControllersInstaller : MonoInstaller
     {
         Container.Bind<ICameraController>().To<CameraController>().AsSingle();
         Container.Bind<IGameManager>().To<GameManager>().AsSingle();
+        Container.Bind<ICameraView>().To<CameraView>().AsSingle();
     }
 }

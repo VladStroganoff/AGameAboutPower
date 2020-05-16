@@ -8,22 +8,21 @@ public interface ICameraController
 { }
 
 
-public class CameraController : MonoBehaviour, ICameraController
+public class CameraController : ICameraController, IInitializable
 {
-    public Camera LocalPlayerCamera;
-    public vThirdPersonCamera TPCCam;
-    public RTSCamera RTSCam;
-    public Transform RTSPos;
+  
 
     [Inject]
-    public IGameManager gameManager;
+    IGameManager gameManager;
+    [Inject]
+    ICameraView cameraView;
 
- 
 
-    private void Start()
+    public void Initialize()
     {
         Setup();
     }
+
     void Setup()
     {
         gameManager.Model.GameStateChange += CheckGameState;
@@ -33,8 +32,7 @@ public class CameraController : MonoBehaviour, ICameraController
     {
         if (state != GameState.InGame)
             return;
-
     }
 
-
+  
 }
