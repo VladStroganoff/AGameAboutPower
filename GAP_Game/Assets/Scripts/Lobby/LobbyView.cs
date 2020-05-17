@@ -9,13 +9,19 @@ public class LobbyView : MonoBehaviour
     public Camera LobbyCamera;
 
 
-    [Inject]
     IGameManager gameManager;
+
+    [Inject]
+    public void InjectGameManager(IGameManager manager)
+    {
+        gameManager = manager;
+    }
 
     void Start()
     {
         gameManager.Model.GameStateChange += CheckState;
     }
+
 
     void CheckState(GameState state)
     {

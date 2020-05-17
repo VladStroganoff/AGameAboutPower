@@ -3,9 +3,10 @@ using Zenject;
 
 public class Monos : MonoInstaller
 {
+    public GameManager gameManager;
+
     public override void InstallBindings()
     {
-        Container.Bind<IGameManager>().To<GameManager>().AsSingle();
-        Container.Bind<ICameraView>().To<CameraView>().AsSingle();
+        Container.Bind<IGameManager>().FromInstance(gameManager);
     }
 }

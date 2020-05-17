@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour, IGameManager
     public WorldModel Model { get; set; }
 
 
-    private void Start()
+    private void Awake()
     {
         Model = new WorldModel();
         Model.SetGameState(GameState.InLobby);
