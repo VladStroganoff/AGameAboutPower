@@ -17,10 +17,12 @@ public class GameManager : MonoBehaviour, IGameManager
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
     public WorldModel Model { get; set; }
+    public static GameManager instance;
 
 
     private void Awake()
     {
+        instance = this;
         Model = new WorldModel();
         Model.SetGameState(GameState.InLobby);
     }

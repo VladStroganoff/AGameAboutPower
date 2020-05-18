@@ -50,9 +50,6 @@ public class RTSCamera : MonoBehaviour
     }
     void Update()
     {
-
-
-
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
@@ -120,7 +117,7 @@ public class RTSCamera : MonoBehaviour
     void Pan()
     {
         Vector3 delta = (Input.mousePosition - _mouseReference)*2;
-        transform.Translate(-delta.x * 0.02f, -delta.y * 0.02f, 0);
+        transform.Translate(-delta.z * 0.02f, -delta.y * 0.02f, 0);
 
         Target.position = transform.TransformPoint(localTarget);
         _mouseReference = Input.mousePosition;

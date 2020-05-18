@@ -5,22 +5,28 @@ using Zenject;
 
 
 public interface ICameraController
-{ }
+{
+    void InjectCameraView(ICameraView camView);
+}
 
 
-public class CameraController : ScriptableObject, ICameraController, IInitializable
+public class CameraController : MonoBehaviour, ICameraController
 {
   
 
-    [Inject]
     IGameManager gameManager;
-    [Inject]
     ICameraView cameraView;
 
 
-    public void Initialize()
+    [Inject]
+    public void InjectGameManager(IGameManager manager)
     {
-        Setup();
+        gameManager = manager;
+    }
+
+    public void InjectCameraView(ICameraView camView)
+    {
+        cameraView = cameraView;
     }
 
     void Setup()

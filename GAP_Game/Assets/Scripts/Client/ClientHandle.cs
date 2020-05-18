@@ -5,14 +5,13 @@ using System.Net;
 using Newtonsoft.Json;
 using Zenject;
 
+
+
 public class ClientHandle : MonoBehaviour
 {
-    [Inject]
-    static IGameManager gameManager;
 
 
-
-  public static void Welcome(Packet _packet)
+    public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
         int _myID = _packet.ReadInt();
@@ -32,8 +31,7 @@ public class ClientHandle : MonoBehaviour
         string username = packet.ReadString();
         Vector3 position = packet.ReadVector3();
         Quaternion rotaton = packet.ReadQuaternion();
-
-        gameManager.SpawnPlayer(id, username, position, rotaton);
+        GameManager.instance.SpawnPlayer(id, username, position, rotaton);
     }
 
     public static void PlayerPosition(Packet packet)

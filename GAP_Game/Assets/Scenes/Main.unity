@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 460.31686, g: 287.47116, b: 242.78923, a: 1}
+  m_IndirectSpecularColor: {r: 457.0095, g: 288.03952, b: 249.36151, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -47696,6 +47696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1119477687}
+  clientHandle: {fileID: 0}
+  cameraController: {fileID: 1119477688}
 --- !u!114 &460938549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48342,7 +48344,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1761608780}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999989
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -49102,6 +49104,7 @@ GameObject:
   - component: {fileID: 1119477687}
   - component: {fileID: 1119477686}
   - component: {fileID: 1119477685}
+  - component: {fileID: 1119477688}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -49164,6 +49167,18 @@ MonoBehaviour:
     type: 3}
   playerPrefab: {fileID: 4816498496395887971, guid: dee201560b73fde40a91cb7f14042ace,
     type: 3}
+--- !u!114 &1119477688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119477683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79b9aba1d8230f4b8997dd7d710ceda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171782394
 GameObject:
   m_ObjectHideFlags: 19
@@ -50400,7 +50415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00008427413, y: 0}
+  m_AnchoredPosition: {x: 0.00045350814, y: 0}
   m_SizeDelta: {x: -20.20398, y: 233.00006}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1575651604
