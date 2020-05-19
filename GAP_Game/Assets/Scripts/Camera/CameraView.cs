@@ -16,12 +16,11 @@ public class CameraView : MonoBehaviour, ICameraView
     public vThirdPersonCamera TPCCam;
     public RTSCamera RTSCam;
     public Transform RTSPos;
-    
 
     [Inject]
-    public void InjectGameManager(ICameraController camControl)
+    public void InjectGameManager(ICameraController _camControl)
     {
-        camControl.InjectCameraView(this);
+        _camControl.InjectCameraView(this);
     }
 
 

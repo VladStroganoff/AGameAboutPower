@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour, ICameraController
 
     public void InjectCameraView(ICameraView camView)
     {
-        cameraView = cameraView;
+        cameraView = camView;
     }
 
     void Setup()
