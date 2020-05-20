@@ -4,34 +4,27 @@ using UnityEngine;
 using Zenject;
 
 
+
 public interface ICameraController
 {
-    void InjectCameraView(ICameraView camView);
+    CameraStateChanged CameraStateChange { get; set; }
 }
+
+
+public delegate void CameraStateChanged(CameraState state);
+public enum CameraState { TPS, RTS, Lobby }
 
 
 public class CameraController : MonoBehaviour, ICameraController
 {
-  
-
-    IGameManager gameManager;
-    ICameraView cameraView;
+    public CameraStateChanged CameraStateChange { get; set; }
+    bool toggleRTS;
 
 
     [Inject]
-    public void InjectGameManager(IGameManager manager)
+    public void Inject(IGameManager manager)
     {
-        gameManager = manager;
-    }
-
-    public void InjectCameraView(ICameraView camView)
-    {
-        cameraView = camView;
-    }
-
-    void Setup()
-    {
-        gameManager.Model.GameStateChange += CheckGameState;
+        manager.Model.GameStateChange += CheckGameState;
     }
 
     void CheckGameState(GameState state)
@@ -40,5 +33,23 @@ public class CameraController : MonoBehaviour, ICameraController
             return;
     }
 
-  
+
+    void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            if(toggleRTS)
+            {
+                CameraStateChange.Invoke(CameraState.RTS);
+                toggleRTS = !toggleRTS;
+            }
+            else
+            {
+                CameraStateChange.Invoke(CameraState.TPS);
+                toggleRTS = !toggleRTS;
+            }
+        }
+    }
+
+
 }

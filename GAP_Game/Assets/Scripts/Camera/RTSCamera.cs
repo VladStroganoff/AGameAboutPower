@@ -6,7 +6,7 @@ public class RTSCamera : MonoBehaviour
 {
     public enum NavigationState
     {
-        Pan, Rotate, Zoom, TightRotate, None
+        Pan, Rotate, Zoom, None
     }
     public NavigationState currentState;
     public Transform Target;
@@ -21,14 +21,14 @@ public class RTSCamera : MonoBehaviour
     Vector3 localTarget;
     private Vector3 verticalRot;
 
-    private Vector3 startCamPos;
-    private Quaternion stratCamRot;
+    private Transform startPose;
+   
+
 
     private Vector3 startCurPos;
     private Quaternion stratCurRot;
 
     private Vector3 oldPosition;
-
 
     void Start()
     {
@@ -39,8 +39,7 @@ public class RTSCamera : MonoBehaviour
     {
         transform.LookAt(Target.transform);
 
-        startCamPos = transform.position;
-        stratCamRot = transform.rotation;
+        startPose = transform;
 
         startCurPos = Target.position;
         stratCurRot = Target.rotation;
@@ -48,6 +47,7 @@ public class RTSCamera : MonoBehaviour
         localTarget = transform.InverseTransformPoint(Target.position);
         _mouseReference = Input.mousePosition;
     }
+
     void Update()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -105,11 +105,6 @@ public class RTSCamera : MonoBehaviour
             currentState = NavigationState.Pan;
             return;
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
-        {
-            currentState = NavigationState.TightRotate;
-            return;
-        }
 
         currentState = NavigationState.Zoom;
     }
@@ -117,9 +112,7 @@ public class RTSCamera : MonoBehaviour
     void Pan()
     {
         Vector3 delta = (Input.mousePosition - _mouseReference)*2;
-        transform.Translate(-delta.z * 0.02f, -delta.y * 0.02f, 0);
-
-        Target.position = transform.TransformPoint(localTarget);
+        transform.parent.Translate(-delta.x * 0.02f, 0, -delta.y * 0.02f, Space.Self);
         _mouseReference = Input.mousePosition;
     }
 
@@ -133,11 +126,11 @@ public class RTSCamera : MonoBehaviour
 
         if (Input.mouseScrollDelta.y < 0)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.position, transform.TransformPoint(localTarget), Input.mouseScrollDelta.y * Vector3.Distance(transform.position, Target.position) / 30); // zoom out
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Target.localPosition, Input.mouseScrollDelta.y * Vector3.Distance(transform.position, Target.position) / 30); // zoom out
         }
         else
         {
-            zoomInDest = Vector3.MoveTowards(transform.position, transform.TransformPoint(localTarget), Input.mouseScrollDelta.y * Vector3.Distance(transform.position, Target.position) / 30);
+            zoomInDest = Vector3.MoveTowards(transform.localPosition, Target.localPosition, Input.mouseScrollDelta.y * Vector3.Distance(transform.position, Target.position) / 30);
         }
 
 
@@ -152,7 +145,7 @@ public class RTSCamera : MonoBehaviour
         if (yenah && !startPan)
         {
             startPan = true;
-            verticalRot = transform.TransformVector(Vector3.left);
+            verticalRot = transform.parent.TransformVector(Vector3.left);
             _mouseReference = Input.mousePosition;
         }
         else
@@ -164,13 +157,15 @@ public class RTSCamera : MonoBehaviour
 
     void Rotate()
     {
-
         horizontal = Input.GetAxis("Mouse X") * Sensitivity;
-        vertical = Input.GetAxis("Mouse Y") * Sensitivity;
+        transform.parent.RotateAround(Target.transform.position, Vector3.up, horizontal);
 
-        transform.RotateAround(Target.transform.position, Vector3.up, horizontal);
-        transform.RotateAround(Target.transform.position, verticalRot, vertical);
+        vertical = Input.GetAxis("Mouse Y") * Sensitivity;
+        transform.RotateAround(Target.transform.position, transform.parent.TransformVector(Vector3.left), vertical);
+
         transform.LookAt(Target.transform);
-        localTarget = transform.InverseTransformPoint(Target.position);
     }
+
+
+   
 }

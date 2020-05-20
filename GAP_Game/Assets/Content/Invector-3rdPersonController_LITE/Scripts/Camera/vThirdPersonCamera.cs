@@ -58,7 +58,7 @@ public class vThirdPersonCamera : MonoBehaviour
 
     #endregion
 
-    void Start()
+    void OnEnable()
     {
         Init();
     }

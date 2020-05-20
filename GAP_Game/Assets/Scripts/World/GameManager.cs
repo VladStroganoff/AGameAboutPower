@@ -16,14 +16,13 @@ public class GameManager : MonoBehaviour, IGameManager
 
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
-    public WorldModel Model { get; set; }
+    public WorldModel Model { get; set; } = new WorldModel();
     public static GameManager instance;
 
 
     private void Awake()
     {
         instance = this;
-        Model = new WorldModel();
         Model.SetGameState(GameState.InLobby);
     }
 

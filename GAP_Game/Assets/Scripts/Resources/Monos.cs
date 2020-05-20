@@ -10,6 +10,5 @@ public class Monos : MonoInstaller
     {
         Container.Bind<IGameManager>().FromInstance(gameManager);
         Container.Bind<ICameraController>().FromInstance(cameraController);
-        //Container.DeclareSignal
     }
 }
