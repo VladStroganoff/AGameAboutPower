@@ -39,10 +39,9 @@ public class CameraView : MonoBehaviour, ICameraView
                 {
                     TPSCam.enabled = false;
                     TPSInput.enabled = false;
-                    oldPos = LocalPlayerCamera.transform.position;
+                    oldPos = LocalPlayerCamera.transform.localPosition;
                     oldRot = LocalPlayerCamera.transform.rotation;
-                    LocalPlayerCamera.transform.position = RTSPos.position;
-                    LocalPlayerCamera.transform.rotation = RTSPos.rotation;
+                    StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation));
                     RTSCam.enabled = true;
                     return;
                 }
@@ -50,11 +49,11 @@ public class CameraView : MonoBehaviour, ICameraView
                 {
                     RTSCam.enabled = false;
                     CameraParent.transform.localPosition = Vector3.zero;
-                    LocalPlayerCamera.transform.position = oldPos;
-                    LocalPlayerCamera.transform.rotation = oldRot;
+                    StartCoroutine(BackAndForth(oldPos, oldRot));
                     TPSInput.enabled = true;
                     TPSCam.enabled = true;
                     return;
+
                 }
         }
     }
@@ -62,13 +61,13 @@ public class CameraView : MonoBehaviour, ICameraView
 
     public IEnumerator BackAndForth(Vector3 pos, Quaternion rot)
     {
-        journeyLength = Vector3.Distance(pos, LocalPlayerCamera.transform.position);
+        journeyLength = Vector3.Distance(pos, LocalPlayerCamera.transform.localPosition);
 
-        while (Vector3.Distance(LocalPlayerCamera.transform.position, pos) > 0.01f)
+        while (Vector3.Distance(LocalPlayerCamera.transform.position, pos) > 0.03f)
         {
-            float distCovered = (Time.time - startTime) * 5;
+            float distCovered = (Time.time - startTime) * 0.01f;
             float fractionOfJourney = distCovered / journeyLength;
-            LocalPlayerCamera.transform.position = Vector3.Lerp(LocalPlayerCamera.transform.position, pos, fractionOfJourney);
+            LocalPlayerCamera.transform.localPosition = Vector3.Lerp(LocalPlayerCamera.transform.localPosition, pos, fractionOfJourney);
             LocalPlayerCamera.transform.rotation = Quaternion.Lerp(LocalPlayerCamera.transform.rotation, rot, fractionOfJourney);
             yield return new WaitForEndOfFrame();
         }
