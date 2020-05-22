@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ConstructionView : MonoBehaviour
+public interface IConstructionView
 {
-     IConstrcuController ConControl;
-     ICursorController CursorControl;
+    RectTransform GetMarker();
+}
+
+public class ConstructionView : MonoBehaviour, IConstructionView
+{
+    IConstrcuController ConControl;
+    ICursorController CursorControl;
+    public RectTransform SelectionFrame;
     GameObject PickedBuilding;
 
     [Inject]
@@ -26,5 +32,10 @@ public class ConstructionView : MonoBehaviour
     public void BuildBuilding()
     {
 
+    }
+
+    public RectTransform GetMarker()
+    {
+        return SelectionFrame;
     }
 }

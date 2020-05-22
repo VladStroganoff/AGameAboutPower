@@ -9,7 +9,7 @@ public interface ICameraController
 {
     CameraStateChanged CameraStateChange { get; set; }
 }
-
+ 
 
 public delegate void CameraStateChanged(CameraState state);
 public enum CameraState { TPS, RTS, Lobby }

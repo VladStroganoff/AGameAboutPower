@@ -5,6 +5,7 @@ using Zenject;
 
 public interface IConstrcuController
 {
+    Building SelectedBuilding { get; set; }
     PickBuilding PickBuilding { get; set; }
     BuildBuilding BuildBuilding { get; set; }
     void SelectBuilding(Building building);
@@ -21,7 +22,7 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
     public PickBuilding PickBuilding { get; set; }
     public BuildBuilding BuildBuilding { get; set; }
 
-    public Building SelectedBuilding;
+    public Building SelectedBuilding { get; set; }
 
     [Inject]
     public void Construct(ICameraController _camCon, ICursorController cursor)

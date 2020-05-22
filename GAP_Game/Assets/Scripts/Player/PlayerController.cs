@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
     public Transform camTransform;
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             ClientSend.PlayerShoot(camTransform.forward);
