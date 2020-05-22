@@ -18,7 +18,7 @@ public enum CameraState { TPS, RTS, Lobby }
 public class CameraController : MonoBehaviour, ICameraController
 {
     public CameraStateChanged CameraStateChange { get; set; }
-    bool toggleRTS;
+    bool toggleRTS = true;
 
 
     [Inject]

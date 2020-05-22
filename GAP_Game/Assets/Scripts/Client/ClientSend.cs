@@ -38,13 +38,9 @@ public class ClientSend : MonoBehaviour
                 packet.Write(input);
             }
 
-            Vector3 rotation = GameManager.players[Client.instance.myId].Camera.transform.rotation.eulerAngles;
-            rotation.x = 0;
-            rotation.z = 0;
-            Quaternion actualRot = Quaternion.Euler(GameManager.players[Client.instance.myId].Camera.transform.rotation.eulerAngles);
+            Quaternion camRot = Quaternion.Euler(GameManager.players[Client.instance.myId].Camera.transform.rotation.eulerAngles);
 
-            packet.Write(actualRot);
-            //Debug.Log(inputs[0] + inputs[1].ToString() + inputs[2] + inputs[3]);
+            packet.Write(camRot);
             SendUDP(packet);
         }
     }

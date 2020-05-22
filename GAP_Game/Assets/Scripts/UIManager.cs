@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Zenject;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,11 +13,18 @@ public class UIManager : MonoBehaviour
     public int port = 26950;
     public string Name = "Stroganoff";
 
-
+    public RectTransform RTSCanvas;
     public GameObject startMenu;
     public TMP_InputField usernameField;
     public TMP_InputField Port;
     public TMP_InputField IP;
+
+    [Inject]
+    public void Construct(ICameraController _camControl)
+    {
+        _camControl.CameraStateChange += CheckCameraState;
+    }
+
 
     private void Awake()
     {
@@ -37,6 +45,27 @@ public class UIManager : MonoBehaviour
         Port.text = port.ToString();
         IP.text = ip;
     }
+
+    public void CheckCameraState(CameraState state)
+    {
+        switch (state)
+        {
+            case CameraState.RTS:
+                {
+                    RTSCanvas.gameObject.SetActive(true);
+                    RTSCanvas.anchoredPosition = new Vector3(0, 0, 0);
+                    return;
+                }
+            case CameraState.TPS:
+                {
+                    RTSCanvas.gameObject.SetActive(false);
+                    RTSCanvas.anchoredPosition = new Vector3(0, -2000, 0);
+                    return;
+                }
+        }
+    }
+
+
 
     public void ConnectToServer()
     {

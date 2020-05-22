@@ -135,18 +135,20 @@ namespace Invector.vCharacterController
             _rigidbody = GetComponent<Rigidbody>();
 
             // capsule collider info
-            _capsuleCollider = GetComponent<CapsuleCollider>();
+            //_capsuleCollider = GetComponent<CapsuleCollider>();
 
             // save your collider preferences 
-            colliderCenter = GetComponent<CapsuleCollider>().center;
-            colliderRadius = GetComponent<CapsuleCollider>().radius;
-            colliderHeight = GetComponent<CapsuleCollider>().height;
+            //colliderCenter = GetComponent<CapsuleCollider>().center;
+            //colliderRadius = GetComponent<CapsuleCollider>().radius;
+            //colliderHeight = GetComponent<CapsuleCollider>().height;
 
             isGrounded = true;
         }
 
         public virtual void UpdateMotor()
         {
+            return;
+
             CheckGround();
             CheckSlopeLimit();
             ControlJumpBehaviour();

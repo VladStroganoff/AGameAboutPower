@@ -8,20 +8,18 @@ public interface ICameraView
 {
 }
 
-
 public class CameraView : MonoBehaviour, ICameraView
 {
     public Camera LocalPlayerCamera;
     public vThirdPersonCamera TPSCam;
-    public vThirdPersonInput TPSInput;
     public RTSCamera RTSCam;
     public Transform RTSPos;
+    public Transform TPSPos;
     public Transform CameraParent;
-    Vector3 oldPos;
-    Quaternion oldRot;
 
     float startTime = 0f;
     float journeyLength = 0;
+    bool traveling = false;
 
 
     [Inject]
@@ -30,7 +28,6 @@ public class CameraView : MonoBehaviour, ICameraView
         _camControl.CameraStateChange += CheckCameraState;
     }
 
-
     public void CheckCameraState(CameraState state)
     {
         switch(state)
@@ -38,39 +35,48 @@ public class CameraView : MonoBehaviour, ICameraView
             case CameraState.RTS:
                 {
                     TPSCam.enabled = false;
-                    TPSInput.enabled = false;
-                    oldPos = LocalPlayerCamera.transform.localPosition;
-                    oldRot = LocalPlayerCamera.transform.rotation;
-                    StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation));
-                    RTSCam.enabled = true;
+                    StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation, false));
                     return;
                 }
             case CameraState.TPS:
                 {
                     RTSCam.enabled = false;
                     CameraParent.transform.localPosition = Vector3.zero;
-                    StartCoroutine(BackAndForth(oldPos, oldRot));
-                    TPSInput.enabled = true;
-                    TPSCam.enabled = true;
+                    StartCoroutine(BackAndForth(TPSPos.localPosition, TPSPos.rotation, true));
                     return;
-
                 }
         }
     }
 
 
-    public IEnumerator BackAndForth(Vector3 pos, Quaternion rot)
+    public IEnumerator BackAndForth(Vector3 pos, Quaternion rot, bool yenah)
     {
+        if (traveling)
+            yield return null;
+
+
+        traveling = true;
         journeyLength = Vector3.Distance(pos, LocalPlayerCamera.transform.localPosition);
 
-        while (Vector3.Distance(LocalPlayerCamera.transform.position, pos) > 0.03f)
+        while (Vector3.Distance(LocalPlayerCamera.transform.localPosition, pos) > 0.3f)
         {
-            float distCovered = (Time.time - startTime) * 0.01f;
+            float distCovered = (Time.time - startTime) * 0.5f;
             float fractionOfJourney = distCovered / journeyLength;
             LocalPlayerCamera.transform.localPosition = Vector3.Lerp(LocalPlayerCamera.transform.localPosition, pos, fractionOfJourney);
             LocalPlayerCamera.transform.rotation = Quaternion.Lerp(LocalPlayerCamera.transform.rotation, rot, fractionOfJourney);
             yield return new WaitForEndOfFrame();
         }
+
+        if(yenah)
+        {
+            TPSCam.enabled = true;
+        }
+        else
+        {
+            RTSCam.enabled = true;
+        }
+
+        traveling = false;
     }
 
 }

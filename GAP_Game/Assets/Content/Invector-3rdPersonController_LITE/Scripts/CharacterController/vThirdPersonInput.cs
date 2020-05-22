@@ -38,6 +38,9 @@ namespace Invector.vCharacterController
 
         protected virtual void Update()
         {
+            if (!isLoca)
+                return;
+
             InputHandle();                  // update the input methods
             cc.UpdateAnimator();            // updates the Animator Parameters
         }
@@ -74,6 +77,8 @@ namespace Invector.vCharacterController
 
         protected virtual void InputHandle()
         {
+            
+
             MoveInput();
             CameraInput();
             SprintInput();
@@ -83,8 +88,7 @@ namespace Invector.vCharacterController
 
         public virtual void MoveInput()
         {
-            if (!isLoca)
-                return;
+           
 
             cc.input.x = Input.GetAxis(horizontalInput);
             cc.input.z = Input.GetAxis(verticallInput);
@@ -144,9 +148,6 @@ namespace Invector.vCharacterController
         /// </summary>
         protected virtual void JumpInput()
         {
-            if (!isLoca)
-                return;
-
             if (Input.GetKeyDown(jumpInput) && JumpConditions())
                 cc.Jump();
         }

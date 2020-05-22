@@ -89,6 +89,11 @@ public class vThirdPersonCamera : MonoBehaviour
         if (target == null || targetLookAt == null) return;
 
         CameraMovement();
+
+        var Y = Input.GetAxis("Mouse Y");
+        var X = Input.GetAxis("Mouse X");
+
+        RotateCamera(X, Y);
     }
 
     /// <summary>

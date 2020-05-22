@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { InLobby, InGame}
+public enum GameState { InLobby, InGame, Paused,}
 
 public interface IGameManager
 {
@@ -13,7 +13,6 @@ public interface IGameManager
 public class GameManager : MonoBehaviour, IGameManager
 {
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
-
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
     public WorldModel Model { get; set; } = new WorldModel();

@@ -107,9 +107,10 @@ public class ServerSend
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRotation))
         {
+            Debug.Log("Rotation: " + player.transform.rotation);
             packet.Write(player.ID);
             packet.Write(player.transform.rotation);
-            SendUDPDataToAll(player.ID, packet);
+            SendUDPDataToAll(packet);
         }
     }
 
