@@ -1,7 +1,12 @@
 {
-    "name": "InvectorAssembly",
-    "references": [],
-    "includePlatforms": [],
+    "name": "Invector_Editor_05",
+    "references": [
+        "GUID:593ea749e2377de4481c00c94fa812d3",
+        "GUID:f4097ddbe83cf3747938377e2798b713"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

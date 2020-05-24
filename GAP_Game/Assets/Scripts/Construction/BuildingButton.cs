@@ -24,7 +24,7 @@ public class BuildingButton : MonoBehaviour
 
     void MoveMarker()
     {
-        if (ConControl.SelectedBuilding == MyBuilding)
+        if (ConControl.Selection == MyBuilding)
         {
             Deselect();
             return;

@@ -536,7 +536,7 @@ Material:
     - _HeightTessCenter2: 0.5
     - _HeightTessCenter3: 0.5
     - _HeightTransition: 1
-    - _InheritBaseColor1: 1
+    - _InheritBaseColor1: 0
     - _InheritBaseColor2: 1
     - _InheritBaseColor3: 1
     - _InheritBaseHeight1: 0

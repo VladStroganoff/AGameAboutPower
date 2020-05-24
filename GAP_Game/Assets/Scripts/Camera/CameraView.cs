@@ -26,6 +26,7 @@ public class CameraView : MonoBehaviour, ICameraView
     public void Construct(ICameraController _camControl)
     {
         _camControl.CameraStateChange += CheckCameraState;
+        CameraParent.parent = null;
     }
 
     public void CheckCameraState(CameraState state)
@@ -35,13 +36,14 @@ public class CameraView : MonoBehaviour, ICameraView
             case CameraState.RTS:
                 {
                     TPSCam.enabled = false;
+                    CameraParent.transform.position = transform.position;
                     StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation, false));
                     return;
                 }
             case CameraState.TPS:
                 {
                     RTSCam.enabled = false;
-                    CameraParent.transform.localPosition = Vector3.zero;
+                    CameraParent.transform.position = transform.position;
                     StartCoroutine(BackAndForth(TPSPos.localPosition, TPSPos.rotation, true));
                     return;
                 }

@@ -7138,6 +7138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5160091386748303597}
     m_Modifications:
+    - target: {fileID: 2390582967601918945, guid: 330efb0e9eed825408809c121441b8a5,
+        type: 3}
+      propertyPath: antialiasing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2700874171910072504, guid: 330efb0e9eed825408809c121441b8a5,
         type: 3}
       propertyPath: m_Name

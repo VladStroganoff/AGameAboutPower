@@ -5,7 +5,7 @@ using Zenject;
 
 public interface IConstrcuController
 {
-    Building SelectedBuilding { get; set; }
+    Building Selection { get; set; }
     PickBuilding PickBuilding { get; set; }
     BuildBuilding BuildBuilding { get; set; }
     void SelectBuilding(Building building);
@@ -22,7 +22,9 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
     public PickBuilding PickBuilding { get; set; }
     public BuildBuilding BuildBuilding { get; set; }
 
-    public Building SelectedBuilding { get; set; }
+
+    public Building Selection { get; set; }
+    GameObject buldngInstance;
 
     [Inject]
     public void Construct(ICameraController _camCon, ICursorController cursor)
@@ -36,25 +38,41 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
         if (state != CameraState.RTS)
         {
             CursorControl.click -= ListenForClick;
-            SelectedBuilding = null;
+            CursorControl.cursorWorldPos -= ListenForPos;
+            Selection = null;
+            Destroy(buldngInstance);
             return;
         }
         else
         {
             CursorControl.click += ListenForClick;
+            CursorControl.cursorWorldPos += ListenForPos;
         }
     }
 
-    void ListenForClick(Vector2 _click) // Im in RTS mode and there is a click
+    void ListenForClick(Vector3 _click) // Im in RTS mode and there is a click
     {
+        Instantiate(buldngInstance, _click, Quaternion.identity);
+    }
 
+    void ListenForPos(Vector3 pos)
+    {
+        if (Selection == null)
+            return;
+
+        buldngInstance.SetActive(true);
+        buldngInstance.transform.position = pos;
     }
 
     public void SelectBuilding(Building _building)
     {
-        SelectedBuilding = _building;
+        Selection = _building;
+        Destroy(buldngInstance);
+        buldngInstance = Instantiate(Resources.Load<GameObject>("Buildings/" + Selection.Name) as GameObject, Vector3.zero, Quaternion.identity);
+        buldngInstance.name = Selection.Name;
+        buldngInstance.SetActive(false);
 
         if (PickBuilding != null)
-            PickBuilding.Invoke(SelectedBuilding);
+            PickBuilding.Invoke(Selection);
     }
 }
