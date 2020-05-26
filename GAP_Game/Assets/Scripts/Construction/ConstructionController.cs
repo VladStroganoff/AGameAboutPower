@@ -6,31 +6,35 @@ using Zenject;
 public interface IConstrcuController
 {
     Building Selection { get; set; }
-    PickBuilding PickBuilding { get; set; }
-    BuildBuilding BuildBuilding { get; set; }
     void SelectBuilding(Building building);
 }
 
-public delegate void PickBuilding(Building building);
-public delegate void BuildBuilding();
+public class PickedBuildingSignal
+{
+    public Building building;
+}
+public class BuildBuildingSignal{}
+public class DeselectBuildingSignal{}
+
 
 public class ConstructionController : MonoBehaviour, IConstrcuController
 {
     ConstructionModel Model;
     ICursorController CursorControl;
 
-    public PickBuilding PickBuilding { get; set; }
-    public BuildBuilding BuildBuilding { get; set; }
+    SignalBus signalBus;
 
 
     public Building Selection { get; set; }
+
     GameObject buldngInstance;
 
     [Inject]
-    public void Construct(ICameraController _camCon, ICursorController cursor)
+    public void Construct(ICameraController _camCon, ICursorController cursor, SignalBus bus)
     {
         _camCon.CameraStateChange += CheckCameraState;
         CursorControl = cursor;
+        signalBus = bus;
     }
 
     void CheckCameraState(CameraState state) // if camera is in RTS mode I subscribe to the cursor
@@ -72,7 +76,6 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
         buldngInstance.name = Selection.Name;
         buldngInstance.SetActive(false);
 
-        if (PickBuilding != null)
-            PickBuilding.Invoke(Selection);
+         signalBus.Fire(new PickedBuildingSignal() { building = Selection });
     }
 }

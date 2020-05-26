@@ -20,16 +20,14 @@ public class ConstructionView : MonoBehaviour, IConstructionView
     {
         ConControl = _conControl;
         CursorControl = _cursor;
-        ConControl.PickBuilding += PickBuilding;
-        ConControl.BuildBuilding += BuildBuilding;
     }
 
-    void PickBuilding(Building _building)
+    public void PickBuilding(PickedBuildingSignal _building)
     {
-        PickedBuilding = Resources.Load(@"Buildings\" + _building.Name) as GameObject;
+        PickedBuilding = Resources.Load(@"Buildings\" + _building.building) as GameObject;
     }
 
-    public void BuildBuilding()
+    public void BuildBuilding(BuildBuildingSignal signal)
     {
 
     }
