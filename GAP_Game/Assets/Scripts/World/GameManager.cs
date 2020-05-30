@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public enum GameState { InLobby, InGame, Paused,}
 
@@ -15,14 +16,14 @@ public class GameManager : MonoBehaviour, IGameManager
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
-    public WorldModel Model { get; set; } = new WorldModel();
+    public WorldModel Model { get; set; }
     public static GameManager instance;
 
-
-    private void Awake()
+    [Inject]
+    public void Contruct(SignalBus bus)
     {
+        Model  = new WorldModel(bus);
         instance = this;
-        Model.SetGameState(GameState.InLobby);
     }
 
     public void SpawnPlayer(int id, string username, Vector3 position, Quaternion rotation)

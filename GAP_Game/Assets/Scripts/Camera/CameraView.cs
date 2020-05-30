@@ -6,6 +6,7 @@ using Zenject;
 
 public interface ICameraView
 {
+    void CheckCameraState(CameraStateSignal signal);
 }
 
 public class CameraView : MonoBehaviour, ICameraView
@@ -22,16 +23,15 @@ public class CameraView : MonoBehaviour, ICameraView
     bool traveling = false;
 
 
-    [Inject]
-    public void Construct(ICameraController _camControl)
+    public void Construct(SignalBus bus)
     {
-        _camControl.CameraStateChange += CheckCameraState;
+        bus.Subscribe<CameraStateSignal>(CheckCameraState);
         CameraParent.parent = null;
     }
 
-    public void CheckCameraState(CameraState state)
+    public void CheckCameraState(CameraStateSignal signal)
     {
-        switch(state)
+        switch(signal.state)
         {
             case CameraState.RTS:
                 {

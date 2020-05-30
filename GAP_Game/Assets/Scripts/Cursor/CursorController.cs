@@ -4,34 +4,41 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-public interface ICursorController
+
+
+public class CursorClickSignal
 {
-    CursorClick click { get; set; }
-    CursorWorldPos cursorWorldPos { get; set; }
+    public Vector3 pos;
 }
-public delegate void CursorClick(Vector3 pos);
-public delegate void CursorWorldPos(Vector3 pos);
+
+
+public class CursorWorldPosSignal
+{
+    public Vector3 pos;
+}
+
+public interface ICursorController
+{}
 
 public class CursorController : MonoBehaviour, ICursorController
 {
-    public CursorClick click { get; set; }
-    public CursorWorldPos cursorWorldPos { get; set; }
 
     RaycastHit hit;
     public GameObject CursorPrefab;
     GameObject cursorInstance;
     Ray ray;
     bool cursorActive;
+    SignalBus signalBus;
 
     [Inject]
-    public void Construct(ICameraController _camControl)
+    public void Construct (SignalBus bus)
     {
-        _camControl.CameraStateChange += CheckForRTSMode;
+        signalBus = bus;
     }
 
-    void CheckForRTSMode(CameraState state)
+    public void CheckForRTSMode(CameraStateSignal signal)
     {
-        if(state != CameraState.RTS)
+        if(signal.state != CameraState.RTS)
         {
             cursorActive = false;
             cursorInstance.gameObject.SetActive(false);
@@ -77,15 +84,14 @@ public class CursorController : MonoBehaviour, ICursorController
 
             cursorInstance.transform.position = hit.point;
             cursorInstance.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-            cursorWorldPos.Invoke(hit.point);
+            signalBus.Fire(new CursorWorldPosSignal() { pos = hit.point });
         }
 
 
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (click != null)
-                click.Invoke(cursorInstance.transform.position);
+            signalBus.Fire(new CursorClickSignal() { pos = cursorInstance.transform.position });
         }
     }
 

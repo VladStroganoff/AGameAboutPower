@@ -10,21 +10,19 @@ public interface IConstructionView
 
 public class ConstructionView : MonoBehaviour, IConstructionView
 {
-    IConstrcuController ConControl;
     ICursorController CursorControl;
     public RectTransform SelectionFrame;
     GameObject PickedBuilding;
 
     [Inject]
-    public void Construct(IConstrcuController _conControl, ICursorController _cursor)
+    public void Construct(ICursorController _cursor)
     {
-        ConControl = _conControl;
         CursorControl = _cursor;
     }
 
-    public void PickBuilding(PickedBuildingSignal _building)
+    public void PickBuilding(PickedBuildingSignal signal)
     {
-        PickedBuilding = Resources.Load(@"Buildings\" + _building.building) as GameObject;
+        PickedBuilding = Resources.Load(@"Buildings\" + signal.building) as GameObject;
     }
 
     public void BuildBuilding(BuildBuildingSignal signal)

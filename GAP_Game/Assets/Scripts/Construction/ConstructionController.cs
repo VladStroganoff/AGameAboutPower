@@ -30,42 +30,33 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
     GameObject buldngInstance;
 
     [Inject]
-    public void Construct(ICameraController _camCon, ICursorController cursor, SignalBus bus)
+    public void Construct(SignalBus bus)
     {
-        _camCon.CameraStateChange += CheckCameraState;
-        CursorControl = cursor;
         signalBus = bus;
     }
 
-    void CheckCameraState(CameraState state) // if camera is in RTS mode I subscribe to the cursor
+    public void CheckCameraState(CameraStateSignal signal) // if camera is in RTS mode I subscribe to the cursor
     {
-        if (state != CameraState.RTS)
+        if (signal.state != CameraState.RTS)
         {
-            CursorControl.click -= ListenForClick;
-            CursorControl.cursorWorldPos -= ListenForPos;
             Selection = null;
             Destroy(buldngInstance);
             return;
         }
-        else
-        {
-            CursorControl.click += ListenForClick;
-            CursorControl.cursorWorldPos += ListenForPos;
-        }
     }
 
-    void ListenForClick(Vector3 _click) // Im in RTS mode and there is a click
+    public void ListenForClick(CursorClickSignal signal) // Im in RTS mode and there is a click
     {
-        Instantiate(buldngInstance, _click, Quaternion.identity);
+        Instantiate(buldngInstance, signal.pos, Quaternion.identity);
     }
 
-    void ListenForPos(Vector3 pos)
+    public void ListenForPos(CursorWorldPosSignal signal)
     {
         if (Selection == null)
             return;
 
         buldngInstance.SetActive(true);
-        buldngInstance.transform.position = pos;
+        buldngInstance.transform.position = signal.pos;
     }
 
     public void SelectBuilding(Building _building)

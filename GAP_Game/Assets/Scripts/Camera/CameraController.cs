@@ -5,31 +5,31 @@ using Zenject;
 
 
 
-public interface ICameraController
-{
-    CameraStateChanged CameraStateChange { get; set; }
-}
+public interface ICameraController{}
  
-
-public delegate void CameraStateChanged(CameraState state);
 public enum CameraState { TPS, RTS, Lobby }
+
+public class CameraStateSignal
+{
+    public CameraState state;
+}
 
 
 public class CameraController : MonoBehaviour, ICameraController
 {
-    public CameraStateChanged CameraStateChange { get; set; }
     bool toggleRTS = true;
+    SignalBus signalBus;
 
 
     [Inject]
-    public void Inject(IGameManager manager)
+    public void Inject(SignalBus bus)
     {
-        manager.Model.GameStateChange += CheckGameState;
+        signalBus = bus;
     }
 
-    void CheckGameState(GameState state)
+    public void CheckGameState(GameStateChangedSignal signal)
     {
-        if (state != GameState.InGame)
+        if (signal.state != GameState.InGame)
             return;
     }
 
@@ -40,12 +40,12 @@ public class CameraController : MonoBehaviour, ICameraController
         {
             if(toggleRTS)
             {
-                CameraStateChange.Invoke(CameraState.RTS);
+                signalBus.Fire(new CameraStateSignal() { state = CameraState.RTS });
                 toggleRTS = !toggleRTS;
             }
             else
             {
-                CameraStateChange.Invoke(CameraState.TPS);
+                signalBus.Fire(new CameraStateSignal() { state = CameraState.TPS });
                 toggleRTS = !toggleRTS;
             }
         }

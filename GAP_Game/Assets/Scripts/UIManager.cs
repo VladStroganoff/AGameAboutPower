@@ -19,13 +19,6 @@ public class UIManager : MonoBehaviour
     public TMP_InputField Port;
     public TMP_InputField IP;
 
-    [Inject]
-    public void Construct(ICameraController _camControl)
-    {
-        _camControl.CameraStateChange += CheckCameraState;
-    }
-
-
     private void Awake()
     {
         if (instance == null)
@@ -46,9 +39,9 @@ public class UIManager : MonoBehaviour
         IP.text = ip;
     }
 
-    public void CheckCameraState(CameraState state)
+    public void CheckCameraState(CameraStateSignal signal)
     {
-        switch (state)
+        switch (signal.state)
         {
             case CameraState.RTS:
                 {
