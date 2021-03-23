@@ -5,12 +5,12 @@ using Zenject;
 
 public class BuildingButton : MonoBehaviour
 {
-    public Building MyBuilding;
+    public BuildingData MyBuilding;
     IConstructionView ConstructionView;
-    IConstrcuController ConControl;
+    IConstructionController ConControl;
 
     [Inject]
-    public void Construct(IConstrcuController _conControl, IConstructionView _conView)
+    public void Construct(IConstructionController _conControl, IConstructionView _conView)
     {
         ConControl = _conControl;
         ConstructionView = _conView;

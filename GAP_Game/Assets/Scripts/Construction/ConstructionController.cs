@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public interface IConstrcuController
+public interface IConstructionController
 {
-    Building Selection { get; set; }
-    void SelectBuilding(Building building);
+    BuildingData Selection { get; set; }
+    void SelectBuilding(BuildingData building);
+    void ListenForPos(CursorWorldPosSignal signal);
+    void ListenForClick(CursorClickSignal signal);
+    void CheckCameraState(CameraStateSignal signal);
 }
 
 public class PickedBuildingSignal
 {
-    public Building building;
+    public BuildingData building;
 }
 public class BuildBuildingSignal{}
 public class DeselectBuildingSignal{}
 
 
-public class ConstructionController : MonoBehaviour, IConstrcuController
+public class ConstructionController : MonoBehaviour, IConstructionController
 {
     ConstructionModel Model;
     ICursorController CursorControl;
@@ -25,12 +28,12 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
     SignalBus signalBus;
 
 
-    public Building Selection { get; set; }
+    public BuildingData Selection { get; set; }
 
     GameObject buldngInstance;
 
     [Inject]
-    public void Construct(SignalBus bus)
+    public void Inject(SignalBus bus)
     {
         signalBus = bus;
     }
@@ -59,7 +62,7 @@ public class ConstructionController : MonoBehaviour, IConstrcuController
         buldngInstance.transform.position = signal.pos;
     }
 
-    public void SelectBuilding(Building _building)
+    public void SelectBuilding(BuildingData _building)
     {
         Selection = _building;
         Destroy(buldngInstance);

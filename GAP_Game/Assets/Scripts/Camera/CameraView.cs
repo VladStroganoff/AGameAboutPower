@@ -22,8 +22,8 @@ public class CameraView : MonoBehaviour, ICameraView
     float journeyLength = 0;
     bool traveling = false;
 
-
-    public void Construct(SignalBus bus)
+    [Inject]
+    public void Inject(SignalBus bus)
     {
         bus.Subscribe<CameraStateSignal>(CheckCameraState);
         CameraParent.parent = null;
