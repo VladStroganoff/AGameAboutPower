@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: 8012012814851498039}
   - component: {fileID: 6625369412966278111}
   - component: {fileID: -4250632892452659583}
+  - component: {fileID: -7109435783361623839}
   m_Layer: 0
   m_Name: LocalViking
   m_TagString: Player
@@ -1274,6 +1275,24 @@ MonoBehaviour:
   RTSPos: {fileID: 8365772235368586067}
   TPSPos: {fileID: 5751433909369135516}
   CameraParent: {fileID: 5160091386748303597}
+--- !u!114 &-7109435783361623839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816498496395887971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: -4250632892452659583}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1 &4816498496401223215
 GameObject:
   m_ObjectHideFlags: 0
@@ -7168,12 +7187,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5193111749944669503}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7884339637435620742 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2700874171910072505, guid: 330efb0e9eed825408809c121441b8a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5193111749944669503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &7884339637435620738 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2700874171910072509, guid: 330efb0e9eed825408809c121441b8a5,
@@ -7192,3 +7205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1bfe72fbc87d04e885296b53e91c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7884339637435620742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2700874171910072505, guid: 330efb0e9eed825408809c121441b8a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5193111749944669503}
+  m_PrefabAsset: {fileID: 0}

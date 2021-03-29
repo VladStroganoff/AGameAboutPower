@@ -12,3 +12,20 @@ public class PlayerInstaller : MonoInstaller
         Container.BindSignal<CameraStateSignal>().ToMethod<CameraView>(x => x.CheckCameraState).FromResolve();
     }
 }
+
+
+
+public class Greeter
+{
+    readonly string _message;
+
+    public Greeter(string message)
+    {
+        _message = message;
+    }
+
+    public void DisplayGreeting()
+    {
+        Debug.Log(_message);
+    }
+}

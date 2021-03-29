@@ -5,7 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 using Zenject;
 
-public class UIManager : MonoBehaviour
+
+public interface IUIManager
+{
+    void CheckCameraState(CameraStateSignal signal);
+}
+
+public class UIManager : MonoBehaviour, IUIManager
 {
     public static UIManager instance;
 

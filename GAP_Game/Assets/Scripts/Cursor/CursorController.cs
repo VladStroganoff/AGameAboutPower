@@ -18,7 +18,9 @@ public class CursorWorldPosSignal
 }
 
 public interface ICursorController
-{}
+{
+    void CheckForRTSMode(CameraStateSignal signal);
+}
 
 public class CursorController : MonoBehaviour, ICursorController
 {

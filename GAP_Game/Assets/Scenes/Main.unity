@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 456.344, g: 288.01953, b: 250.31006, a: 1}
+  m_IndirectSpecularColor: {r: 457.03528, g: 288.05225, b: 249.37988, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1612,6 +1612,9 @@ MonoBehaviour:
   CursorControl: {fileID: 1119477690}
   ConstructionView: {fileID: 206617397}
   LobbyView: {fileID: 329943398}
+  UIManager: {fileID: 206617396}
+  LocalPlayer: {fileID: 4816498496395887971, guid: cedeb01bb0892f242a4ed9758611613f,
+    type: 3}
 --- !u!114 &460938549
 MonoBehaviour:
   m_ObjectHideFlags: 0
