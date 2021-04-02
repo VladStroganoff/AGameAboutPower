@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -32,17 +33,8 @@ public class ConstructionController : MonoBehaviour, IConstructionController
     public void BuildBuilding(BuildBuildingSignal signal)
     {
         Debug.Log("Send buildoing to server: " + signal.Building.Name);
-
-        using (Packet packet = new Packet((int)ServerPackets.jsonObject))
-        {
-            packet.Write(player.ID);
-
-            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            string json = JsonConvert.SerializeObject(player.animator, settings);
-            packet.Write(json);
-
-
-            ClientSend.SendTCPData(packet);
-        }
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        string json = JsonConvert.SerializeObject(signal.Building, settings);
+        ClientSend.SendJsonPackage(json);
     }
 }

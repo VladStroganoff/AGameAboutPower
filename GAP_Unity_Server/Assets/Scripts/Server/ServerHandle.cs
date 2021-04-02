@@ -41,4 +41,10 @@ public class ServerHandle
         Server.clients[fromPlayer].player.Shoot(shootDirection);
     }
 
+    public static void JsonPackate(int fromPlayer, Packet packet)
+    {
+        string json = packet.ReadString();
+        Debug.Log(json);
+    }
+
 }

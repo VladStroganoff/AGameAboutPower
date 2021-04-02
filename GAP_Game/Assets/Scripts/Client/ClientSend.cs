@@ -8,10 +8,9 @@ public class ClientSend : MonoBehaviour
     {
         packet.WriteLength();
         Client.instance.tcp.SendData(packet);
-
     }
 
-    public static void SendUDP(Packet packet)
+    private static void SendUDP(Packet packet)
     {
         packet.WriteLength();
         Client.instance.udp.SendData(packet);
@@ -41,6 +40,15 @@ public class ClientSend : MonoBehaviour
 
             packet.Write(camRot);
             SendUDP(packet);
+        }
+    }
+
+    public static void SendJsonPackage(string json)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.playerMovement))
+        {
+            packet.Write(json.Length);
+            SendTCPData(packet);
         }
     }
 

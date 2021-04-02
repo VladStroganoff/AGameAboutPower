@@ -37,14 +37,11 @@ public class ConstructionView : MonoBehaviour, IConstructionView
         }
     }
 
-    public void ListenForClick(CursorClickSignal signal) => BuildBuilding(Instantiate(_buldngCursor, signal.pos, Quaternion.identity).GetData());
+    public void ListenForClick(CursorClickSignal signal) => BuildBuilding(Instantiate(_buldngCursor, signal.pos, _buldngCursor.transform.rotation).GetData());
 
     public void BuildBuilding(BuildingData data) =>_signalBus.Fire(new BuildBuildingSignal() { Building = data });       
 
-    public RectTransform GetMarker()
-    {
-        return SelectionFrame;
-    }
+    public RectTransform GetMarker() => SelectionFrame;
 
     public void ListenForPos(CursorWorldPosSignal signal)
     {
@@ -63,8 +60,5 @@ public class ConstructionView : MonoBehaviour, IConstructionView
         _selection = building;
         _buldngCursor = Instantiate(_selection);
     }
-    public BuildingView GetBuilding()
-    {
-        return _selection;
-    }
+    public BuildingView GetBuilding() =>  _selection;
 }
