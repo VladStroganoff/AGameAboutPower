@@ -75,11 +75,13 @@ public class RTSCamera : MonoBehaviour
     }
 
 
+
     public void AssumePosition(Transform position)
     {
         transform.position = position.position;
         transform.rotation = position.rotation;
         Target.position = transform.TransformPoint(localTarget);
+        transform.LookAt(Target.position);
     }
 
     void MouseInput()

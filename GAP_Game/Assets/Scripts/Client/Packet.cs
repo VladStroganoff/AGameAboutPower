@@ -20,6 +20,7 @@ public enum ClientPackets
     welcomeReceived = 1,
     playerMovement,
     playerShoot,
+    jsonObject,
 }
 
 public class Packet : IDisposable

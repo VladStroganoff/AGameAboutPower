@@ -6,32 +6,65 @@ using Zenject;
 public interface IConstructionView
 {
     RectTransform GetMarker();
+    void CheckCameraState(CameraStateSignal signal);
+    void ListenForClick(CursorClickSignal signal);
+    void ListenForPos(CursorWorldPosSignal signal);
+    void SelectBuilding(BuildingView building);
+    BuildingView GetBuilding();
 }
 
 public class ConstructionView : MonoBehaviour, IConstructionView
 {
-    ICursorController CursorControl;
+    SignalBus _signalBus;
     public RectTransform SelectionFrame;
-    GameObject PickedBuilding;
+    BuildingView _selection { get; set; }
+    BuildingView _buldngCursor;
+    public int GridStep;
 
     [Inject]
-    public void Construct(ICursorController _cursor)
+    public void Inject(SignalBus signalBus)
     {
-        CursorControl = _cursor;
+        _signalBus = signalBus;
     }
 
-    public void PickBuilding(PickedBuildingSignal signal)
+    public void CheckCameraState(CameraStateSignal signal) // if camera is in RTS mode I subscribe to the cursor
     {
-        PickedBuilding = Resources.Load(@"Buildings\" + signal.building) as GameObject;
+        if (signal.state != CameraState.RTS)
+        {
+            _selection = null;
+            Destroy(_buldngCursor);
+            return;
+        }
     }
 
-    public void BuildBuilding(BuildBuildingSignal signal)
-    {
+    public void ListenForClick(CursorClickSignal signal) => BuildBuilding(Instantiate(_buldngCursor, signal.pos, Quaternion.identity).GetData());
 
-    }
+    public void BuildBuilding(BuildingData data) =>_signalBus.Fire(new BuildBuildingSignal() { Building = data });       
 
     public RectTransform GetMarker()
     {
         return SelectionFrame;
+    }
+
+    public void ListenForPos(CursorWorldPosSignal signal)
+    {
+        if (_selection == null)
+            return;
+
+        _buldngCursor.gameObject.SetActive(true);
+        _buldngCursor.transform.position = ConformToGrid(signal.pos);
+    }
+
+
+    Vector3 ConformToGrid(Vector3 pos) => new Vector3(Mathf.Round(pos.x / GridStep) * GridStep, Mathf.Round(pos.y / GridStep) * GridStep, Mathf.Round(pos.z / GridStep) * GridStep);
+
+    public void SelectBuilding(BuildingView building)
+    {
+        _selection = building;
+        _buldngCursor = Instantiate(_selection);
+    }
+    public BuildingView GetBuilding()
+    {
+        return _selection;
     }
 }

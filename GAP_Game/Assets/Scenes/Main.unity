@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 457.03528, g: 288.05225, b: 249.37988, a: 1}
+  m_IndirectSpecularColor: {r: 454.95593, g: 287.89502, b: 252.13184, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -398,10 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding:
-    Name: Gate
-    Cost: 2
-    Footprint: {fileID: 0}
+  MyBuilding: {fileID: 3084212678079148998, guid: 76576e6a8b2cab440a8ebf8ea33fe62c,
+    type: 3}
 --- !u!1 &113965095
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,10 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding:
-    Name: Farm
-    Cost: 5
-    Footprint: {fileID: 0}
+  MyBuilding: {fileID: 5535708784861794386, guid: b1a26a5af3f87ef41b3e40d1fd99b6e7,
+    type: 3}
 --- !u!1 &180239540
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectionFrame: {fileID: 270659494}
+  GridStep: 5
 --- !u!1 &215738566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,10 +1436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding:
-    Name: Tower
-    Cost: 5
-    Footprint: {fileID: 0}
+  MyBuilding: {fileID: 8921171321776043211, guid: 631fa7bc3241edb4f8e1d546806ee5c7,
+    type: 3}
 --- !u!1 &329943396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,8 +1603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1119477687}
   camController: {fileID: 1119477688}
-  ConControll: {fileID: 1119477689}
   CursorControl: {fileID: 1119477690}
+  ConControll: {fileID: 1119477689}
   ConstructionView: {fileID: 206617397}
   LobbyView: {fileID: 329943398}
   UIManager: {fileID: 206617396}
@@ -2610,10 +2605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding:
-    Name: Wall
-    Cost: 1
-    Footprint: {fileID: 0}
+  MyBuilding: {fileID: 2283314360893700131, guid: d7429e9dd25253b45b5486366e736e27,
+    type: 3}
 --- !u!1 &904569264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5944,10 +5937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding:
-    Name: Barrack
-    Cost: 10
-    Footprint: {fileID: 0}
+  MyBuilding: {fileID: -1987356518869329590, guid: 90d2c3f470fcffd49b0b09584577b893,
+    type: 3}
 --- !u!1 &1956908043
 GameObject:
   m_ObjectHideFlags: 0

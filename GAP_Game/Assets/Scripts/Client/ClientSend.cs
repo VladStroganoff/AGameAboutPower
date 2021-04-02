@@ -11,7 +11,6 @@ public class ClientSend : MonoBehaviour
 
     }
 
-
     public static void SendUDP(Packet packet)
     {
         packet.WriteLength();

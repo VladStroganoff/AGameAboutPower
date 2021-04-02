@@ -31,19 +31,21 @@ public class CameraView : MonoBehaviour, ICameraView
 
     public void CheckCameraState(CameraStateSignal signal)
     {
-        switch(signal.state)
+        CameraParent.transform.position = transform.position;
+
+        switch (signal.state)
         {
             case CameraState.RTS:
                 {
+                    LocalPlayerCamera.transform.position = TPSPos.position;
                     TPSCam.enabled = false;
-                    CameraParent.transform.position = transform.position;
                     StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation, false));
                     return;
                 }
             case CameraState.TPS:
                 {
+                    LocalPlayerCamera.transform.position = RTSPos.position;
                     RTSCam.enabled = false;
-                    CameraParent.transform.position = transform.position;
                     StartCoroutine(BackAndForth(TPSPos.localPosition, TPSPos.rotation, true));
                     return;
                 }
@@ -53,6 +55,8 @@ public class CameraView : MonoBehaviour, ICameraView
 
     public IEnumerator BackAndForth(Vector3 pos, Quaternion rot, bool yenah)
     {
+
+
         if (traveling)
             yield return null;
 
@@ -75,6 +79,7 @@ public class CameraView : MonoBehaviour, ICameraView
         }
         else
         {
+            RTSCam.transform.LookAt(RTSCam.Target.transform.position);
             RTSCam.enabled = true;
         }
 

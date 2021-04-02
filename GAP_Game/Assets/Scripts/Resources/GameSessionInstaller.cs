@@ -5,8 +5,8 @@ public class GameSessionInstaller : MonoInstaller
 {
     public GameManager gameManager;
     public CameraController camController;
-    public ConstructionController ConControll;
     public CursorController CursorControl;
+    public ConstructionController ConControll;
     public ConstructionView ConstructionView;
     public LobbyView LobbyView;
     public UIManager UIManager;
@@ -18,36 +18,21 @@ public class GameSessionInstaller : MonoInstaller
 
         Container.Bind<IGameManager>().FromInstance(gameManager).AsSingle();
         Container.Bind<ICameraController>().FromInstance(camController);
-        Container.Bind<IConstructionController>().FromInstance(ConControll);
+        
         Container.Bind<ICursorController>().FromInstance(CursorControl);
-        Container.Bind<IConstructionView>().FromInstance(ConstructionView);
+        
         Container.Bind<ILobbyView>().FromInstance(LobbyView);
         Container.Bind<IUIManager>().FromInstance(UIManager);
 
         Container.BindFactory<CameraView, CameraView.Factory>().FromSubContainerResolve().ByNewContextPrefab(LocalPlayer);
 
         Container.DeclareSignal<GameStateChangedSignal>();
-        Container.DeclareSignal<PickedBuildingSignal>();
-        Container.DeclareSignal<BuildBuildingSignal>();
+
         Container.DeclareSignal<CameraStateSignal>();
         Container.DeclareSignal<CursorClickSignal>();
         Container.DeclareSignal<CursorWorldPosSignal>();
 
-
-        Container.BindSignal<CursorClickSignal>()
-            .ToMethod<IConstructionController>(x => x.ListenForClick).FromResolve();
-
-        Container.BindSignal<CursorWorldPosSignal>()
-            .ToMethod<IConstructionController>(x => x.ListenForPos).FromResolve();
-
-        Container.BindSignal<PickedBuildingSignal>()
-            .ToMethod<ConstructionView>(x => x.PickBuilding).FromResolve();
-
-        Container.BindSignal<BuildBuildingSignal>()
-         .ToMethod<ConstructionView>(x => x.BuildBuilding).FromResolve();
-
-        Container.BindSignal<CameraStateSignal>()
-            .ToMethod<IConstructionController>(x => x.CheckCameraState).FromResolve();
+        InitConstruction();
 
         Container.BindSignal<CameraStateSignal>()
          .ToMethod<ICursorController>(x => x.CheckForRTSMode).FromResolve();
@@ -64,7 +49,23 @@ public class GameSessionInstaller : MonoInstaller
     }
 
 
+    void InitConstruction()
+    {
+        Container.Bind<IConstructionView>().FromInstance(ConstructionView);
+        
+        Container.Bind<IConstructionController>().FromInstance(ConControll);
 
+        Container.DeclareSignal<PickedBuildingSignal>();
+        
+        Container.DeclareSignal<BuildBuildingSignal>();
+
+        Container.BindSignal<CameraStateSignal>().ToMethod<IConstructionView>(x => x.CheckCameraState).FromResolve();
+
+        Container.BindSignal<CursorClickSignal>().ToMethod<IConstructionView>(x => x.ListenForClick).FromResolve();
+        Container.BindSignal<CursorWorldPosSignal>().ToMethod<IConstructionView>(x => x.ListenForPos).FromResolve();
+
+        Container.BindSignal<BuildBuildingSignal>().ToMethod<IConstructionController>(x => x.BuildBuilding).FromResolve();
+    }
 
 
 }
