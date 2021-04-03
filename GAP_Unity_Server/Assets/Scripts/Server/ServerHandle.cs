@@ -44,7 +44,7 @@ public class ServerHandle
     public static void JsonPackate(int fromPlayer, Packet packet)
     {
         string json = packet.ReadString();
-        Debug.Log(json);
+        FDebug.Log.Message(json);
     }
 
 }

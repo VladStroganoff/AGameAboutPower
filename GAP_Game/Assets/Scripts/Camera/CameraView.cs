@@ -27,6 +27,7 @@ public class CameraView : MonoBehaviour, ICameraView
     {
         bus.Subscribe<CameraStateSignal>(CheckCameraState);
         CameraParent.parent = null;
+        RTSCam.enabled = false;
     }
 
     public void CheckCameraState(CameraStateSignal signal)
@@ -55,8 +56,6 @@ public class CameraView : MonoBehaviour, ICameraView
 
     public IEnumerator BackAndForth(Vector3 pos, Quaternion rot, bool yenah)
     {
-
-
         if (traveling)
             yield return null;
 

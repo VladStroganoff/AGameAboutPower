@@ -1196,7 +1196,8 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 4527046348493138547}
-  _installerPrefabs: []
+  _installerPrefabs:
+  - {fileID: 4527046348493138547}
   _autoRun: 1
   _kernel: {fileID: 0}
 --- !u!114 &4527046348493138547
@@ -1212,6 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camView: {fileID: -4250632892452659583}
+  RTSCamera: {fileID: 7219443261485354559}
 --- !u!114 &5966806783710079603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,7 +1226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafba75b12e504d4cb105c5f24a9259c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 7884339637435620742}
 --- !u!114 &8012012814851498039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,9 +1274,7 @@ MonoBehaviour:
   TPSCam: {fileID: 7884339637435620740}
   RTSCam: {fileID: 7219443261485354559}
   RTSPos: {fileID: 8365772235368586067}
-  RTSCamPos: {x: 44.382, y: 13.01219, z: -5.97724}
   TPSPos: {fileID: 5751433909369135516}
-  TPSCameraPos: {x: 0.1910705, y: 2.234516, z: -2.348846}
   CameraParent: {fileID: 5160091386748303597}
 --- !u!114 &-7109435783361623839
 MonoBehaviour:
@@ -1291,6 +1290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _components:
   - {fileID: -4250632892452659583}
+  - {fileID: 7219443261485354559}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}

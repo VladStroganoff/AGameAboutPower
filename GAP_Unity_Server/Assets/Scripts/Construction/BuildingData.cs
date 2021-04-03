@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public enum BuildingType { Farm, Barrack, Tower, Wall, Gate}
+public enum BuildingType { Farm, Barrack, Tower, Wall, Gate }
 
 
 [System.Serializable]

@@ -48,6 +48,7 @@ public class RTSCamera : MonoBehaviour
         _mouseReference = Input.mousePosition;
     }
 
+    
     void Update()
     {
         if (EventSystem.current.IsPointerOverGameObject())

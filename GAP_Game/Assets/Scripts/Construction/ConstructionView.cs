@@ -37,9 +37,12 @@ public class ConstructionView : MonoBehaviour, IConstructionView
         }
     }
 
-    public void ListenForClick(CursorClickSignal signal) => BuildBuilding(Instantiate(_buldngCursor, signal.pos, _buldngCursor.transform.rotation).GetData());
-
-    public void BuildBuilding(BuildingData data) =>_signalBus.Fire(new BuildBuildingSignal() { Building = data });       
+    public void ListenForClick(CursorClickSignal signal)
+    {
+        BuildingData data = _buldngCursor.GetData();
+        //Instantiate(_buldngCursor, signal.pos, _buldngCursor.transform.rotation);
+        _signalBus.Fire(new BuildBuildingSignal() { Building = data });
+    }
 
     public RectTransform GetMarker() => SelectionFrame;
 

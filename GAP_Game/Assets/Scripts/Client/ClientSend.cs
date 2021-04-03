@@ -45,9 +45,9 @@ public class ClientSend : MonoBehaviour
 
     public static void SendJsonPackage(string json)
     {
-        using (Packet packet = new Packet((int)ClientPackets.playerMovement))
+        using (Packet packet = new Packet((int)ClientPackets.jsonObject))
         {
-            packet.Write(json.Length);
+            packet.Write(json);
             SendTCPData(packet);
         }
     }
@@ -57,7 +57,6 @@ public class ClientSend : MonoBehaviour
         using (Packet packet = new Packet((int)ClientPackets.playerShoot))
         {
             packet.Write(facing);
-
             SendTCPData(packet);
         }
     }

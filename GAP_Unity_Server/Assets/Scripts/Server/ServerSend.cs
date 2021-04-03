@@ -133,7 +133,6 @@ public class ServerSend
             string json = JsonConvert.SerializeObject(player.animator, settings);
             packet.Write(json);
 
-
             SendTCPDataToAll(packet);
         }
     }
