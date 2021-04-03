@@ -75,7 +75,6 @@ public class ServerSend
         {
             _packet.Write(_msg);
             _packet.Write(_toClient);
-
             SendTCPData(_toClient, _packet);
         }
     }
@@ -88,7 +87,6 @@ public class ServerSend
             packet.Write(player.name);
             packet.Write(player.transform.position);
             packet.Write(player.transform.rotation);
-
             SendTCPData(toClient, packet);
         }
     }
@@ -134,7 +132,6 @@ public class ServerSend
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             string json = JsonConvert.SerializeObject(player.animator, settings);
             packet.Write(json);
-
 
             SendTCPDataToAll(packet);
         }

@@ -1,72 +1,40 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public interface IConstrcuController
+public interface IConstructionController
 {
-    Building Selection { get; set; }
-    void SelectBuilding(Building building);
+    void BuildBuilding(BuildBuildingSignal signal);
 }
 
 public class PickedBuildingSignal
 {
-    public Building building;
+    public BuildingData building;
 }
-public class BuildBuildingSignal{}
+public class BuildBuildingSignal
+{
+    public BuildingData Building;
+}
 public class DeselectBuildingSignal{}
 
 
-public class ConstructionController : MonoBehaviour, IConstrcuController
+public class ConstructionController : MonoBehaviour, IConstructionController
 {
-    ConstructionModel Model;
-    ICursorController CursorControl;
-
-    SignalBus signalBus;
-
-
-    public Building Selection { get; set; }
-
-    GameObject buldngInstance;
+    SignalBus _signalBus;
 
     [Inject]
-    public void Construct(SignalBus bus)
+    public void Inject(SignalBus bus)
     {
-        signalBus = bus;
+        _signalBus = bus;
     }
 
-    public void CheckCameraState(CameraStateSignal signal) // if camera is in RTS mode I subscribe to the cursor
+    public void BuildBuilding(BuildBuildingSignal signal)
     {
-        if (signal.state != CameraState.RTS)
-        {
-            Selection = null;
-            Destroy(buldngInstance);
-            return;
-        }
-    }
-
-    public void ListenForClick(CursorClickSignal signal) // Im in RTS mode and there is a click
-    {
-        Instantiate(buldngInstance, signal.pos, Quaternion.identity);
-    }
-
-    public void ListenForPos(CursorWorldPosSignal signal)
-    {
-        if (Selection == null)
-            return;
-
-        buldngInstance.SetActive(true);
-        buldngInstance.transform.position = signal.pos;
-    }
-
-    public void SelectBuilding(Building _building)
-    {
-        Selection = _building;
-        Destroy(buldngInstance);
-        buldngInstance = Instantiate(Resources.Load<GameObject>("Buildings/" + Selection.Name) as GameObject, Vector3.zero, Quaternion.identity);
-        buldngInstance.name = Selection.Name;
-        buldngInstance.SetActive(false);
-
-         signalBus.Fire(new PickedBuildingSignal() { building = Selection });
+        Debug.Log("Send buildoing to server: " + signal.Building.Name);
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        string json = JsonConvert.SerializeObject(signal.Building, settings);
+        ClientSend.SendJsonPackage(json);
     }
 }

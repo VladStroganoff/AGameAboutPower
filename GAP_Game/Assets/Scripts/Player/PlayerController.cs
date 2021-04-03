@@ -5,19 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform camTransform;
-    private void Update()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            ClientSend.PlayerShoot(camTransform.forward);
-            Debug.Log("I shoot");
-        }
-    }
-
     private void FixedUpdate()
     {
         SendInputToServer();
@@ -37,6 +24,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    
 
 }

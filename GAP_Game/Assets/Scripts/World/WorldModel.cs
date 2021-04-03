@@ -4,7 +4,7 @@ using UnityEngine;
 using Zenject;
 
 
-public class GameStateChangedSignal
+public class GameStateChangedSignal 
 {
     public GameState state;
 }
@@ -16,13 +16,15 @@ public class WorldModel: IWorldModel
 {
     GameState CurrentState;
     public List<GameObject> Players = new List<GameObject>();
+    GameStateChangedSignal gameState;
 
     SignalBus signalBus;
-
+    [Inject]
     public WorldModel(SignalBus bus)
     {
         signalBus = bus;
     }
+
 
     public void SetGameState(GameState newState)
     {

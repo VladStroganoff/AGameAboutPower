@@ -5,37 +5,37 @@ using Zenject;
 
 public class BuildingButton : MonoBehaviour
 {
-    public Building MyBuilding;
-    IConstructionView ConstructionView;
-    IConstrcuController ConControl;
+    public BuildingView MyBuilding;
+    IConstructionView _constructionView;
+    IConstructionController ConControl;
 
     [Inject]
-    public void Construct(IConstrcuController _conControl, IConstructionView _conView)
+    public void Construct(IConstructionController _conControl, IConstructionView conView)
     {
         ConControl = _conControl;
-        ConstructionView = _conView;
+        _constructionView = conView;
     }
 
     public void PickBuilding()
     {
         MoveMarker();
-        ConControl.SelectBuilding(MyBuilding);
+        _constructionView.SelectBuilding(MyBuilding);
     }
 
     void MoveMarker()
     {
-        if (ConControl.Selection == MyBuilding)
+        if (_constructionView.GetBuilding() == MyBuilding)
         {
             Deselect();
             return;
         }
 
-        ConstructionView.GetMarker().gameObject.SetActive(true);
-        ConstructionView.GetMarker().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        _constructionView.GetMarker().gameObject.SetActive(true);
+        _constructionView.GetMarker().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
     }
 
     void Deselect()
     {
-        ConstructionView.GetMarker().gameObject.SetActive(false);
+        _constructionView.GetMarker().gameObject.SetActive(false);
     }
 }

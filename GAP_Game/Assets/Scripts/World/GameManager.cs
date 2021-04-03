@@ -18,12 +18,14 @@ public class GameManager : MonoBehaviour, IGameManager
     public GameObject playerPrefab;
     public WorldModel Model { get; set; }
     public static GameManager instance;
+    public CameraView.Factory _camFack;
 
     [Inject]
-    public void Contruct(SignalBus bus)
+    public void Contruct(SignalBus bus, CameraView.Factory camFack)
     {
         Model  = new WorldModel(bus);
         instance = this;
+        _camFack = camFack;
     }
 
     public void SpawnPlayer(int id, string username, Vector3 position, Quaternion rotation)
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
         if (id == Client.instance.myId)
         {
-            player = Instantiate(localPlayerPrefab, position, rotation);
+            player = _camFack.Create().gameObject;
         }
         else
         {

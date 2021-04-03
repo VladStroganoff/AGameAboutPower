@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class LobbyView : MonoBehaviour
+public interface ILobbyView
+{
+    void CheckGameState(GameStateChangedSignal signal);
+}
+
+
+public class LobbyView : MonoBehaviour, ILobbyView
 {
 
     public Camera LobbyCamera;
 
-
-    public void CheckState(GameStateChangedSignal signal)
+    public void CheckGameState(GameStateChangedSignal signal)
     {
         if (signal.state == GameState.InLobby)
             return;

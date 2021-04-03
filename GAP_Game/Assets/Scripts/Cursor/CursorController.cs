@@ -18,7 +18,9 @@ public class CursorWorldPosSignal
 }
 
 public interface ICursorController
-{}
+{
+    void CheckForRTSMode(CameraStateSignal signal);
+}
 
 public class CursorController : MonoBehaviour, ICursorController
 {
@@ -31,15 +33,16 @@ public class CursorController : MonoBehaviour, ICursorController
     SignalBus signalBus;
 
     [Inject]
-    public void Construct (SignalBus bus)
+    public void Construct(SignalBus bus)
     {
         signalBus = bus;
     }
 
     public void CheckForRTSMode(CameraStateSignal signal)
     {
-        if(signal.state != CameraState.RTS)
+        if (signal.state != CameraState.RTS)
         {
+
             cursorActive = false;
             cursorInstance.gameObject.SetActive(false);
             return;
@@ -54,7 +57,13 @@ public class CursorController : MonoBehaviour, ICursorController
     public void Update()
     {
         if (!cursorActive)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                PlayerShoot();
+            }
             return;
+        }
 
         if (EventSystem.current.IsPointerOverGameObject())
             return;
@@ -65,10 +74,16 @@ public class CursorController : MonoBehaviour, ICursorController
         Shoot3DCursor();
     }
 
-
+    void PlayerShoot()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        ClientSend.PlayerShoot(Camera.main.transform.forward);
+        Debug.Log("I shoot");
+    }
     void Shoot3DCursor()
     {
-        if(Camera.current != null)
+        if (Camera.current != null)
             ray = Camera.current.ScreenPointToRay(Input.mousePosition);
 
         if (Camera.main != null)

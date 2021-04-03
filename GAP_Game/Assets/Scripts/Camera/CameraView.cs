@@ -22,28 +22,31 @@ public class CameraView : MonoBehaviour, ICameraView
     float journeyLength = 0;
     bool traveling = false;
 
-
-    public void Construct(SignalBus bus)
+    [Inject]
+    public void Inject(SignalBus bus)
     {
         bus.Subscribe<CameraStateSignal>(CheckCameraState);
         CameraParent.parent = null;
+        RTSCam.enabled = false;
     }
 
     public void CheckCameraState(CameraStateSignal signal)
     {
-        switch(signal.state)
+        CameraParent.transform.position = transform.position;
+
+        switch (signal.state)
         {
             case CameraState.RTS:
                 {
+                    LocalPlayerCamera.transform.position = TPSPos.position;
                     TPSCam.enabled = false;
-                    CameraParent.transform.position = transform.position;
                     StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation, false));
                     return;
                 }
             case CameraState.TPS:
                 {
+                    LocalPlayerCamera.transform.position = RTSPos.position;
                     RTSCam.enabled = false;
-                    CameraParent.transform.position = transform.position;
                     StartCoroutine(BackAndForth(TPSPos.localPosition, TPSPos.rotation, true));
                     return;
                 }
@@ -75,10 +78,13 @@ public class CameraView : MonoBehaviour, ICameraView
         }
         else
         {
+            RTSCam.transform.LookAt(RTSCam.Target.transform.position);
             RTSCam.enabled = true;
         }
 
         traveling = false;
     }
-
+    public class Factory : PlaceholderFactory<CameraView>
+    {
+    }
 }

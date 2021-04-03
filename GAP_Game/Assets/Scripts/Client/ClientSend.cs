@@ -8,11 +8,9 @@ public class ClientSend : MonoBehaviour
     {
         packet.WriteLength();
         Client.instance.tcp.SendData(packet);
-
     }
 
-
-    public static void SendUDP(Packet packet)
+    private static void SendUDP(Packet packet)
     {
         packet.WriteLength();
         Client.instance.udp.SendData(packet);
@@ -45,12 +43,20 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    public static void SendJsonPackage(string json)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.jsonObject))
+        {
+            packet.Write(json);
+            SendTCPData(packet);
+        }
+    }
+
     public static void PlayerShoot(Vector3 facing)
     {
         using (Packet packet = new Packet((int)ClientPackets.playerShoot))
         {
             packet.Write(facing);
-
             SendTCPData(packet);
         }
     }

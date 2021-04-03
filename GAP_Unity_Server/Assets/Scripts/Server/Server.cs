@@ -117,6 +117,7 @@ public class Server
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WelcomeRecieved },
                 {(int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
                 {(int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
+                {(int)ClientPackets.jsonObject, ServerHandle.JsonPackate },
             };
 
         Debug.Log("Packets Initialized... ");
