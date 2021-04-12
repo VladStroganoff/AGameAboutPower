@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,9 +44,15 @@ public class ServerHandle
 
     public static void JsonPackate(int fromPlayer, Packet packet)
     {
+        int id = packet.ReadInt();
         string json = packet.ReadString();
-        BuildingData buildingData = JsonUtility.FromJson<BuildingData>(json);
-        NetworkManager.instance.ConstructionControl.BuildBuilding(buildingData);
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+        NetEntity netPackage = JsonConvert.DeserializeObject<NetEntity>(json, settings);
+        
+        if(netPackage is BuildingData)
+            NetworkManager.instance.ConstructionControl.BuildBuilding(id, (BuildingData)netPackage);
+        if (netPackage is NetAnimator)
+            Debug.Log("was animator");
     }
 
 }

@@ -41,7 +41,7 @@ public class ConstructionView : MonoBehaviour, IConstructionView
     {
         BuildingData data = _buldngCursor.GetData();
         //Instantiate(_buldngCursor, signal.pos, _buldngCursor.transform.rotation);
-        _signalBus.Fire(new BuildBuildingSignal() { Building = data });
+        _signalBus.Fire(new SendBuildingSignal() { Building = data });
     }
 
     public RectTransform GetMarker() => SelectionFrame;

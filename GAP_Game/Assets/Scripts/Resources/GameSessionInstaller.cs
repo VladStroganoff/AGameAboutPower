@@ -12,6 +12,7 @@ public class GameSessionInstaller : MonoInstaller
     public UIManager UIManager;
     public GameObject LocalPlayer;
 
+
     public override void InstallBindings()
     {
         SignalBusInstaller.Install(Container);
@@ -23,6 +24,7 @@ public class GameSessionInstaller : MonoInstaller
         
         Container.Bind<ILobbyView>().FromInstance(LobbyView);
         Container.Bind<IUIManager>().FromInstance(UIManager);
+        Container.Bind<ClientHandle>().AsSingle();
 
         Container.BindFactory<CameraView, CameraView.Factory>().FromSubContainerResolve().ByNewContextPrefab(LocalPlayer);
 
@@ -57,14 +59,14 @@ public class GameSessionInstaller : MonoInstaller
 
         Container.DeclareSignal<PickedBuildingSignal>();
         
-        Container.DeclareSignal<BuildBuildingSignal>();
+        Container.DeclareSignal<SendBuildingSignal>();
 
         Container.BindSignal<CameraStateSignal>().ToMethod<IConstructionView>(x => x.CheckCameraState).FromResolve();
 
         Container.BindSignal<CursorClickSignal>().ToMethod<IConstructionView>(x => x.ListenForClick).FromResolve();
         Container.BindSignal<CursorWorldPosSignal>().ToMethod<IConstructionView>(x => x.ListenForPos).FromResolve();
 
-        Container.BindSignal<BuildBuildingSignal>().ToMethod<IConstructionController>(x => x.BuildBuilding).FromResolve();
+        Container.BindSignal<SendBuildingSignal>().ToMethod<IConstructionController>(x => x.SendBuilding).FromResolve();
     }
 
 
