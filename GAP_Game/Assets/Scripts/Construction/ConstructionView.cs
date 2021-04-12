@@ -20,6 +20,7 @@ public class ConstructionView : MonoBehaviour, IConstructionView
     BuildingView _selection { get; set; }
     BuildingView _buldngCursor;
     public int GridStep;
+    Dictionary<string, BuildingView> _selectedBuildings = new Dictionary<string, BuildingView>();
 
     [Inject]
     public void Inject(SignalBus signalBus)
@@ -60,8 +61,22 @@ public class ConstructionView : MonoBehaviour, IConstructionView
 
     public void SelectBuilding(BuildingView building)
     {
-        _selection = building;
-        _buldngCursor = Instantiate(_selection);
+        if (_selection != building && _selection != null)
+            _buldngCursor.gameObject.SetActive(false);
+
+        if(!_selectedBuildings.ContainsKey(building.name))
+        {
+            _selection = building;
+            BuildingView cursor = Instantiate(_selection);
+            _selectedBuildings.Add(building.name, cursor);
+            _buldngCursor = cursor;
+        }
+        else
+        {
+            _selection = _selectedBuildings[building.name];
+            _buldngCursor = _selection;
+            _buldngCursor.gameObject.SetActive(true);
+        }
     }
     public BuildingView GetBuilding() =>  _selection;
 }

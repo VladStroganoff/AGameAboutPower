@@ -36,5 +36,6 @@ public class ConstructionController : MonoBehaviour, IConstructionController
     {
         Debug.Log($"Building building: {building.Name} at position: {building.Position}, and rotation: {building.Rotation}");
         GameObject instance = GameObject.Instantiate(Resources.Load<GameObject>($"Buildings/{building.Name}"), building.Position, building.Rotation);
+        instance.gameObject.SetActive(true);
     }
 }
