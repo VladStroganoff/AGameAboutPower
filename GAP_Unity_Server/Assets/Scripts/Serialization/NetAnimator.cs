@@ -10,7 +10,7 @@ public class NetEntity
 
 
 [System.Serializable]
-public class NetAnimator 
+public class NetAnimator : NetEntity
 {
     public NetAnimationParam[] Parameters;
 }

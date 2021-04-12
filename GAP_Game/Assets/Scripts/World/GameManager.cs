@@ -9,6 +9,7 @@ public interface IGameManager
 {
     WorldModel Model { get; set; }
     void SpawnPlayer(int id, string username, Vector3 position, Quaternion rotation);
+    void SpawnStructure(BuildingData data);
 }
 
 public class GameManager : MonoBehaviour, IGameManager
@@ -16,12 +17,14 @@ public class GameManager : MonoBehaviour, IGameManager
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
+    [SerializeField]
+    private ConstructionController ConstructionController;
     public WorldModel Model { get; set; }
     public static GameManager instance;
     public CameraView.Factory _camFack;
 
     [Inject]
-    public void Contruct(SignalBus bus, CameraView.Factory camFack)
+    public void Inject(SignalBus bus, CameraView.Factory camFack)
     {
         Model  = new WorldModel(bus);
         instance = this;
@@ -46,5 +49,10 @@ public class GameManager : MonoBehaviour, IGameManager
 
         Model.SetGameState(GameState.InGame);
         Model.AddPlayer(player);
+    }
+
+    public void SpawnStructure(BuildingData data)
+    {
+        ConstructionController.ReceiveBuilding(data);
     }
 }

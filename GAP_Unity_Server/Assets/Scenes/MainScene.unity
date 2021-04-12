@@ -328,8 +328,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.0035004914, y: 0.5496873, z: 0.0023031603, w: 0.83536}
-  m_LocalPosition: {x: 470.37393, y: 150.64494, z: 491.9943}
+  m_LocalRotation: {x: -0.33719674, y: 0.06817193, z: -0.024489978, w: -0.9386433}
+  m_LocalPosition: {x: 512.4172, y: 130.37994, z: 500.14926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 1092200043}
   - component: {fileID: 1092200045}
   - component: {fileID: 1092200044}
+  - component: {fileID: 1092200046}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -503,6 +504,19 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 7487777697800171302, guid: 4bef27bd9610e094ba53301116c95734,
     type: 3}
   PlayerSpawnPoint: {fileID: 64265278}
+  ConstructionControl: {fileID: 1092200046}
+--- !u!114 &1092200046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092200042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c082d145a063664c8804efeeb6f367a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1306106283
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ public enum BuildingType { Farm, Barrack, Tower, Wall, Gate}
 
 
 [System.Serializable]
-public struct BuildingData
+public class BuildingData : NetEntity
 {
     [SerializeField]
     public string Name;

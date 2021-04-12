@@ -10,7 +10,6 @@ using Zenject;
 public class ClientHandle : MonoBehaviour
 {
 
-
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -79,9 +78,11 @@ public class ClientHandle : MonoBehaviour
 
         string json = packet.ReadString();
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-        NetAnimator animator = JsonConvert.DeserializeObject<NetAnimator>(json, settings);
-        
+        NetEntity jsonObj = JsonConvert.DeserializeObject<NetEntity>(json, settings);
 
-        GameManager.players[id].Animator.Set(animator);
+        if(jsonObj is NetAnimator)
+            GameManager.players[id].Animator.Set(jsonObj as NetAnimator);
+        if (jsonObj is BuildingData)
+            GameManager.instance.SpawnStructure(jsonObj as BuildingData);
     }
 }

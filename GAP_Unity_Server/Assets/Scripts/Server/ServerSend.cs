@@ -137,6 +137,18 @@ public class ServerSend
         }
     }
 
+    public static void BuildStructure( int player, BuildingData building)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.jsonObject))
+        {
+            packet.Write(player);
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            string json = JsonConvert.SerializeObject(building, settings);
+            packet.Write(json);
+            SendTCPDataToAll(packet);
+        }
+    }
+
     public static void PlayerRespawn(Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRespawn))

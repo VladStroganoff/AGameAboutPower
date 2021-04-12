@@ -8,6 +8,7 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager instance;
     public GameObject PlayerPrefab;
     public Transform PlayerSpawnPoint;
+    public ConstructionController ConstructionControl;
 
     private void Awake()
     {

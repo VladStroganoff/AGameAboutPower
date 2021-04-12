@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ClientSend : MonoBehaviour
 {
+
+
+
+
+
     private static void SendTCPData(Packet packet)
     {
         packet.WriteLength();
@@ -47,6 +53,7 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet packet = new Packet((int)ClientPackets.jsonObject))
         {
+            packet.Write(Client.instance.myId);
             packet.Write(json);
             SendTCPData(packet);
         }
