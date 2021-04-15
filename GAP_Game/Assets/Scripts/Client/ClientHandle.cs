@@ -16,12 +16,12 @@ public class ClientHandle : MonoBehaviour
         int _myID = _packet.ReadInt();
 
 
-        Debug.Log("Da message was: " + _msg);
+        Debug.Log("Da message was: " + _msg + "from port: " + ((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
         Client.instance.myId = _myID;
 
         ClientSend.WelcomeReceived();
 
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port); // this port is different
     }
 
     public static void SpawnPlayer(Packet packet)

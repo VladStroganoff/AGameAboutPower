@@ -29,15 +29,12 @@ public class Packet : IDisposable
     private byte[] readableBuffer;
     private int readPos;
 
-    /// <summary>Creates a new empty packet (without an ID).</summary>
     public Packet()
     {
         buffer = new List<byte>(); // Intitialize buffer
         readPos = 0; // Set readPos to 0
     }
 
-    /// <summary>Creates a new packet with a given ID. Used for sending.</summary>
-    /// <param name="_id">The packet ID.</param>
     public Packet(int _id)
     {
         buffer = new List<byte>(); // Intitialize buffer
@@ -46,8 +43,6 @@ public class Packet : IDisposable
         Write(_id); // Write packet id to the buffer
     }
 
-    /// <summary>Creates a packet from which data can be read. Used for receiving.</summary>
-    /// <param name="_data">The bytes to add to the packet.</param>
     public Packet(byte[] _data)
     {
         buffer = new List<byte>(); // Intitialize buffer

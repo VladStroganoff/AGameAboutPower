@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 458.77136, g: 288.03833, b: 246.4419, a: 1}
+  m_IndirectSpecularColor: {r: 448.2506, g: 286.3938, b: 259.05957, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ip: 127.0.0.1
-  port: 26950
+  port: 52742
   Name: Stroganoff
   RTSCanvas: {fileID: 180239541}
   startMenu: {fileID: 1035655719}
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   ConstructionView: {fileID: 206617397}
   LobbyView: {fileID: 329943398}
   UIManager: {fileID: 206617396}
-  LocalPlayer: {fileID: 4816498496395887971, guid: cedeb01bb0892f242a4ed9758611613f,
+  LocalPlayer: {fileID: 5846432716547406529, guid: a520d59fe9003a74fad2082930a0c2ec,
     type: 3}
 --- !u!114 &460938549
 MonoBehaviour:
@@ -3171,9 +3171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f3a36f70cad84449281f1cd70355ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPlayerPrefab: {fileID: 4816498496395887971, guid: cedeb01bb0892f242a4ed9758611613f,
-    type: 3}
-  playerPrefab: {fileID: 4816498496395887971, guid: dee201560b73fde40a91cb7f14042ace,
+  Player: {fileID: 5846432716547406529, guid: a520d59fe9003a74fad2082930a0c2ec, type: 3}
+  OtherPlayer: {fileID: 4816498496395887971, guid: dee201560b73fde40a91cb7f14042ace,
     type: 3}
   ConstructionController: {fileID: 1119477689}
 --- !u!114 &1119477688

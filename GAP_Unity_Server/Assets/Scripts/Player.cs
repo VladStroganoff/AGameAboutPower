@@ -66,9 +66,7 @@ public class Player : MonoBehaviour
         thirdPersonInput.inputs = inputs;
 
 
-        //Vector3 rotation = transform.right * inputDirection.x + transform.forward * inputDirection.y;
         thirdPersonMotor.SetMoveDirection(thirdPersonInput.tpCamera.transform.right * inputDirection.x + thirdPersonInput.tpCamera.transform.forward * inputDirection.y);
-        //thirdPersonInput.tpCamera.RotateCamera(rotation.x, rotation.y);
 
         Send();
     }
@@ -83,10 +81,7 @@ public class Player : MonoBehaviour
     public void SetInput(bool[] _inputs, Quaternion _rotation)
     {
         inputs = _inputs;
-        //thirdPersonInput.tpCamera.RotateCamera(_rotation.x, _rotation.y);
         thirdPersonInput.tpCamera.transform.rotation = _rotation;
-
-        //transform.rotation = _rotation;
     }
 
     public void Shoot(Vector3 viewDirection)

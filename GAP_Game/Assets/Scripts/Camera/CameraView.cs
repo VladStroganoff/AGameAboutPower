@@ -25,6 +25,7 @@ public class CameraView : MonoBehaviour, ICameraView
     [Inject]
     public void Inject(SignalBus bus)
     {
+        Debug.Log("CamViewGets Injected");
         bus.Subscribe<CameraStateSignal>(CheckCameraState);
         CameraParent.parent = null;
         RTSCam.enabled = false;

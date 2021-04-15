@@ -15,8 +15,8 @@ public interface IGameManager
 public class GameManager : MonoBehaviour, IGameManager
 {
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
-    public GameObject localPlayerPrefab;
-    public GameObject playerPrefab;
+    public GameObject Player; 
+    public GameObject OtherPlayer;
     [SerializeField]
     private ConstructionController ConstructionController;
     public WorldModel Model { get; set; }
@@ -37,11 +37,11 @@ public class GameManager : MonoBehaviour, IGameManager
 
         if (id == Client.instance.myId)
         {
-            player = _camFack.Create().gameObject;
+            player = Instantiate(Player, position, rotation);
         }
         else
         {
-            player = Instantiate(playerPrefab, position, rotation);
+            player = Instantiate(OtherPlayer, position, rotation);
         }
 
         player.GetComponent<PlayerManager>().Initialize(id, username);

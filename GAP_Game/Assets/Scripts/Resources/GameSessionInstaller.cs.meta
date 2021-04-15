@@ -3,7 +3,16 @@ guid: 6a1929b389b5ec7499d83507a49eb722
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameManager: {instanceID: 0}
+  - camController: {instanceID: 0}
+  - CursorControl: {instanceID: 0}
+  - ConControll: {instanceID: 0}
+  - ConstructionView: {instanceID: 0}
+  - LobbyView: {instanceID: 0}
+  - UIManager: {instanceID: 0}
+  - LocalPlayer: {fileID: 5846432716547406529, guid: a520d59fe9003a74fad2082930a0c2ec,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

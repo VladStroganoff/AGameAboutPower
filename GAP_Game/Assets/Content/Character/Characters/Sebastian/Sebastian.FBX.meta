@@ -1,0 +1,818 @@
+fileFormatVersion: 2
+guid: 1e7e913c3ff8a684e99c4a9bd7ba2ca3
+timeCreated: 1476820482
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: body
+    100002: eyes
+    100004: head
+    100006: head_ring
+    100008: neck
+    100010: //RootNode
+    100012: Staff
+    100014: stilts
+    100016: Ankle1_LXZ
+    100018: Ankle1_RXZ
+    100020: Ankle2_LXZ
+    100022: Ankle2_RXZ
+    100024: Ankle_LOffset
+    100026: Ankle_MoCap_L
+    100028: Ankle_MoCap_R
+    100030: Ankle_ROffset
+    100032: BackA_MoCap_M
+    100034: BackB_MoCap_M
+    100036: BackC_MoCap_M
+    100038: BigToe_MoCap_L
+    100040: BigToe_MoCap_R
+    100042: Chest_MoCap_M
+    100044: Clavicle1_L
+    100046: Clavicle1_R
+    100048: Elbow_MoCap_L
+    100050: Elbow_MoCap_R
+    100052: ElbowPart1_MoCap_L
+    100054: ElbowPart1_MoCap_R
+    100056: eye_L
+    100058: eye_R
+    100060: eyelid_lower_1_L
+    100062: eyelid_lower_1_R
+    100064: eyelid_lower_2_L
+    100066: eyelid_lower_2_R
+    100068: eyelid_lower_3_L
+    100070: eyelid_lower_3_R
+    100072: eyelid_lower_4_L
+    100074: eyelid_lower_4_R
+    100076: eyelid_lower_5_L
+    100078: eyelid_lower_5_R
+    100080: eyelid_lower_6_L
+    100082: eyelid_lower_6_R
+    100084: eyelid_lower_L
+    100086: eyelid_lower_R
+    100088: eyelid_upper_1_L
+    100090: eyelid_upper_1_R
+    100092: eyelid_upper_2_L
+    100094: eyelid_upper_2_R
+    100096: eyelid_upper_3_L
+    100098: eyelid_upper_3_R
+    100100: eyelid_upper_4_L
+    100102: eyelid_upper_4_R
+    100104: eyelid_upper_5_L
+    100106: eyelid_upper_5_R
+    100108: eyelid_upper_6_L
+    100110: eyelid_upper_6_R
+    100112: eyelid_upper_L
+    100114: eyelid_upper_R
+    100116: eyeShutter_1_L
+    100118: eyeShutter_1_R
+    100120: eyeShutter_2_L
+    100122: eyeShutter_2_R
+    100124: eyeShutter_3_L
+    100126: eyeShutter_3_R
+    100128: eyeShutter_4_L
+    100130: eyeShutter_4_R
+    100132: eyeShutter_5_L
+    100134: eyeShutter_5_R
+    100136: eyeShutter_6_L
+    100138: eyeShutter_6_R
+    100140: footAttach_MoCap_L
+    100142: footAttach_MoCap_R
+    100144: footWrap_MoCap_L
+    100146: footWrap_MoCap_R
+    100148: GEO:sebastian_geo_GRP
+    100150: GEO:smallShard_1_GEO
+    100152: GEO:smallShard_2_GEO
+    100154: GEO:smallShard_3_GEO
+    100156: GEO_sebastian_AST
+    100158: Hair_MoCap_M
+    100160: Head_MoCap_M
+    100162: Hip_LOffset
+    100164: Hip_MoCap_L
+    100166: Hip_MoCap_R
+    100168: Hip_ROffset
+    100170: HipPart1_LOffset
+    100172: HipPart1_MoCap_L
+    100174: HipPart1_MoCap_R
+    100176: HipPart1_ROffset
+    100178: HipPart2_LOffset
+    100180: HipPart2_MoCap_L
+    100182: HipPart2_MoCap_R
+    100184: HipPart2_ROffset
+    100186: IndexFinger1_MoCap_L
+    100188: IndexFinger1_MoCap_R
+    100190: IndexFinger2_MoCap_L
+    100192: IndexFinger2_MoCap_R
+    100194: IndexFinger3_MoCap_L
+    100196: IndexFinger3_MoCap_R
+    100198: IndexFinger4_MoCap_L
+    100200: IndexFinger4_MoCap_R
+    100202: Knee_LOffset
+    100204: Knee_MoCap_L
+    100206: Knee_MoCap_R
+    100208: Knee_ROffset
+    100210: MiddleFinger1_MoCap_L
+    100212: MiddleFinger1_MoCap_R
+    100214: MiddleFinger2_MoCap_L
+    100216: MiddleFinger2_MoCap_R
+    100218: MiddleFinger3_MoCap_L
+    100220: MiddleFinger3_MoCap_R
+    100222: MiddleFinger4_MoCap_L
+    100224: MiddleFinger4_MoCap_R
+    100226: MiddleToe1_MoCap_L
+    100228: MiddleToe1_MoCap_R
+    100230: MiddleToe2_MoCap_L
+    100232: MiddleToe2_MoCap_R
+    100234: MoCap
+    100236: NeckA_MoCap_M
+    100238: NeckB_MoCap_M
+    100240: NeckC_MoCap_M
+    100242: PinkyFinger1_MoCap_L
+    100244: PinkyFinger1_MoCap_R
+    100246: PinkyFinger2_MoCap_L
+    100248: PinkyFinger2_MoCap_R
+    100250: PinkyFinger3_MoCap_L
+    100252: PinkyFinger3_MoCap_R
+    100254: PinkyFinger4_MoCap_L
+    100256: PinkyFinger4_MoCap_R
+    100258: PinkyToe_MoCap_L
+    100260: PinkyToe_MoCap_R
+    100262: RingFinger1_MoCap_L
+    100264: RingFinger1_MoCap_R
+    100266: RingFinger2_MoCap_L
+    100268: RingFinger2_MoCap_R
+    100270: RingFinger3_MoCap_L
+    100272: RingFinger3_MoCap_R
+    100274: RingFinger4_MoCap_L
+    100276: RingFinger4_MoCap_R
+    100278: Root_MoCap_M
+    100280: Scapula_MoCap_L
+    100282: Scapula_MoCap_R
+    100284: Shoulder_MoCap_L
+    100286: Shoulder_MoCap_R
+    100288: ShoulderPart1_MoCap_L
+    100290: ShoulderPart1_MoCap_R
+    100292: smallShard_1_GEO
+    100294: smallShard_2_GEO
+    100296: smallShard_3_GEO
+    100298: staff_MoCap_jnt
+    100300: stilt1_MoCap_L
+    100302: stilt1_MoCap_R
+    100304: stilt2_MoCap_L
+    100306: stilt2_MoCap_R
+    100308: stilt3_MoCap_L
+    100310: stilt3_MoCap_R
+    100312: tassel1_MoCap
+    100314: tassel2_MoCap
+    100316: tassel3_MoCap
+    100318: ThumbFinger1_MoCap_L
+    100320: ThumbFinger1_MoCap_R
+    100322: ThumbFinger2_MoCap_L
+    100324: ThumbFinger2_MoCap_R
+    100326: ThumbFinger3_MoCap_L
+    100328: ThumbFinger3_MoCap_R
+    100330: ThumbFinger4_MoCap_L
+    100332: ThumbFinger4_MoCap_R
+    100334: Wrist_MoCap_L
+    100336: Wrist_MoCap_R
+    400000: body
+    400002: eyes
+    400004: head
+    400006: head_ring
+    400008: neck
+    400010: //RootNode
+    400012: Staff
+    400014: stilts
+    400016: Ankle1_LXZ
+    400018: Ankle1_RXZ
+    400020: Ankle2_LXZ
+    400022: Ankle2_RXZ
+    400024: Ankle_LOffset
+    400026: Ankle_MoCap_L
+    400028: Ankle_MoCap_R
+    400030: Ankle_ROffset
+    400032: BackA_MoCap_M
+    400034: BackB_MoCap_M
+    400036: BackC_MoCap_M
+    400038: BigToe_MoCap_L
+    400040: BigToe_MoCap_R
+    400042: Chest_MoCap_M
+    400044: Clavicle1_L
+    400046: Clavicle1_R
+    400048: Elbow_MoCap_L
+    400050: Elbow_MoCap_R
+    400052: ElbowPart1_MoCap_L
+    400054: ElbowPart1_MoCap_R
+    400056: eye_L
+    400058: eye_R
+    400060: eyelid_lower_1_L
+    400062: eyelid_lower_1_R
+    400064: eyelid_lower_2_L
+    400066: eyelid_lower_2_R
+    400068: eyelid_lower_3_L
+    400070: eyelid_lower_3_R
+    400072: eyelid_lower_4_L
+    400074: eyelid_lower_4_R
+    400076: eyelid_lower_5_L
+    400078: eyelid_lower_5_R
+    400080: eyelid_lower_6_L
+    400082: eyelid_lower_6_R
+    400084: eyelid_lower_L
+    400086: eyelid_lower_R
+    400088: eyelid_upper_1_L
+    400090: eyelid_upper_1_R
+    400092: eyelid_upper_2_L
+    400094: eyelid_upper_2_R
+    400096: eyelid_upper_3_L
+    400098: eyelid_upper_3_R
+    400100: eyelid_upper_4_L
+    400102: eyelid_upper_4_R
+    400104: eyelid_upper_5_L
+    400106: eyelid_upper_5_R
+    400108: eyelid_upper_6_L
+    400110: eyelid_upper_6_R
+    400112: eyelid_upper_L
+    400114: eyelid_upper_R
+    400116: eyeShutter_1_L
+    400118: eyeShutter_1_R
+    400120: eyeShutter_2_L
+    400122: eyeShutter_2_R
+    400124: eyeShutter_3_L
+    400126: eyeShutter_3_R
+    400128: eyeShutter_4_L
+    400130: eyeShutter_4_R
+    400132: eyeShutter_5_L
+    400134: eyeShutter_5_R
+    400136: eyeShutter_6_L
+    400138: eyeShutter_6_R
+    400140: footAttach_MoCap_L
+    400142: footAttach_MoCap_R
+    400144: footWrap_MoCap_L
+    400146: footWrap_MoCap_R
+    400148: GEO:sebastian_geo_GRP
+    400150: GEO:smallShard_1_GEO
+    400152: GEO:smallShard_2_GEO
+    400154: GEO:smallShard_3_GEO
+    400156: GEO_sebastian_AST
+    400158: Hair_MoCap_M
+    400160: Head_MoCap_M
+    400162: Hip_LOffset
+    400164: Hip_MoCap_L
+    400166: Hip_MoCap_R
+    400168: Hip_ROffset
+    400170: HipPart1_LOffset
+    400172: HipPart1_MoCap_L
+    400174: HipPart1_MoCap_R
+    400176: HipPart1_ROffset
+    400178: HipPart2_LOffset
+    400180: HipPart2_MoCap_L
+    400182: HipPart2_MoCap_R
+    400184: HipPart2_ROffset
+    400186: IndexFinger1_MoCap_L
+    400188: IndexFinger1_MoCap_R
+    400190: IndexFinger2_MoCap_L
+    400192: IndexFinger2_MoCap_R
+    400194: IndexFinger3_MoCap_L
+    400196: IndexFinger3_MoCap_R
+    400198: IndexFinger4_MoCap_L
+    400200: IndexFinger4_MoCap_R
+    400202: Knee_LOffset
+    400204: Knee_MoCap_L
+    400206: Knee_MoCap_R
+    400208: Knee_ROffset
+    400210: MiddleFinger1_MoCap_L
+    400212: MiddleFinger1_MoCap_R
+    400214: MiddleFinger2_MoCap_L
+    400216: MiddleFinger2_MoCap_R
+    400218: MiddleFinger3_MoCap_L
+    400220: MiddleFinger3_MoCap_R
+    400222: MiddleFinger4_MoCap_L
+    400224: MiddleFinger4_MoCap_R
+    400226: MiddleToe1_MoCap_L
+    400228: MiddleToe1_MoCap_R
+    400230: MiddleToe2_MoCap_L
+    400232: MiddleToe2_MoCap_R
+    400234: MoCap
+    400236: NeckA_MoCap_M
+    400238: NeckB_MoCap_M
+    400240: NeckC_MoCap_M
+    400242: PinkyFinger1_MoCap_L
+    400244: PinkyFinger1_MoCap_R
+    400246: PinkyFinger2_MoCap_L
+    400248: PinkyFinger2_MoCap_R
+    400250: PinkyFinger3_MoCap_L
+    400252: PinkyFinger3_MoCap_R
+    400254: PinkyFinger4_MoCap_L
+    400256: PinkyFinger4_MoCap_R
+    400258: PinkyToe_MoCap_L
+    400260: PinkyToe_MoCap_R
+    400262: RingFinger1_MoCap_L
+    400264: RingFinger1_MoCap_R
+    400266: RingFinger2_MoCap_L
+    400268: RingFinger2_MoCap_R
+    400270: RingFinger3_MoCap_L
+    400272: RingFinger3_MoCap_R
+    400274: RingFinger4_MoCap_L
+    400276: RingFinger4_MoCap_R
+    400278: Root_MoCap_M
+    400280: Scapula_MoCap_L
+    400282: Scapula_MoCap_R
+    400284: Shoulder_MoCap_L
+    400286: Shoulder_MoCap_R
+    400288: ShoulderPart1_MoCap_L
+    400290: ShoulderPart1_MoCap_R
+    400292: smallShard_1_GEO
+    400294: smallShard_2_GEO
+    400296: smallShard_3_GEO
+    400298: staff_MoCap_jnt
+    400300: stilt1_MoCap_L
+    400302: stilt1_MoCap_R
+    400304: stilt2_MoCap_L
+    400306: stilt2_MoCap_R
+    400308: stilt3_MoCap_L
+    400310: stilt3_MoCap_R
+    400312: tassel1_MoCap
+    400314: tassel2_MoCap
+    400316: tassel3_MoCap
+    400318: ThumbFinger1_MoCap_L
+    400320: ThumbFinger1_MoCap_R
+    400322: ThumbFinger2_MoCap_L
+    400324: ThumbFinger2_MoCap_R
+    400326: ThumbFinger3_MoCap_L
+    400328: ThumbFinger3_MoCap_R
+    400330: ThumbFinger4_MoCap_L
+    400332: ThumbFinger4_MoCap_R
+    400334: Wrist_MoCap_L
+    400336: Wrist_MoCap_R
+    2300000: body
+    2300002: eyes
+    2300004: head
+    2300006: head_ring
+    2300008: neck
+    2300010: Staff
+    2300012: stilts
+    2300014: GEO:smallShard_1_GEO
+    2300016: GEO:smallShard_2_GEO
+    2300018: GEO:smallShard_3_GEO
+    2300020: smallShard_1_GEO
+    2300022: smallShard_2_GEO
+    2300024: smallShard_3_GEO
+    3300000: body
+    3300002: eyes
+    3300004: head
+    3300006: head_ring
+    3300008: neck
+    3300010: Staff
+    3300012: stilts
+    3300014: GEO:smallShard_1_GEO
+    3300016: GEO:smallShard_2_GEO
+    3300018: GEO:smallShard_3_GEO
+    3300020: smallShard_1_GEO
+    3300022: smallShard_2_GEO
+    3300024: smallShard_3_GEO
+    4300000: head
+    4300002: eyes
+    4300004: Staff
+    4300006: stilts
+    4300008: neck
+    4300010: body
+    4300012: head_ring
+    4300014: smallShard_3_GEO
+    4300016: smallShard_2_GEO
+    4300018: smallShard_1_GEO
+    4300020: GEO:smallShard_1_GEO
+    4300022: GEO:smallShard_2_GEO
+    4300024: GEO:smallShard_3_GEO
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: body
+    13700002: eyes
+    13700004: head
+    13700006: head_ring
+    13700008: neck
+    13700010: Staff
+    13700012: stilts
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 401
+      lastFrame: 2213
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: body
+        weight: 1
+      - path: eyes
+        weight: 1
+      - path: GEO_sebastian_AST
+        weight: 1
+      - path: GEO_sebastian_AST/GEO:sebastian_geo_GRP
+        weight: 1
+      - path: GEO_sebastian_AST/GEO:sebastian_geo_GRP/GEO:smallShard_1_GEO
+        weight: 1
+      - path: GEO_sebastian_AST/GEO:sebastian_geo_GRP/GEO:smallShard_2_GEO
+        weight: 1
+      - path: GEO_sebastian_AST/GEO:sebastian_geo_GRP/GEO:smallShard_3_GEO
+        weight: 1
+      - path: head
+        weight: 1
+      - path: head_ring
+        weight: 1
+      - path: MoCap
+        weight: 1
+      - path: MoCap/Root_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Clavicle1_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Clavicle1_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L/eyeShutter_1_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L/eyeShutter_2_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L/eyeShutter_3_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L/eyeShutter_4_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L/eyeShutter_5_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_L/eyeShutter_6_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R/eyeShutter_1_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R/eyeShutter_2_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R/eyeShutter_3_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R/eyeShutter_4_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R/eyeShutter_5_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eye_R/eyeShutter_6_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L/eyelid_lower_1_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L/eyelid_lower_2_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L/eyelid_lower_3_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L/eyelid_lower_4_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L/eyelid_lower_5_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_L/eyelid_lower_6_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R/eyelid_lower_1_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R/eyelid_lower_2_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R/eyelid_lower_3_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R/eyelid_lower_4_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R/eyelid_lower_5_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_lower_R/eyelid_lower_6_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L/eyelid_upper_1_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L/eyelid_upper_2_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L/eyelid_upper_3_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L/eyelid_upper_4_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L/eyelid_upper_5_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_L/eyelid_upper_6_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R/eyelid_upper_1_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R/eyelid_upper_2_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R/eyelid_upper_3_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R/eyelid_upper_4_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R/eyelid_upper_5_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/eyelid_upper_R/eyelid_upper_6_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/NeckA_MoCap_M/NeckB_MoCap_M/NeckC_MoCap_M/Head_MoCap_M/Hair_MoCap_M
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/IndexFinger1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/IndexFinger1_MoCap_L/IndexFinger2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/IndexFinger1_MoCap_L/IndexFinger2_MoCap_L/IndexFinger3_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/IndexFinger1_MoCap_L/IndexFinger2_MoCap_L/IndexFinger3_MoCap_L/IndexFinger4_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/MiddleFinger1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/MiddleFinger1_MoCap_L/MiddleFinger2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/MiddleFinger1_MoCap_L/MiddleFinger2_MoCap_L/MiddleFinger3_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/MiddleFinger1_MoCap_L/MiddleFinger2_MoCap_L/MiddleFinger3_MoCap_L/MiddleFinger4_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/PinkyFinger1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/PinkyFinger1_MoCap_L/PinkyFinger2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/PinkyFinger1_MoCap_L/PinkyFinger2_MoCap_L/PinkyFinger3_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/PinkyFinger1_MoCap_L/PinkyFinger2_MoCap_L/PinkyFinger3_MoCap_L/PinkyFinger4_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/RingFinger1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/RingFinger1_MoCap_L/RingFinger2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/RingFinger1_MoCap_L/RingFinger2_MoCap_L/RingFinger3_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/RingFinger1_MoCap_L/RingFinger2_MoCap_L/RingFinger3_MoCap_L/RingFinger4_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/ThumbFinger1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/ThumbFinger1_MoCap_L/ThumbFinger2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/ThumbFinger1_MoCap_L/ThumbFinger2_MoCap_L/ThumbFinger3_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_L/Shoulder_MoCap_L/ShoulderPart1_MoCap_L/Elbow_MoCap_L/ElbowPart1_MoCap_L/Wrist_MoCap_L/ThumbFinger1_MoCap_L/ThumbFinger2_MoCap_L/ThumbFinger3_MoCap_L/ThumbFinger4_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/IndexFinger1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/IndexFinger1_MoCap_R/IndexFinger2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/IndexFinger1_MoCap_R/IndexFinger2_MoCap_R/IndexFinger3_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/IndexFinger1_MoCap_R/IndexFinger2_MoCap_R/IndexFinger3_MoCap_R/IndexFinger4_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/MiddleFinger1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/MiddleFinger1_MoCap_R/MiddleFinger2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/MiddleFinger1_MoCap_R/MiddleFinger2_MoCap_R/MiddleFinger3_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/MiddleFinger1_MoCap_R/MiddleFinger2_MoCap_R/MiddleFinger3_MoCap_R/MiddleFinger4_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/PinkyFinger1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/PinkyFinger1_MoCap_R/PinkyFinger2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/PinkyFinger1_MoCap_R/PinkyFinger2_MoCap_R/PinkyFinger3_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/PinkyFinger1_MoCap_R/PinkyFinger2_MoCap_R/PinkyFinger3_MoCap_R/PinkyFinger4_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/RingFinger1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/RingFinger1_MoCap_R/RingFinger2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/RingFinger1_MoCap_R/RingFinger2_MoCap_R/RingFinger3_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/RingFinger1_MoCap_R/RingFinger2_MoCap_R/RingFinger3_MoCap_R/RingFinger4_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/ThumbFinger1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/ThumbFinger1_MoCap_R/ThumbFinger2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/ThumbFinger1_MoCap_R/ThumbFinger2_MoCap_R/ThumbFinger3_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/BackA_MoCap_M/BackB_MoCap_M/BackC_MoCap_M/Chest_MoCap_M/Scapula_MoCap_R/Shoulder_MoCap_R/ShoulderPart1_MoCap_R/Elbow_MoCap_R/ElbowPart1_MoCap_R/Wrist_MoCap_R/ThumbFinger1_MoCap_R/ThumbFinger2_MoCap_R/ThumbFinger3_MoCap_R/ThumbFinger4_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset/HipPart1_LOffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset/HipPart1_LOffset/HipPart2_LOffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset/Knee_LOffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset/Knee_LOffset/Ankle_LOffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset/Knee_LOffset/Ankle_LOffset/Ankle1_LXZ
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_LOffset/Knee_LOffset/Ankle_LOffset/Ankle1_LXZ/Ankle2_LXZ
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/HipPart1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/HipPart1_MoCap_L/HipPart2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/Knee_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/Knee_MoCap_L/Ankle_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/Knee_MoCap_L/Ankle_MoCap_L/MiddleToe1_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/Knee_MoCap_L/Ankle_MoCap_L/MiddleToe1_MoCap_L/BigToe_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/Knee_MoCap_L/Ankle_MoCap_L/MiddleToe1_MoCap_L/MiddleToe2_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_L/Knee_MoCap_L/Ankle_MoCap_L/MiddleToe1_MoCap_L/PinkyToe_MoCap_L
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/HipPart1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/HipPart1_MoCap_R/HipPart2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/Knee_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/Knee_MoCap_R/Ankle_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/Knee_MoCap_R/Ankle_MoCap_R/MiddleToe1_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/Knee_MoCap_R/Ankle_MoCap_R/MiddleToe1_MoCap_R/BigToe_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/Knee_MoCap_R/Ankle_MoCap_R/MiddleToe1_MoCap_R/MiddleToe2_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_MoCap_R/Knee_MoCap_R/Ankle_MoCap_R/MiddleToe1_MoCap_R/PinkyToe_MoCap_R
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset/HipPart1_ROffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset/HipPart1_ROffset/HipPart2_ROffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset/Knee_ROffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset/Knee_ROffset/Ankle_ROffset
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset/Knee_ROffset/Ankle_ROffset/Ankle1_RXZ
+        weight: 1
+      - path: MoCap/Root_MoCap_M/Hip_ROffset/Knee_ROffset/Ankle_ROffset/Ankle1_RXZ/Ankle2_RXZ
+        weight: 1
+      - path: MoCap/staff_MoCap_jnt
+        weight: 1
+      - path: MoCap/staff_MoCap_jnt/tassel1_MoCap
+        weight: 1
+      - path: MoCap/staff_MoCap_jnt/tassel1_MoCap/tassel2_MoCap
+        weight: 1
+      - path: MoCap/staff_MoCap_jnt/tassel1_MoCap/tassel2_MoCap/tassel3_MoCap
+        weight: 1
+      - path: MoCap/stilt1_MoCap_L
+        weight: 1
+      - path: MoCap/stilt1_MoCap_L/footAttach_MoCap_L
+        weight: 1
+      - path: MoCap/stilt1_MoCap_L/footAttach_MoCap_L/footWrap_MoCap_L
+        weight: 1
+      - path: MoCap/stilt1_MoCap_L/stilt2_MoCap_L
+        weight: 1
+      - path: MoCap/stilt1_MoCap_L/stilt2_MoCap_L/stilt3_MoCap_L
+        weight: 1
+      - path: MoCap/stilt1_MoCap_R
+        weight: 1
+      - path: MoCap/stilt1_MoCap_R/footAttach_MoCap_R
+        weight: 1
+      - path: MoCap/stilt1_MoCap_R/footAttach_MoCap_R/footWrap_MoCap_R
+        weight: 1
+      - path: MoCap/stilt1_MoCap_R/stilt2_MoCap_R
+        weight: 1
+      - path: MoCap/stilt1_MoCap_R/stilt2_MoCap_R/stilt3_MoCap_R
+        weight: 1
+      - path: neck
+        weight: 1
+      - path: Staff
+        weight: 1
+      - path: stilts
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: MoCap
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: fc8f73bbc10f20b49846277a2fa4bc13,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

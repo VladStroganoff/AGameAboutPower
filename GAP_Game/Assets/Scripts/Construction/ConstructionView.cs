@@ -40,8 +40,10 @@ public class ConstructionView : MonoBehaviour, IConstructionView
 
     public void ListenForClick(CursorClickSignal signal)
     {
+        if (_buldngCursor == null)
+            return;
+
         BuildingData data = _buldngCursor.GetData();
-        //Instantiate(_buldngCursor, signal.pos, _buldngCursor.transform.rotation);
         _signalBus.Fire(new SendBuildingSignal() { Building = data });
     }
 

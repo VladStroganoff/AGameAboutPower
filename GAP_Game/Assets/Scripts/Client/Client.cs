@@ -11,7 +11,7 @@ public class Client : MonoBehaviour
     public static int dataBufferSize = 4096;
 
     string ip = "172.20.10.4";
-    int port = 26950;
+    int port = 52742;
     public int myId = 0;
     public TCP tcp;
     public UDP udp;
@@ -194,6 +194,7 @@ public class Client : MonoBehaviour
     {
         public UdpClient socket;
         public IPEndPoint endPoint;
+        public int port;
 
         public UDP()
         {
@@ -202,6 +203,7 @@ public class Client : MonoBehaviour
 
         public void Connect(int localPort)
         {
+            Debug.Log("trying to establish UDP connection to port: " + localPort);
             socket = new UdpClient(localPort);
             socket.Connect(endPoint);
             socket.BeginReceive(ReceiveCallBack, null);
