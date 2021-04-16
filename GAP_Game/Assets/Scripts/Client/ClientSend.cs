@@ -24,10 +24,16 @@ public class ClientSend : MonoBehaviour
 
     public static void WelcomeReceived()
     {
+
         using (Packet packet = new Packet((int)ClientPackets.welcomeReceived))
         {
             packet.Write(Client.instance.myId);
-            packet.Write(UIManager.instance.usernameField.text);
+
+            if (UIManager.instance != null)
+                packet.Write(UIManager.instance.usernameField.text);
+            else
+                packet.Write("Test Join");
+
             SendTCPData(packet);
         }
     }

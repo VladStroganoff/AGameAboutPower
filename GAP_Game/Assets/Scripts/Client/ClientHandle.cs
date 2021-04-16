@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Net;
 using Newtonsoft.Json;
-using Zenject;
 
 
 
@@ -13,15 +10,14 @@ public class ClientHandle : MonoBehaviour
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
-        int _myID = _packet.ReadInt();
+        int _myId = _packet.ReadInt();
 
-
-        Debug.Log("Da message was: " + _msg + "from port: " + ((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
-        Client.instance.myId = _myID;
-
+        Debug.Log($"Message from server: {_msg}");
+        Client.instance.myId = _myId;
         ClientSend.WelcomeReceived();
+        Debug.Log(_msg + "from port: " + ((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
 
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port); // this port is different
+        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
     }
 
     public static void SpawnPlayer(Packet packet)
@@ -37,7 +33,7 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
         Vector3 position = packet.ReadVector3();
-
+        Debug.Log($"Got Player Movement{position}");
         GameManager.players[id].transform.position = position;
     }
 

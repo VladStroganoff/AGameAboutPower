@@ -194,7 +194,6 @@ public class Client : MonoBehaviour
     {
         public UdpClient socket;
         public IPEndPoint endPoint;
-        public int port;
 
         public UDP()
         {
@@ -203,10 +202,10 @@ public class Client : MonoBehaviour
 
         public void Connect(int localPort)
         {
-            Debug.Log("trying to establish UDP connection to port: " + localPort);
             socket = new UdpClient(localPort);
             socket.Connect(endPoint);
             socket.BeginReceive(ReceiveCallBack, null);
+            Debug.Log("Begin to recieve callback");
 
             using (Packet packet = new Packet())
             {
@@ -221,6 +220,7 @@ public class Client : MonoBehaviour
                 packet.InsertInt(instance.myId);
                 if (socket != null)
                 {
+                    Debug.Log("Sending UDP Data package: " + packet.Length());
                     socket.BeginSend(packet.ToArray(), packet.Length(), null, null);
                 }
 
@@ -238,6 +238,7 @@ public class Client : MonoBehaviour
             {
                 byte[] data = socket.EndReceive(result, ref endPoint);
                 socket.BeginReceive(ReceiveCallBack, null);
+                Debug.Log("Recieving UDP Callback: " + data.Length);
 
                 if (data.Length < 4)
                 {
@@ -251,7 +252,7 @@ public class Client : MonoBehaviour
             catch
             {
                 Disconnect();
-                Debug.Log("Was disconnected");
+                Debug.Log("Kkuken Was disconnected");
             }
         }
 

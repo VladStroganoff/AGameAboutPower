@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public Transform PlayerSpawnPoint;
     public ConstructionController ConstructionControl;
+    public int Port;
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class NetworkManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
 
-        Server.Start(50, 52742);
+        Server.Start(50, Port);
 
     }
 

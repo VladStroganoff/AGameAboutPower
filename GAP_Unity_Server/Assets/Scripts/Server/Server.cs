@@ -23,7 +23,7 @@ public class Server
         MaxPlayers = _maxPlayers;
         Port = _port;
 
-        Debug.Log("Starting server... ");
+        Debug.Log("Starting server...");
         InitializeServerData();
 
         tcpListener = new TcpListener(IPAddress.Any, Port);
@@ -33,7 +33,7 @@ public class Server
         udpListener = new UdpClient(Port);
         udpListener.BeginReceive(UDPReceiveCallback, null);
 
-        Debug.Log("Server started on port: " + Port + "...");
+        Debug.Log($"Server started on port {Port}.");
     }
 
     private static void TCPConnectCallback(IAsyncResult _result)

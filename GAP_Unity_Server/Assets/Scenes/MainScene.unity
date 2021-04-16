@@ -505,6 +505,7 @@ MonoBehaviour:
     type: 3}
   PlayerSpawnPoint: {fileID: 64265278}
   ConstructionControl: {fileID: 1092200046}
+  Port: 26950
 --- !u!114 &1092200046
 MonoBehaviour:
   m_ObjectHideFlags: 0

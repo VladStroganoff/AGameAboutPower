@@ -55,4 +55,10 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         ConstructionController.ReceiveBuilding(data);
     }
+
+    public void  TestConnectToServer()
+    {
+        Client.instance.ConnectToServer("127.0.0.1", 26950);
+        GameObject.Find("Menu").SetActive(false);
+    }
 }
