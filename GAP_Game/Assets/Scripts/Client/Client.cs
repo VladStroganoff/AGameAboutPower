@@ -10,8 +10,8 @@ public class Client : MonoBehaviour
     public static Client instance;
     public static int dataBufferSize = 4096;
 
-    string ip = "172.20.10.4";
-    int port = 52742;
+    string ip = "127.0.0.1";
+    int port = 26950;
     public int myId = 0;
     public TCP tcp;
     public UDP udp;
