@@ -1,0 +1,230 @@
+﻿
+                FragInputs BuildFragInputs(VertexToPixel input)
+                {
+                    UNITY_SETUP_INSTANCE_ID(input);
+                    FragInputs output;
+                    ZERO_INITIALIZE(FragInputs, output);
+            
+                    // Init to some default value to make the computer quiet (else it output 'divide by zero' warning even if value is not used).
+                    // TODO: this is a really poor workaround, but the variable is used in a bunch of places
+                    // to compute normals which are then passed on elsewhere to compute other values...
+                    output.tangentToWorld = k_identity3x3;
+                    output.positionSS = input.pos;       // input.positionCS is SV_Position
+            
+                    output.positionRWS = input.worldPos;
+                    output.tangentToWorld = BuildTangentToWorld(input.worldTangent, input.worldNormal);
+                    output.texCoord0 = input.texcoord0;
+                    output.texCoord1 = input.texcoord1;
+                    output.texCoord2 = input.texcoord2;
+                    %VERTEXCOLOR% output.color = input.vertexColor;
+                    //#if _DOUBLESIDED_ON && SHADER_STAGE_FRAGMENT
+                    //output.isFrontFace = IS_FRONT_VFACE(input.cullFace, true, false);
+                    //#elif SHADER_STAGE_FRAGMENT
+                    // output.isFrontFace = IS_FRONT_VFACE(input.cullFace, true, false);
+                    //#endif // SHADER_STAGE_FRAGMENT
+            
+                    return output;
+                }
+            
+               void BuildSurfaceData(FragInputs fragInputs, inout Surface surfaceDescription, float3 V, PositionInputs posInput, out SurfaceData surfaceData, out float3 bentNormalWS)
+               {
+                   // setup defaults -- these are used if the graph doesn't output a value
+                   ZERO_INITIALIZE(SurfaceData, surfaceData);
+        
+                   // specularOcclusion need to be init ahead of decal to quiet the compiler that modify the SurfaceData struct
+                   // however specularOcclusion can come from the graph, so need to be init here so it can be override.
+                   surfaceData.specularOcclusion = 1.0;
+        
+                   // copy across graph values, if defined
+                   surfaceData.baseColor =                 surfaceDescription.Albedo;
+                   surfaceData.perceptualSmoothness =      surfaceDescription.Smoothness;
+                   surfaceData.ambientOcclusion =          surfaceDescription.Occlusion;
+                   surfaceData.specularOcclusion =         surfaceDescription.SpecularOcclusion;
+                   surfaceData.metallic =                  surfaceDescription.Metallic;
+                   surfaceData.subsurfaceMask =            surfaceDescription.SubsurfaceMask;
+                   surfaceData.thickness =                 surfaceDescription.Thickness;
+                   // surfaceData.diffusionProfileHash =      asuint(surfaceDescription.DiffusionProfileHash);
+                   #if _USESPECULAR
+                      surfaceData.specularColor =             surfaceDescription.Specular;
+                   #endif
+                   surfaceData.coatMask =                  surfaceDescription.CoatMask;
+                   surfaceData.anisotropy =                surfaceDescription.Anisotropy;
+                   surfaceData.iridescenceMask =           surfaceDescription.IridescenceMask;
+                   surfaceData.iridescenceThickness =      surfaceDescription.IridescenceThickness;
+        
+           #ifdef _HAS_REFRACTION
+                   if (_EnableSSRefraction)
+                   {
+                       // surfaceData.ior =                       surfaceDescription.RefractionIndex;
+                       // surfaceData.transmittanceColor =        surfaceDescription.RefractionColor;
+                       // surfaceData.atDistance =                surfaceDescription.RefractionDistance;
+        
+                       surfaceData.transmittanceMask = (1.0 - surfaceDescription.Alpha);
+                       surfaceDescription.Alpha = 1.0;
+                   }
+                   else
+                   {
+                       surfaceData.ior = 1.0;
+                       surfaceData.transmittanceColor = float3(1.0, 1.0, 1.0);
+                       surfaceData.atDistance = 1.0;
+                       surfaceData.transmittanceMask = 0.0;
+                       surfaceDescription.Alpha = 1.0;
+                   }
+           #else
+                   surfaceData.ior = 1.0;
+                   surfaceData.transmittanceColor = float3(1.0, 1.0, 1.0);
+                   surfaceData.atDistance = 1.0;
+                   surfaceData.transmittanceMask = 0.0;
+           #endif
+                
+                   // These static material feature allow compile time optimization
+                   surfaceData.materialFeatures = MATERIALFEATUREFLAGS_LIT_STANDARD;
+           #ifdef _MATERIAL_FEATURE_SUBSURFACE_SCATTERING
+                   surfaceData.materialFeatures |= MATERIALFEATUREFLAGS_LIT_SUBSURFACE_SCATTERING;
+           #endif
+           #ifdef _MATERIAL_FEATURE_TRANSMISSION
+                   surfaceData.materialFeatures |= MATERIALFEATUREFLAGS_LIT_TRANSMISSION;
+           #endif
+           #ifdef _MATERIAL_FEATURE_ANISOTROPY
+                   surfaceData.materialFeatures |= MATERIALFEATUREFLAGS_LIT_ANISOTROPY;
+           #endif
+                   // surfaceData.materialFeatures |= MATERIALFEATUREFLAGS_LIT_CLEAR_COAT;
+        
+           #ifdef _MATERIAL_FEATURE_IRIDESCENCE
+                   surfaceData.materialFeatures |= MATERIALFEATUREFLAGS_LIT_IRIDESCENCE;
+           #endif
+           #ifdef _MATERIAL_FEATURE_SPECULAR_COLOR
+                   surfaceData.materialFeatures |= MATERIALFEATUREFLAGS_LIT_SPECULAR_COLOR;
+           #endif
+        
+           #if defined (_MATERIAL_FEATURE_SPECULAR_COLOR) && defined (_ENERGY_CONSERVING_SPECULAR)
+                   // Require to have setup baseColor
+                   // Reproduce the energy conservation done in legacy Unity. Not ideal but better for compatibility and users can unchek it
+                   surfaceData.baseColor *= (1.0 - Max3(surfaceData.specularColor.r, surfaceData.specularColor.g, surfaceData.specularColor.b));
+           #endif
+        
+           #ifdef _DOUBLESIDED_ON
+               float3 doubleSidedConstants = _DoubleSidedConstants.xyz;
+           #else
+               float3 doubleSidedConstants = float3(1.0, 1.0, 1.0);
+           #endif
+        
+                   // tangent-space normal
+                   float3 normalTS = float3(0.0f, 0.0f, 1.0f);
+                   normalTS = surfaceDescription.Normal;
+        
+                   // compute world space normal
+                   GetNormalWS(fragInputs, normalTS, surfaceData.normalWS, doubleSidedConstants);
+        
+                   surfaceData.geomNormalWS = fragInputs.tangentToWorld[2];
+        
+                   surfaceData.tangentWS = normalize(fragInputs.tangentToWorld[0].xyz);    // The tangent is not normalize in tangentToWorld for mikkt. TODO: Check if it expected that we normalize with Morten. Tag: SURFACE_GRADIENT
+                   // surfaceData.tangentWS = TransformTangentToWorld(surfaceDescription.Tangent, fragInputs.tangentToWorld);
+        
+           #if HAVE_DECALS
+                   if (_EnableDecals)
+                   {
+                       #if VERSION_GREATER_EQUAL(10,2)
+                          DecalSurfaceData decalSurfaceData = GetDecalSurfaceData(posInput,  surfaceData.geomNormalWS, surfaceDescription.Alpha);
+                          ApplyDecalToSurfaceData(decalSurfaceData,  surfaceData.geomNormalWS, surfaceData);
+                       #else
+                          DecalSurfaceData decalSurfaceData = GetDecalSurfaceData(posInput, surfaceDescription.Alpha);
+                          ApplyDecalToSurfaceData(decalSurfaceData, surfaceData);
+                       #endif
+                   }
+           #endif
+        
+                   bentNormalWS = surfaceData.normalWS;
+                   // GetNormalWS(fragInputs, surfaceDescription.BentNormal, bentNormalWS, doubleSidedConstants);
+        
+                   surfaceData.tangentWS = Orthonormalize(surfaceData.tangentWS, surfaceData.normalWS);
+        
+        
+                   // By default we use the ambient occlusion with Tri-ace trick (apply outside) for specular occlusion.
+                   // If user provide bent normal then we process a better term
+           #if defined(_SPECULAR_OCCLUSION_CUSTOM)
+                   // Just use the value passed through via the slot (not active otherwise)
+           #elif defined(_SPECULAR_OCCLUSION_FROM_AO_BENT_NORMAL)
+                   // If we have bent normal and ambient occlusion, process a specular occlusion
+                   surfaceData.specularOcclusion = GetSpecularOcclusionFromBentAO(V, bentNormalWS, surfaceData.normalWS, surfaceData.ambientOcclusion, PerceptualSmoothnessToPerceptualRoughness(surfaceData.perceptualSmoothness));
+           #elif defined(_AMBIENT_OCCLUSION) && defined(_SPECULAR_OCCLUSION_FROM_AO)
+                   surfaceData.specularOcclusion = GetSpecularOcclusionFromAmbientOcclusion(ClampNdotV(dot(surfaceData.normalWS, V)), surfaceData.ambientOcclusion, PerceptualSmoothnessToRoughness(surfaceData.perceptualSmoothness));
+           #endif
+        
+           #ifdef _ENABLE_GEOMETRIC_SPECULAR_AA
+                   surfaceData.perceptualSmoothness = GeometricNormalFiltering(surfaceData.perceptualSmoothness, fragInputs.tangentToWorld[2], surfaceDescription.SpecularAAScreenSpaceVariance, surfaceDescription.SpecularAAThreshold);
+           #endif
+        
+           #ifdef DEBUG_DISPLAY
+                   if (_DebugMipMapMode != DEBUGMIPMAPMODE_NONE)
+                   {
+                       // TODO: need to update mip info
+                       surfaceData.metallic = 0;
+                   }
+        
+                   // We need to call ApplyDebugToSurfaceData after filling the surfarcedata and before filling builtinData
+                   // as it can modify attribute use for static lighting
+                   ApplyDebugToSurfaceData(fragInputs.tangentToWorld, surfaceData);
+           #endif
+               }
+        
+               void GetSurfaceAndBuiltinData(VertexToPixel m2ps, FragInputs fragInputs, float3 V, inout PositionInputs posInput,
+                     out SurfaceData surfaceData, out BuiltinData builtinData, inout Surface l, inout ShaderData d)
+               {
+                 #ifdef LOD_FADE_CROSSFADE // enable dithering LOD transition if user select CrossFade transition in LOD group
+                     uint3 fadeMaskSeed = asuint((int3)(V * _ScreenSize.xyx)); // Quantize V to _ScreenSize values
+                     LODDitheringTransition(fadeMaskSeed, unity_LODFade.x);
+                 #endif
+        
+                 #ifdef _DOUBLESIDED_ON
+                     float3 doubleSidedConstants = _DoubleSidedConstants.xyz;
+                 #else
+                     float3 doubleSidedConstants = float3(1.0, 1.0, 1.0);
+                 #endif
+        
+                 ApplyDoubleSidedFlipOrMirror(fragInputs, doubleSidedConstants);
+
+                 d = CreateShaderData(m2ps);
+
+                 l = (Surface)0;
+
+                 l.Albedo = half3(0.5, 0.5, 0.5);
+                 l.Normal = float3(0,0,1);
+                 l.Occlusion = 1;
+                 l.Alpha = 1;
+
+                 ChainSurfaceFunction(l, d);
+
+                 #if _UNLIT
+                     l.Emission = l.Albedo;
+                     l.Albedo = 0;
+                     l.Normal = half3(0,0,1);
+                     l.Occlusion = 1;
+                     l.Metallic = 0;
+                     l.Specular = 0;
+                 #endif
+
+                 surfaceData.geomNormalWS = d.worldSpaceNormal;
+                 surfaceData.tangentWS = d.worldSpaceTangent;
+                 fragInputs.tangentToWorld = d.TBNMatrix;
+
+                 float3 bentNormalWS;
+                 BuildSurfaceData(fragInputs, l, V, posInput, surfaceData, bentNormalWS);
+        
+                 InitBuiltinData(posInput, l.Alpha, bentNormalWS, -fragInputs.tangentToWorld[2], fragInputs.texCoord1, fragInputs.texCoord2, builtinData);
+
+                 builtinData.emissiveColor = l.Emission;
+        
+        
+                 #if (SHADERPASS == SHADERPASS_DISTORTION)
+                     //builtinData.distortion = surfaceDescription.Distortion;
+                     //builtinData.distortionBlur = surfaceDescription.DistortionBlur;
+                     builtinData.distortion = float2(0.0, 0.0);
+                     builtinData.distortionBlur = 0.0;
+                 #else
+                     builtinData.distortion = float2(0.0, 0.0);
+                     builtinData.distortionBlur = 0.0;
+                 #endif
+        
+                   PostInitBuiltinData(V, posInput, surfaceData, builtinData);
+               }

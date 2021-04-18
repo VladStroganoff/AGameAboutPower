@@ -1,0 +1,115 @@
+﻿      // useful conversion functions to make surface shader code just work
+
+      #define UNITY_DECLARE_TEX2D(name) TEXTURE2D(name); SAMPLER(sampler##name);
+      #define UNITY_DECLARE_TEX2D_NOSAMPLER(name) TEXTURE2D(name);
+      #define UNITY_DECLARE_TEX2DARRAY(name) TEXTURE2D_ARRAY(name); SAMPLER(sampler##name);
+      #define UNITY_DECLARE_TEX2DARRAY_NOSAMPLER(tex) TEXTURE2D_ARRAY(tex);
+
+      #define UNITY_SAMPLE_TEX2DARRAY(tex,coord)            SAMPLE_TEXTURE2D_ARRAY(tex, sampler##tex, coord.xy, coord.z)
+      #define UNITY_SAMPLE_TEX2DARRAY_LOD(tex,coord,lod)    SAMPLE_TEXTURE2D_ARRAY_LOD(tex, sampler##tex, coord.xy, coord.z, lod)
+      #define UNITY_SAMPLE_TEX2D(tex, coord)                SAMPLE_TEXTURE2D(tex, sampler##tex, coord)
+      #define UNITY_SAMPLE_TEX2D_SAMPLER(tex, samp, coord)  SAMPLE_TEXTURE2D(tex, sampler##samp, coord)
+
+      #define UNITY_SAMPLE_TEX2D_LOD(tex,coord, lod)   SAMPLE_TEXTURE2D_LOD(tex, sampler_##tex, coord, lod)
+      #define UNITY_SAMPLE_TEX2D_SAMPLER_LOD(tex,samplertex,coord, lod) SAMPLE_TEXTURE2D_LOD (tex, sampler##samplertex,coord, lod)
+
+      #if defined(UNITY_COMPILER_HLSL)
+         #define UNITY_INITIALIZE_OUTPUT(type,name) name = (type)0;
+      #else
+         #define UNITY_INITIALIZE_OUTPUT(type,name)
+      #endif
+
+      #define sampler2D_float sampler2D
+      #define sampler2D_half sampler2D
+
+      #undef WorldNormalVector
+      #define WorldNormalVector(data, normal) mul(normal, float3x3(d.worldSpaceTangent, cross(d.worldSpaceTangent, d.worldSpaceNormal), d.worldSpaceNormal))
+
+      #define UnityObjectToWorldNormal(normal) mul(GetObjectToWorldMatrix(), normal)
+
+
+
+// HDRP Adapter stuff
+
+
+            // If we use subsurface scattering, enable output split lighting (for forward pass)
+            #if defined(_MATERIAL_FEATURE_SUBSURFACE_SCATTERING) && !defined(_SURFACE_TYPE_TRANSPARENT)
+            #define OUTPUT_SPLIT_LIGHTING
+            #endif
+        
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+        
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/NormalSurfaceGradient.hlsl"
+        
+            // define FragInputs structure
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/FragInputs.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderPass.cs.hlsl"
+        
+
+    // We need isFontFace when using double sided
+        #if defined(_DOUBLESIDED_ON) && !defined(VARYINGS_NEED_CULLFACE)
+            #define VARYINGS_NEED_CULLFACE
+        #endif
+        
+
+        
+
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
+        #ifdef DEBUG_DISPLAY
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Debug/DebugDisplay.hlsl"
+        #endif
+        
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
+        
+        #if (SHADERPASS == SHADERPASS_FORWARD)
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/Lighting.hlsl"
+        
+            #define HAS_LIGHTLOOP
+        
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/LightLoop/LightLoopDef.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/Lit.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/LightLoop/LightLoop.hlsl"
+        #else
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/Lit.hlsl"
+        #endif
+        
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/BuiltinUtilities.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/MaterialUtilities.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Decal/DecalUtilities.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/LitDecalData.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphFunctions.hlsl"
+        
+            // Used by SceneSelectionPass
+            int _ObjectId;
+            int _PassValue;
+        
+           
+            // data across stages, stripped like the above.
+            struct VertexToPixel
+            {
+               float4 pos : SV_POSITION;
+               float3 worldPos : TEXCOORD0;
+               float3 worldNormal : TEXCOORD1;
+               float4 worldTangent : TEXCOORD2;
+               float4 texcoord0 : TEXCCOORD3;
+               float4 texcoord1 : TEXCCOORD4;
+               float4 texcoord2 : TEXCCOORD5;
+               %UV3% float4 texcoord3 : TEXCCOORD6;
+               %SCREENPOS% float4 screenPos : TEXCOORD7;
+               %VERTEXCOLOR% float4 vertexColor : COLOR;
+
+               %EXTRAV2F0% float4 extraV2F0 : TEXCOORD8;
+               %EXTRAV2F1% float4 extraV2F1 : TEXCOORD9;
+               %EXTRAV2F2% float4 extraV2F2 : TEXCOORD10;
+               %EXTRAV2F3% float4 extraV2F3 : TEXCOORD11;
+               %EXTRAV2F4% float4 extraV2F4 : TEXCOORD12;
+               %EXTRAV2F5% float4 extraV2F5 : TEXCOORD13;
+               %EXTRAV2F6% float4 extraV2F6 : TEXCOORD14;
+               %EXTRAV2F7% float4 extraV2F7 : TEXCOORD15;
+
+               #if UNITY_ANY_INSTANCING_ENABLED
+                  uint instanceID : INSTANCEID_SEMANTIC;
+               #endif // UNITY_ANY_INSTANCING_ENABLED
+
+               UNITY_VERTEX_OUTPUT_STEREO
+            };
