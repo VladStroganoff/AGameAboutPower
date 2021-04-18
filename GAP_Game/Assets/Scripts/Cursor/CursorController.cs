@@ -79,7 +79,7 @@ public class CursorController : MonoBehaviour, ICursorController
         if (EventSystem.current.IsPointerOverGameObject())
             return;
         ClientSend.PlayerShoot(Camera.main.transform.forward);
-        Debug.Log("I shoot");
+
     }
     void Shoot3DCursor()
     {

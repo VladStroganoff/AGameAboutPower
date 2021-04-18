@@ -185,13 +185,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_2558DFA0: 0.61
+    - Vector1_2558DFA0: 0.6
     - Vector1_25EDC3FC: 0.1
-    - Vector1_B505A97D: 0.58
-    - Vector1_B5A939FE: 0.1
+    - Vector1_B505A97D: 2.97
+    - Vector1_B5A939FE: 0.02
     - Vector1_BA7A76E2: 0.65
-    - Vector1_C3DC90B6: 1.5
-    - Vector1_F89017FE: 3.92
+    - Vector1_C3DC90B6: 4.93
+    - Vector1_F89017FE: 13.51
     - Vector1_FC3F89B4: 0.698
     - _AORemapMax: 1
     - _AORemapMin: 0

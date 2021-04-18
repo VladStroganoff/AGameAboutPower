@@ -22,6 +22,7 @@ public class GameSessionInstaller : MonoInstaller
         
         Container.Bind<ICursorController>().FromInstance(CursorControl);
         
+        if(LobbyView != null)
         Container.Bind<ILobbyView>().FromInstance(LobbyView);
         Container.Bind<IUIManager>().FromInstance(UIManager);
         Container.Bind<ClientHandle>().AsSingle();
@@ -42,7 +43,8 @@ public class GameSessionInstaller : MonoInstaller
         Container.BindSignal<GameStateChangedSignal>()
           .ToMethod<ICameraController>(x => x.CheckGameState).FromResolve();
 
-        Container.BindSignal<GameStateChangedSignal>()
+        if (LobbyView != null)
+            Container.BindSignal<GameStateChangedSignal>()
             .ToMethod<ILobbyView>(x => x.CheckGameState).FromResolve();
 
         Container.BindSignal<CameraStateSignal>()

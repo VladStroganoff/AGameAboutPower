@@ -48,7 +48,7 @@ public class Client
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
-            ServerSend.Welcome(id, "Welcome to server commrade.");
+            ServerSend.Welcome(id, $"Welcome to the server commrade"); // maybe sedn udp port here
         }
 
         public void SendData(Packet _packet)
@@ -219,7 +219,7 @@ public class Client
 
     private void Disconnect()
     {
-        Debug.Log(tcp.socket.Client.RemoteEndPoint + " has disconnected/");
+        Debug.Log(tcp.socket.Client.RemoteEndPoint + " has disconnected");
 
         ThreadManager.ExecuteOnMainThread(()=>
         {
