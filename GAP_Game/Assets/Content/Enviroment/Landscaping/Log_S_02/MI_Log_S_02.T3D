@@ -1,0 +1,31 @@
+Begin Object Class=/Script/Engine.MaterialInstanceConstant Name="MI_Log_S_02"
+   Begin Object Class=/Script/UnrealEd.SceneThumbnailInfoWithPrimitive Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   Begin Object Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   ParameterStateId=16273FAA4A81F7AA49E348B32B6DD8E6
+   Parent=Material'"/Game/RuralAustralia/Presets/M_Nature_01.M_Nature_01"'
+   ScalarParameterValues(0)=(ParameterInfo=(Name="ShadowLength"),ParameterValue=6.000000,ExpressionGUID=60AAFE204833192E6CD5F6A3CEB795B0)
+   ScalarParameterValues(1)=(ParameterInfo=(Name="RefractionDepthBias"))
+   TextureParameterValues(0)=(ParameterInfo=(Name="BaseColour"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Log_S_02/T_Log_S_02_CA.T_Log_S_02_CA"',ExpressionGUID=89C1642A4A845ED943158287A788F87C)
+   TextureParameterValues(1)=(ParameterInfo=(Name="Normals"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Log_S_02/T_Log_S_02_NA.T_Log_S_02_NA"',ExpressionGUID=6CB8249840D94F618CD857894118C658)
+   BasePropertyOverrides=(DitheredLODTransition=True,OpacityMaskClipValue=0.333300)
+   ReferencedTextureGuids(0)=A5EADF04447BE8A6726C68BC070D9067
+   ReferencedTextureGuids(1)=9464A14C40A199CDAF1E21B011317931
+   CachedReferencedTextures(0)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/Rock_S_02/T_Rock_S_02_CA.T_Rock_S_02_CA"'
+   CachedReferencedTextures(1)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/Rock_S_02/T_Rock_S_02_NA.T_Rock_S_02_NA"'
+   CachedReferencedTextures(2)=Texture2D'"/Engine/EngineMaterials/BlendFunc_DefBlend.BlendFunc_DefBlend"'
+   CachedReferencedTextures(3)=Texture2D'"/Engine/EngineMaterials/BlendFunc_DefBase.BlendFunc_DefBase"'
+   CachedReferencedTextures(4)=Texture2D'"/Game/RuralAustralia/Landscape/Textures/T_Distant_Ground_02_CA.T_Distant_Ground_02_CA"'
+   CachedReferencedTextures(5)=Texture2D'"/Game/RuralAustralia/Landscape/Textures/T_Distant_Ground_02_NA.T_Distant_Ground_02_NA"'
+   CachedReferencedTextures(6)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_Cliff_Tile_CA.T_Cliff_Tile_CA"'
+   CachedReferencedTextures(7)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_Cliff_Tile_NA.T_Cliff_Tile_NA"'
+   CachedReferencedTextures(8)=None
+   CachedReferencedTextures(9)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_RockStains_CA.T_RockStains_CA"'
+   CachedReferencedTextures(10)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_DetailTexture_01_NA.T_DetailTexture_01_NA"'
+   TextureStreamingDataVersion=1
+   TextureStreamingData(0)=(SamplingScale=1.000000,UVChannelIndex=0,TextureName="T_Log_S_02_CA",TextureReference=/Game/RuralAustralia/StaticMeshes/Vegetation/Log_S_02/T_Log_S_02_CA.T_Log_S_02_CA)
+   TextureStreamingData(1)=(SamplingScale=1.000000,UVChannelIndex=0,TextureName="T_Log_S_02_NA",TextureReference=/Game/RuralAustralia/StaticMeshes/Vegetation/Log_S_02/T_Log_S_02_NA.T_Log_S_02_NA)
+   ThumbnailInfo=SceneThumbnailInfoWithPrimitive'"SceneThumbnailInfoWithPrimitive_0"'
+   LightingGuid=549A26704A3CBB478B5429945E984CD2
+End Object

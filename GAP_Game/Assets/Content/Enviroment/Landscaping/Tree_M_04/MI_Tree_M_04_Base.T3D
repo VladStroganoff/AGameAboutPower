@@ -1,0 +1,40 @@
+Begin Object Class=/Script/Engine.MaterialInstanceConstant Name="MI_Tree_M_04_Base"
+   Begin Object Class=/Script/UnrealEd.SceneThumbnailInfoWithPrimitive Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   Begin Object Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   ParameterStateId=9DA5239640775FEC3AB2C082D6059322
+   Parent=Material'"/Game/RuralAustralia/Presets/M_Nature_01.M_Nature_01"'
+   bHasStaticPermutationResource=True
+   ScalarParameterValues(0)=(ParameterInfo=(Name="ShadowLength"),ParameterValue=6.000000,ExpressionGUID=60AAFE204833192E6CD5F6A3CEB795B0)
+   ScalarParameterValues(1)=(ParameterInfo=(Name="Wind Sway Speed"),ParameterValue=0.800000,ExpressionGUID=DD5F16044F7B727A0D406BA018EFBF43)
+   ScalarParameterValues(2)=(ParameterInfo=(Name="Wind Sway Strength"),ParameterValue=0.005000,ExpressionGUID=360EE437422F286AEC0312BD2F5AD38D)
+   ScalarParameterValues(3)=(ParameterInfo=(Name="Wind Gust World Scale"),ParameterValue=500.000000,ExpressionGUID=618CED57403FA8414B3AC9BB6D269510)
+   ScalarParameterValues(4)=(ParameterInfo=(Name="Wind Horizontal Speed "),ParameterValue=0.100000,ExpressionGUID=1C536CFE4681D1BFD9015FB4B31F636A)
+   ScalarParameterValues(5)=(ParameterInfo=(Name="Wind Speed"),ParameterValue=0.030000,ExpressionGUID=F99E329740EDCFA8FB0EBA973132AA08)
+   ScalarParameterValues(6)=(ParameterInfo=(Name="Dampening Radius Multiplier 1"),ParameterValue=2.000000,ExpressionGUID=12E8693F47366888134ECE8B88946FD1)
+   ScalarParameterValues(7)=(ParameterInfo=(Name="Local Wind Scale 1"),ParameterValue=1.500000,ExpressionGUID=17D5603040778420A383E39DCE1AEDC6)
+   ScalarParameterValues(8)=(ParameterInfo=(Name="Max Rotation 1"),ParameterValue=0.030000,ExpressionGUID=08CD302849D221A70AA2D5BF871227C0)
+   ScalarParameterValues(9)=(ParameterInfo=(Name="RefractionDepthBias"))
+   TextureParameterValues(0)=(ParameterInfo=(Name="BaseColour"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_M_04/T_Tree_M_04_CA.T_Tree_M_04_CA"',ExpressionGUID=89C1642A4A845ED943158287A788F87C)
+   TextureParameterValues(1)=(ParameterInfo=(Name="Normals"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_M_04/T_Tree_M_04_NA.T_Tree_M_04_NA"',ExpressionGUID=6CB8249840D94F618CD857894118C658)
+   TextureParameterValues(2)=(ParameterInfo=(Name="Position and Index Texture"),ParameterValue=Texture2D'"/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/PivotPainter2/SimpExPivPos.SimpExPivPos"',ExpressionGUID=579CB0EA46FFA2F3263F13A753C9DF49)
+   TextureParameterValues(3)=(ParameterInfo=(Name="X-Vector And X-Extent Texture"),ParameterValue=Texture2D'"/Engine/Functions/Engine_MaterialFunctions02/ExampleContent/PivotPainter2/PP2_rgb_XVect_a_XExtent.PP2_rgb_XVect_a_XExtent"',ExpressionGUID=1716C863472404A1400E97A6A1F7D363)
+   BasePropertyOverrides=(DitheredLODTransition=True,OpacityMaskClipValue=0.333300)
+   ReferencedTextureGuids(0)=245F85934F970F0B1AF8428B2795083F
+   ReferencedTextureGuids(1)=8E09B5934DCCC1002C163C9DCAD267EF
+   StaticParameters=(StaticSwitchParameters=((Value=True,ParameterInfo=(Name="Wind Sway"),bOverride=True,ExpressionGUID=ADB284BA48D062B9E04CEE8BAB998860),(Value=True,ParameterInfo=(Name="Animate Level 1"),bOverride=True,ExpressionGUID=40915BD8419D0FD0E73F8BBD8112B053)))
+   CachedReferencedTextures(0)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/Rock_S_02/T_Rock_S_02_CA.T_Rock_S_02_CA"'
+   CachedReferencedTextures(1)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/Rock_S_02/T_Rock_S_02_NA.T_Rock_S_02_NA"'
+   CachedReferencedTextures(2)=Texture2D'"/Engine/EngineMaterials/BlendFunc_DefBlend.BlendFunc_DefBlend"'
+   CachedReferencedTextures(3)=Texture2D'"/Engine/EngineMaterials/BlendFunc_DefBase.BlendFunc_DefBase"'
+   CachedReferencedTextures(4)=Texture2D'"/Game/RuralAustralia/Landscape/Textures/T_Distant_Ground_02_CA.T_Distant_Ground_02_CA"'
+   CachedReferencedTextures(5)=Texture2D'"/Game/RuralAustralia/Landscape/Textures/T_Distant_Ground_02_NA.T_Distant_Ground_02_NA"'
+   CachedReferencedTextures(6)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_Cliff_Tile_CA.T_Cliff_Tile_CA"'
+   CachedReferencedTextures(7)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_Cliff_Tile_NA.T_Cliff_Tile_NA"'
+   CachedReferencedTextures(8)=None
+   CachedReferencedTextures(9)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_RockStains_CA.T_RockStains_CA"'
+   CachedReferencedTextures(10)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Rocks/_SharedTextures/T_DetailTexture_01_NA.T_DetailTexture_01_NA"'
+   ThumbnailInfo=SceneThumbnailInfoWithPrimitive'"SceneThumbnailInfoWithPrimitive_0"'
+   LightingGuid=7BA3C35C49B880CA9E5D459F54189F79
+End Object

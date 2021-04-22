@@ -1,0 +1,25 @@
+Begin Object Class=/Script/Engine.MaterialInstanceConstant Name="MI_Tree_S_01_Leaves"
+   Begin Object Class=/Script/UnrealEd.SceneThumbnailInfoWithPrimitive Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   Begin Object Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   ParameterStateId=0449C7DD43A58ECD8CBB70BF04605728
+   Parent=Material'"/Game/RuralAustralia/Presets/M_Vegetation_01.M_Vegetation_01"'
+   bHasStaticPermutationResource=True
+   ScalarParameterValues(0)=(ParameterInfo=(Name="ShadowLength"),ParameterValue=10.000000,ExpressionGUID=60AAFE204833192E6CD5F6A3CEB795B0)
+   ScalarParameterValues(1)=(ParameterInfo=(Name="Normals Strength"),ParameterValue=2.000000,ExpressionGUID=3DDF8A5F47EB6CBA2B4B00AF151CEBDC)
+   ScalarParameterValues(2)=(ParameterInfo=(Name="Wind Sway Speed"),ParameterValue=0.700000,ExpressionGUID=DD5F16044F7B727A0D406BA018EFBF43)
+   ScalarParameterValues(3)=(ParameterInfo=(Name="Wind Sway Strength"),ParameterValue=0.009000,ExpressionGUID=360EE437422F286AEC0312BD2F5AD38D)
+   ScalarParameterValues(4)=(ParameterInfo=(Name="RefractionDepthBias"))
+   BasePropertyOverrides=(TwoSided=True,DitheredLODTransition=True,BlendMode=BLEND_Masked,ShadingModel=MSM_TwoSidedFoliage,OpacityMaskClipValue=0.333300)
+   ReferencedTextureGuids(0)=2ABD0A964024332E93926B9FEBC061C6
+   ReferencedTextureGuids(1)=B794BDA3410C437C973D75AD684BBBB9
+   StaticParameters=(StaticSwitchParameters=((Value=True,ParameterInfo=(Name="Wind"),bOverride=True,ExpressionGUID=C2B82FB74B64BCD58929FE88E8E1C10C),(Value=True,ParameterInfo=(Name="Wind Sway"),bOverride=True,ExpressionGUID=ADB284BA48D062B9E04CEE8BAB998860)))
+   CachedReferencedTextures(0)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/_SharedTextures/T_Branches_01_CA.T_Branches_01_CA"'
+   CachedReferencedTextures(1)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/_SharedTextures/T_Branches_01_NA.T_Branches_01_NA"'
+   TextureStreamingDataVersion=1
+   TextureStreamingData(0)=(SamplingScale=1.000000,UVChannelIndex=0,TextureName="T_Branches_01_CA",TextureReference=/Game/RuralAustralia/StaticMeshes/Vegetation/_SharedTextures/T_Branches_01_CA.T_Branches_01_CA)
+   TextureStreamingData(1)=(SamplingScale=1.000000,UVChannelIndex=0,TextureName="T_Branches_01_NA",TextureReference=/Game/RuralAustralia/StaticMeshes/Vegetation/_SharedTextures/T_Branches_01_NA.T_Branches_01_NA)
+   ThumbnailInfo=SceneThumbnailInfoWithPrimitive'"SceneThumbnailInfoWithPrimitive_0"'
+   LightingGuid=570346DD4542F255865CC89886E7D5F1
+End Object

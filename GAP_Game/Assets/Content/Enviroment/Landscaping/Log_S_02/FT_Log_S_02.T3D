@@ -1,0 +1,15 @@
+Begin Object Class=/Script/Foliage.FoliageType_InstancedStaticMesh Name="FT_Log_S_02"
+   Mesh=StaticMesh'"/Game/RuralAustralia/StaticMeshes/Vegetation/Log_S_02/SM_Log_S_02.SM_Log_S_02"'
+   UpdateGuid=C154D73F47720AD3B4C35E8049C59EBF
+   GroundSlopeAngle=(Max=30.000000)
+   ExclusionLandscapeLayers(0)="LandscapeLayer_Roadside"
+   MeshBounds=(Origin=(X=10.208878,Y=14.528946,Z=45.289600),BoxExtent=(X=144.138763,Y=255.691818,Z=52.850418),SphereRadius=272.271729)
+   LowBoundOriginRadius=(X=10.208885,Y=14.528946,Z=293.520508)
+   CullDistance=(Min=15000,Max=15000)
+   bAffectDistanceFieldLighting=True
+   BodyInstance=(CollisionEnabled=QueryAndPhysics,CollisionProfileName="BlockAll",CollisionResponses=(ResponseArray=))
+   NumSteps=0
+   InitialSeedDensity=0.400000
+   ProceduralScale=(Max=2.000000)
+   ScaleCurve=(EditorCurveData=())
+End Object

@@ -1,0 +1,25 @@
+Begin Object Class=/Script/Engine.MaterialInstanceConstant Name="MI_Tree_M_04_Billboard"
+   Begin Object Class=/Script/UnrealEd.SceneThumbnailInfoWithPrimitive Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   Begin Object Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   ParameterStateId=6EC09FA8474741C10FDDBCA8E30C771A
+   Parent=Material'"/Game/RuralAustralia/Presets/M_Vegetation_Billboard_01.M_Vegetation_Billboard_01"'
+   bHasStaticPermutationResource=True
+   ScalarParameterValues(0)=(ParameterInfo=(Name="ShadowLength"),ParameterValue=2000.000000,ExpressionGUID=6395CAA140E8C88432D4E589CF381EB3)
+   ScalarParameterValues(1)=(ParameterInfo=(Name="Wind Sway Speed"),ParameterValue=0.800000,ExpressionGUID=DD5F16044F7B727A0D406BA018EFBF43)
+   ScalarParameterValues(2)=(ParameterInfo=(Name="Wind Sway Strength"),ParameterValue=0.005000,ExpressionGUID=360EE437422F286AEC0312BD2F5AD38D)
+   ScalarParameterValues(3)=(ParameterInfo=(Name="RefractionDepthBias"))
+   TextureParameterValues(0)=(ParameterInfo=(Name="BaseColor"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_M_04/T_Tree_M_04_Billboard_CA.T_Tree_M_04_Billboard_CA"',ExpressionGUID=A48A169540E37AA9B99C7082A21B3F12)
+   TextureParameterValues(1)=(ParameterInfo=(Name="Normals"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_M_04/T_Tree_M_04_Billboard_NA.T_Tree_M_04_Billboard_NA"',ExpressionGUID=6A33538840527DF709DE04AEAD2C42ED)
+   BasePropertyOverrides=(TwoSided=True,DitheredLODTransition=True,BlendMode=BLEND_Masked,ShadingModel=MSM_TwoSidedFoliage,OpacityMaskClipValue=0.333300)
+   ReferencedTextureGuids(0)=5F8214664315FCBA551CDD8B2A701E8E
+   ReferencedTextureGuids(1)=307757E1458E615C7D97A39E32219707
+   ReferencedTextureGuids(2)=BF253C26423AFC32A0EFB29B61898F82
+   StaticParameters=(StaticSwitchParameters=((Value=True,ParameterInfo=(Name="Wind Sway"),bOverride=True,ExpressionGUID=ADB284BA48D062B9E04CEE8BAB998860)))
+   CachedReferencedTextures(0)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_L_01/T_Tree_L_01_Billboard_CA.T_Tree_L_01_Billboard_CA"'
+   CachedReferencedTextures(1)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_L_01/T_Tree_L_01_Billboard_NA.T_Tree_L_01_Billboard_NA"'
+   CachedReferencedTextures(2)=Texture2D'"/Engine/EngineMaterials/Good64x64TilingNoiseHighFreq.Good64x64TilingNoiseHighFreq"'
+   ThumbnailInfo=SceneThumbnailInfoWithPrimitive'"SceneThumbnailInfoWithPrimitive_0"'
+   LightingGuid=BDEB12154B510635057EEBAAC68DF332
+End Object

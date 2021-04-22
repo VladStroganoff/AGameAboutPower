@@ -1,0 +1,20 @@
+Begin Object Class=/Script/Foliage.FoliageType_InstancedStaticMesh Name="FT_Tree_M_02"
+   Mesh=StaticMesh'"/Game/RuralAustralia/StaticMeshes/Vegetation/Tree_M_02/SM_Tree_M_02.SM_Tree_M_02"'
+   UpdateGuid=8D3E56314DDF04B17561E28F3515F1C8
+   AlignToNormal=False
+   AlignMaxAngle=10.000000
+   GroundSlopeAngle=(Max=30.000000)
+   ExclusionLandscapeLayers(0)="LandscapeLayer_Roadside"
+   MeshBounds=(Origin=(X=-142.010315,Y=-102.147095,Z=928.740601),BoxExtent=(X=701.665344,Y=826.126831,Z=939.696411),SphereRadius=976.481445)
+   LowBoundOriginRadius=(X=-11.748554,Y=2.591526,Z=144.128143)
+   CullDistance=(Min=100000,Max=100000)
+   bAffectDistanceFieldLighting=True
+   BodyInstance=(CollisionEnabled=QueryAndPhysics,CollisionProfileName="BlockAll",CollisionResponses=(ResponseArray=))
+   CollisionRadius=300.000000
+   NumSteps=2
+   InitialSeedDensity=0.100000
+   AverageSpreadDistance=1500.000000
+   SpreadVariance=1000.000000
+   ProceduralScale=(Max=1.000000)
+   ScaleCurve=(EditorCurveData=())
+End Object

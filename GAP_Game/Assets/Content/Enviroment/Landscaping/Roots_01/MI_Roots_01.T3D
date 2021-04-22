@@ -1,0 +1,22 @@
+Begin Object Class=/Script/Engine.MaterialInstanceConstant Name="MI_Roots_01"
+   Begin Object Class=/Script/UnrealEd.SceneThumbnailInfoWithPrimitive Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   Begin Object Name="SceneThumbnailInfoWithPrimitive_0"
+   End Object
+   ParameterStateId=575A4F114F622CFBD0B18EB7FB217A46
+   Parent=Material'"/Game/RuralAustralia/Presets/M_Nature_Tile_01.M_Nature_Tile_01"'
+   ScalarParameterValues(0)=(ParameterInfo=(Name="ShadowLength"),ParameterValue=3.000000,ExpressionGUID=60AAFE204833192E6CD5F6A3CEB795B0)
+   ScalarParameterValues(1)=(ParameterInfo=(Name="RefractionDepthBias"))
+   TextureParameterValues(0)=(ParameterInfo=(Name="Base Colour"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Roots_01/T_Roots_01_CA.T_Roots_01_CA"',ExpressionGUID=7C34EA2A49DE0812702A7B853239B803)
+   TextureParameterValues(1)=(ParameterInfo=(Name="Normals"),ParameterValue=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/Roots_01/T_Roots_01_NA.T_Roots_01_NA"',ExpressionGUID=7D198DEC4332BBFE852BA0B633F0E4AB)
+   BasePropertyOverrides=(DitheredLODTransition=True,OpacityMaskClipValue=0.333300)
+   ReferencedTextureGuids(0)=73C4D52C45DC190097BD3E92B1079840
+   ReferencedTextureGuids(1)=D7360895479DE04C79F200B3A4E7773C
+   CachedReferencedTextures(0)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/_SharedTextures/T_Branches_Tile_01_NA.T_Branches_Tile_01_NA"'
+   CachedReferencedTextures(1)=Texture2D'"/Game/RuralAustralia/StaticMeshes/Vegetation/_SharedTextures/T_Branches_Tile_01_CA.T_Branches_Tile_01_CA"'
+   TextureStreamingDataVersion=1
+   TextureStreamingData(0)=(SamplingScale=0.500000,UVChannelIndex=0,TextureName="T_Roots_01_CA",TextureReference=/Game/RuralAustralia/StaticMeshes/Vegetation/Roots_01/T_Roots_01_CA.T_Roots_01_CA)
+   TextureStreamingData(1)=(SamplingScale=0.500000,UVChannelIndex=0,TextureName="T_Roots_01_NA",TextureReference=/Game/RuralAustralia/StaticMeshes/Vegetation/Roots_01/T_Roots_01_NA.T_Roots_01_NA)
+   ThumbnailInfo=SceneThumbnailInfoWithPrimitive'"SceneThumbnailInfoWithPrimitive_0"'
+   LightingGuid=8772842E4F979EF9AEA55F9E7A2E8AD4
+End Object
