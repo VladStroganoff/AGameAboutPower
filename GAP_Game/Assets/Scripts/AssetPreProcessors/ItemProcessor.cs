@@ -17,6 +17,7 @@ public class ItemProcessor : AssetPostprocessor
             {
                 var itemData = (Item)asset;
                 itemData.ID = Mathf.Abs(asset.GetHashCode());
+                itemData.Health = 100;
             }
         }
     }

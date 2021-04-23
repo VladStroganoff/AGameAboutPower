@@ -183,12 +183,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5430282645728616849}
+  - component: {fileID: 8335211895851052269}
   - component: {fileID: 352171133071659238}
   - component: {fileID: 4395180171921370355}
   - component: {fileID: 8792746948427073093}
   - component: {fileID: 3916247922028199344}
   - component: {fileID: 3382438533912426777}
   - component: {fileID: 4129953690149876692}
+  - component: {fileID: 2059869014560568348}
+  - component: {fileID: 1857185462010897977}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: Untagged
@@ -212,6 +215,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8335211895851052269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375019931066368647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec90794f4824cfc41995005ef565b594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camView: {fileID: 3382438533912426777}
+  DressController: {fileID: 4129953690149876692}
 --- !u!114 &352171133071659238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,8 +316,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0512998ac6c7505489b5f80cb1f4cf50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartWear: []
+  StartWear:
+  - {fileID: 11400000, guid: 0213fcd6ec0f1de409789f9611142758, type: 2}
+  - {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
+  - {fileID: 11400000, guid: c374e585c16898c488a35d4f3264d856, type: 2}
+  - {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
+  - {fileID: 11400000, guid: c51b99dee514b4946a003eae0839f2eb, type: 2}
   Rigg: {fileID: 4754126405064877938}
+--- !u!114 &2059869014560568348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375019931066368647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 8335211895851052269}
+  _installerPrefabs:
+  - {fileID: 8335211895851052269}
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &1857185462010897977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375019931066368647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 3382438533912426777}
+  - {fileID: 3982605057760441717}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1 &8509494733232150255
 GameObject:
   m_ObjectHideFlags: 0

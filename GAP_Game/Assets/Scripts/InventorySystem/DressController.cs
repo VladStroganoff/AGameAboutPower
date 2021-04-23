@@ -11,7 +11,7 @@ public class DressController : MonoBehaviour, IDressController
     ILoadController _loadControl;
 
     [Inject]
-    void Inject(ILoadController loadControl)
+    public void Inject(ILoadController loadControl)
     {
         _loadControl = loadControl;
     }

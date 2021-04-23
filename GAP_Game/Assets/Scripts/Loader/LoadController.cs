@@ -34,8 +34,6 @@ public class LoadController : MonoBehaviour, ILoadController
         return default;
     }
 
-    public GameObject LoadWearable(GameObject prefab)
-    {
-        return default;
-    }
+    public GameObject LoadWearable(GameObject prefab) => Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
 }

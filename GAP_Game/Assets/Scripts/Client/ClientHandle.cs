@@ -33,7 +33,7 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
         Vector3 position = packet.ReadVector3();
-        Debug.Log($"Got Player Movement{position}");
+        //Debug.Log($"Got Player Movement{position}");
         GameManager.players[id].transform.position = position;
     }
 
