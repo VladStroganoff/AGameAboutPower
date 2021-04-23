@@ -24,6 +24,16 @@ public class DeselectBuildingSignal{}
 
 public class ConstructionController : MonoBehaviour, IConstructionController
 {
+
+    ILoadController LoadControl;
+
+
+    [Inject]
+    public void Inject(ILoadController loader)
+    {
+        LoadControl = loader;
+    }
+
     public void SendBuilding(SendBuildingSignal signal)
     {
         Debug.Log("Send buildoing to server: " + signal.Building.Name);
@@ -35,7 +45,6 @@ public class ConstructionController : MonoBehaviour, IConstructionController
     public void ReceiveBuilding(BuildingData building)
     {
         Debug.Log($"Building building: {building.Name} at position: {building.Position}, and rotation: {building.Rotation}");
-        GameObject instance = GameObject.Instantiate(Resources.Load<GameObject>($"Buildings/{building.Name}"), building.Position, building.Rotation);
-        instance.gameObject.SetActive(true);
+        LoadControl.LoadBuilding(building);
     }
 }

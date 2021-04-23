@@ -11,6 +11,7 @@ public class GameSessionInstaller : MonoInstaller
     public LobbyView LobbyView;
     public UIManager UIManager;
     public GameObject LocalPlayer;
+    public LoadController Loader;
 
 
     public override void InstallBindings()
@@ -19,7 +20,8 @@ public class GameSessionInstaller : MonoInstaller
 
         Container.Bind<IGameManager>().FromInstance(gameManager).AsSingle();
         Container.Bind<ICameraController>().FromInstance(camController);
-        
+        Container.Bind<ILoadController>().FromInstance(Loader);
+
         Container.Bind<ICursorController>().FromInstance(CursorControl);
         
         if(LobbyView != null)

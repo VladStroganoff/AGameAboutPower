@@ -2,26 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoneCombiner : MonoBehaviour
+public class BoneCombiner
 {
     public readonly Dictionary<int, Transform> RootBoneDictionary = new Dictionary<int, Transform>();
     private Transform[] _boneTransforms = new Transform[57]; // total bone count
 
     public List<GameObject> TestLimb = new List<GameObject>();
+    Transform root;
 
-    private void Start()
+    public BoneCombiner(Transform rigg)
     {
-        TraverseHierarchy(transform);
-        foreach (GameObject limb in TestLimb)
-        {
-            AddLimb(limb);
-        }
+        root = rigg;
+        TraverseHierarchy(rigg);
+        //foreach (GameObject limb in TestLimb)
+        //{
+        //    AddLimb(limb);
+        //}
     }
 
     public Transform AddLimb(GameObject newLimb)
     {
         var limb = ProcessBoneObject(newLimb.GetComponentInChildren<SkinnedMeshRenderer>());
-        limb.SetParent(transform);
+        limb.SetParent(root);
         return limb;
     }
 

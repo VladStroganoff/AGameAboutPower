@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemModel
 {
+    public List<Item> PlayerInventory = new List<Item>();
     ItemModel()
     {
         

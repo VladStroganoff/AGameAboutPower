@@ -10,7 +10,7 @@ public class FDebug : MonoBehaviour
     public static FDebug Log;
     bool isDown;
 
-    float speed = 20;
+    float speed = 50;
     float startTime = 0f;
     float journeyLength = 0;
     Vector3 Destination;

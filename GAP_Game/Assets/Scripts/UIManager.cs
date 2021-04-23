@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour, IUIManager
 
     public RectTransform RTSCanvas;
     public GameObject startMenu;
+    Vector2 startMenuOrigin;
     public TMP_InputField usernameField;
     public TMP_InputField Port;
     public TMP_InputField IP;
@@ -36,6 +37,7 @@ public class UIManager : MonoBehaviour, IUIManager
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
+
     }
 
     private void Start()
@@ -43,6 +45,8 @@ public class UIManager : MonoBehaviour, IUIManager
         usernameField.text = Name;
         Port.text = port.ToString();
         IP.text = ip;
+        startMenuOrigin = startMenu.GetComponent<RectTransform>().anchoredPosition;
+        startMenu.GetComponent<RectTransform>().anchoredPosition = new Vector2(startMenu.GetComponent<RectTransform>().anchoredPosition.x, 0);
     }
 
     public void CheckCameraState(CameraStateSignal signal)
@@ -77,8 +81,8 @@ public class UIManager : MonoBehaviour, IUIManager
             FDebug.Log.Message("Port number cound lont be read");
             return;
         }
-
-        startMenu.SetActive(false);
+        startMenu.GetComponent<RectTransform>().anchoredPosition = startMenuOrigin;
+        //startMenu.SetActive(false);
         usernameField.interactable = false;
         Port.interactable = false;
         IP.interactable = false;
