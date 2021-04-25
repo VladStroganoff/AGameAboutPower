@@ -6,7 +6,17 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_WaspBody
+    second: {fileID: 2100000, guid: 49da80bd39ac3684cb6e9619ce3962b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_WaspHead
+    second: {fileID: 2100000, guid: e8ace1a7f43dc744f97d3049d249901a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,7 +31,28 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'CATRigSpine1' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'CATRigSpine5' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'CATRigHub002'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'CATRigLArmDigit12'
+      has scale animation that will be discarded.\n\t'CATRigLArmDigit13' has scale
+      animation that will be discarded.\n\t'CATRigLArmDigit22' has scale animation
+      that will be discarded.\n\t'CATRigLArmDigit23' has scale animation that will
+      be discarded.\n\t'CATRigLArmDigit32' has scale animation that will be discarded.\n\t'CATRigLArmDigit33'
+      has scale animation that will be discarded.\n\t'CATRigLArmDigit42' has scale
+      animation that will be discarded.\n\t'CATRigLArmDigit43' has scale animation
+      that will be discarded.\n\t'CATRigLArmDigit52' has scale animation that will
+      be discarded.\n\t'CATRigLArmDigit53' has scale animation that will be discarded.\n\t'CATRigRArmDigit12'
+      has scale animation that will be discarded.\n\t'CATRigRArmDigit13' has scale
+      animation that will be discarded.\n\t'CATRigRArmDigit22' has scale animation
+      that will be discarded.\n\t'CATRigRArmDigit23' has scale animation that will
+      be discarded.\n\t'CATRigRArmDigit32' has scale animation that will be discarded.\n\t'CATRigRArmDigit33'
+      has scale animation that will be discarded.\n\t'CATRigRArmDigit42' has scale
+      animation that will be discarded.\n\t'CATRigRArmDigit43' has scale animation
+      that will be discarded.\n\t'CATRigRArmDigit52' has scale animation that will
+      be discarded.\n\t'CATRigRArmDigit53' has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0

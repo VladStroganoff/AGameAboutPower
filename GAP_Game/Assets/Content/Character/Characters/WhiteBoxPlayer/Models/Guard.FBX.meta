@@ -6,7 +6,32 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_TraptionGuardArms
+    second: {fileID: 2100000, guid: e134b477ed4bcf44fa9a866866f79ddb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_TraptionGuardBody
+    second: {fileID: 2100000, guid: 9fbfc2ad18f0254409852c7d8fc8273b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_TraptionGuardHead
+    second: {fileID: 2100000, guid: 41bcd061fc0be23458873a3271b29168, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_TraptionGuardHeadArmor
+    second: {fileID: 2100000, guid: f507e2fe60cdc8345ac11a4cedb7f0c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_TraptionGuardLegs
+    second: {fileID: 2100000, guid: ddbb32b8b89c0184489655764e2a9ed5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,7 +46,28 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'CATRigSpine1' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'CATRigSpine5' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'CATRigHub002'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'CATRigLArmDigit12'
+      has scale animation that will be discarded.\n\t'CATRigLArmDigit13' has scale
+      animation that will be discarded.\n\t'CATRigLArmDigit22' has scale animation
+      that will be discarded.\n\t'CATRigLArmDigit23' has scale animation that will
+      be discarded.\n\t'CATRigLArmDigit32' has scale animation that will be discarded.\n\t'CATRigLArmDigit33'
+      has scale animation that will be discarded.\n\t'CATRigLArmDigit42' has scale
+      animation that will be discarded.\n\t'CATRigLArmDigit43' has scale animation
+      that will be discarded.\n\t'CATRigLArmDigit52' has scale animation that will
+      be discarded.\n\t'CATRigLArmDigit53' has scale animation that will be discarded.\n\t'CATRigRArmDigit12'
+      has scale animation that will be discarded.\n\t'CATRigRArmDigit13' has scale
+      animation that will be discarded.\n\t'CATRigRArmDigit22' has scale animation
+      that will be discarded.\n\t'CATRigRArmDigit23' has scale animation that will
+      be discarded.\n\t'CATRigRArmDigit32' has scale animation that will be discarded.\n\t'CATRigRArmDigit33'
+      has scale animation that will be discarded.\n\t'CATRigRArmDigit42' has scale
+      animation that will be discarded.\n\t'CATRigRArmDigit43' has scale animation
+      that will be discarded.\n\t'CATRigRArmDigit52' has scale animation that will
+      be discarded.\n\t'CATRigRArmDigit53' has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0

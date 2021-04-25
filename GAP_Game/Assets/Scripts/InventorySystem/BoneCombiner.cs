@@ -14,16 +14,14 @@ public class BoneCombiner
     {
         root = rigg;
         TraverseHierarchy(rigg);
-        //foreach (GameObject limb in TestLimb)
-        //{
-        //    AddLimb(limb);
-        //}
     }
 
     public Transform AddLimb(GameObject newLimb)
     {
         var limb = ProcessBoneObject(newLimb.GetComponentInChildren<SkinnedMeshRenderer>());
         limb.SetParent(root);
+        limb.position = Vector3.zero;
+        limb.rotation = Quaternion.identity;
         return limb;
     }
 
@@ -38,6 +36,7 @@ public class BoneCombiner
     {
         var bonedObject = new GameObject().transform;
         bonedObject.name = renderer.gameObject.name;
+        bonedObject.name = bonedObject.name.Replace("(Clone)", "");
         bonedObject.transform.position = renderer.transform.position;
         bonedObject.transform.rotation = renderer.transform.rotation;
         
@@ -46,12 +45,15 @@ public class BoneCombiner
 
         for(int i =0; i < bones.Length; i++)
         {
-            _boneTransforms[i] = RootBoneDictionary[bones[i].name.GetHashCode()];
+            if (RootBoneDictionary.ContainsKey(bones[i].name.GetHashCode()))
+                _boneTransforms[i] = RootBoneDictionary[bones[i].name.GetHashCode()];
+            else
+                Debug.Log($"Bone: {bones[i].name} is not in Dictionary");
         }
 
         meshRend.bones = _boneTransforms;
         meshRend.sharedMesh = renderer.sharedMesh;
-        meshRend.materials = renderer.materials;
+        meshRend.sharedMaterials = renderer.sharedMaterials;
         
         return bonedObject;
     }

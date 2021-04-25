@@ -1171,7 +1171,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4816498496395887971}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6a0af412b3bd5e4429eb52b218255660, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 60e663b74f99297408e46277ec1cdfe3, type: 3}
   m_Controller: {fileID: 9100000, guid: cbd1db45c75e5b948a5befe9ecb80421, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camView: {fileID: -4250632892452659583}
-  RTSCamera: {fileID: 7219443261485354559}
+  DressController: {fileID: 0}
 --- !u!114 &5966806783710079603
 MonoBehaviour:
   m_ObjectHideFlags: 0
