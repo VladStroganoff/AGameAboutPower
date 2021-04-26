@@ -21,7 +21,7 @@ public class DressController : MonoBehaviour, IDressController
         _boneCombine = new BoneCombiner(Rigg);
         foreach (Wearable item in StartWear)
         {
-            _boneCombine.AddLimb(_loadControl.LoadWearable(item.Prefab));
+            _boneCombine.AddLimb(_loadControl.LoadWearable(item.Prefab), item._boneNames);
         }
     }
 

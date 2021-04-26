@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoneCombiner
 {
     public readonly Dictionary<int, Transform> RootBoneDictionary = new Dictionary<int, Transform>();
-    private Transform[] _boneTransforms = new Transform[57]; // total bone count
+    private Transform[] _boneTransforms = new Transform[57]; // total bone count in original rigg
 
     public List<GameObject> TestLimb = new List<GameObject>();
     Transform root;
@@ -16,9 +16,9 @@ public class BoneCombiner
         TraverseHierarchy(rigg);
     }
 
-    public Transform AddLimb(GameObject newLimb)
+    public Transform AddLimb(GameObject newLimb, List<string> boneNames)
     {
-        var limb = ProcessBoneObject(newLimb.GetComponentInChildren<SkinnedMeshRenderer>());
+        var limb = ProcessBoneObject(newLimb.GetComponentInChildren<SkinnedMeshRenderer>(), boneNames);
         limb.SetParent(root);
         limb.position = Vector3.zero;
         limb.rotation = Quaternion.identity;
@@ -27,12 +27,10 @@ public class BoneCombiner
 
     public void RemoveLimb(GameObject oldLimb)
     {
-
+        GameObject.Destroy(oldLimb);
     }
 
-
-
-    Transform ProcessBoneObject(SkinnedMeshRenderer renderer)
+    Transform ProcessBoneObject(SkinnedMeshRenderer renderer, List<string> boneNames)
     {
         var bonedObject = new GameObject().transform;
         bonedObject.name = renderer.gameObject.name;
@@ -41,14 +39,13 @@ public class BoneCombiner
         bonedObject.transform.rotation = renderer.transform.rotation;
         
         var meshRend = bonedObject.gameObject.AddComponent<SkinnedMeshRenderer>();
-        var bones = renderer.bones;
 
-        for(int i =0; i < bones.Length; i++)
+        for(int i =0; i < boneNames.Count; i++)
         {
-            if (RootBoneDictionary.ContainsKey(bones[i].name.GetHashCode()))
-                _boneTransforms[i] = RootBoneDictionary[bones[i].name.GetHashCode()];
+            if (RootBoneDictionary.ContainsKey(boneNames[i].GetHashCode()))
+                _boneTransforms[i] = RootBoneDictionary[boneNames[i].GetHashCode()];
             else
-                Debug.Log($"Bone: {bones[i].name} is not in Dictionary");
+                Debug.Log($"Bone: {boneNames[i]} is not in Dictionary");
         }
 
         meshRend.bones = _boneTransforms;

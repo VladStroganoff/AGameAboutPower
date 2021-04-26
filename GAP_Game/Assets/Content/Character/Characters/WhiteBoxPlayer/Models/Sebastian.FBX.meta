@@ -29,30 +29,19 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
+      rotation in copied configuration does not match rotation in animation file:\n\t'CATRigSpine1'
+      : rotation error = 0.772128 deg\n\t'CATRigSpine5' : rotation error = 2.760538
+      deg\n\t'CATRigHub002' : rotation error = 0.853504 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'CATRigSpine1' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'CATRigSpine5' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'CATRigHub002'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'CATRigLArmDigit12'
-      has scale animation that will be discarded.\n\t'CATRigLArmDigit13' has scale
-      animation that will be discarded.\n\t'CATRigLArmDigit22' has scale animation
-      that will be discarded.\n\t'CATRigLArmDigit23' has scale animation that will
-      be discarded.\n\t'CATRigLArmDigit32' has scale animation that will be discarded.\n\t'CATRigLArmDigit33'
-      has scale animation that will be discarded.\n\t'CATRigLArmDigit42' has scale
-      animation that will be discarded.\n\t'CATRigLArmDigit43' has scale animation
-      that will be discarded.\n\t'CATRigLArmDigit52' has scale animation that will
-      be discarded.\n\t'CATRigLArmDigit53' has scale animation that will be discarded.\n\t'CATRigRArmDigit12'
-      has scale animation that will be discarded.\n\t'CATRigRArmDigit13' has scale
-      animation that will be discarded.\n\t'CATRigRArmDigit22' has scale animation
-      that will be discarded.\n\t'CATRigRArmDigit23' has scale animation that will
-      be discarded.\n\t'CATRigRArmDigit32' has scale animation that will be discarded.\n\t'CATRigRArmDigit33'
-      has scale animation that will be discarded.\n\t'CATRigRArmDigit42' has scale
-      animation that will be discarded.\n\t'CATRigRArmDigit43' has scale animation
-      that will be discarded.\n\t'CATRigRArmDigit52' has scale animation that will
-      be discarded.\n\t'CATRigRArmDigit53' has scale animation that will be discarded.\n"
+      to improve retargeting quality.\n\t'CATRigLLeg2' has translation animation
+      that will be discarded.\n\t'CATRigRLegAnkle' has translation animation that
+      will be discarded.\n\t'CATRigSpine1' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\t'CATRigSpine5' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'CATRigHub002'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -525,11 +514,6 @@ ModelImporter:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Character001
-      parentName: Rigg(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
-      scale: {x: 1, y: 1, z: 1}
     - name: CATRigHub001
       parentName: Rigg(Clone)
       position: {x: -0.000000008607381, y: 0.9769354, z: 0.052714996}
@@ -547,7 +531,7 @@ ModelImporter:
       scale: {x: 1.0000004, y: 0.9999989, z: 1.0000012}
     - name: CATRigLLegAnkle
       parentName: CATRigLLeg2
-      position: {x: -0.39860842, y: 0.00000003051758, z: 0.000000002861023}
+      position: {x: -0.34, y: 0.118, z: 0}
       rotation: {x: -0.008380763, y: 0.025050951, z: -0.22081548, w: 0.9749578}
       scale: {x: 1.0000005, y: 0.9999994, z: 0.99999994}
     - name: CATRigRLeg1
@@ -557,13 +541,13 @@ ModelImporter:
       scale: {x: 1, y: 1.0000004, z: 0.99999976}
     - name: CATRigRLeg2
       parentName: CATRigRLeg1
-      position: {x: -0.46812597, y: 0, z: 0.000000007629395}
+      position: {x: -0.439, y: -0.113, z: 0.009}
       rotation: {x: -0.024285093, y: -0.0008862885, z: 0.26125956, w: 0.96496266}
       scale: {x: 0.9999998, y: 1, z: 1.0000006}
     - name: CATRigRLegAnkle
       parentName: CATRigRLeg2
-      position: {x: -0.39860848, y: 0, z: -9.536744e-10}
-      rotation: {x: -0.016959513, y: -0.00482775, z: -0.5000793, w: 0.86580014}
+      position: {x: -0.379, y: 0.063, z: 0.01}
+      rotation: {x: -0.028725578, y: -0.012880297, z: -0.7969247, w: 0.60325783}
       scale: {x: 0.99999964, y: 1.0000004, z: 1.0000001}
     - name: CATRigSpine1
       parentName: CATRigHub001
@@ -623,7 +607,7 @@ ModelImporter:
     - name: CATRigLArmDigit12
       parentName: CATRigLArmDigit11
       position: {x: -0.05686084, y: 0.00000006103516, z: 0}
-      rotation: {x: 0.024091497, y: -0.03376357, z: 0.015859032, w: 0.99901354}
+      rotation: {x: 0.024091499, y: -0.033763573, z: 0.015859034, w: 0.9990136}
       scale: {x: 0.99996424, y: 1.0000303, z: 1.0000086}
     - name: CATRigLArmDigit13
       parentName: CATRigLArmDigit12
@@ -643,7 +627,7 @@ ModelImporter:
     - name: CATRigLArmDigit23
       parentName: CATRigLArmDigit22
       position: {x: -0.022910157, y: 0.00000003051758, z: -0.000000011444092}
-      rotation: {x: -0.027099544, y: 0.019208807, z: 0.093391776, w: 0.99507517}
+      rotation: {x: -0.027099548, y: 0.019208807, z: 0.09339179, w: 0.99507517}
       scale: {x: 0.99989915, y: 1.0001181, z: 0.99998915}
     - name: CATRigLArmDigit31
       parentName: CATRigLArmPalm
@@ -668,7 +652,7 @@ ModelImporter:
     - name: CATRigLArmDigit42
       parentName: CATRigLArmDigit41
       position: {x: -0.041311648, y: -0.00000003051758, z: 0}
-      rotation: {x: 0.0005239255, y: -0.0049546715, z: 0.039687585, w: 0.9991997}
+      rotation: {x: 0.00052392564, y: -0.0049546715, z: 0.039687593, w: 0.9991997}
       scale: {x: 0.9999555, y: 1.0000559, z: 0.99999183}
     - name: CATRigLArmDigit43
       parentName: CATRigLArmDigit42
@@ -692,18 +676,18 @@ ModelImporter:
       scale: {x: 0.9999022, y: 1.0001148, z: 0.99998987}
     - name: CATRigRArmCollarbone
       parentName: CATRigHub002
-      position: {x: -0.04430347, y: 0.09800934, z: -0.038524635}
-      rotation: {x: -0.06864048, y: -0.7203341, z: 0.07028758, w: 0.68663454}
+      position: {x: -0.044, y: 0.1, z: -0.053}
+      rotation: {x: -0.045262553, y: -0.7194552, z: 0.04634914, w: 0.6915109}
       scale: {x: 0.9999999, y: 0.9999999, z: 0.9999997}
     - name: CATRigRArm1
       parentName: CATRigRArmCollarbone
       position: {x: -0.1714343, y: 0, z: 0.00000012207032}
-      rotation: {x: -0.31950152, y: 0.06330115, z: -0.14104126, w: 0.93488985}
+      rotation: {x: -0.31950155, y: 0.06330116, z: -0.14104128, w: 0.9348899}
       scale: {x: 1.000001, y: 0.9999999, z: 0.9999989}
     - name: CATRigRArm2
       parentName: CATRigRArm1
       position: {x: -0.3180224, y: 0, z: 0.00000006103516}
-      rotation: {x: 0.072097965, y: 0.049528204, z: 0.016104026, w: 0.9960369}
+      rotation: {x: 0.07256631, y: 0.0706519, z: -0.009055632, w: 0.9948168}
       scale: {x: 0.9999957, y: 1, z: 1.0000038}
     - name: CATRigRArmPalm
       parentName: CATRigRArm2
@@ -773,7 +757,7 @@ ModelImporter:
     - name: CATRigRArmDigit51
       parentName: CATRigRArmPalm
       position: {x: -0.1002638, y: 0.002084717, z: 0.028146088}
-      rotation: {x: -0.007946698, y: -0.04872418, z: 0.039373685, w: 0.99800426}
+      rotation: {x: -0.007946699, y: -0.048724182, z: 0.03937369, w: 0.9980043}
       scale: {x: 1.0000294, y: 0.9999677, z: 1.0000042}
     - name: CATRigRArmDigit52
       parentName: CATRigRArmDigit51
@@ -810,6 +794,11 @@ ModelImporter:
       position: {x: 0.010325028, y: 0.01293066, z: 0.29925174}
       rotation: {x: 0.46228954, y: -0.5370739, z: -0.48076555, w: 0.5164344}
       scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Character001
+      parentName: Rigg(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
