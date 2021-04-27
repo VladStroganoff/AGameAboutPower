@@ -6,53 +6,14 @@ public class InventoryView : MonoBehaviour, IInventoryView
 {
     public RectTransform InventoryPanel;
     Vector2 _inventoryOrigin;
+    bool _toggleInventory = false;
 
     public RectTransform LootPanel;
     Vector2 _lootOrigin;
+    bool _toggleLoot = false;
 
-    public RectTransform HeadSlot;
-    public RectTransform TorsoSlot;
-    public RectTransform RightArmSlot;
-    public RectTransform LeftArmSlot;
-    public RectTransform LegsSlot;
-    public RectTransform LeftRifleSlot;
-    public RectTransform RightRifleSlot;
-    public RectTransform LeftPistolSlot;
-    public RectTransform RightPistolSlot;
-
-    public RectTransform BackPack;
-    public List<RectTransform> BackPackSlots;
-
-    public RectTransform Loot;
-    public List<RectTransform> LootSlots;
-
-    private void OnValidate()
-    {
-        LootSlots.Clear();
-        BackPackSlots.Clear();
-
-
-        if (BackPack == null)
-            return;
-        if (BackPack.GetComponent<RectTransform>() == null)
-            return;
-
-        foreach (Transform child in BackPack.transform)
-        {
-            BackPackSlots.Add(child.gameObject.GetComponent<RectTransform>());
-        }
-
-        if (Loot == null)
-            return;
-        if (Loot.GetComponent<RectTransform>() == null)
-            return;
-
-        foreach (Transform child in Loot.transform)
-        {
-            LootSlots.Add(child.gameObject.GetComponent<RectTransform>());
-        }
-    }
-
+    public RectTransform ItemsRect;
+    public float ItemStandardSize;
 
     void Start()
     {
@@ -70,6 +31,30 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public void ShowPlayerInventiry(bool OnOff)
     {
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.I)) 
+        {
+            ToggleInventory();
+        }
+
+    }
+
+
+    void ToggleInventory()
+    {
+        if (!_toggleInventory)
+        {
+            InventoryPanel.anchoredPosition = new Vector2(InventoryPanel.anchoredPosition.x, 0);
+            _toggleInventory = !_toggleInventory;
+        }
+        else
+        {
+            InventoryPanel.anchoredPosition = _inventoryOrigin;
+            _toggleInventory = !_toggleInventory;
+        }
     }
     
 }

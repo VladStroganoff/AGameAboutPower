@@ -32,7 +32,7 @@ public class BoneCombiner
 
     Transform ProcessBoneObject(SkinnedMeshRenderer renderer, List<string> boneNames)
     {
-        var bonedObject = new GameObject().transform;
+        var bonedObject = new GameObject();
         bonedObject.name = renderer.gameObject.name;
         bonedObject.name = bonedObject.name.Replace("(Clone)", "");
         bonedObject.transform.position = renderer.transform.position;
@@ -51,8 +51,8 @@ public class BoneCombiner
         meshRend.bones = _boneTransforms;
         meshRend.sharedMesh = renderer.sharedMesh;
         meshRend.sharedMaterials = renderer.sharedMaterials;
-        
-        return bonedObject;
+
+        return bonedObject.transform;
     }
 
     void TraverseHierarchy(Transform root)

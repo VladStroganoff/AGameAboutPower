@@ -8,7 +8,7 @@ public abstract class Item : ScriptableObject
     public int ID;
     public int Health;
     public GameObject Prefab; // should just be string
-    public Texture2D Icon;
+    public Sprite Icon;
     public abstract void ActivateItem();
     public abstract void Deactivate();
 }
