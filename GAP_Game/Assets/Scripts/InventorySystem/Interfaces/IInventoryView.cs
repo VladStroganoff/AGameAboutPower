@@ -4,9 +4,12 @@ using UnityEngine;
 
 public interface IInventoryView
 {
+    public Dictionary<string, ItemSlot> GetSlots();
     void ShowPlayerInventiry(bool OnOff);
     void ShowLootInventory(bool OnOff);
     void CheckForLoot();
+
+    void PreloadToInventory(Dictionary<string, Item> items);
 }
 
 public interface IInventoryController

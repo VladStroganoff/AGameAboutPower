@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 [CreateAssetMenu(fileName = "New Holdable Item", menuName = "InventoryItem/Holdable")]
 public class Holdable : Item
 {

@@ -14,12 +14,24 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public RectTransform ItemsRect;
     public float ItemStandardSize;
+    public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
+
+    void OnValidate()
+    {
+        ItemSlot[] slots = gameObject.GetComponentsInChildren<ItemSlot>();
+        foreach(var slot in slots)
+        {
+            ItemSlots.Add(slot.gameObject.name, slot);
+        }
+
+    }
 
     void Start()
     {
         _inventoryOrigin = InventoryPanel.anchoredPosition;
         _lootOrigin = LootPanel.anchoredPosition;
     }
+
 
     public void CheckForLoot()
     {
@@ -42,6 +54,16 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     }
 
+    public Dictionary<string, ItemSlot> GetSlots() => ItemSlots;
+    public void PreloadToInventory(Dictionary<string, Item> items)
+    {
+
+    }
+
+    public void AddItemToInventory(Item newItem)
+    {
+
+    }
 
     void ToggleInventory()
     {

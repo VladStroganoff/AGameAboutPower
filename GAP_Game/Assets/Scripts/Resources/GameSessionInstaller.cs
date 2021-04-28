@@ -12,6 +12,8 @@ public class GameSessionInstaller : MonoInstaller
     public UIManager UIManager;
     public GameObject LocalPlayer;
     public LoadController Loader;
+    public InventoryController InventoryControl;
+    public InventoryView InventoryView;
 
 
     public override void InstallBindings()
@@ -23,8 +25,10 @@ public class GameSessionInstaller : MonoInstaller
         Container.Bind<ILoadController>().FromInstance(Loader);
 
         Container.Bind<ICursorController>().FromInstance(CursorControl);
-        
-        if(LobbyView != null)
+        Container.Bind<IInventoryController>().FromInstance(InventoryControl);
+        Container.Bind<IInventoryView>().FromInstance(InventoryView);
+
+        if (LobbyView != null)
         Container.Bind<ILobbyView>().FromInstance(LobbyView);
         Container.Bind<IUIManager>().FromInstance(UIManager);
         Container.Bind<ClientHandle>().AsSingle();

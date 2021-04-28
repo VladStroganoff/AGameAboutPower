@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 [RequireComponent(typeof(Image))]
 public class DragableItem : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -15,6 +16,7 @@ public class DragableItem : MonoBehaviour, IInitializePotentialDragHandler, IBeg
     Canvas _canvas;
     public Item Item;
     public bool CanDrag { get; set; } = true;
+    public object Addressable { get; private set; }
 
     void OnValidate()
     {
@@ -34,7 +36,6 @@ public class DragableItem : MonoBehaviour, IInitializePotentialDragHandler, IBeg
 
         if (Item != null)
         {
-            GetComponent<Image>().sprite = Item.Icon;
             gameObject.name = Item.name + "-Item";
         }
 
