@@ -7,9 +7,12 @@ public class DressController : MonoBehaviour, IDressController
 {
     public List<Wearable> StartWear = new List<Wearable>();
     public List<GameObject> Wear = new List<GameObject>();
+    public List<RuntimeItem> RuntimeItems = new List<RuntimeItem>();
+
     public Transform Rigg;
     BoneCombiner _boneCombine;
     ILoadController _loadControl;
+
 
     [Inject]
     public void Inject(ILoadController loadControl)
@@ -22,6 +25,7 @@ public class DressController : MonoBehaviour, IDressController
         _boneCombine = new BoneCombiner(Rigg);
         foreach (Wearable item in StartWear)
         {
+            RuntimeItems.Add(_loadControl.LoadRuntimeItem(item));
             //_boneCombine.AddLimb(item.Prefab, item._boneNames);
         }
     }

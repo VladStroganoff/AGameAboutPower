@@ -8,7 +8,7 @@ public interface ILoadController
     void SaveInventory(Dictionary<string, Item> Items);
     void LoadBuilding(BuildingData building);
     void UnloadBuilding(BuildingData building);
-    //GameObject LoadPrefab(string address); 
+    RuntimeItem LoadRuntimeItem(Item address); 
     List<Item> ItemDataBase();
     List<Item> PlayerItems();
     void DestroyItem();

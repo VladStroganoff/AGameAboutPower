@@ -1,9 +1,11 @@
 {
     "name": "Crest",
+    "rootNamespace": "",
     "references": [
         "Unity.Postprocessing.Runtime",
         "Unity.RenderPipelines.HighDefinition.Runtime",
-        "Unity.RenderPipelines.Core.Runtime"
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.Addressables"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

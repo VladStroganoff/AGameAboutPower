@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 526.8798, g: 323.06958, b: 291.98706, a: 1}
+  m_IndirectSpecularColor: {r: 582.1721, g: 352.7693, b: 281.2827, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
+  Item: {fileID: 0}
   name: Left Arm Slot
 --- !u!1 &87217785
 GameObject:
@@ -653,8 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding: {fileID: 3084212678079148998, guid: 76576e6a8b2cab440a8ebf8ea33fe62c,
-    type: 3}
+  MyBuilding: {fileID: 0}
 --- !u!1 &91646878
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,8 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding: {fileID: 5535708784861794386, guid: b1a26a5af3f87ef41b3e40d1fd99b6e7,
-    type: 3}
+  MyBuilding: {fileID: 0}
 --- !u!1 &130834235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 8dfd80fb1e2112c48a0e871eaea97a34, type: 2}
+  Item: {fileID: 0}
   name: Item Slot (1)
 --- !u!1 &169821786
 GameObject:
@@ -1441,8 +1439,8 @@ MonoBehaviour:
   RTSCanvas: {fileID: 180239541}
   startMenu: {fileID: 738848420}
   usernameField: {fileID: 1522265174}
-  Port: {fileID: 250921534}
-  IP: {fileID: 1322202156}
+  Port: {fileID: 1322202156}
+  IP: {fileID: 250921534}
 --- !u!114 &206617397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,8 +1453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33312fb13b722dd418cf6f64a39a0f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectionFrame: {fileID: 270659494}
-  GridStep: 5
+  SelectionFrame: {fileID: 0}
+  GridStep: 0
 --- !u!114 &206617398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,7 +1470,7 @@ MonoBehaviour:
   InventoryPanel: {fileID: 592850131}
   LootPanel: {fileID: 555277044}
   ItemsRect: {fileID: 681478229}
-  ItemStandardSize: 65
+  ItemStandardSize: 75
 --- !u!1 &215738566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,8 +2318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding: {fileID: 8921171321776043211, guid: 631fa7bc3241edb4f8e1d546806ee5c7,
-    type: 3}
+  MyBuilding: {fileID: 0}
 --- !u!1 &291690841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f54300bbfe6244cb4bedfae195adba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LobbyCamera: {fileID: 2001903104}
+  LobbyCamera: {fileID: 0}
 --- !u!1 &341437349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,7 +2617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 13dd89952c5986d409e0c0d112575968, type: 2}
+  Item: {fileID: 0}
   name: Item Slot (7)
 --- !u!1 &344764589
 GameObject:
@@ -3972,7 +3969,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1761608780}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999738
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4103,7 +4100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 380905acd33523341ad2730f97b3d6ae, type: 2}
+  Item: {fileID: 0}
   name: Item Slot
 --- !u!1 &590240720
 GameObject:
@@ -5722,8 +5719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding: {fileID: 2283314360893700131, guid: d7429e9dd25253b45b5486366e736e27,
-    type: 3}
+  MyBuilding: {fileID: 0}
 --- !u!1 &904569264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,7 +5919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
+  Item: {fileID: 0}
   name: Right Arm Slot
 --- !u!1 &941253380
 GameObject:
@@ -7405,7 +7401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 0213fcd6ec0f1de409789f9611142758, type: 2}
+  Item: {fileID: 0}
   name: Torso Slot
 --- !u!1 &1118511152
 GameObject:
@@ -7930,7 +7926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: c374e585c16898c488a35d4f3264d856, type: 2}
+  Item: {fileID: 0}
   name: Head Slot
 --- !u!1 &1228676135
 GameObject:
@@ -10697,7 +10693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00029945746, y: -24.81}
+  m_AnchoredPosition: {x: 0.0009706046, y: -24.81}
   m_SizeDelta: {x: -20.20398, y: 70.22154}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1575651604
@@ -11212,7 +11208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: c51b99dee514b4946a003eae0839f2eb, type: 2}
+  Item: {fileID: 0}
   name: Legs Slot
 --- !u!1 &1681516125
 GameObject:
@@ -13234,8 +13230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a53c89001504487ec9a0dad8d7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyBuilding: {fileID: -1987356518869329590, guid: 90d2c3f470fcffd49b0b09584577b893,
-    type: 3}
+  MyBuilding: {fileID: 0}
 --- !u!1 &1926490998
 GameObject:
   m_ObjectHideFlags: 0
@@ -14348,7 +14343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 22df5e1ec0abb2e4b8209515f8bcb259, type: 2}
+  Item: {fileID: 0}
   name: Item Slot (2)
 --- !u!1 &2071985076
 GameObject:

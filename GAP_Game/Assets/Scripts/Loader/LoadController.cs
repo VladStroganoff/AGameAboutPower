@@ -47,40 +47,47 @@ public class LoadController : MonoBehaviour, ILoadController
     {
     }
 
-    public IEnumerator LoadSprite(Item item, Image image)
-    {
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Sprite> goHandle = Addressables.LoadAssetAsync<Sprite>(item.Icon);
-        yield return goHandle;
-
-        while (!goHandle.IsDone)
-            yield return new WaitForEndOfFrame();
-
-        if (goHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            image.sprite = goHandle.Result;
-        }
-    }
-
-    public IEnumerator LoadPrefab(Item item)
-    {
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> goHandle = Addressables.LoadAssetAsync<GameObject>(item.Prefab);
-        yield return goHandle;
-
-        while (!goHandle.IsDone)
-            yield return new  WaitForEndOfFrame();
-
-        if (goHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            GameObject prefab = goHandle.Result;
-            yield return prefab;
-        }
-    }
-
     public void SaveInventory(Dictionary<string, Item> Items)
     {
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
         string json = JsonConvert.SerializeObject(Items, settings);
         File.WriteAllText(Application.persistentDataPath, json);
         Debug.Log($"Saved inventory to: {Application.persistentDataPath}");
+    }
+
+    public RuntimeItem LoadRuntimeItem(Item item)
+    {
+        RuntimeItem runtimeItem = new RuntimeItem(item);
+        StartCoroutine(LoadItem(runtimeItem));
+        return runtimeItem;
+    }
+
+    IEnumerator LoadItem(RuntimeItem rItem)
+    {
+        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Sprite> iconHandle = Addressables.LoadAssetAsync<Sprite>(rItem.Item.IconAddress);
+        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(rItem.Item.PrefabAddress);
+        yield return iconHandle;
+        yield return prefabHandle;
+
+        while (!iconHandle.IsDone && !iconHandle.IsDone)
+            yield return new WaitForEndOfFrame();
+
+
+        if (iconHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log($"Loaded {rItem.Item.PrefabAddress}");
+            rItem.Icon = iconHandle.Result;
+        }
+        else
+            Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
+
+        if (prefabHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log($"Loaded {rItem.Item.PrefabAddress}");
+            rItem.Prefab = prefabHandle.Result;
+        }
+        else
+            Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
+
     }
 }
