@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 582.2156, g: 352.91382, b: 281.72412, a: 1}
+  m_IndirectSpecularColor: {r: 524.6816, g: 321.27136, b: 290.98096, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
   name: Left Arm Slot
 --- !u!1 &87217785
 GameObject:
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
   name: Item Slot (1)
 --- !u!1 &169821786
 GameObject:
@@ -1470,7 +1470,7 @@ MonoBehaviour:
   InventoryPanel: {fileID: 592850131}
   LootPanel: {fileID: 555277044}
   ItemsRect: {fileID: 681478229}
-  ItemStandardSize: 75
+  ItemStandardSize: 65
 --- !u!1 &215738566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,7 +2617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 19d30250eece0f442a3c8e55d3088899, type: 2}
   name: Item Slot (7)
 --- !u!1 &344764589
 GameObject:
@@ -2795,7 +2795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
   name: Item Slot (4)
 --- !u!114 &374676113
 MonoBehaviour:
@@ -4100,7 +4100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 447c7752304a0b14cb4732fdda67c044, type: 2}
   name: Item Slot
 --- !u!1 &590240720
 GameObject:
@@ -5372,7 +5372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 13dd89952c5986d409e0c0d112575968, type: 2}
   name: Item Slot (3)
 --- !u!1 &838038558
 GameObject:
@@ -5919,7 +5919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
   name: Right Arm Slot
 --- !u!1 &941253380
 GameObject:
@@ -7266,7 +7266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: c51b99dee514b4946a003eae0839f2eb, type: 2}
   name: Item Slot (5)
 --- !u!1 &1100973905
 GameObject:
@@ -7401,7 +7401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 0213fcd6ec0f1de409789f9611142758, type: 2}
   name: Torso Slot
 --- !u!1 &1118511152
 GameObject:
@@ -7926,7 +7926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: c374e585c16898c488a35d4f3264d856, type: 2}
   name: Head Slot
 --- !u!1 &1228676135
 GameObject:
@@ -11041,7 +11041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 8dfd80fb1e2112c48a0e871eaea97a34, type: 2}
   name: Item Slot (6)
 --- !u!1 &1645137143
 GameObject:
@@ -11208,7 +11208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 380905acd33523341ad2730f97b3d6ae, type: 2}
   name: Legs Slot
 --- !u!1 &1681516125
 GameObject:
@@ -14343,7 +14343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: 22df5e1ec0abb2e4b8209515f8bcb259, type: 2}
   name: Item Slot (2)
 --- !u!1 &2071985076
 GameObject:

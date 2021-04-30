@@ -39,7 +39,7 @@ public class LoadController : MonoBehaviour, ILoadController
     {
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
         string json = JsonConvert.SerializeObject(Items, settings);
-        File.WriteAllText(Application.persistentDataPath + "GAPData.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/GAPData.json", json);
         Debug.Log($"Saved inventory to: {Application.persistentDataPath}");
     }
 

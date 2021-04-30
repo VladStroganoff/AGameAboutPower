@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +14,12 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     public event Action<PointerEventData, bool> OnEndDragHandler;
     public bool FollorCursor { get; set; } = true;
     RectTransform _rectTransfrom;
-    Vector2 _startPos = new Vector2(0,0);
+    Vector2 _startPos = new Vector2(0, 0);
     Canvas _canvas;
     public Item Item;
     public bool CanDrag { get; set; } = true;
     public object Addressable { get; private set; }
+
 
     void OnValidate()
     {

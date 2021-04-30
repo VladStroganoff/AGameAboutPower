@@ -34,7 +34,10 @@ public class InventoryController : MonoBehaviour, IInventoryController
         Dictionary<string, Item> SaveItems = new Dictionary<string, Item>();
 
         foreach (var pair in slots)
-            SaveItems.Add(pair.Key, pair.Value.Item);
+        {
+            if(pair.Value != null)
+                SaveItems.Add(pair.Key, pair.Value.Item);
+        }
 
         _loadControl.SaveInventory(SaveItems);
     }
