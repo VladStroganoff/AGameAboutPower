@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Sockets;
 using System;
 
-public class Client : MonoBehaviour
+public class GameClient : MonoBehaviour
 {
-    public static Client instance;
+    public static GameClient instance;
     public static int dataBufferSize = 4096;
 
     string ip = "127.0.0.1";

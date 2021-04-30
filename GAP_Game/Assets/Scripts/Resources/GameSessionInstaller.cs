@@ -23,6 +23,8 @@ public class GameSessionInstaller : MonoInstaller
         Container.Bind<IGameManager>().FromInstance(gameManager).AsSingle();
         Container.Bind<ICameraController>().FromInstance(camController);
         Container.Bind<ILoadController>().FromInstance(Loader);
+        Container.DeclareSignal<WearableLoadedSignal>();
+        Container.DeclareSignal<HoldableLoadedSignal>();
 
         Container.Bind<ICursorController>().FromInstance(CursorControl);
         Container.Bind<IInventoryController>().FromInstance(InventoryControl);

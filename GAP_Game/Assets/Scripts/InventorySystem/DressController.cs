@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
+
+
+
 public class DressController : MonoBehaviour, IDressController
 {
     public List<Wearable> StartWear = new List<Wearable>();
@@ -15,8 +18,9 @@ public class DressController : MonoBehaviour, IDressController
 
 
     [Inject]
-    public void Inject(ILoadController loadControl)
+    public void Inject(SignalBus bus, ILoadController loadControl)
     {
+        bus.Subscribe<WearableLoadedSignal>(AddWear);
         _loadControl = loadControl;
     }
 
@@ -26,18 +30,12 @@ public class DressController : MonoBehaviour, IDressController
         foreach (Wearable item in StartWear)
         {
             RuntimeItems.Add(_loadControl.LoadRuntimeItem(item));
-            //_boneCombine.AddLimb(item.Prefab, item._boneNames);
         }
     }
 
-    IEnumerator LoadItems()
+    public void AddWear(WearableLoadedSignal runItem)
     {
-        foreach (Wearable item in StartWear)
-        {
-            //GameObject wear = _loadControl.LoadWearable(item.Prefab);
-            //_boneCombine.AddLimb(item.Prefab, item._boneNames);
-        }
-        yield return null;
+            _boneCombine.AddLimb(runItem.RuntimeWear.Prefab);
     }
 
     public void EquipItem(Wearable wearableItem)

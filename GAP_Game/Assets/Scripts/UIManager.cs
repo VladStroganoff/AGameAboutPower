@@ -86,6 +86,6 @@ public class UIManager : MonoBehaviour, IUIManager
         usernameField.interactable = false;
         Port.interactable = false;
         IP.interactable = false;
-        Client.instance.ConnectToServer(IP.text, port);
+        GameClient.instance.ConnectToServer(IP.text, port);
     }
 }

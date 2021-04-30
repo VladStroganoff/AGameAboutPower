@@ -18,18 +18,18 @@ public class WorldModel: IWorldModel
     public List<GameObject> Players = new List<GameObject>();
     GameStateChangedSignal gameState;
 
-    SignalBus signalBus;
+    SignalBus _signalBus;
     [Inject]
     public WorldModel(SignalBus bus)
     {
-        signalBus = bus;
+        _signalBus = bus;
     }
 
 
     public void SetGameState(GameState newState)
     {
         CurrentState = newState;
-        signalBus.Fire(new GameStateChangedSignal() { state = newState });
+        _signalBus.Fire(new GameStateChangedSignal() { state = newState });
     }
 
     public void AddPlayer(GameObject player)

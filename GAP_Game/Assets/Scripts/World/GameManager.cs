@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         GameObject player;
 
-        if (id == Client.instance.myId)
+        if (id == GameClient.instance.myId)
         {
             player = Instantiate(Player, position, rotation);
         }
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
     public void  TestConnectToServer()
     {
-        Client.instance.ConnectToServer("127.0.0.1", 26950);
+        GameClient.instance.ConnectToServer("127.0.0.1", 26950);
         GameObject.Find("Menu").SetActive(false);
     }
 }

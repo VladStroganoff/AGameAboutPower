@@ -6,14 +6,14 @@ using UnityEngine;
 public class DropArea : MonoBehaviour
 {
     public List<DropCondition> DropCondition = new List<DropCondition>();
-    public event Action<DragableItem> OnDropHandler;
+    public event Action<ItemView> OnDropHandler;
 
-    public bool Accepts(DragableItem draggable)
+    public bool Accepts(ItemView draggable)
     {
         return DropCondition.TrueForAll(cond => cond.Check(draggable));
     }
 
-    public void Drop(DragableItem draggable)
+    public void Drop(ItemView draggable)
     {
         OnDropHandler?.Invoke(draggable);
     }

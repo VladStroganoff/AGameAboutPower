@@ -13,13 +13,13 @@ public class ClientSend : MonoBehaviour
     private static void SendTCPData(Packet packet)
     {
         packet.WriteLength();
-        Client.instance.tcp.SendData(packet);
+        GameClient.instance.tcp.SendData(packet);
     }
 
     private static void SendUDP(Packet packet)
     {
         packet.WriteLength();
-        Client.instance.udp.SendData(packet);
+        GameClient.instance.udp.SendData(packet);
     }
 
     public static void WelcomeReceived()
@@ -27,7 +27,7 @@ public class ClientSend : MonoBehaviour
 
         using (Packet packet = new Packet((int)ClientPackets.welcomeReceived))
         {
-            packet.Write(Client.instance.myId);
+            packet.Write(GameClient.instance.myId);
 
             if (UIManager.instance != null)
                 packet.Write(UIManager.instance.usernameField.text);
@@ -48,7 +48,7 @@ public class ClientSend : MonoBehaviour
                 packet.Write(input);
             }
 
-            Quaternion camRot = Quaternion.Euler(GameManager.players[Client.instance.myId].Camera.transform.rotation.eulerAngles);
+            Quaternion camRot = Quaternion.Euler(GameManager.players[GameClient.instance.myId].Camera.transform.rotation.eulerAngles);
 
             packet.Write(camRot);
             SendUDP(packet);
@@ -59,7 +59,7 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet packet = new Packet((int)ClientPackets.jsonObject))
         {
-            packet.Write(Client.instance.myId);
+            packet.Write(GameClient.instance.myId);
             packet.Write(json);
             SendTCPData(packet);
         }

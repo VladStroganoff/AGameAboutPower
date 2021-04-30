@@ -13,11 +13,11 @@ public class ClientHandle : MonoBehaviour
         int _myId = _packet.ReadInt();
 
         Debug.Log($"Message from server: {_msg}");
-        Client.instance.myId = _myId;
+        GameClient.instance.myId = _myId;
         ClientSend.WelcomeReceived();
-        Debug.Log(_msg + "from port: " + ((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        Debug.Log(_msg + "from port: " + ((IPEndPoint)GameClient.instance.tcp.socket.Client.LocalEndPoint).Port);
 
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        GameClient.instance.udp.Connect(((IPEndPoint)GameClient.instance.tcp.socket.Client.LocalEndPoint).Port);
     }
 
     public static void SpawnPlayer(Packet packet)

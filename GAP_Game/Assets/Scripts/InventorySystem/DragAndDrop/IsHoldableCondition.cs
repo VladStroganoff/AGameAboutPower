@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class IsHoldableCondition : DropCondition
 {
-    public override bool Check(DragableItem draggable)
+    public override bool Check(ItemView draggable)
     {
-        if (draggable.GetComponent<DragableItem>().Item is Holdable)
+        if (draggable.GetComponent<ItemView>().Item is Holdable)
             return true;
         else
             return false;

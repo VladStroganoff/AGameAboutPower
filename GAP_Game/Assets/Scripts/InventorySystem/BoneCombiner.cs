@@ -16,9 +16,9 @@ public class BoneCombiner
         TraverseHierarchy(rigg);
     }
 
-    public Transform AddLimb(GameObject newLimb, List<string> boneNames)
+    public Transform AddLimb(GameObject newLimb)
     {
-        var limb = ProcessBoneObject(newLimb.GetComponentInChildren<SkinnedMeshRenderer>(), boneNames);
+        var limb = ProcessBoneObject(newLimb.GetComponentInChildren<SkinnedMeshRenderer>());
         limb.SetParent(root);
         limb.position = Vector3.zero;
         limb.rotation = Quaternion.identity;
@@ -30,7 +30,12 @@ public class BoneCombiner
         GameObject.Destroy(oldLimb);
     }
 
-    Transform ProcessBoneObject(SkinnedMeshRenderer renderer, List<string> boneNames)
+    public void PrepWearable(RuntimeItem wearable)
+    {
+
+    }
+
+    Transform ProcessBoneObject(SkinnedMeshRenderer renderer)
     {
         var bonedObject = new GameObject();
         bonedObject.name = renderer.gameObject.name;
@@ -39,13 +44,13 @@ public class BoneCombiner
         bonedObject.transform.rotation = renderer.transform.rotation;
         
         var meshRend = bonedObject.gameObject.AddComponent<SkinnedMeshRenderer>();
-
-        for(int i =0; i < boneNames.Count; i++)
+        var bones = renderer.bones;
+        for(int i =0; i < bones.Length; i++)
         {
-            if (RootBoneDictionary.ContainsKey(boneNames[i].GetHashCode()))
-                _boneTransforms[i] = RootBoneDictionary[boneNames[i].GetHashCode()];
+            if (RootBoneDictionary.ContainsKey(bones[i].name.GetHashCode()))
+                _boneTransforms[i] = RootBoneDictionary[bones[i].name.GetHashCode()];
             else
-                Debug.Log($"Bone: {boneNames[i]} is not in Dictionary");
+                Debug.Log($"Bone: {bones[i].name} is not in Dictionary");
         }
 
         meshRend.bones = _boneTransforms;

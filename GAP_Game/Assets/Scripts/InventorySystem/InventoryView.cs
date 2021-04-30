@@ -60,7 +60,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     }
 
-    public void AddItemToInventory(Item newItem)
+    public void AddItemToInventory(RuntimeItem newItem)
     {
 
     }

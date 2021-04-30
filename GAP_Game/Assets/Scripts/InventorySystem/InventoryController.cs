@@ -23,8 +23,13 @@ public class InventoryController : MonoBehaviour, IInventoryController
     {
     }
 
+
+
+
      void Start()
     {
+        //Dictionary<int, RuntimeItem> items =  _loadControl.LoadInventory();
+        //_inventoryView.PreloadToInventory(Dictionary<>)
         Dictionary<string, ItemSlot> slots = _inventoryView.GetSlots(); // these slots are populated on the gui just for testing
         Dictionary<string, Item> SaveItems = new Dictionary<string, Item>();
 
@@ -32,6 +37,5 @@ public class InventoryController : MonoBehaviour, IInventoryController
             SaveItems.Add(pair.Key, pair.Value.Item);
 
         _loadControl.SaveInventory(SaveItems);
-
     }
 }

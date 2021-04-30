@@ -19,7 +19,7 @@ public class ItemSlot : MonoBehaviour
         name = gameObject.name;
     }
 
-    private void OnItemDropped(DragableItem draggable)
+    private void OnItemDropped(ItemView draggable)
     {
         Item = draggable.Item;
         draggable.transform.position = transform.position;
