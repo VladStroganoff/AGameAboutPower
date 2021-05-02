@@ -8,6 +8,7 @@ public class Consumable : Item
     int weight;
     int Space;
 
+
     public override void ActivateItem()
     {
     }

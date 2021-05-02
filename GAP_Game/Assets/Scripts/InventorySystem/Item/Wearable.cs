@@ -7,10 +7,7 @@ public class Wearable : Item
 {
     int Space;
     string[] _boneNames;
-    private void OnValidate()
-    {
-
-    }
+ 
     public override void ActivateItem()
     {
     }

@@ -30,17 +30,104 @@ public class LoadController : MonoBehaviour, ILoadController
     }
 
 
-    public Dictionary<int, RuntimeItem> LoadInventory()
+    public Dictionary<string, Item> LoadInventory()
     {
-        return default;
+        string jsonString = File.ReadAllText(Application.persistentDataPath + "/GAPData.json");
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        JsonItemDictionary playerSaveData = JsonConvert.DeserializeObject(jsonString, settings) as JsonItemDictionary;
+
+        Dictionary<string, Item> runTimeDictionary = new Dictionary<string, Item>();
+
+        if(playerSaveData.Wearables != null)
+        {
+            foreach (var wearable in playerSaveData.Wearables)
+            {
+                if (!runTimeDictionary.ContainsKey(wearable.Slot))
+                    runTimeDictionary.Add(wearable.Slot, wearable as Item);
+                else
+                    Debug.Log($"Inventory already contains Item {runTimeDictionary[wearable.Slot].Name} on slot: {wearable.Slot}. Trying to also add item: {wearable.Name} to the same slot.");
+            }
+        }
+        if(playerSaveData.Holdables != null)
+        {
+            foreach (var holdable in playerSaveData.Holdables)
+            {
+                if (!runTimeDictionary.ContainsKey(holdable.Slot))
+                    runTimeDictionary.Add(holdable.Slot, holdable as Item);
+                else
+                    Debug.Log($"Inventory already contains Item {runTimeDictionary[holdable.Slot].Name} on slot: {holdable.Slot}. Trying to also add item: {holdable.Name} to the same slot.");
+            }
+        }
+        if(playerSaveData.Consumable != null)
+        {
+            foreach (var consumable in playerSaveData.Consumable)
+            {
+                if (!runTimeDictionary.ContainsKey(consumable.Slot))
+                    runTimeDictionary.Add(consumable.Slot, consumable as Item);
+                else
+                    Debug.Log($"Inventory already contains Item {runTimeDictionary[consumable.Slot].Name} on slot: {consumable.Slot}. Trying to also add item: {consumable.Name} to the same slot.");
+            }
+        }
+        if(playerSaveData.Misc != null)
+        {
+            foreach (var misc in playerSaveData.Misc)
+            {
+                if (!runTimeDictionary.ContainsKey(misc.Slot))
+                    runTimeDictionary.Add(misc.Slot, misc as Item);
+                else
+                    Debug.Log($"Inventory already contains Item {runTimeDictionary[misc.Slot].Name} on slot: {misc.Slot}. Trying to also add item: {misc.Name} to the same slot.");
+            }
+        }
+        Debug.Log($"Loaded inventory with: {runTimeDictionary.Count} Slots taken");
+        return runTimeDictionary;
+
     }
 
-    public void SaveInventory(Dictionary<string, Item> Items)
+    public void SaveInventory(Dictionary<string, ItemSlot> slots)
     {
+        JsonItemDictionary playerSaveData = new JsonItemDictionary();
+        List<Wearable> wearables = new List<Wearable>();
+        List<Holdable> holdables = new List<Holdable>();
+        List<Consumable> consumables = new List<Consumable>();
+        List<Misc> miscs = new List<Misc>();
+
+        foreach(var itemSlot in slots)
+        {
+            if (itemSlot.Value.Item is Wearable)
+            {
+                Wearable wearable = ScriptableObject.CreateInstance(typeof(Wearable)) as Wearable;
+                wearable.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                wearables.Add(wearable);
+            }
+            if (itemSlot.Value.Item is Holdable)
+            {
+                Holdable holdable = ScriptableObject.CreateInstance(typeof(Holdable)) as Holdable;
+                holdable.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                holdables.Add(holdable);
+            }
+            if (itemSlot.Value.Item is Consumable)
+            {
+                Consumable consumable = ScriptableObject.CreateInstance(typeof(Consumable)) as Consumable;
+                consumable.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                consumables.Add(consumable);
+            }
+            if (itemSlot.Value.Item is Misc)
+            {
+                Misc misc = ScriptableObject.CreateInstance(typeof(Misc)) as Misc;
+                misc.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                miscs.Add(misc);
+            }
+        }
+
+        playerSaveData.Wearables = wearables.ToArray();
+        playerSaveData.Holdables = holdables.ToArray();
+        playerSaveData.Consumable = consumables.ToArray();
+        playerSaveData.Misc = miscs.ToArray();
+
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        string json = JsonConvert.SerializeObject(Items, settings);
+        string json = JsonConvert.SerializeObject(playerSaveData, settings);
         File.WriteAllText(Application.persistentDataPath + "/GAPData.json", json);
-        Debug.Log($"Saved inventory to: {Application.persistentDataPath}");
+        Debug.Log($"Saved inventory to: {Application.persistentDataPath}/GAPData.json");
     }
 
     public RuntimeItem LoadRuntimeItem(Item item)
@@ -114,5 +201,6 @@ public class LoadController : MonoBehaviour, ILoadController
     }
 
     public GameObject LoadWearable(GameObject prefab) => Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
     #endregion
 }

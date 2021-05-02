@@ -28,17 +28,19 @@ public class InventoryController : MonoBehaviour, IInventoryController
 
      void Start()
     {
-        //Dictionary<int, RuntimeItem> items =  _loadControl.LoadInventory();
-        //_inventoryView.PreloadToInventory(Dictionary<>)
-        Dictionary<string, ItemSlot> slots = _inventoryView.GetSlots(); // these slots are populated on the gui just for testing
-        Dictionary<string, Item> SaveItems = new Dictionary<string, Item>();
-
-        foreach (var pair in slots)
-        {
-            if(pair.Value != null)
-                SaveItems.Add(pair.Key, pair.Value.Item);
-        }
-
-        _loadControl.SaveInventory(SaveItems);
+        //TestSave();
+        TestLoad();
     }
+    void TestLoad()
+    {
+        Dictionary<string, Item> items = _loadControl.LoadInventory();
+        _inventoryView.PreloadToInventory(items);
+    }
+    void TestSave()
+    {
+        Dictionary<string, ItemSlot> slots = _inventoryView.GetSlots(); // these slots are populated on the gui just for testing
+        _loadControl.SaveInventory(slots);
+    }
+
 }
+

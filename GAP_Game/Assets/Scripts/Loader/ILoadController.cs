@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface ILoadController
 {
-    Dictionary<int, RuntimeItem> LoadInventory();
-    void SaveInventory(Dictionary<string, Item> Items);
+    Dictionary<string, Item> LoadInventory();
+    void SaveInventory(Dictionary<string, ItemSlot> Items);
     void LoadBuilding(BuildingData building);
     void UnloadBuilding(BuildingData building);
     RuntimeItem LoadRuntimeItem(Item address); 

@@ -7,7 +7,7 @@ public class ItemSlot : MonoBehaviour
 {
     protected DropArea _dropArea;
     public Item Item;
-    public string name;
+    public string Name;
     protected virtual void Awake()
     {
         _dropArea = GetComponent <DropArea>() ?? gameObject.AddComponent<DropArea>();
@@ -16,12 +16,13 @@ public class ItemSlot : MonoBehaviour
 
     private void OnValidate()
     {
-        name = gameObject.name;
+        Name = gameObject.name;
     }
 
     private void OnItemDropped(ItemView draggable)
     {
         Item = draggable.Item;
+        Item.Slot = Name;
         draggable.transform.position = transform.position;
     }
 }

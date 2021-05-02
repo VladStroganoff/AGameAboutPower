@@ -18,20 +18,27 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     void OnValidate()
     {
-        ItemSlot[] slots = gameObject.GetComponentsInChildren<ItemSlot>();
-        foreach(var slot in slots)
-        {
-            ItemSlots.Add(slot.gameObject.name, slot);
-        }
-
+        CollectItems();
     }
 
     void Start()
     {
+        CollectItems();
         _inventoryOrigin = InventoryPanel.anchoredPosition;
         _lootOrigin = LootPanel.anchoredPosition;
     }
-
+    void CollectItems()
+    {
+        ItemSlots.Clear();
+        ItemSlot[] slots = gameObject.GetComponentsInChildren<ItemSlot>();
+        foreach (var slot in slots)
+        {
+            if (!ItemSlots.ContainsKey(slot.gameObject.GetHashCode().ToString()))
+                ItemSlots.Add(slot.gameObject.GetHashCode().ToString(), slot);
+            else
+                Debug.Log($"Inventory slot duplication at: {slot.gameObject.name}");
+        }
+    }
 
     public void CheckForLoot()
     {
@@ -54,7 +61,15 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     }
 
-    public Dictionary<string, ItemSlot> GetSlots() => ItemSlots;
+    public Dictionary<string, ItemSlot> GetSlots()
+    {
+        foreach(var item in ItemSlots)
+        {
+            if(item.Value.Item != null)
+                item.Value.Item.Slot = item.Key;
+        }
+        return ItemSlots;
+    }
     public void PreloadToInventory(Dictionary<string, Item> items)
     {
 
