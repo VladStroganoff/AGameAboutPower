@@ -16,7 +16,7 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     RectTransform _rectTransfrom;
     Vector2 _startPos = new Vector2(0, 0);
     Canvas _canvas;
-    public Item Item;
+    public RuntimeItem RuntimeItem;
     public bool CanDrag { get; set; } = true;
     public object Addressable { get; private set; }
 
@@ -37,9 +37,9 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
         }
 
 
-        if (Item != null)
+        if (RuntimeItem != null)
         {
-            gameObject.name = Item.name + "-Item";
+            gameObject.name = RuntimeItem.Item.Name + "-Item";
         }
 
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class InventoryView : MonoBehaviour, IInventoryView
 {
@@ -15,6 +16,16 @@ public class InventoryView : MonoBehaviour, IInventoryView
     public RectTransform ItemsRect;
     public float ItemStandardSize;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
+    ILoadController _loadControl;
+
+
+    [Inject]
+    public void Inject(ILoadController loadControl, SignalBus signalBus)
+    {
+        Debug.Log("Inventory veiw controller gets injected");
+        _loadControl = loadControl;
+        signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
+    }
 
     void OnValidate()
     {
@@ -33,10 +44,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
         ItemSlot[] slots = gameObject.GetComponentsInChildren<ItemSlot>();
         foreach (var slot in slots)
         {
-            if (!ItemSlots.ContainsKey(slot.gameObject.GetHashCode().ToString()))
-                ItemSlots.Add(slot.gameObject.GetHashCode().ToString(), slot);
-            else
-                Debug.Log($"Inventory slot duplication at: {slot.gameObject.name}");
+            ItemSlots.Add(slot.gameObject.GetHashCode().ToString(), slot);
         }
     }
 
@@ -54,7 +62,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I)) 
+        if (Input.GetKeyUp(KeyCode.I))
         {
             ToggleInventory();
         }
@@ -63,15 +71,29 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public Dictionary<string, ItemSlot> GetSlots()
     {
-        foreach(var item in ItemSlots)
+        foreach (var item in ItemSlots)
         {
-            if(item.Value.Item != null)
-                item.Value.Item.Slot = item.Key;
+            if (item.Value.RuntimeItem.Item != null)
+                item.Value.RuntimeItem.Item.Slot = item.Key;
         }
         return ItemSlots;
     }
-    public void PreloadToInventory(Dictionary<string, Item> items)
+    public void LoadInventiry(Dictionary<string, Item> items)
     {
+        foreach(var item in items)
+        {
+            RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value);
+            ItemSlots[item.Key].RuntimeItem = runtimeItem;
+        }
+    }
+
+    public void ItemLoaded(ItemLoadedSignal runItem)
+    {
+        if (ItemSlots.ContainsKey(runItem.LoadedItem.Item.Slot))
+        {
+            ItemSlots[runItem.LoadedItem.Item.Slot].RuntimeItem = runItem.LoadedItem;
+            ItemSlots[runItem.LoadedItem.Item.Slot].Populate();
+        }
 
     }
 
@@ -93,5 +115,5 @@ public class InventoryView : MonoBehaviour, IInventoryView
             _toggleInventory = !_toggleInventory;
         }
     }
-    
+
 }

@@ -20,7 +20,7 @@ public class DressController : MonoBehaviour, IDressController
     [Inject]
     public void Inject(SignalBus bus, ILoadController loadControl)
     {
-        bus.Subscribe<WearableLoadedSignal>(AddWear);
+        bus.Subscribe<ItemLoadedSignal>(AddWear);
         _loadControl = loadControl;
     }
 
@@ -33,9 +33,9 @@ public class DressController : MonoBehaviour, IDressController
         }
     }
 
-    public void AddWear(WearableLoadedSignal runItem)
+    public void AddWear(ItemLoadedSignal runItem)
     {
-            _boneCombine.AddLimb(runItem.RuntimeWear.Prefab);
+            _boneCombine.AddLimb(runItem.LoadedItem.Prefab);
     }
 
     public void EquipItem(Wearable wearableItem)

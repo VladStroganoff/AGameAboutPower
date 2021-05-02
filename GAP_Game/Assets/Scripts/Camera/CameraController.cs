@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour, ICameraController
     [Inject]
     public void Inject(SignalBus bus)
     {
+        Debug.Log("Camera controller gets injected");
         _signalBus = bus;
     }
 

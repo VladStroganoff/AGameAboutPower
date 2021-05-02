@@ -9,7 +9,7 @@ public interface IInventoryView
     void ShowLootInventory(bool OnOff);
     void CheckForLoot();
 
-    void PreloadToInventory(Dictionary<string, Item> items);
+    void LoadInventiry(Dictionary<string, Item> items);
 }
 
 public interface IInventoryController

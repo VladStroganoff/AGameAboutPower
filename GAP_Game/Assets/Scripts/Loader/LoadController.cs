@@ -8,14 +8,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using Zenject;
 
-public class WearableLoadedSignal
+public class ItemLoadedSignal
 {
-    public RuntimeItem RuntimeWear;
-}
-
-public class HoldableLoadedSignal
-{
-    public RuntimeItem RuntimeHoldable;
+    public RuntimeItem LoadedItem;
 }
 
 public class LoadController : MonoBehaviour, ILoadController
@@ -26,6 +21,7 @@ public class LoadController : MonoBehaviour, ILoadController
     [Inject]
     public void Inject(SignalBus bus)
     {
+        Debug.Log("Load controller gets injected");
         _signalBus = bus;
     }
 
@@ -93,28 +89,28 @@ public class LoadController : MonoBehaviour, ILoadController
 
         foreach(var itemSlot in slots)
         {
-            if (itemSlot.Value.Item is Wearable)
+            if (itemSlot.Value.RuntimeItem.Item is Wearable)
             {
                 Wearable wearable = ScriptableObject.CreateInstance(typeof(Wearable)) as Wearable;
-                wearable.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                wearable.Initialize(itemSlot.Value.RuntimeItem.Item, itemSlot.Key);
                 wearables.Add(wearable);
             }
-            if (itemSlot.Value.Item is Holdable)
+            if (itemSlot.Value.RuntimeItem.Item is Holdable)
             {
                 Holdable holdable = ScriptableObject.CreateInstance(typeof(Holdable)) as Holdable;
-                holdable.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                holdable.Initialize(itemSlot.Value.RuntimeItem.Item, itemSlot.Key);
                 holdables.Add(holdable);
             }
-            if (itemSlot.Value.Item is Consumable)
+            if (itemSlot.Value.RuntimeItem.Item is Consumable)
             {
                 Consumable consumable = ScriptableObject.CreateInstance(typeof(Consumable)) as Consumable;
-                consumable.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                consumable.Initialize(itemSlot.Value.RuntimeItem.Item, itemSlot.Key);
                 consumables.Add(consumable);
             }
-            if (itemSlot.Value.Item is Misc)
+            if (itemSlot.Value.RuntimeItem.Item is Misc)
             {
                 Misc misc = ScriptableObject.CreateInstance(typeof(Misc)) as Misc;
-                misc.Initialize(itemSlot.Value.Item, itemSlot.Key);
+                misc.Initialize(itemSlot.Value.RuntimeItem.Item, itemSlot.Key);
                 miscs.Add(misc);
             }
         }
@@ -165,7 +161,7 @@ public class LoadController : MonoBehaviour, ILoadController
             Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
 
 
-        _signalBus.Fire(new WearableLoadedSignal() { RuntimeWear = rItem });
+        _signalBus.Fire(new ItemLoadedSignal() { LoadedItem = rItem });
     }
 
     #region Crap

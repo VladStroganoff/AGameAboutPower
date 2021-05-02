@@ -12,6 +12,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
     [Inject]
     public void Inject(IInventoryView inventoryView, ILoadController loadControl)
     {
+        Debug.Log("Inventory controller gets injected");
         _inventoryView = inventoryView;
         _loadControl = loadControl;
     }
@@ -34,7 +35,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
     void TestLoad()
     {
         Dictionary<string, Item> items = _loadControl.LoadInventory();
-        _inventoryView.PreloadToInventory(items);
+        _inventoryView.LoadInventiry(items);
     }
     void TestSave()
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 524.21155, g: 320.88757, b: 290.72266, a: 1}
+  m_IndirectSpecularColor: {r: 525.5778, g: 322.01917, b: 291.39355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -265,8 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_26
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &61154056
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,8 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
-  name: Left Arm Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &87217785
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,8 +746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Pants Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &95223005
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,8 +838,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_28
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &113965095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,8 +1077,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
-  name: Item Slot_2
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &169821786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,8 +1780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_27
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &250921532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,8 +2494,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_14
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &329943396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,7 +2542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f54300bbfe6244cb4bedfae195adba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LobbyCamera: {fileID: 0}
+  LobbyCamera: {fileID: 2001903104}
 --- !u!1 &341437349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,8 +2631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 19d30250eece0f442a3c8e55d3088899, type: 2}
-  name: Item Slot_8
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &344764589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,8 +2811,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
-  name: Item Slot_5
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!114 &374676113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3027,8 +3045,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0108e0160c9087047b608823f9967d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Left Pistol Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &440448371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,8 +3137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Shirt Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &443677334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,8 +3229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_19
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &465860312
 GameObject:
   m_ObjectHideFlags: 0
@@ -4100,8 +4124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 447c7752304a0b14cb4732fdda67c044, type: 2}
-  name: Item Slot_1
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &590240720
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,8 +4367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_13
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &640140008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,8 +4459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_18
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &649529278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4807,8 +4837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_9
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &681478228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5372,8 +5404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 13dd89952c5986d409e0c0d112575968, type: 2}
-  name: Item Slot_4
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &838038558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,8 +5953,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
-  name: Right Arm Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &941253380
 GameObject:
   m_ObjectHideFlags: 0
@@ -6009,8 +6045,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_10
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &965167666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,8 +6368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_12
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &994672670
 GameObject:
   m_ObjectHideFlags: 0
@@ -7176,8 +7216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_23
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1095644396
 GameObject:
   m_ObjectHideFlags: 0
@@ -7266,8 +7308,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: c51b99dee514b4946a003eae0839f2eb, type: 2}
-  name: Item Slot_6
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1100973905
 GameObject:
   m_ObjectHideFlags: 0
@@ -7401,8 +7445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 0213fcd6ec0f1de409789f9611142758, type: 2}
-  name: Torso Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1118511152
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,8 +7670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0108e0160c9087047b608823f9967d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Left Rifle Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1143277622
 GameObject:
   m_ObjectHideFlags: 0
@@ -7714,8 +7762,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_24
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1171782394
 GameObject:
   m_ObjectHideFlags: 19
@@ -7926,8 +7976,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: c374e585c16898c488a35d4f3264d856, type: 2}
-  name: Head Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1228676135
 GameObject:
   m_ObjectHideFlags: 0
@@ -8596,8 +8648,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_15
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1322202154
 GameObject:
   m_ObjectHideFlags: 0
@@ -9221,8 +9275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_21
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1430420538
 GameObject:
   m_ObjectHideFlags: 0
@@ -10366,8 +10422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_16
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1556201131
 GameObject:
   m_ObjectHideFlags: 0
@@ -10876,8 +10934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_11
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1611006815
 GameObject:
   m_ObjectHideFlags: 0
@@ -11041,8 +11101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 8dfd80fb1e2112c48a0e871eaea97a34, type: 2}
-  name: Item Slot_7
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1645137143
 GameObject:
   m_ObjectHideFlags: 0
@@ -11208,8 +11270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb29bf9d294d56479e16e7e8e024503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 380905acd33523341ad2730f97b3d6ae, type: 2}
-  name: Legs Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1681516125
 GameObject:
   m_ObjectHideFlags: 0
@@ -11298,8 +11362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_25
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1691448841
 GameObject:
   m_ObjectHideFlags: 0
@@ -12006,8 +12072,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_17
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1761608779
 GameObject:
   m_ObjectHideFlags: 0
@@ -12248,8 +12316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0108e0160c9087047b608823f9967d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Right Rifle Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &1803457904
 GameObject:
   m_ObjectHideFlags: 0
@@ -13954,8 +14024,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_20
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &2022888411
 GameObject:
   m_ObjectHideFlags: 0
@@ -14119,8 +14191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Item Slot_22
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &2045342007
 GameObject:
   m_ObjectHideFlags: 0
@@ -14343,8 +14417,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a492cf4fc7d664408d4edad989f8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 22df5e1ec0abb2e4b8209515f8bcb259, type: 2}
-  name: Item Slot_3
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!1 &2071985076
 GameObject:
   m_ObjectHideFlags: 0
@@ -14433,8 +14509,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0108e0160c9087047b608823f9967d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  name: Right Pistol Slot
+  RuntimeItem:
+    Item: {fileID: 0}
+    Prefab: {fileID: 0}
+    Icon: {fileID: 0}
 --- !u!114 &2127704785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7938880297916642342, guid: 89cf045fb5bb2e947a0116c15f9bb974,
