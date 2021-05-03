@@ -9,7 +9,4 @@ public interface ILoadController
     void LoadBuilding(BuildingData building);
     void UnloadBuilding(BuildingData building);
     RuntimeItem LoadRuntimeItem(Item address); 
-    List<Item> ItemDataBase();
-    List<Item> PlayerItems();
-    void DestroyItem();
 }

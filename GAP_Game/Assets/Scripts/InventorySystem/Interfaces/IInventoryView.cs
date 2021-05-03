@@ -16,6 +16,8 @@ public interface IInventoryController
 {
     void TakeItems(List<Item> Items);
     void DropItems(List<Item> Items);
+
+    void CheckGameState(GameStateChangedSignal signal);
 }
 
 public interface ILootController

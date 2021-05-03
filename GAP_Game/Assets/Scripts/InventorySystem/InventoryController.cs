@@ -7,7 +7,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
 {
     IInventoryView _inventoryView;
     ILoadController _loadControl;
-
+    public bool testSave;
 
     [Inject]
     public void Inject(IInventoryView inventoryView, ILoadController loadControl)
@@ -24,24 +24,27 @@ public class InventoryController : MonoBehaviour, IInventoryController
     {
     }
 
-
-
-
-     void Start()
+    public void CheckGameState(GameStateChangedSignal signal)
     {
-        //TestSave();
-        TestLoad();
+        if (signal.state == GameState.InLobby)
+            return;
+
+        if (signal.state == GameState.InGame)
+        {
+            Dictionary<string, Item> items = _loadControl.LoadInventory();
+            _inventoryView.LoadInventiry(items);
+        }
     }
-    void TestLoad()
+
+    void Start()
     {
-        Dictionary<string, Item> items = _loadControl.LoadInventory();
-        _inventoryView.LoadInventiry(items);
+        if(testSave)
+            TestSave();
     }
     void TestSave()
     {
         Dictionary<string, ItemSlot> slots = _inventoryView.GetSlots(); // these slots are populated on the gui just for testing
         _loadControl.SaveInventory(slots);
     }
-
 }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 525.5778, g: 322.01917, b: 291.39355, a: 1}
+  m_IndirectSpecularColor: {r: 524.8692, g: 321.43494, b: 291.07397, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1480,7 +1480,7 @@ MonoBehaviour:
   InventoryPanel: {fileID: 592850131}
   LootPanel: {fileID: 555277044}
   ItemsRect: {fileID: 681478229}
-  ItemStandardSize: 65
+  ItemStandardSize: 50
 --- !u!1 &215738566
 GameObject:
   m_ObjectHideFlags: 0
@@ -16517,6 +16517,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7938880297916642342, guid: 89cf045fb5bb2e947a0116c15f9bb974,
+        type: 3}
+      propertyPath: testSave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7938880298271533335, guid: 89cf045fb5bb2e947a0116c15f9bb974,
         type: 3}
       propertyPath: LobbyView

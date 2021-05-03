@@ -10,7 +10,7 @@ public class ItemSlot : MonoBehaviour
     public RuntimeItem RuntimeItem;
 
 
-    public void Populate() // maybe this should not be hard coded
+    public virtual void Populate() // maybe this should not be hard coded
     {
         if (RuntimeItem.Item == null)
             return;

@@ -9,7 +9,7 @@ using Zenject;
 public class DressController : MonoBehaviour, IDressController
 {
     public List<Wearable> StartWear = new List<Wearable>();
-    public List<GameObject> Wear = new List<GameObject>();
+    public Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
     public List<RuntimeItem> RuntimeItems = new List<RuntimeItem>();
 
     public Transform Rigg;
@@ -20,7 +20,7 @@ public class DressController : MonoBehaviour, IDressController
     [Inject]
     public void Inject(SignalBus bus, ILoadController loadControl)
     {
-        bus.Subscribe<ItemLoadedSignal>(AddWear);
+        bus.Subscribe<ItemLoadedSignal>(WearLoaded);
         _loadControl = loadControl;
     }
 
@@ -33,9 +33,20 @@ public class DressController : MonoBehaviour, IDressController
         }
     }
 
-    public void AddWear(ItemLoadedSignal runItem)
+    public void WearLoaded(ItemLoadedSignal runItem)
     {
             _boneCombine.AddLimb(runItem.LoadedItem.Prefab);
+    }
+    public void AddWear(RuntimeItem runItem)
+    {
+        if(!Wear.ContainsKey(runItem.Item.Name))
+            Wear.Add(runItem.Item.Name, runItem.Prefab);
+        else
+        {
+            GameObject.Destroy(Wear[runItem.Item.Name]);
+            Wear.Remove(runItem.Item.Name);
+        }
+        _boneCombine.AddLimb(runItem.Prefab);
     }
 
     public void EquipItem(Wearable wearableItem)

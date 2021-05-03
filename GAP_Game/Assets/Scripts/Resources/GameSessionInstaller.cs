@@ -29,6 +29,9 @@ public class GameSessionInstaller : MonoInstaller
         Container.Bind<IInventoryController>().FromInstance(InventoryControl);
         Container.Bind<IInventoryView>().FromInstance(InventoryView);
 
+        Container.BindSignal<GameStateChangedSignal>()
+          .ToMethod<IInventoryController>(x => x.CheckGameState).FromResolve();
+
         if (LobbyView != null)
         Container.Bind<ILobbyView>().FromInstance(LobbyView);
         Container.Bind<IUIManager>().FromInstance(UIManager);
