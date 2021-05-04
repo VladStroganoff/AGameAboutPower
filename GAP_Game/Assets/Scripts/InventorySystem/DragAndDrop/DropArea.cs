@@ -15,6 +15,7 @@ public class DropArea : MonoBehaviour
 
     public void Drop(ItemView draggable)
     {
+        draggable.transform.SetParent(transform);
         OnDropHandler?.Invoke(draggable);
     }
 }

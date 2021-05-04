@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 524.8692, g: 321.43494, b: 291.07397, a: 1}
+  m_IndirectSpecularColor: {r: 524.9166, g: 321.47522, b: 291.09253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 16003790}
   - component: {fileID: 16003792}
   m_Layer: 5
-  m_Name: Item Slot_26
+  m_Name: Item_Slot_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,6 +269,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &61154056
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +433,7 @@ GameObject:
   - component: {fileID: 72034220}
   - component: {fileID: 72034222}
   m_Layer: 5
-  m_Name: Left Arm Slot
+  m_Name: Left_Arm_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,6 +512,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &87217785
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +673,7 @@ GameObject:
   - component: {fileID: 91646880}
   - component: {fileID: 91646882}
   m_Layer: 5
-  m_Name: Pants Slot
+  m_Name: Pants_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,6 +752,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &95223005
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +766,7 @@ GameObject:
   - component: {fileID: 95223007}
   - component: {fileID: 95223009}
   m_Layer: 5
-  m_Name: Item Slot_28
+  m_Name: Item_Slot_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -842,6 +845,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &113965095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1006,7 @@ GameObject:
   - component: {fileID: 130834237}
   - component: {fileID: 130834239}
   m_Layer: 5
-  m_Name: Item Slot_2
+  m_Name: Item_Slot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,6 +1085,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &169821786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1710,7 @@ GameObject:
   - component: {fileID: 244488042}
   - component: {fileID: 244488044}
   m_Layer: 5
-  m_Name: Item Slot_27
+  m_Name: Item_Slot_27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,6 +1789,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &250921532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,7 +2425,7 @@ GameObject:
   - component: {fileID: 326666048}
   - component: {fileID: 326666050}
   m_Layer: 5
-  m_Name: Item Slot_14
+  m_Name: Item_Slot_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2498,6 +2504,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &329943396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,7 +2563,7 @@ GameObject:
   - component: {fileID: 341437351}
   - component: {fileID: 341437353}
   m_Layer: 5
-  m_Name: Item Slot_8
+  m_Name: Item_Slot_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2635,6 +2642,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &344764589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2744,7 @@ GameObject:
   - component: {fileID: 368882382}
   - component: {fileID: 368882384}
   m_Layer: 5
-  m_Name: Item Slot_5
+  m_Name: Item_Slot_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2815,6 +2823,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!114 &374676113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,7 +2979,7 @@ GameObject:
   - component: {fileID: 425569782}
   - component: {fileID: 425569784}
   m_Layer: 5
-  m_Name: Left Pistol Slot
+  m_Name: Left_Pistol_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3049,6 +3058,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &440448371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,7 +3072,7 @@ GameObject:
   - component: {fileID: 440448373}
   - component: {fileID: 440448375}
   m_Layer: 5
-  m_Name: Shirt Slot
+  m_Name: Shirt_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,6 +3151,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &443677334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,7 +3165,7 @@ GameObject:
   - component: {fileID: 443677336}
   - component: {fileID: 443677338}
   m_Layer: 5
-  m_Name: Item Slot_19
+  m_Name: Item_Slot_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3233,6 +3244,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &465860312
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,7 +4061,7 @@ GameObject:
   - component: {fileID: 582598693}
   - component: {fileID: 582598695}
   m_Layer: 5
-  m_Name: Item Slot_1
+  m_Name: Item_Slot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4128,6 +4140,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &590240720
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,7 +4305,7 @@ GameObject:
   - component: {fileID: 623329550}
   - component: {fileID: 623329552}
   m_Layer: 5
-  m_Name: Item Slot_13
+  m_Name: Item_Slot_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4371,6 +4384,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &640140008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,7 +4398,7 @@ GameObject:
   - component: {fileID: 640140010}
   - component: {fileID: 640140012}
   m_Layer: 5
-  m_Name: Item Slot_18
+  m_Name: Item_Slot_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4463,6 +4477,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &649529278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4762,7 +4777,7 @@ GameObject:
   - component: {fileID: 663060670}
   - component: {fileID: 663060672}
   m_Layer: 5
-  m_Name: Item Slot_9
+  m_Name: Item_Slot_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4841,6 +4856,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &681478228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5329,7 +5345,7 @@ GameObject:
   - component: {fileID: 816298686}
   - component: {fileID: 816298688}
   m_Layer: 5
-  m_Name: Item Slot_4
+  m_Name: Item_Slot_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5408,6 +5424,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &838038558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5878,7 +5895,7 @@ GameObject:
   - component: {fileID: 938879150}
   - component: {fileID: 938879152}
   m_Layer: 5
-  m_Name: Right Arm Slot
+  m_Name: Right_Arm_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5957,6 +5974,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &941253380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,7 +5988,7 @@ GameObject:
   - component: {fileID: 941253382}
   - component: {fileID: 941253384}
   m_Layer: 5
-  m_Name: Item Slot_10
+  m_Name: Item_Slot_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6049,6 +6067,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &965167666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6293,7 +6312,7 @@ GameObject:
   - component: {fileID: 984789442}
   - component: {fileID: 984789444}
   m_Layer: 5
-  m_Name: Item Slot_12
+  m_Name: Item_Slot_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6372,6 +6391,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &994672670
 GameObject:
   m_ObjectHideFlags: 0
@@ -7141,7 +7161,7 @@ GameObject:
   - component: {fileID: 1092138012}
   - component: {fileID: 1092138014}
   m_Layer: 5
-  m_Name: Item Slot_23
+  m_Name: Item_Slot_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7220,6 +7240,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1095644396
 GameObject:
   m_ObjectHideFlags: 0
@@ -7233,7 +7254,7 @@ GameObject:
   - component: {fileID: 1095644398}
   - component: {fileID: 1095644400}
   m_Layer: 5
-  m_Name: Item Slot_6
+  m_Name: Item_Slot_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7312,6 +7333,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1100973905
 GameObject:
   m_ObjectHideFlags: 0
@@ -7370,7 +7392,7 @@ GameObject:
   - component: {fileID: 1106545181}
   - component: {fileID: 1106545183}
   m_Layer: 5
-  m_Name: Torso Slot
+  m_Name: Torso_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7449,6 +7471,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &1118511152
 GameObject:
   m_ObjectHideFlags: 0
@@ -7595,7 +7618,7 @@ GameObject:
   - component: {fileID: 1128731778}
   - component: {fileID: 1128731780}
   m_Layer: 5
-  m_Name: Left Rifle Slot
+  m_Name: Left_Rifle_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7674,6 +7697,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1143277622
 GameObject:
   m_ObjectHideFlags: 0
@@ -7687,7 +7711,7 @@ GameObject:
   - component: {fileID: 1143277624}
   - component: {fileID: 1143277626}
   m_Layer: 5
-  m_Name: Item Slot_24
+  m_Name: Item_Slot_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7766,6 +7790,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1171782394
 GameObject:
   m_ObjectHideFlags: 19
@@ -7901,7 +7926,7 @@ GameObject:
   - component: {fileID: 1188073314}
   - component: {fileID: 1188073316}
   m_Layer: 5
-  m_Name: Head Slot
+  m_Name: Head_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7980,6 +8005,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &1228676135
 GameObject:
   m_ObjectHideFlags: 0
@@ -8573,7 +8599,7 @@ GameObject:
   - component: {fileID: 1314543932}
   - component: {fileID: 1314543934}
   m_Layer: 5
-  m_Name: Item Slot_15
+  m_Name: Item_Slot_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8652,6 +8678,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1322202154
 GameObject:
   m_ObjectHideFlags: 0
@@ -9200,7 +9227,7 @@ GameObject:
   - component: {fileID: 1388932422}
   - component: {fileID: 1388932424}
   m_Layer: 5
-  m_Name: Item Slot_21
+  m_Name: Item_Slot_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9279,6 +9306,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1430420538
 GameObject:
   m_ObjectHideFlags: 0
@@ -9425,6 +9453,7 @@ GameObject:
   - component: {fileID: 1451182476}
   - component: {fileID: 1451182475}
   - component: {fileID: 1451182474}
+  - component: {fileID: 1451182477}
   m_Layer: 5
   m_Name: ItemGrid
   m_TagString: Untagged
@@ -9541,6 +9570,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451182472}
   m_CullTransparentMesh: 1
+--- !u!114 &1451182477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451182472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f609043bab6c445448afe324d2adc95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameThem: 0
+  name: Item_Slot_
 --- !u!1 &1456167815
 GameObject:
   m_ObjectHideFlags: 0
@@ -10347,7 +10390,7 @@ GameObject:
   - component: {fileID: 1551590889}
   - component: {fileID: 1551590891}
   m_Layer: 5
-  m_Name: Item Slot_16
+  m_Name: Item_Slot_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10426,6 +10469,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1556201131
 GameObject:
   m_ObjectHideFlags: 0
@@ -10859,7 +10903,7 @@ GameObject:
   - component: {fileID: 1588981903}
   - component: {fileID: 1588981905}
   m_Layer: 5
-  m_Name: Item Slot_11
+  m_Name: Item_Slot_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10938,6 +10982,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1611006815
 GameObject:
   m_ObjectHideFlags: 0
@@ -11026,7 +11071,7 @@ GameObject:
   - component: {fileID: 1626599753}
   - component: {fileID: 1626599755}
   m_Layer: 5
-  m_Name: Item Slot_7
+  m_Name: Item_Slot_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11105,6 +11150,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1645137143
 GameObject:
   m_ObjectHideFlags: 0
@@ -11195,7 +11241,7 @@ GameObject:
   - component: {fileID: 1673399642}
   - component: {fileID: 1673399644}
   m_Layer: 5
-  m_Name: Legs Slot
+  m_Name: Legs_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11274,6 +11320,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 1
 --- !u!1 &1681516125
 GameObject:
   m_ObjectHideFlags: 0
@@ -11287,7 +11334,7 @@ GameObject:
   - component: {fileID: 1681516127}
   - component: {fileID: 1681516129}
   m_Layer: 5
-  m_Name: Item Slot_25
+  m_Name: Item_Slot_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11366,6 +11413,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1691448841
 GameObject:
   m_ObjectHideFlags: 0
@@ -11997,7 +12045,7 @@ GameObject:
   - component: {fileID: 1746955794}
   - component: {fileID: 1746955796}
   m_Layer: 5
-  m_Name: Item Slot_17
+  m_Name: Item_Slot_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12076,6 +12124,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1761608779
 GameObject:
   m_ObjectHideFlags: 0
@@ -12241,7 +12290,7 @@ GameObject:
   - component: {fileID: 1791206153}
   - component: {fileID: 1791206155}
   m_Layer: 5
-  m_Name: Right Rifle Slot
+  m_Name: Right_Rifle_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12320,6 +12369,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &1803457904
 GameObject:
   m_ObjectHideFlags: 0
@@ -13949,7 +13999,7 @@ GameObject:
   - component: {fileID: 2014984716}
   - component: {fileID: 2014984718}
   m_Layer: 5
-  m_Name: Item Slot_20
+  m_Name: Item_Slot_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14028,6 +14078,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &2022888411
 GameObject:
   m_ObjectHideFlags: 0
@@ -14116,7 +14167,7 @@ GameObject:
   - component: {fileID: 2030186504}
   - component: {fileID: 2030186506}
   m_Layer: 5
-  m_Name: Item Slot_22
+  m_Name: Item_Slot_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14195,6 +14246,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &2045342007
 GameObject:
   m_ObjectHideFlags: 0
@@ -14342,7 +14394,7 @@ GameObject:
   - component: {fileID: 2047176737}
   - component: {fileID: 2047176739}
   m_Layer: 5
-  m_Name: Item Slot_3
+  m_Name: Item_Slot_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14421,6 +14473,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!1 &2071985076
 GameObject:
   m_ObjectHideFlags: 0
@@ -14434,7 +14487,7 @@ GameObject:
   - component: {fileID: 2071985078}
   - component: {fileID: 2071985080}
   m_Layer: 5
-  m_Name: Right Pistol Slot
+  m_Name: Right_Pistol_Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14513,6 +14566,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
+  inUse: 0
 --- !u!114 &2127704785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7938880297916642342, guid: 89cf045fb5bb2e947a0116c15f9bb974,
@@ -16521,6 +16575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: testSave
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938880297916642342, guid: 89cf045fb5bb2e947a0116c15f9bb974,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7938880298271533335, guid: 89cf045fb5bb2e947a0116c15f9bb974,
         type: 3}

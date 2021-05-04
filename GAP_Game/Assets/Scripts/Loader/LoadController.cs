@@ -146,7 +146,6 @@ public class LoadController : MonoBehaviour, ILoadController
 
         if (iconHandle.Result != null)
         {
-            Debug.Log($"Loaded Icon for: {rItem.Item.PrefabAddress}");
             rItem.Icon = iconHandle.Result;
         }
         else
@@ -154,7 +153,6 @@ public class LoadController : MonoBehaviour, ILoadController
 
         if (prefabHandle.Result != null)
         {
-            Debug.Log($"Loaded prefab for: {rItem.Item.PrefabAddress}");
             rItem.Prefab = prefabHandle.Result;
         }
         else

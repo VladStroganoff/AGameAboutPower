@@ -15,6 +15,7 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     public bool FollorCursor { get; set; } = true;
     RectTransform _rectTransfrom;
     Vector2 _startPos = new Vector2(0, 0);
+    Transform _startParent;
     Canvas _canvas;
     public RuntimeItem RuntimeItem;
     public bool CanDrag { get; set; } = true;
@@ -49,6 +50,8 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
         if (!CanDrag)
             return;
 
+        _startParent = transform.parent;
+        transform.SetParent(transform.parent.parent.parent.parent);
         OnBeginDragHandler?.Invoke(eventData);
     }
 
@@ -92,6 +95,7 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
                 return;
             }
         }
+        _rectTransfrom.transform.SetParent(_startParent);
         _rectTransfrom.anchoredPosition = _startPos;
         OnEndDragHandler?.Invoke(eventData, false);
     }

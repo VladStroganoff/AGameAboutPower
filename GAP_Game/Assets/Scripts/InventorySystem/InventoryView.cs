@@ -44,7 +44,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
         ItemSlot[] slots = gameObject.GetComponentsInChildren<ItemSlot>();
         foreach (var slot in slots)
         {
-            ItemSlots.Add(slot.gameObject.GetHashCode().ToString(), slot);
+            ItemSlots.Add(slot.gameObject.name.ToString(), slot);
         }
     }
 
@@ -116,4 +116,18 @@ public class InventoryView : MonoBehaviour, IInventoryView
         }
     }
 
+    public Dictionary<string, GameObject> GetWearSlots()
+    {
+        Dictionary<string, GameObject> wearSlots = new Dictionary<string, GameObject>();
+
+        foreach(var slot in ItemSlots)
+        {
+            if (slot.Value.inUse == true)
+                wearSlots.Add(slot.Key, null);
+
+        }
+
+
+        return wearSlots;
+    }
 }

@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
-
 public class WearableSlot : ItemSlot
 {
     DressController _dressControl;
-
-    public void Start()
+    [Inject]
+    public void Inject(SignalBus bus)
     {
-        _dressControl = GameObject.FindObjectOfType<DressController>();
+        bus.Subscribe<PlayerDresserSpawned>(GetDresser);
+    }
+
+    public void GetDresser(PlayerDresserSpawned dresser)
+    {
+        _dressControl = dresser.DressController;
     }
 
     protected override void Awake()

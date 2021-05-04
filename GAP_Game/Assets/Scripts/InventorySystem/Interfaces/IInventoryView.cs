@@ -9,6 +9,7 @@ public interface IInventoryView
     void ShowLootInventory(bool OnOff);
     void CheckForLoot();
 
+    Dictionary<string, GameObject> GetWearSlots();
     void LoadInventiry(Dictionary<string, Item> items);
 }
 
@@ -31,5 +32,6 @@ public interface IEquipController
 }
 public interface IDressController
 {
+    void AddWear(RuntimeItem runItem);
     void EquipItem(Wearable wearableItem);
 }

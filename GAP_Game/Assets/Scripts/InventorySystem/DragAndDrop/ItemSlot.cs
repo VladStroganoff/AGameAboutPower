@@ -8,7 +8,7 @@ public class ItemSlot : MonoBehaviour
 {
     protected DropArea _dropArea;
     public RuntimeItem RuntimeItem;
-
+    public bool inUse;
 
     public virtual void Populate() // maybe this should not be hard coded
     {
