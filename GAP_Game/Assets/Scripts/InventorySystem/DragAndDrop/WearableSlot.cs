@@ -1,6 +1,8 @@
+using UnityEngine;
 using Zenject;
 public class WearableSlot : ItemSlot
 {
+    public BodyPart Type;
     DressController _dressControl;
     [Inject]
     public void Inject(SignalBus bus)
@@ -16,7 +18,8 @@ public class WearableSlot : ItemSlot
     protected override void Awake()
     {
         base.Awake();
-        _dropArea.DropCondition.Add(new IsWearableCondition());
+        Debug.Log($"{gameObject.name} set to {Type}");
+        _dropArea.DropCondition.Add(new IsWearableCondition(Type));
     }
 
     public override void Populate()

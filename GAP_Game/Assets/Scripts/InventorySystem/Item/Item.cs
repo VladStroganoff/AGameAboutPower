@@ -9,9 +9,10 @@ public abstract class Item : ScriptableObject
     public int Health;
     public string PrefabAddress;
     public string IconAddress;
+    [HideInInspector]
     public string Slot;
 
-    public void Initialize(Item item, string slot)
+    public virtual void Initialize(Item item, string slot)
     {
         Name = item.Name;
         ID = item.ID;

@@ -8,6 +8,7 @@ public class DropArea : MonoBehaviour
     public List<DropCondition> DropCondition = new List<DropCondition>();
     public event Action<ItemView> OnDropHandler;
 
+
     public bool Accepts(ItemView draggable)
     {
         return DropCondition.TrueForAll(cond => cond.Check(draggable));
@@ -15,7 +16,6 @@ public class DropArea : MonoBehaviour
 
     public void Drop(ItemView draggable)
     {
-        draggable.transform.SetParent(transform);
         OnDropHandler?.Invoke(draggable);
     }
 }

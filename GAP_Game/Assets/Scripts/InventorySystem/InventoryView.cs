@@ -27,11 +27,6 @@ public class InventoryView : MonoBehaviour, IInventoryView
         signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
     }
 
-    void OnValidate()
-    {
-        CollectItems();
-    }
-
     void Start()
     {
         CollectItems();

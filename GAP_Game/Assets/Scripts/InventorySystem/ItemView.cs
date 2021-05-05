@@ -92,6 +92,7 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
             {
                 slot.Drop(this);
                 OnEndDragHandler?.Invoke(eventData, true);
+              
                 return;
             }
         }
