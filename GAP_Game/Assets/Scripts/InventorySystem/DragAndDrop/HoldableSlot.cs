@@ -5,7 +5,17 @@ public class HoldableSlot : ItemSlot
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log($"{gameObject.name} set to {Type}");
+        //Debug.Log($"{gameObject.name} set to {Type}");
         _dropArea.DropCondition.Add(new IsHoldableCondition(Type));
+    }
+
+    public override void Populate()
+    {
+        base.Populate();
+    }
+
+    public override void OnItemDropped(ItemView draggable)
+    {
+        base.OnItemDropped(draggable);
     }
 }

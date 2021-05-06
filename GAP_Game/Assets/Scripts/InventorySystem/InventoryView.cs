@@ -22,7 +22,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
     [Inject]
     public void Inject(ILoadController loadControl, SignalBus signalBus)
     {
-        Debug.Log("Inventory veiw controller gets injected");
+        //Debug.Log("Inventory veiw controller gets injected");
         _loadControl = loadControl;
         signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
     }

@@ -21,7 +21,7 @@ public class LoadController : MonoBehaviour, ILoadController
     [Inject]
     public void Inject(SignalBus bus)
     {
-        Debug.Log("Load controller gets injected");
+        //Debug.Log("Load controller gets injected");
         _signalBus = bus;
     }
 
@@ -39,7 +39,9 @@ public class LoadController : MonoBehaviour, ILoadController
             foreach (var wearable in playerSaveData.Wearables)
             {
                 if (!runTimeDictionary.ContainsKey(wearable.Slot))
+                {
                     runTimeDictionary.Add(wearable.Slot, wearable as Item);
+                }
                 else
                     Debug.Log($"Inventory already contains Item {runTimeDictionary[wearable.Slot].Name} on slot: {wearable.Slot}. Trying to also add item: {wearable.Name} to the same slot.");
             }
@@ -49,7 +51,9 @@ public class LoadController : MonoBehaviour, ILoadController
             foreach (var holdable in playerSaveData.Holdables)
             {
                 if (!runTimeDictionary.ContainsKey(holdable.Slot))
+                {
                     runTimeDictionary.Add(holdable.Slot, holdable as Item);
+                }
                 else
                     Debug.Log($"Inventory already contains Item {runTimeDictionary[holdable.Slot].Name} on slot: {holdable.Slot}. Trying to also add item: {holdable.Name} to the same slot.");
             }

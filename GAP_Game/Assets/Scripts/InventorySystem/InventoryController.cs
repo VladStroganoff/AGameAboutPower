@@ -12,7 +12,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
     [Inject]
     public void Inject(IInventoryView inventoryView, ILoadController loadControl)
     {
-        Debug.Log("Inventory controller gets injected");
+        //Debug.Log("Inventory controller gets injected");
         _inventoryView = inventoryView;
         _loadControl = loadControl;
     }

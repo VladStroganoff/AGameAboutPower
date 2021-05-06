@@ -8,6 +8,7 @@ public class ItemSlot : MonoBehaviour
 {
     protected DropArea _dropArea;
     public RuntimeItem RuntimeItem;
+    protected ItemView _currentView;
     public bool inUse;
 
     public virtual void Populate() // maybe this should not be hard coded
@@ -21,8 +22,8 @@ public class ItemSlot : MonoBehaviour
         Image image = item.AddComponent<Image>();
         image.sprite = RuntimeItem.Icon;
         rect.anchoredPosition = Vector2.zero;
-        ItemView view = item.AddComponent<ItemView>();
-        view.RuntimeItem = RuntimeItem;
+        _currentView = item.AddComponent<ItemView>();
+        _currentView.RuntimeItem = RuntimeItem;
     }
 
     protected virtual void Awake()
@@ -30,7 +31,7 @@ public class ItemSlot : MonoBehaviour
         _dropArea = GetComponent <DropArea>() ?? gameObject.AddComponent<DropArea>();
         _dropArea.OnDropHandler += OnItemDropped;
     }
-    private void OnItemDropped(ItemView draggable)
+    public virtual void OnItemDropped(ItemView draggable)
     {
         RuntimeItem = draggable.RuntimeItem;
         draggable.transform.position = transform.position;

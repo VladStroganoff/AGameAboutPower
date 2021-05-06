@@ -15,6 +15,7 @@ public class IsHoldableCondition : DropCondition
         if (draggable.GetComponent<ItemView>().RuntimeItem.Item is Holdable)
         {
             Holdable holdable = draggable.GetComponent<ItemView>().RuntimeItem.Item as Holdable;
+
             
             if (holdable.Type == _type)
                 return true;

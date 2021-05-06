@@ -4,6 +4,7 @@ public class WearableSlot : ItemSlot
 {
     public BodyPart Type;
     DressController _dressControl;
+
     [Inject]
     public void Inject(SignalBus bus)
     {
@@ -18,14 +19,25 @@ public class WearableSlot : ItemSlot
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log($"{gameObject.name} set to {Type}");
         _dropArea.DropCondition.Add(new IsWearableCondition(Type));
     }
-
+    
     public override void Populate()
     {
         base.Populate();
         _dressControl.AddWear(RuntimeItem);
+    }
+
+    public override void OnItemDropped(ItemView draggable)
+    {
+        if (_currentView != null) 
+        {
+            _currentView.transform.position = draggable.currentParent.position;
+            _currentView.transform.SetParent(draggable.currentParent);
+        }
+        base.OnItemDropped(draggable);
+        _currentView = draggable;
+        _dressControl.AddWear(draggable.RuntimeItem);
     }
 
 }

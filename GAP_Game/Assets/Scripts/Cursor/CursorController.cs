@@ -35,7 +35,7 @@ public class CursorController : MonoBehaviour, ICursorController
     [Inject]
     public void Inject(SignalBus bus)
     {
-        Debug.Log("cursor controller gets injected");
+        //Debug.Log("cursor controller gets injected");
         signalBus = bus;
     }
 

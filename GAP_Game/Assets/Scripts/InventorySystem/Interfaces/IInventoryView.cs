@@ -33,5 +33,6 @@ public interface IEquipController
 public interface IDressController
 {
     void AddWear(RuntimeItem runItem);
+
     void EquipItem(Wearable wearableItem);
 }
