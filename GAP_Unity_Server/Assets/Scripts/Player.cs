@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float health;
     public float maxHealth;
     public NetAnimator animator;
+    public string Inventory;
 
     private bool[] inputs;
 

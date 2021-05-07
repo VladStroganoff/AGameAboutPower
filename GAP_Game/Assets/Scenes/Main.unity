@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: ba750150b39915544b3be9eb498d279c, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 1
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 380905acd33523341ad2730f97b3d6ae, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   InventoryPanel: {fileID: 592850131}
   LootPanel: {fileID: 555277044}
   ItemsRect: {fileID: 681478229}
-  ItemStandardSize: 50
+  ItemStandardSize: 45
 --- !u!1 &215738566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: eb128a6166040cc4d8db9c50fafa2ea6, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -2641,7 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 22df5e1ec0abb2e4b8209515f8bcb259, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -2822,7 +2822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: f51027dbdecb2b54b8840a2b71b771b5, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -3705,7 +3705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 7c23e54370494d64b9431f4a8435aaf7, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -3949,7 +3949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 0213fcd6ec0f1de409789f9611142758, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -4421,7 +4421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: c374e585c16898c488a35d4f3264d856, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 8dfd80fb1e2112c48a0e871eaea97a34, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -5505,7 +5505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 1ba638ab131deb94087210ff33445fda, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 1
@@ -5599,7 +5599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 1e0633ca9cfe21342aa3c9c3c502f447, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -5923,7 +5923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 0d2060cc23056814f84764b09a177b45, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -6865,7 +6865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 2a2beb14f5c643b49b0821fddbb9f1cd, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -7003,7 +7003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 832a8e414fb51b04d966d7cfbf6f59a7, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 1
@@ -7539,7 +7539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 62c88c7cc7a5c6b41b4502259f58209d, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 1
@@ -8213,7 +8213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 447c7752304a0b14cb4732fdda67c044, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -10004,7 +10004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 4e5f433204723be49aab29b07131b03a, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -10517,7 +10517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 6a6d983ff1afafd4595239155109d348, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -10685,7 +10685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 13dd89952c5986d409e0c0d112575968, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0
@@ -10855,7 +10855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 447c7752304a0b14cb4732fdda67c044, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 1
@@ -13902,7 +13902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RuntimeItem:
-    Item: {fileID: 11400000, guid: 19d30250eece0f442a3c8e55d3088899, type: 2}
+    Item: {fileID: 0}
     Prefab: {fileID: 0}
     Icon: {fileID: 0}
   inUse: 0

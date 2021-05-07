@@ -75,7 +75,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
     }
     public void LoadInventiry(Dictionary<string, Item> items)
     {
-        foreach(var item in items)
+        foreach (var item in items)
         {
             RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value);
             ItemSlots[item.Key].RuntimeItem = runtimeItem;
@@ -87,7 +87,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
         if (ItemSlots.ContainsKey(runItem.LoadedItem.Item.Slot))
         {
             ItemSlots[runItem.LoadedItem.Item.Slot].RuntimeItem = runItem.LoadedItem;
-            ItemSlots[runItem.LoadedItem.Item.Slot].Populate();
+            ItemSlots[runItem.LoadedItem.Item.Slot].Populate(ItemStandardSize);
         }
 
     }

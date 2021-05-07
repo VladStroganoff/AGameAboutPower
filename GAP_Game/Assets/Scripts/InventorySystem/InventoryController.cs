@@ -46,5 +46,15 @@ public class InventoryController : MonoBehaviour, IInventoryController
         Dictionary<string, ItemSlot> slots = _inventoryView.GetSlots(); // these slots are populated on the gui just for testing
         _loadControl.SaveInventory(slots);
     }
+
+    public void SpawnLocalPlayer(Dictionary<string, Item> items)
+    {
+            _inventoryView.LoadInventiry(items);
+    }
+
+    public void SpawnOtherPlayer(Dictionary<string, Item> items)
+    {
+        throw new System.NotImplementedException();
+    }
 }
 

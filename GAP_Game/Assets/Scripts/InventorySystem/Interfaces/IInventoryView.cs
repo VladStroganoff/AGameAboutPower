@@ -15,6 +15,8 @@ public interface IInventoryView
 
 public interface IInventoryController
 {
+    void SpawnLocalPlayer(Dictionary<string, Item> items);
+    void SpawnOtherPlayer(Dictionary<string, Item> items);
     void TakeItems(List<Item> Items);
     void DropItems(List<Item> Items);
 
@@ -33,6 +35,8 @@ public interface IEquipController
 public interface IDressController
 {
     void AddWear(RuntimeItem runItem);
+
+    void SwapWear(RuntimeItem runItem);
 
     void EquipItem(Wearable wearableItem);
 }

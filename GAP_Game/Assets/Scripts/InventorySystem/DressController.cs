@@ -35,12 +35,29 @@ public class DressController : MonoBehaviour, IDressController
     {
         if (Wear.ContainsKey(runItem.Item.Slot))
         {
-            Wear.Add(runItem.Item.Name, runItem.Prefab);
-            _boneCombine.AddLimb(runItem.Prefab);
+            Wear[runItem.Item.Slot] = runItem.Prefab;
+            Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
         }
         else
         {
             GameObject.Destroy(Wear[runItem.Item.Name]);
+        }
+    }
+
+    public void SwapWear(RuntimeItem runItem)
+    {
+        Debug.Log(runItem.Item.Name);
+        if (Wear.ContainsKey(runItem.Item.Slot))
+        {
+            if(Wear[runItem.Item.Slot] != null)
+                GameObject.Destroy(Wear[runItem.Item.Slot].gameObject);
+
+            Wear[runItem.Item.Slot] = runItem.Prefab;
+            Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
+        }
+        else
+        {
+            Debug.Log($"Itemslot missmatch Item: {runItem.Item.Name}, Slot: {runItem.Item.Slot}");
         }
     }
 }

@@ -22,9 +22,9 @@ public class WearableSlot : ItemSlot
         _dropArea.DropCondition.Add(new IsWearableCondition(Type));
     }
     
-    public override void Populate()
+    public override void Populate(float ItemStandardSize)
     {
-        base.Populate();
+        base.Populate(ItemStandardSize);
         _dressControl.AddWear(RuntimeItem);
     }
 
@@ -37,7 +37,7 @@ public class WearableSlot : ItemSlot
         }
         base.OnItemDropped(draggable);
         _currentView = draggable;
-        _dressControl.AddWear(draggable.RuntimeItem);
+        _dressControl.SwapWear(draggable.RuntimeItem);
     }
 
 }

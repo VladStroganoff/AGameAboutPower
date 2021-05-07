@@ -18,7 +18,9 @@ public class IsHoldableCondition : DropCondition
 
             
             if (holdable.Type == _type)
+            {
                 return true;
+            }
             else
                 return false;
         }

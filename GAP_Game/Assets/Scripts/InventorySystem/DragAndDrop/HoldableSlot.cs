@@ -9,9 +9,9 @@ public class HoldableSlot : ItemSlot
         _dropArea.DropCondition.Add(new IsHoldableCondition(Type));
     }
 
-    public override void Populate()
+    public override void Populate(float ItemStandardSize)
     {
-        base.Populate();
+        base.Populate(ItemStandardSize);
     }
 
     public override void OnItemDropped(ItemView draggable)

@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour, ICameraController
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+        if(Input.GetKeyUp(KeyCode.B))
         {
             if(toggleRTS)
             {
