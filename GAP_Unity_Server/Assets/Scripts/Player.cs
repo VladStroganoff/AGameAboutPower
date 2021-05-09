@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     public float health;
     public float maxHealth;
     public NetAnimator animator;
-    public string Inventory;
+    public string playerData;
+    public JsonItemDictionary RuntimeInventory;
 
     private bool[] inputs;
 
@@ -28,10 +29,10 @@ public class Player : MonoBehaviour
         jumpspeed *= Time.fixedDeltaTime;
     }
 
-    public void Initialize(int id, string username)
+    public void Initialize(int id, string playerData)
     {
         ID = id;
-        Name = username;
+        Name = playerData;
         health = maxHealth;
 
         inputs = new bool[5];

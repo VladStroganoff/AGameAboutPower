@@ -23,10 +23,10 @@ public class ClientHandle : MonoBehaviour
     public static void SpawnPlayer(Packet packet)
     {
         int id = packet.ReadInt();
-        string username = packet.ReadString();
+        string playerData = packet.ReadString();
         Vector3 position = packet.ReadVector3();
         Quaternion rotaton = packet.ReadQuaternion();
-        GameManager.instance.SpawnPlayer(id, username, position, rotaton);
+        GameManager.instance.SpawnPlayer(id, playerData, position, rotaton);
     }
 
     public static void PlayerPosition(Packet packet)

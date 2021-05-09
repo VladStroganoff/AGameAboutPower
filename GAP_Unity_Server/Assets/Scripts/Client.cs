@@ -192,10 +192,10 @@ public class Client
         }
     }
 
-    public void SendIntoGame(string _playerName)
+    public void SendIntoGame(string playerData)
     {
-        player = NetworkManager.instance.InstantiatePlayer();
-        player.Initialize(id, _playerName);
+        player = NetworkManager.instance.InstantiatePlayer(playerData);
+        player.Initialize(id, playerData);
 
         foreach (Client client in Server.clients.Values)
         {

@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour, IUIManager
 
 
 
-    public void ConnectToServer()
+    public void ConnectToServer() // from join button
     {
         try
         {
@@ -82,7 +82,6 @@ public class UIManager : MonoBehaviour, IUIManager
             return;
         }
         startMenu.GetComponent<RectTransform>().anchoredPosition = startMenuOrigin;
-        //startMenu.SetActive(false);
         usernameField.interactable = false;
         Port.interactable = false;
         IP.interactable = false;

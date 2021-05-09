@@ -15,22 +15,35 @@ public class ItemLoadedSignal
 
 public class LoadController : MonoBehaviour, ILoadController
 {
+    public static LoadController instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Debug.Log("Instance already exists, destroying object!");
+            Destroy(this);
+        }
+    }
+
     string localSavePath = "";
     SignalBus _signalBus;
    
     [Inject]
     public void Inject(SignalBus bus)
     {
-        //Debug.Log("Load controller gets injected");
         _signalBus = bus;
     }
 
 
-    public Dictionary<string, Item> LoadInventory()
+    public Dictionary<string, Item> LoadInventory(string playerData)
     {
-        string jsonString = File.ReadAllText(Application.persistentDataPath + "/GAPData.json");
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        JsonItemDictionary playerSaveData = JsonConvert.DeserializeObject(jsonString, settings) as JsonItemDictionary;
+        JsonItemDictionary playerSaveData = JsonConvert.DeserializeObject(playerData, settings) as JsonItemDictionary;
 
         Dictionary<string, Item> runTimeDictionary = new Dictionary<string, Item>();
 
@@ -174,5 +187,12 @@ public class LoadController : MonoBehaviour, ILoadController
 
     public void UnloadBuilding(BuildingData building)
     {
+    }
+
+    public string GetInventoryJson()
+    {
+        string jsonString = File.ReadAllText(Application.persistentDataPath + "/GAPData.json");
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        return jsonString;
     }
 }

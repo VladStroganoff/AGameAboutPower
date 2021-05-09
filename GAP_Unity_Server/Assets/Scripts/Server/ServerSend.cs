@@ -84,7 +84,7 @@ public class ServerSend
         using (Packet packet = new Packet((int)ServerPackets.spawnplayer))
         {
             packet.Write(player.ID);
-            packet.Write(player.name);
+            packet.Write(player.playerData);
             packet.Write(player.transform.position);
             packet.Write(player.transform.rotation);
             SendTCPData(toClient, packet);

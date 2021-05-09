@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,9 +41,18 @@ public class NetworkManager : MonoBehaviour
     }
 
 
-    public Player InstantiatePlayer()
+    public Player InstantiatePlayer(string playerData)
     {
-        return Instantiate(PlayerPrefab, PlayerSpawnPoint.position, Quaternion.identity).GetComponent<Player>();
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        JsonItemDictionary playerSaveData = JsonConvert.DeserializeObject(playerData, settings) as JsonItemDictionary;
+
+        GameObject playerPrefab = Instantiate(PlayerPrefab, PlayerSpawnPoint.position, Quaternion.identity);
+        Player player = playerPrefab.GetComponent<Player>();
+        playerPrefab.GetComponent<DressController>().InitializeWear(playerSaveData);
+        player.playerData = playerData;
+        player.RuntimeInventory = playerSaveData;
+
+        return player;
     }
 
 }

@@ -30,7 +30,7 @@ public class ClientSend : MonoBehaviour
             packet.Write(GameClient.instance.myId);
 
             if (UIManager.instance != null)
-                packet.Write(UIManager.instance.usernameField.text);
+                packet.Write(LoadController.instance.GetInventoryJson());
             else
                 packet.Write("Test Join");
 

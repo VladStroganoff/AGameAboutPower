@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour, IGameManager
         _camFack = camFack;
     }
 
-    public void SpawnPlayer(int id, string username, Vector3 position, Quaternion rotation)
+    public void SpawnPlayer(int id, string playerData, Vector3 position, Quaternion rotation)
     {
         GameObject player;
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour, IGameManager
             player = Instantiate(OtherPlayer, position, rotation);
         }
 
-        player.GetComponent<PlayerManager>().Initialize(id, username);
+        player.GetComponent<PlayerManager>().Initialize(id, playerData);
         players.Add(id, player.GetComponent<PlayerManager>());
 
         Model.SetGameState(GameState.InGame);
