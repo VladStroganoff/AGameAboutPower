@@ -10,12 +10,12 @@ public interface IInventoryView
     void CheckForLoot();
 
     Dictionary<string, GameObject> GetWearSlots();
-    void LoadInventiry(Dictionary<string, Item> items);
+    void LoadInventiry(Dictionary<string, Item> items, int playerID);
 }
 
 public interface IInventoryController
 {
-    void SpawnLocalPlayer(Dictionary<string, Item> items);
+    void SpawnPlayer(Dictionary<string, Item> items, PlayerManager player);
     void SpawnOtherPlayer(Dictionary<string, Item> items);
     void TakeItems(List<Item> Items);
     void DropItems(List<Item> Items);
@@ -34,9 +34,8 @@ public interface IEquipController
 }
 public interface IDressController
 {
+    void InitializeOtherPlayer(Dictionary<string, Item> items, int playerID);
     void AddWear(RuntimeItem runItem);
-
     void SwapWear(RuntimeItem runItem);
-
     void EquipItem(Wearable wearableItem);
 }

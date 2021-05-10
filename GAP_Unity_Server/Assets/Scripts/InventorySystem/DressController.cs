@@ -7,14 +7,12 @@ using UnityEngine;
 public class DressController : MonoBehaviour
 {
     public Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
-    public Dictionary<string, GameObject> RuntimeItems = new Dictionary<string, GameObject>();
 
     public Transform Rigg;
     BoneCombiner _boneCombine;
 
     void Start()
     {
-        LoadController.instance.loadedWear += EquipItem;
         _boneCombine = new BoneCombiner(Rigg);
     }
 
@@ -22,20 +20,13 @@ public class DressController : MonoBehaviour
     {
         foreach (var wear in playerSaveData.Wearables)
         {
-            var runTime = LoadController.instance.LoadRuntimeItem(wear);
+            var runTime = LoadController.instance.LoadRuntimeItem(wear, this);
         }
     }
 
     public void EquipItem(RuntimeItem runTime)
     {
-        Wear.Add(runTime.Item.Slot, runTime.Prefab);
-        RuntimeItems.Add(runTime.Item.Slot, runTime.Prefab);
-
-        if (runTime.Item.Slot == "Head_Slot" || runTime.Item.Slot == "Torso_Slot" || runTime.Item.Slot == "Legs_Slot" ||
-            runTime.Item.Slot == "Right_Arm_Slot" || runTime.Item.Slot == "Left_Arm_Slot")
-        {
-            AddWear(runTime);
-        }
+      
     }
 
     public void WearLoaded(RuntimeItem item)
@@ -45,14 +36,14 @@ public class DressController : MonoBehaviour
 
     public void AddWear(RuntimeItem runItem)
     {
-        if (Wear.ContainsKey(runItem.Item.Slot))
+
+        if (runItem.Item.Slot == "Head_Slot" || runItem.Item.Slot == "Torso_Slot" || runItem.Item.Slot == "Legs_Slot" ||
+            runItem.Item.Slot == "Right_Arm_Slot" || runItem.Item.Slot == "Left_Arm_Slot")
         {
-            Wear[runItem.Item.Slot] = runItem.Prefab;
-            Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
-        }
-        else
-        {
-            GameObject.Destroy(Wear[runItem.Item.Name]);
+            if (Wear.ContainsKey(runItem.Item.Slot))
+                AddWear(runItem);
+            else
+                Debug.Log($"{gameObject.name} already contains wear: {runItem.Item.Slot}");
         }
     }
 

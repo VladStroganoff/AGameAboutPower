@@ -73,17 +73,21 @@ public class InventoryView : MonoBehaviour, IInventoryView
         }
         return ItemSlots;
     }
-    public void LoadInventiry(Dictionary<string, Item> items)
+    public void LoadInventiry(Dictionary<string, Item> items, int playerID)
     {
         foreach (var item in items)
         {
-            RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value);
+            RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value, playerID);
             ItemSlots[item.Key].RuntimeItem = runtimeItem;
         }
     }
 
+
     public void ItemLoaded(ItemLoadedSignal runItem)
     {
+        if (runItem.PlayerID != GameClient.instance.myId)
+            return;
+
         if (ItemSlots.ContainsKey(runItem.LoadedItem.Item.Slot))
         {
             ItemSlots[runItem.LoadedItem.Item.Slot].RuntimeItem = runItem.LoadedItem;

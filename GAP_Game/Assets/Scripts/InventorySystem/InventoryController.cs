@@ -46,9 +46,17 @@ public class InventoryController : MonoBehaviour, IInventoryController
         _loadControl.SaveInventory(slots);
     }
 
-    public void SpawnLocalPlayer(Dictionary<string, Item> items)
+    public void SpawnPlayer(Dictionary<string, Item> items, PlayerManager player)
     {
-            _inventoryView.LoadInventiry(items);
+        if (player.id == GameClient.instance.myId)
+        {
+            _inventoryView.LoadInventiry(items, player.id);
+        }
+        else
+        {
+            player.GetComponent<DressController>().InitializeOtherPlayer(items, player.id);
+        }
+
     }
 
     public void SpawnOtherPlayer(Dictionary<string, Item> items)

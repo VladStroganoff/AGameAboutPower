@@ -13,21 +13,24 @@ public class PlayerManager : MonoBehaviour
     public GameObject Camera;
     public NetworkedAnimator Animator;
     ILoadController _loadControl;
-    IInventoryView _inventoryView;
+    IInventoryController _inventoryControl;
+    string jsonInventory { get; set; }
 
     [Inject]
-    public void Inject(ILoadController loadControl, IInventoryView inventoryView)
+    public void Inject(ILoadController loadControl, IInventoryController inventoryView)
     {
+        Debug.Log($"player {gameObject.name} injected");
         _loadControl = loadControl;
-        _inventoryView = inventoryView;
+        _inventoryControl = inventoryView;
     }
 
     public void Initialize(int _id, string playerData)
     {
         id = _id;
         //username = playerData;
+        jsonInventory = playerData;
         Dictionary<string, Item> items = _loadControl.LoadInventory(playerData);
-        _inventoryView.LoadInventiry(items);
+        _inventoryControl.SpawnPlayer(items, this);
         health = maxHealth;
     }
 

@@ -10,6 +10,7 @@ using Zenject;
 
 public class ItemLoadedSignal
 {
+    public int PlayerID;
     public RuntimeItem LoadedItem;
 }
 
@@ -143,14 +144,14 @@ public class LoadController : MonoBehaviour, ILoadController
         Debug.Log($"Saved inventory to: {Application.persistentDataPath}/GAPData.json");
     }
 
-    public RuntimeItem LoadRuntimeItem(Item item)
+    public RuntimeItem LoadRuntimeItem(Item item, int playerID)
     {
         RuntimeItem runtimeItem = new RuntimeItem(item);
-        StartCoroutine(LoadItem(runtimeItem));
+        StartCoroutine(LoadItem(runtimeItem, playerID));
         return runtimeItem;
     }
 
-    IEnumerator LoadItem(RuntimeItem rItem)
+    IEnumerator LoadItem(RuntimeItem rItem, int playerID)
     {
         UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Sprite> iconHandle = Addressables.LoadAssetAsync<Sprite>(rItem.Item.IconAddress);
         UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(rItem.Item.PrefabAddress);
@@ -176,7 +177,7 @@ public class LoadController : MonoBehaviour, ILoadController
             Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
 
 
-        _signalBus.Fire(new ItemLoadedSignal() { LoadedItem = rItem });
+        _signalBus.Fire(new ItemLoadedSignal() { LoadedItem = rItem, PlayerID = playerID });
     }
 
     public void LoadBuilding(BuildingData building)

@@ -9,5 +9,5 @@ public interface ILoadController
     void SaveInventory(Dictionary<string, ItemSlot> Items);
     void LoadBuilding(BuildingData building);
     void UnloadBuilding(BuildingData building);
-    RuntimeItem LoadRuntimeItem(Item address); 
+    RuntimeItem LoadRuntimeItem(Item address, int playerID); 
 }
