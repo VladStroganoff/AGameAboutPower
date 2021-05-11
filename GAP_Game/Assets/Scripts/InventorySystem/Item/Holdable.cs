@@ -26,3 +26,17 @@ public class Holdable : Item
     {
     }
 }
+
+public class NetHoldable : NetItem
+{
+    public int Damage;
+    public HoldableType Type;
+
+    public override void Inlitialize(Item item)
+    {
+        base.Inlitialize(item);
+        Holdable hold = item as Holdable;
+        Damage = hold.Damage;
+        Type = hold.Type;
+    }
+}

@@ -40,8 +40,8 @@ public class DressController : MonoBehaviour
         if (runItem.Item.Slot == "Head_Slot" || runItem.Item.Slot == "Torso_Slot" || runItem.Item.Slot == "Legs_Slot" ||
             runItem.Item.Slot == "Right_Arm_Slot" || runItem.Item.Slot == "Left_Arm_Slot")
         {
-            if (Wear.ContainsKey(runItem.Item.Slot))
-                AddWear(runItem);
+            if (!Wear.ContainsKey(runItem.Item.Slot))
+                Wear.Add(runItem.Item.Slot, _boneCombine.AddLimb(runItem.Prefab).gameObject);
             else
                 Debug.Log($"{gameObject.name} already contains wear: {runItem.Item.Slot}");
         }

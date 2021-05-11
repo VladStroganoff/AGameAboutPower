@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,12 +49,21 @@ public class DressController : MonoBehaviour, IDressController
         }
     }
 
-    public void SwapWear(RuntimeItem runItem)
+    public void SendSwapWear(RuntimeItem runItem)
+    {
+        Debug.Log("Send swap wear request to server: " + runItem.Item.Name);
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        NetItem netItem = runItem.Item.MakeNetCopy();
+        string json = JsonConvert.SerializeObject(netItem, settings);
+        ClientSend.SendJsonPackage(json);
+    }
+
+    public void RecieveSwapWear(RuntimeItem runItem)
     {
         Debug.Log(runItem.Item.Name);
         if (Wear.ContainsKey(runItem.Item.Slot))
         {
-            if(Wear[runItem.Item.Slot] != null)
+            if (Wear[runItem.Item.Slot] != null)
                 GameObject.Destroy(Wear[runItem.Item.Slot].gameObject);
 
             Wear[runItem.Item.Slot] = runItem.Prefab;
@@ -86,4 +96,6 @@ public class DressController : MonoBehaviour, IDressController
 
         AddWear(loadedRuntime.LoadedItem);
     }
+
+   
 }

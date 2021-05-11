@@ -37,7 +37,7 @@ public class WearableSlot : ItemSlot
         }
         base.OnItemDropped(draggable);
         _currentView = draggable;
-        _dressControl.SwapWear(draggable.RuntimeItem);
+        _dressControl.SendSwapWear(draggable.RuntimeItem);
     }
 
 }

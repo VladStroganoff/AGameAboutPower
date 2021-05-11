@@ -49,8 +49,9 @@ public class ServerHandle
         
         if(netPackage is BuildingData)
             NetworkManager.instance.ConstructionControl.BuildBuilding(id, (BuildingData)netPackage);
-        if (netPackage is NetAnimator)
-            Debug.Log("was animator");
+        if (netPackage is NetItem)
+            Debug.Log($"was item ");
+
     }
 
 }

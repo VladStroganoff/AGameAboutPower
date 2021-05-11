@@ -36,6 +36,7 @@ public interface IDressController
 {
     void InitializeOtherPlayer(Dictionary<string, Item> items, int playerID);
     void AddWear(RuntimeItem runItem);
-    void SwapWear(RuntimeItem runItem);
+    void SendSwapWear(RuntimeItem runItem);
+    void RecieveSwapWear(RuntimeItem runItem);
     void EquipItem(Wearable wearableItem);
 }

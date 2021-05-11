@@ -65,6 +65,8 @@ public class vThirdPersonCamera : MonoBehaviour
 
     public void Init()
     {
+        Debug.Log($"local target before {target.gameObject.name}");
+
         if (target == null)
             return;
 
@@ -82,6 +84,7 @@ public class vThirdPersonCamera : MonoBehaviour
 
         distance = defaultDistance;
         currentHeight = height;
+        Debug.Log($"local target after {target.gameObject.name}");
     }
 
     void FixedUpdate()
@@ -107,6 +110,7 @@ public class vThirdPersonCamera : MonoBehaviour
 
     public void SetMainTarget(Transform newTarget)
     {
+        Debug.Log($"setting new target {newTarget.gameObject.name}");
         target = newTarget;
         currentTarget = newTarget;
         mouseY = currentTarget.rotation.eulerAngles.x;

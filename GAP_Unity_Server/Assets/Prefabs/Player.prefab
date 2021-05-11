@@ -921,6 +921,7 @@ MonoBehaviour:
   maxHealth: 100
   animator:
     Parameters: []
+  playerData: 
   RuntimeInventory:
     Holdables: []
     Wearables: []
@@ -1018,7 +1019,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rigg
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5866666021909216657, guid: 60e663b74f99297408e46277ec1cdfe3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 60e663b74f99297408e46277ec1cdfe3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cbd1db45c75e5b948a5befe9ecb80421, type: 2}
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 60e663b74f99297408e46277ec1cdfe3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60e663b74f99297408e46277ec1cdfe3, type: 3}
 --- !u!4 &1057856192396968452 stripped
 Transform:
