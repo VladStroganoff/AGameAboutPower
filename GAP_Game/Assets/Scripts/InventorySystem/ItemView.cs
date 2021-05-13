@@ -26,9 +26,8 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     {
         if (gameObject.GetComponent<RectTransform>() != null)
         {
-            float size = GetComponentInParent<InventoryView>().ItemStandardSize;
+            float size = GetComponentInParent<InventoryView>().StandardPadding;
             _rectTransfrom = gameObject.GetComponent<RectTransform>();
-            _rectTransfrom.sizeDelta = new Vector2(size, size);
             _canvas = GetComponentInParent<Canvas>();
         }
         else

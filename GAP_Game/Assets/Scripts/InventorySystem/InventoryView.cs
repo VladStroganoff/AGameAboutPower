@@ -14,7 +14,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
     bool _toggleLoot = false;
 
     public RectTransform ItemsRect;
-    public float ItemStandardSize;
+    public float StandardPadding;
     public InventoryModel Inventory;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
 
@@ -93,7 +93,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
         if (ItemSlots.ContainsKey(runItem.LoadedItem.Item.Slot))
         {
             ItemSlots[runItem.LoadedItem.Item.Slot].RuntimeItem = runItem.LoadedItem;
-            ItemSlots[runItem.LoadedItem.Item.Slot].Populate(ItemStandardSize);
+            ItemSlots[runItem.LoadedItem.Item.Slot].Populate(StandardPadding);
         }
 
     }
