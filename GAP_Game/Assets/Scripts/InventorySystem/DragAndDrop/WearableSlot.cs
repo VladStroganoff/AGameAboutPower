@@ -25,7 +25,7 @@ public class WearableSlot : ItemSlot
     public override void Populate(float ItemStandardSize)
     {
         base.Populate(ItemStandardSize);
-        _dressControl.AddWear(RuntimeItem);
+        _dressControl.AddLoadedWear(RuntimeItem);
     }
 
     public override void OnItemDropped(ItemView draggable)
@@ -37,7 +37,7 @@ public class WearableSlot : ItemSlot
         }
         base.OnItemDropped(draggable);
         _currentView = draggable;
-        _dressControl.SendSwapWear(draggable.RuntimeItem);
+        _dressControl.SendSwapRequest(draggable.RuntimeItem);
     }
 
 }

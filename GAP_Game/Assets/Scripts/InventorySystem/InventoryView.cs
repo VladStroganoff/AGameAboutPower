@@ -15,14 +15,15 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public RectTransform ItemsRect;
     public float ItemStandardSize;
+    public InventoryModel Inventory;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
+
     ILoadController _loadControl;
 
 
     [Inject]
     public void Inject(ILoadController loadControl, SignalBus signalBus)
     {
-        //Debug.Log("Inventory veiw controller gets injected");
         _loadControl = loadControl;
         signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
     }
@@ -73,8 +74,9 @@ public class InventoryView : MonoBehaviour, IInventoryView
         }
         return ItemSlots;
     }
-    public void LoadInventiry(Dictionary<string, Item> items, int playerID)
+    public void LoadInventiry(Dictionary<string, Item> items, int playerID, InventoryModel model)
     {
+        Inventory = model;
         foreach (var item in items)
         {
             RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value, playerID);

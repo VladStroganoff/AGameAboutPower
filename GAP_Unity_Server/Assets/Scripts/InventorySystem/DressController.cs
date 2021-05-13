@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class DressController : MonoBehaviour
 {
-    public Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
+    Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
 
+    public InventoryModel Inventory;
     public Transform Rigg;
     BoneCombiner _boneCombine;
 
@@ -36,6 +37,10 @@ public class DressController : MonoBehaviour
 
     public void AddWear(RuntimeItem runItem)
     {
+        if (!Inventory.Inventory.ContainsKey(runItem.Item.Slot))
+            Inventory.Inventory.Add(runItem.Item.Slot, runItem);
+        else
+            Inventory.Inventory[runItem.Item.Slot] = runItem;
 
         if (runItem.Item.Slot == "Head_Slot" || runItem.Item.Slot == "Torso_Slot" || runItem.Item.Slot == "Legs_Slot" ||
             runItem.Item.Slot == "Right_Arm_Slot" || runItem.Item.Slot == "Left_Arm_Slot")
@@ -43,9 +48,15 @@ public class DressController : MonoBehaviour
             if (!Wear.ContainsKey(runItem.Item.Slot))
                 Wear.Add(runItem.Item.Slot, _boneCombine.AddLimb(runItem.Prefab).gameObject);
             else
-                Debug.Log($"{gameObject.name} already contains wear: {runItem.Item.Slot}");
+            {
+                Destroy(Wear[runItem.Item.Slot]);
+                Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
+            }
         }
+
     }
+
+   
 
     public void SwapWear(RuntimeItem runItem)
     {

@@ -19,6 +19,14 @@ public class Wearable : Item
         _boneNames = wearData._boneNames;
     }
 
+    public override void Initialize(NetItem item)
+    {
+        base.Initialize(item);
+        Netwearable wear = item as Netwearable;
+        Space = wear.Space;
+        Type = wear.Type;
+    }
+
     public override void ActivateItem()
     {
     }

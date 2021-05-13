@@ -10,6 +10,7 @@ public class NetworkManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public Transform PlayerSpawnPoint;
     public ConstructionController ConstructionControl;
+    public InventoryController InventoryControl;
     public int Port;
 
     private void Awake()
@@ -50,7 +51,6 @@ public class NetworkManager : MonoBehaviour
         Player player = playerPrefab.GetComponent<Player>();
         playerPrefab.GetComponent<DressController>().InitializeWear(playerSaveData);
         player.playerData = playerData;
-        player.RuntimeInventory = playerSaveData;
 
         return player;
     }

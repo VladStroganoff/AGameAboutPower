@@ -84,7 +84,5 @@ public class CameraView : MonoBehaviour, ICameraView
 
         traveling = false;
     }
-    public class Factory : PlaceholderFactory<CameraView>
-    {
-    }
+  
 }

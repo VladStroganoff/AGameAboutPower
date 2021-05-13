@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public NetAnimator animator;
     public string playerData;
-    public JsonItemDictionary RuntimeInventory;
+    public DressController DressControl;
 
     private bool[] inputs;
 
@@ -34,9 +34,15 @@ public class Player : MonoBehaviour
         ID = id;
         Name = playerData;
         health = maxHealth;
+        NetworkManager.instance.InventoryControl.AddPlayer(this);
 
         inputs = new bool[5];
         thirdPersonInput.tpCamera.transform.SetParent(null);
+    }
+
+    public void Disconnect()
+    {
+        Destroy(gameObject);
     }
 
 

@@ -38,8 +38,6 @@ public class GameSessionInstaller : MonoInstaller
         Container.Bind<IUIManager>().FromInstance(UIManager);
         Container.Bind<ClientHandle>().AsSingle();
 
-        Container.BindFactory<CameraView, CameraView.Factory>().FromSubContainerResolve().ByNewContextPrefab(LocalPlayer);
-
         Container.DeclareSignal<GameStateChangedSignal>();
 
         Container.DeclareSignal<CameraStateSignal>();

@@ -149,6 +149,18 @@ public class ServerSend
         }
     }
 
+    public static void ChangeWearable(int player, Netwearable wearable)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.jsonObject))
+        {
+            packet.Write(player);
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            string json = JsonConvert.SerializeObject(wearable, settings);
+            packet.Write(json);
+            SendTCPDataToAll(packet);
+        }
+    }
+
     public static void PlayerRespawn(Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRespawn))

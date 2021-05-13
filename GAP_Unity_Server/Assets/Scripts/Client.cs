@@ -223,7 +223,7 @@ public class Client
 
         ThreadManager.ExecuteOnMainThread(()=>
         {
-            UnityEngine.Object.Destroy(player.gameObject);
+            player.Disconnect();
             player = null;
         });
 

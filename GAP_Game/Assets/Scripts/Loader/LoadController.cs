@@ -97,7 +97,7 @@ public class LoadController : MonoBehaviour, ILoadController
 
     }
 
-    public void SaveInventory(Dictionary<string, ItemSlot> slots)
+    public void SaveInventory(Dictionary<string, ItemSlot> slots) // save inherited data for wearable/holdable data as well 
     {
         JsonItemDictionary playerSaveData = new JsonItemDictionary();
         List<Wearable> wearables = new List<Wearable>();

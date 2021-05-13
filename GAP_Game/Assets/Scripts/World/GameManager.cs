@@ -18,17 +18,17 @@ public class GameManager : MonoBehaviour, IGameManager
     public GameObject Player; 
     public GameObject OtherPlayer;
     [SerializeField]
-    private ConstructionController ConstructionController;
+    private ConstructionController _constructionController;
+    private IInventoryController _inventoryControl;
     public WorldModel Model { get; set; }
     public static GameManager instance;
-    public CameraView.Factory _camFack;
 
     [Inject]
-    public void Inject(SignalBus bus, CameraView.Factory camFack)
+    public void Inject(SignalBus bus, IInventoryController inventoryControl)
     {
         Model  = new WorldModel(bus);
         instance = this;
-        _camFack = camFack;
+        _inventoryControl = inventoryControl;
     }
 
     public void SpawnPlayer(int id, string playerData, Vector3 position, Quaternion rotation)
@@ -53,7 +53,12 @@ public class GameManager : MonoBehaviour, IGameManager
 
     public void SpawnStructure(BuildingData data)
     {
-        ConstructionController.ReceiveBuilding(data);
+        _constructionController.ReceiveBuilding(data);
+    }
+
+    public void ChangeInventory(int playerID, Item item)
+    {
+        _inventoryControl.ChangeInventory(playerID, item);
     }
 
     public void  TestConnectToServer()

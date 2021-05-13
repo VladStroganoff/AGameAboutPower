@@ -50,7 +50,23 @@ public class ServerHandle
         if(netPackage is BuildingData)
             NetworkManager.instance.ConstructionControl.BuildBuilding(id, (BuildingData)netPackage);
         if (netPackage is NetItem)
-            Debug.Log($"was item ");
+        {
+            NetItem netItem = netPackage as NetItem;
+            if(netItem is Netwearable)
+            {
+                Netwearable netWear = netItem as Netwearable;
+                Debug.Log($"got wearable: {netWear.Name}");
+                NetworkManager.instance.InventoryControl.ChangeWear(netWear, id);
+            }
+            if(netItem is NetHoldable)
+            {
+                NetHoldable netHold = netItem as NetHoldable;
+                Debug.Log($"got holdable: {netHold.Name}");
+
+            }
+          
+        }
+             
 
     }
 

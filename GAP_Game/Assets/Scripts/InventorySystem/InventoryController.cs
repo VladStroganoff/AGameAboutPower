@@ -9,6 +9,8 @@ public class InventoryController : MonoBehaviour, IInventoryController
     ILoadController _loadControl;
     public bool testSave;
 
+    Dictionary<int, InventoryModel> _playerInventories = new Dictionary<int, InventoryModel>();
+
     [Inject]
     public void Inject(IInventoryView inventoryView, ILoadController loadControl)
     {
@@ -48,20 +50,22 @@ public class InventoryController : MonoBehaviour, IInventoryController
 
     public void SpawnPlayer(Dictionary<string, Item> items, PlayerManager player)
     {
-        if (player.id == GameClient.instance.myId)
+        if(!_playerInventories.ContainsKey(player.id))
         {
-            _inventoryView.LoadInventiry(items, player.id);
+            var inventory = player.GetComponent<InventoryModel>();
+            inventory.ID = player.id;
+            _playerInventories.Add(player.id, inventory);
         }
-        else
-        {
-            player.GetComponent<DressController>().InitializeOtherPlayer(items, player.id);
-        }
+
+        player.GetComponent<DressController>().InitializePlayer(items, player.id);
 
     }
-
-    public void SpawnOtherPlayer(Dictionary<string, Item> items)
+    public void ChangeInventory(int id, Item item)
     {
-        throw new System.NotImplementedException();
+        if(_playerInventories.ContainsKey(id))
+        {
+            _playerInventories[id].LoadItem(item);
+        }
     }
 }
 

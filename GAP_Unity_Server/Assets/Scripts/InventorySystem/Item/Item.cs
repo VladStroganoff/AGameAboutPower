@@ -22,7 +22,7 @@ public abstract class Item : ScriptableObject
         Slot = slot;
     }
 
-    public void CreateFromNetCopy(NetItem item)
+    public virtual void Initialize(NetItem item)
     {
         Name = item.Name;
         ID = item.ID;
@@ -32,9 +32,16 @@ public abstract class Item : ScriptableObject
         Slot = item.Slot;
     }
 
-    public NetItem MakeNetCopy()
+    public Netwearable MakeNetWear()
     {
-        NetItem netCopy = new NetItem();
+        Netwearable netCopy = new Netwearable();
+        netCopy.Inlitialize(this);
+        return netCopy;
+    }
+
+    public NetHoldable MakeNetHoldable()
+    {
+        NetHoldable netCopy = new NetHoldable();
         netCopy.Inlitialize(this);
         return netCopy;
     }
@@ -63,5 +70,9 @@ public class NetItem : NetEntity
         PrefabAddress = item.PrefabAddress;
         IconAddress = item.IconAddress;
         Slot = item.Slot;
+
     }
+
+
+
 }

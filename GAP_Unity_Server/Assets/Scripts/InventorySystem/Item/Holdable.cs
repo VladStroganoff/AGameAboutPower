@@ -17,6 +17,14 @@ public class Holdable : Item
         Type = hold.Type;
     }
 
+    public override void Initialize(NetItem item)
+    {
+        base.Initialize(item);
+        NetHoldable hold = item as NetHoldable;
+        Damage = hold.Damage;
+        Type = hold.Type;
+    }
+
 
     public override void ActivateItem()
     {
@@ -32,11 +40,19 @@ public class NetHoldable : NetItem
     public int Damage;
     public HoldableType Type;
 
-    public override void Inlitialize(Item item)
+    public override void Inlitialize(Item item) // initialize from scriptable object 
     {
         base.Inlitialize(item);
         Holdable hold = item as Holdable;
         Damage = hold.Damage;
         Type = hold.Type;
+    }
+
+
+    public Holdable GetHoldable()
+    {
+        Holdable holdable = new Holdable();
+        holdable.Initialize(this);
+        return holdable;
     }
 }

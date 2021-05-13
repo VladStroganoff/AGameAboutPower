@@ -13,7 +13,7 @@ public class PlayerDresserSpawned
 public class DressController : MonoBehaviour, IDressController
 {
     public Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
-    public List<RuntimeItem> RuntimeItems = new List<RuntimeItem>();
+    public InventoryModel Inventory;
 
     public Transform Rigg;
     BoneCombiner _boneCombine;
@@ -28,7 +28,6 @@ public class DressController : MonoBehaviour, IDressController
         Wear = inventorView.GetWearSlots();
         _boneCombine = new BoneCombiner(Rigg);
         _loadControl = loadControl;
-        _signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
     }
 
 
@@ -36,24 +35,21 @@ public class DressController : MonoBehaviour, IDressController
     {
     }
 
-    public void AddWear(RuntimeItem runItem)
+    public void AddLoadedWear(RuntimeItem runItem)
     {
         if (Wear.ContainsKey(runItem.Item.Slot))
         {
+            Destroy(Wear[runItem.Item.Slot]);
             Wear[runItem.Item.Slot] = runItem.Prefab;
             Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
         }
-        else
-        {
-            GameObject.Destroy(Wear[runItem.Item.Name]);
-        }
     }
 
-    public void SendSwapWear(RuntimeItem runItem)
+    public void SendSwapRequest(RuntimeItem runItem)
     {
         Debug.Log("Send swap wear request to server: " + runItem.Item.Name);
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        NetItem netItem = runItem.Item.MakeNetCopy();
+        Netwearable netItem = runItem.Item.MakeNetWear();
         string json = JsonConvert.SerializeObject(netItem, settings);
         ClientSend.SendJsonPackage(json);
     }
@@ -75,27 +71,15 @@ public class DressController : MonoBehaviour, IDressController
         }
     }
 
-    public void InitializeOtherPlayer(Dictionary<string, Item> items, int playerID)
+    public void InitializePlayer(Dictionary<string, Item> items, int playerID)
     {
         _playerID = playerID;
 
         foreach (var pair in items)
         {
-            if (pair.Value.Slot == "Head_Slot" || pair.Value.Slot == "Torso_Slot" || pair.Value.Slot == "Legs_Slot" ||
-           pair.Value.Slot == "Right_Arm_Slot" || pair.Value.Slot == "Left_Arm_Slot")
-            {
-                RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(pair.Value, _playerID);
-            }
+            RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(pair.Value, _playerID);
         }
     }
 
-    public void ItemLoaded(ItemLoadedSignal loadedRuntime) // only for displaying non local players gear
-    {
-        if (loadedRuntime.PlayerID != _playerID)
-            return;
 
-        AddWear(loadedRuntime.LoadedItem);
-    }
-
-   
 }

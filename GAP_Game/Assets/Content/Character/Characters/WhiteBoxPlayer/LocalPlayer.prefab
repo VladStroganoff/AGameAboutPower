@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 3916247922028199344}
   - component: {fileID: 3382438533912426777}
   - component: {fileID: -8002975005757481419}
+  - component: {fileID: 2219356644619301925}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: Untagged
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0512998ac6c7505489b5f80cb1f4cf50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RuntimeItems: []
+  Inventory: {fileID: 2219356644619301925}
   Rigg: {fileID: 9047732000676578393}
 --- !u!114 &4395180171921370355
 MonoBehaviour:
@@ -301,6 +302,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _containerSource: 2
+--- !u!114 &2219356644619301925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375019931066368647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27eb0a6c8f26b8041ad95392c627af75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryDisplay: []
 --- !u!1 &8509494733232150255
 GameObject:
   m_ObjectHideFlags: 0

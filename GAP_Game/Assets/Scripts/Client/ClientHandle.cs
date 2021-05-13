@@ -80,5 +80,24 @@ public class ClientHandle : MonoBehaviour
             GameManager.players[id].Animator.Set(jsonObj as NetAnimator);
         if (jsonObj is BuildingData)
             GameManager.instance.SpawnStructure(jsonObj as BuildingData);
+        if(jsonObj is NetItem)
+        {
+            NetItem netItem = jsonObj as NetItem;
+            if (netItem is Netwearable)
+            {
+                Netwearable netWear = netItem as Netwearable;
+                Wearable wear = new Wearable();
+                wear.Initialize(netWear);
+                GameManager.instance.ChangeInventory(id, wear);
+            }
+            if (netItem is NetHoldable)
+            {
+                NetHoldable netHold = netItem as NetHoldable;
+                Holdable hold = new Holdable();
+                hold.Initialize(netHold);
+                GameManager.instance.ChangeInventory(id, hold);
+            }
+
+        }
     }
 }
