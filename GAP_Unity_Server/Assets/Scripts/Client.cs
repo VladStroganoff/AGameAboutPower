@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System;
 
+
 public class Client
 {
     public static int dataBufferSize = 4096;
@@ -223,6 +224,7 @@ public class Client
 
         ThreadManager.ExecuteOnMainThread(()=>
         {
+            NetworkManager.instance.InventoryControl.RemovePlayer(player);
             player.Disconnect();
             player = null;
         });

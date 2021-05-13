@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e774fa71fd2624dae72bd28952983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animations: {fileID: 0}
+  Animations: {fileID: 6502827002447424863}
 --- !u!114 &3786951449692141493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27eb0a6c8f26b8041ad95392c627af75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   InventoryDisplay: []
 --- !u!1 &8043585269932587750
 GameObject:
@@ -253,6 +254,12 @@ PrefabInstance:
 --- !u!4 &927321922277979941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60e663b74f99297408e46277ec1cdfe3,
+    type: 3}
+  m_PrefabInstance: {fileID: 816342430205006030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6502827002447424863 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 60e663b74f99297408e46277ec1cdfe3,
     type: 3}
   m_PrefabInstance: {fileID: 816342430205006030}
   m_PrefabAsset: {fileID: 0}

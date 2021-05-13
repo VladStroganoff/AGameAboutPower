@@ -80,7 +80,7 @@ public class ClientHandle : MonoBehaviour
             GameManager.players[id].Animator.Set(jsonObj as NetAnimator);
         if (jsonObj is BuildingData)
             GameManager.instance.SpawnStructure(jsonObj as BuildingData);
-        if(jsonObj is NetItem)
+        if (jsonObj is NetItem)
         {
             NetItem netItem = jsonObj as NetItem;
             if (netItem is Netwearable)

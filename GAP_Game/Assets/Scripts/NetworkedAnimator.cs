@@ -9,7 +9,7 @@ public class NetworkedAnimator : MonoBehaviour
 
     public void Set(NetAnimator animator)
     {
-
+        
         if (Animations == null)
         {
             FDebug.Log.Message("animator was null, trying to reset it");
@@ -26,6 +26,7 @@ public class NetworkedAnimator : MonoBehaviour
             }
             else if (component is FloatParam)
             {
+
                 FloatParam floatio = component as FloatParam;
                 Animations.SetFloat(floatio.Name, floatio.State);
             }

@@ -56,8 +56,6 @@ public class DressController : MonoBehaviour
 
     }
 
-   
-
     public void SwapWear(RuntimeItem runItem)
     {
         Debug.Log(runItem.Item.Name);

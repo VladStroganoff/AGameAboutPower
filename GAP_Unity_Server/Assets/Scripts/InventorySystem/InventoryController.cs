@@ -8,7 +8,13 @@ public class InventoryController : MonoBehaviour
 
     public void AddPlayer(Player player)
     {
+        player.PlayerDisconnect += RemovePlayer;
         _dressControllers.Add(player.ID, player.GetComponent<DressController>());
+    }
+
+    public void RemovePlayer(Player player)
+    {
+        _dressControllers.Remove(player.ID);
     }
 
     public void ChangeWear(Netwearable netWear, int id)

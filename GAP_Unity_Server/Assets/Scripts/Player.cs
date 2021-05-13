@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public delegate void PlayerDisconnect(Player player);
 public class Player : MonoBehaviour
 {
     public int ID;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public NetAnimator animator;
     public string playerData;
     public DressController DressControl;
+    public PlayerDisconnect PlayerDisconnect;
 
     private bool[] inputs;
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
 
     public void Disconnect()
     {
+        PlayerDisconnect.Invoke(this);
         Destroy(gameObject);
     }
 
