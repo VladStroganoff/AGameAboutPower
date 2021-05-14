@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2320.6982, g: 1615.4521, b: 1526.3281, a: 1}
+  m_IndirectSpecularColor: {r: 2321.0781, g: 1644.834, b: 1606.0078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3573,8 +3573,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1761608781}
   m_HandleRect: {fileID: 1761608780}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.9999472
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10442,7 +10442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00005665049, y: -24.81}
+  m_AnchoredPosition: {x: 0.00016775404, y: -24.81}
   m_SizeDelta: {x: -20.20398, y: 70.22154}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1575651604
@@ -14109,6 +14109,18 @@ MonoBehaviour:
     Icon: {fileID: 0}
   inUse: 0
   Type: 1
+--- !u!114 &2110848432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7938880298946849690, guid: 89cf045fb5bb2e947a0116c15f9bb974,
+    type: 3}
+  m_PrefabInstance: {fileID: 7938880297916642339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2237561e65e9010418b333c7aa60ffbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2127704785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7938880297916642342, guid: 89cf045fb5bb2e947a0116c15f9bb974,
@@ -16507,6 +16519,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4620095986069791234, guid: 0f0baf4a630a0454b9a378cc29368d02,
         type: 3}
+    - target: {fileID: 7938880298946849684, guid: 89cf045fb5bb2e947a0116c15f9bb974,
+        type: 3}
+      propertyPath: _constructionController
+      value: 
+      objectReference: {fileID: 2110848432}
     - target: {fileID: 7938880298946849687, guid: 89cf045fb5bb2e947a0116c15f9bb974,
         type: 3}
       propertyPath: m_RootOrder
@@ -16562,6 +16579,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7938880298946849689, guid: 89cf045fb5bb2e947a0116c15f9bb974,
+        type: 3}
+      propertyPath: mouse
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938880298946849689, guid: 89cf045fb5bb2e947a0116c15f9bb974,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 206617394}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89cf045fb5bb2e947a0116c15f9bb974, type: 3}
 --- !u!4 &8770895192471372584

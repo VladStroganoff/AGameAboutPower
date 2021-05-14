@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public enum GameState { InLobby, InGame, Paused,}
+public enum GameState { InLobby, InGame, Paused, InMenues}
 
 public interface IGameManager
 {

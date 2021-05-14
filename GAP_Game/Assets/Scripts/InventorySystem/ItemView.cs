@@ -12,7 +12,6 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     public event Action<PointerEventData> OnBeginDragHandler;
     public event Action<PointerEventData> OnDragHandler;
     public event Action<PointerEventData, bool> OnEndDragHandler;
-    public bool FollorCursor { get; set; } = true;
     RectTransform _rectTransfrom;
     Vector2 _startPos = new Vector2(0, 0);
     public Transform currentParent { get; set; }
@@ -22,21 +21,22 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     public object Addressable { get; private set; }
 
 
-    void OnValidate()
+    void Start()
     {
         if (gameObject.GetComponent<RectTransform>() != null)
         {
-            float size = GetComponentInParent<InventoryView>().StandardPadding;
             _rectTransfrom = gameObject.GetComponent<RectTransform>();
             _canvas = GetComponentInParent<Canvas>();
         }
         else
         {
-            Debug.Log("No Rect Transform on object m8");
+            FDebug.Log.Message("No Rect Transform on object m8");
             return;
         }
-
-
+    }
+    void OnValidate()
+    {
+       
         if (RuntimeItem != null)
         {
             gameObject.name = RuntimeItem.Item.Name + "-Item";
@@ -58,12 +58,7 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
     {
         if (!CanDrag)
             return;
-
         OnDragHandler?.Invoke(eventData);
-
-        if (!FollorCursor)
-            return;
-
         _rectTransfrom.anchoredPosition += eventData.delta / _canvas.scaleFactor;
     }
 

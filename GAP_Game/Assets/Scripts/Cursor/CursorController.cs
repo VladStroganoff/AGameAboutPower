@@ -24,7 +24,6 @@ public interface ICursorController
 
 public class CursorController : MonoBehaviour, ICursorController
 {
-
     RaycastHit hit;
     public GameObject CursorPrefab;
     GameObject cursorInstance;
@@ -35,7 +34,6 @@ public class CursorController : MonoBehaviour, ICursorController
     [Inject]
     public void Inject(SignalBus bus)
     {
-        //Debug.Log("cursor controller gets injected");
         signalBus = bus;
     }
 
@@ -54,6 +52,7 @@ public class CursorController : MonoBehaviour, ICursorController
 
         cursorActive = true;
     }
+
 
     public void Update()
     {

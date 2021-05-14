@@ -30,17 +30,9 @@ public class DressController : MonoBehaviour
       
     }
 
-    public void WearLoaded(RuntimeItem item)
-    {
-
-    }
-
     public void AddWear(RuntimeItem runItem)
     {
-        if (!Inventory.Inventory.ContainsKey(runItem.Item.Slot))
-            Inventory.Inventory.Add(runItem.Item.Slot, runItem);
-        else
-            Inventory.Inventory[runItem.Item.Slot] = runItem;
+        Inventory.AddItemToPlayer(runItem);
 
         if (runItem.Item.Slot == "Head_Slot" || runItem.Item.Slot == "Torso_Slot" || runItem.Item.Slot == "Legs_Slot" ||
             runItem.Item.Slot == "Right_Arm_Slot" || runItem.Item.Slot == "Left_Arm_Slot")
