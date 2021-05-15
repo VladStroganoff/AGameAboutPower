@@ -79,7 +79,7 @@ public class ServerSend
         }
     }
 
-    public static void SpawnPlayer(int toClient, Player player)
+    public static void SpawnPlayer(int toClient, PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.spawnplayer))
         {
@@ -91,7 +91,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerPosition(Player player)
+    public static void PlayerPosition(PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerPosition))
         {
@@ -101,7 +101,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerRotation(Player player)
+    public static void PlayerRotation(PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRotation))
         {
@@ -112,7 +112,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerHealth(Player player)
+    public static void PlayerHealth(PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerHEalth))
         {
@@ -123,7 +123,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerAnimation(Player player)
+    public static void PlayerAnimation(PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.jsonObject))
         {
@@ -161,7 +161,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerRespawn(Player player)
+    public static void PlayerRespawn(PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRespawn))
         {

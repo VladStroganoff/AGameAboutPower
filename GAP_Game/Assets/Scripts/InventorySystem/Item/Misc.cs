@@ -14,3 +14,8 @@ public class Misc : Item
     {
     }
 }
+
+public class NetMisc : NetItem
+{
+
+}

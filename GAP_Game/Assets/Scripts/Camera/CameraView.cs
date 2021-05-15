@@ -17,6 +17,7 @@ public class CameraView : MonoBehaviour, ICameraView
     public Transform RTSPos;
     public Transform TPSPos;
     public Transform CameraParent;
+    CameraState stateHistory = CameraState.TPS;
 
     float startTime = 0f;
     float journeyLength = 0;
@@ -28,29 +29,45 @@ public class CameraView : MonoBehaviour, ICameraView
         bus.Subscribe<CameraStateSignal>(CheckCameraState);
         CameraParent.parent = null;
         RTSCam.enabled = false;
+        CameraParent.transform.position = transform.position;
     }
 
     public void CheckCameraState(CameraStateSignal signal)
     {
-        CameraParent.transform.position = transform.position;
-
         switch (signal.state)
         {
             case CameraState.RTS:
                 {
-                    LocalPlayerCamera.transform.position = TPSPos.position;
+                    if (stateHistory != CameraState.Menu)
+                    {
+                        StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation, false));
+                        LocalPlayerCamera.transform.position = TPSPos.position;
+                    }
                     TPSCam.enabled = false;
-                    StartCoroutine(BackAndForth(RTSPos.localPosition, RTSPos.rotation, false));
-                    return;
+                    RTSCam.enabled = true;
+                    break;
                 }
             case CameraState.TPS:
                 {
-                    LocalPlayerCamera.transform.position = RTSPos.position;
+                    if (stateHistory != CameraState.Menu)
+                    {
+                        LocalPlayerCamera.transform.position = RTSPos.position;
+                        StartCoroutine(BackAndForth(TPSPos.localPosition, TPSPos.rotation, true));
+                    }
+                    TPSCam.enabled = true;
                     RTSCam.enabled = false;
-                    StartCoroutine(BackAndForth(TPSPos.localPosition, TPSPos.rotation, true));
-                    return;
+                    break;
+                }
+            case CameraState.Menu:
+                {
+                    TPSCam.enabled = false;
+                    RTSCam.enabled = false;
+                    break;
                 }
         }
+
+        stateHistory = signal.state;
+
     }
 
 
@@ -72,7 +89,7 @@ public class CameraView : MonoBehaviour, ICameraView
             yield return new WaitForEndOfFrame();
         }
 
-        if(yenah)
+        if (yenah)
         {
             TPSCam.enabled = true;
         }
@@ -84,5 +101,5 @@ public class CameraView : MonoBehaviour, ICameraView
 
         traveling = false;
     }
-  
+
 }

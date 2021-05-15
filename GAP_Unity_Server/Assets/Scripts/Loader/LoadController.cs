@@ -54,10 +54,6 @@ public class LoadController : MonoBehaviour
         GameObject instance = GameObject.Instantiate(Resources.Load<GameObject>($"Buildings/{building.Name}"), building.Position, building.Rotation);
         instance.gameObject.SetActive(true);
     }
-
-    public void UnloadBuilding(BuildingData building)
-    {
-    }
-
    
+
 }

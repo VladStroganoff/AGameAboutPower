@@ -42,11 +42,11 @@ public class NetworkManager : MonoBehaviour
     }
 
 
-    public Player InstantiatePlayer(string playerData)
+    public PlayerManager InstantiatePlayer(string playerData)
     {
 
         GameObject playerPrefab = Instantiate(PlayerPrefab, PlayerSpawnPoint.position, Quaternion.identity);
-        Player player = playerPrefab.GetComponent<Player>();
+        PlayerManager player = playerPrefab.GetComponent<PlayerManager>();
         player.GetComponent<InventoryModel>().InitializeInventory(playerData, player);
 
         return player;

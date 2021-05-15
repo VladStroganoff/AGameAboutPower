@@ -8,6 +8,7 @@ public class RuntimeItem
     {
         Item = item;
     }
+
     public Item Item;
     public GameObject Prefab;
     public Sprite Icon;

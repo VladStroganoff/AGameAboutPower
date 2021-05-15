@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class DatabaseController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void SaveWorldState(List<LootItemView> Items) // this will be a real database later on :| 
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadWorldState(LootController lootControl)
     {
-        
+
     }
+    
 }

@@ -17,3 +17,7 @@ public class Consumable : Item
     {
     }
 }
+
+
+public class NetConsumable : NetItem
+{ }

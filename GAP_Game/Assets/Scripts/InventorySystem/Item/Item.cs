@@ -34,14 +34,28 @@ public abstract class Item : ScriptableObject
 
     public Netwearable MakeNetWear()
     {
-        Netwearable netCopy = new Netwearable();
+        var netCopy = new Netwearable();
         netCopy.Inlitialize(this);
         return netCopy;
     }
 
     public NetHoldable MakeNetHoldable()
     {
-        NetHoldable netCopy = new NetHoldable();
+        var netCopy = new NetHoldable();
+        netCopy.Inlitialize(this);
+        return netCopy;
+    }
+
+    public NetConsumable MakeNetConsumable()
+    {
+        var netCopy = new NetConsumable();
+        netCopy.Inlitialize(this);
+        return netCopy;
+    }
+
+    public NetMisc MakeNetMisc()
+    {
+        var netCopy = new NetMisc();
         netCopy.Inlitialize(this);
         return netCopy;
     }
@@ -61,6 +75,9 @@ public class NetItem : NetEntity
     public string IconAddress;
     [HideInInspector]
     public string Slot;
+    public Vector3 Position;
+    public Quaternion Rotation;
+
 
     public virtual void Inlitialize(Item item)
     {

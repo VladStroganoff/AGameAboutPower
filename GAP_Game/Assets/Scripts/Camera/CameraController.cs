@@ -10,7 +10,7 @@ public interface ICameraController
     void CheckGameState(GameStateChangedSignal signal);
 }
  
-public enum CameraState { TPS, RTS, Lobby }
+public enum CameraState { TPS, RTS, Lobby, Menu }
 
 public class CameraStateSignal
 {

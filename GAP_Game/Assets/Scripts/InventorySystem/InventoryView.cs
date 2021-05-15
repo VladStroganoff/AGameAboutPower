@@ -17,6 +17,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
     public float StandardPadding;
     public InventoryModel Inventory;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
+    SignalBus _signalBus;
 
     ILoadController _loadControl;
 
@@ -26,6 +27,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
     {
         _loadControl = loadControl;
         signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
+        _signalBus = signalBus;
     }
 
     void Start()
@@ -109,9 +111,11 @@ public class InventoryView : MonoBehaviour, IInventoryView
         {
             InventoryPanel.anchoredPosition = new Vector2(InventoryPanel.anchoredPosition.x, 0);
             _toggleInventory = !_toggleInventory;
+            _signalBus.Fire(new CameraStateSignal() { state = CameraState.Menu });
         }
         else
         {
+            _signalBus.Fire(new CameraStateSignal() { state = CameraState.TPS });
             InventoryPanel.anchoredPosition = _inventoryOrigin;
             _toggleInventory = !_toggleInventory;
         }

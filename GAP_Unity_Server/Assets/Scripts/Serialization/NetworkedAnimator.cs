@@ -12,7 +12,7 @@ public class NetworkedAnimator : MonoBehaviour
         if (GetComponent<Animator>() == null)
             return;
 
-        if (GetComponent<Player>() == null)
+        if (GetComponent<PlayerManager>() == null)
             return;
 
         NetAnimations = MakeNet.Animator(GetComponent<Animator>());
@@ -25,8 +25,8 @@ public class NetworkedAnimator : MonoBehaviour
         oldState = NetAnimations;
 
 
-        GetComponent<Player>().animator = NetAnimations;
-        ServerSend.PlayerAnimation(GetComponent<Player>());
+        GetComponent<PlayerManager>().animator = NetAnimations;
+        ServerSend.PlayerAnimation(GetComponent<PlayerManager>());
     }
 
 }

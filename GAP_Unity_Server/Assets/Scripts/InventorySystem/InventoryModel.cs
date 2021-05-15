@@ -8,8 +8,8 @@ public class InventoryModel : MonoBehaviour
     public Dictionary<string, RuntimeItem> Inventory = new Dictionary<string, RuntimeItem>();
     public JsonItemDictionary JsonInventory;
     JsonSerializerSettings _settings;
-    Player _player;
-    public void InitializeInventory(string playerData, Player player)
+    PlayerManager _player;
+    public void InitializeInventory(string playerData, PlayerManager player)
     {
         _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
         JsonInventory = JsonConvert.DeserializeObject(playerData, _settings) as JsonItemDictionary;

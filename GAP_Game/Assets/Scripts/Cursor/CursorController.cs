@@ -43,7 +43,8 @@ public class CursorController : MonoBehaviour, ICursorController
         {
 
             cursorActive = false;
-            cursorInstance.gameObject.SetActive(false);
+            if (cursorInstance != null)
+                cursorInstance.gameObject.SetActive(false);
             return;
         }
 

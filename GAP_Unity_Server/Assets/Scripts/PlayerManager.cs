@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public delegate void PlayerDisconnect(Player player);
-public class Player : MonoBehaviour
+public delegate void PlayerDisconnect(PlayerManager player);
+public class PlayerManager : MonoBehaviour
 {
     public int ID;
     public string Name;
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
         {
             if(Hit.collider.CompareTag("Player"))
             {
-                Hit.collider.GetComponent<Player>().TakeDamage(10f);
+                Hit.collider.GetComponent<PlayerManager>().TakeDamage(10f);
             }
         }
     }

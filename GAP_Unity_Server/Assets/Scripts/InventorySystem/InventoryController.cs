@@ -6,13 +6,13 @@ public class InventoryController : MonoBehaviour
 {
     Dictionary<int, DressController> _dressControllers = new Dictionary<int, DressController>();
 
-    public void AddPlayer(Player player)
+    public void AddPlayer(PlayerManager player)
     {
         player.PlayerDisconnect += RemovePlayer;
         _dressControllers.Add(player.ID, player.GetComponent<DressController>());
     }
 
-    public void RemovePlayer(Player player)
+    public void RemovePlayer(PlayerManager player)
     {
         _dressControllers.Remove(player.ID);
     }

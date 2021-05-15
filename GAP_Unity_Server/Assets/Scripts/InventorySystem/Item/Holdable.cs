@@ -1,6 +1,6 @@
 using UnityEngine;
 [System.Serializable]
-public enum HoldableType { Rifle, Pistol, Melee }
+public enum HoldableType { Rifle, Pistol, Melee}
 
 [System.Serializable]
 [CreateAssetMenu(fileName = "New Holdable Item", menuName = "InventoryItem/Holdable")]
