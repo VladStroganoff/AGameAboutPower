@@ -11,28 +11,83 @@ public class LootItemView : MonoBehaviour
 
     public List<Item> Items = new List<Item>();
     GameObject _graphics;
-    public BoxCollider Collider;
+    BoxCollider _collider;
+    Rigidbody _rigidBody;
     LootController _lootControl;
 
     #region Example
 #if UNITY_EDITOR
     public void OnValidate() // just to illustrate that is there is just one Loot item it is displayed as one in the world, otherwhise its displayed as a "chest"
     {
-        if (Items.Count != 1)
+        if (Items.Count == 0)
             return;
+        if (Items[0] == null)
+            return;
+        if (_graphics != null)
+            return;
+        if (Items.Count == 1)
+            PopulateSingle();
+        if (Items.Count > 1)
+            PopulateChest();
+    }
+    void PopulateChest()
+    {
 
+    }
+    void PopulateSingle()
+    {
         if (_graphics == null)
         {
-            _graphics = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(Items[0].PrefabAddress), Vector3.zero, Quaternion.identity, transform);
-            _graphics.transform.localPosition = Vector3.zero;
+            _graphics = AssetDatabase.LoadAssetAtPath<GameObject>(Items[0].PrefabAddress);
+            if (_graphics == null)
+            {
+                Debug.Log($"Could not load prefab at: {Items[0].PrefabAddress}");
+                return;
+            }
+            gameObject.name = $"{Items[0].Name}-Loot_Item";
         }
-        if (Collider == null)
+
+        if (_collider == null)
+            _collider = gameObject.AddComponent<BoxCollider>();
+
+        Bounds bounds = new Bounds();
+
+        if (_graphics.GetComponent<MeshFilter>() != null)
         {
-            Collider = gameObject.AddComponent<BoxCollider>();
-            Bounds bounds = _graphics.GetComponent<MeshFilter>().mesh.bounds;
-            Collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
+            bounds = _graphics.GetComponent<MeshFilter>().sharedMesh.bounds;
+            _graphics = Instantiate(_graphics, transform);
+            _graphics.transform.localPosition = -_graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds.center;
         }
+        if (_graphics.GetComponentInChildren<MeshFilter>() != null)
+        {
+            bounds = _graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
+            _graphics = Instantiate(_graphics, transform);
+            _graphics.transform.localPosition = -_graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds.center;
+        }
+        if (_graphics.GetComponentInChildren<SkinnedMeshRenderer>() != null)
+        {
+            bounds = MakeStaticItem(_graphics.GetComponentInChildren<SkinnedMeshRenderer>(), _graphics, Items[0]).GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
+        }
+        _collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
+        if (_rigidBody == null)
+            _rigidBody = gameObject.AddComponent<Rigidbody>();
     }
+    GameObject MakeStaticItem(SkinnedMeshRenderer skinnedMesh, GameObject oldObject, Item item) // maybe we will have special item for static representation but for now.
+    {
+        Mesh mesh = new Mesh();
+        skinnedMesh.BakeMesh(mesh);
+        Material[] materials = skinnedMesh.sharedMaterials;
+        GameObject staticRepresentation = new GameObject($"{item.name}-Graphics");
+        staticRepresentation.transform.SetParent(transform);
+        staticRepresentation.transform.localPosition = -mesh.bounds.center;
+        MeshFilter filter = staticRepresentation.AddComponent<MeshFilter>();
+        filter.mesh = mesh;
+        MeshRenderer rend = staticRepresentation.AddComponent<MeshRenderer>();
+        rend.materials = materials;
+        _graphics = staticRepresentation;
+        return staticRepresentation;
+    }
+
 #endif
     #endregion
 
@@ -50,12 +105,12 @@ public class LootItemView : MonoBehaviour
         PrepNetItemPickup(Items, ID);
     }
 
-
+   
     void PrepNetItemPickup(List<Item> items, int id) // maybe this data prep shoud be done further up the line
     {
         NetLootItem netLoot = new NetLootItem();
         List<NetItem> netItems = new List<NetItem>();
-        foreach(var item in items)
+        foreach (var item in items)
         {
             if (item is Holdable)
             {

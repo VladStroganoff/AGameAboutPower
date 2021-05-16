@@ -403,8 +403,10 @@ GameObject:
   - component: {fileID: 1092200046}
   - component: {fileID: 1092200047}
   - component: {fileID: 1092200048}
+  - component: {fileID: 1092200050}
+  - component: {fileID: 1092200049}
   m_Layer: 0
-  m_Name: NetworkManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,6 +490,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3e6d32e479c06b45b7b70beec7dc9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1092200049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092200042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ca4bade3ec0644a9d3a743fa6ea255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testLootItems: []
+  testSveLoot: 1
+  DatabaseControl: {fileID: 1092200050}
+--- !u!114 &1092200050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092200042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d6457cbb1ab974c86bb185015e9c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1306106283
