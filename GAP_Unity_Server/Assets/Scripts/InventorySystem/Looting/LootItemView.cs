@@ -14,25 +14,44 @@ public class LootItemView : MonoBehaviour
     BoxCollider _collider;
     Rigidbody _rigidBody;
     LootController _lootControl;
+    public string CrateAddress = "Assets/Content/Character/Props/Containers/WhiteboxCrate/DefaultCreate.prefab";
 
     #region Example
 #if UNITY_EDITOR
     public void OnValidate() // just to illustrate that is there is just one Loot item it is displayed as one in the world, otherwhise its displayed as a "chest"
     {
+        if (transform.childCount != 0)
+            return;
         if (Items.Count == 0)
             return;
         if (Items[0] == null)
             return;
-        if (_graphics != null)
-            return;
         if (Items.Count == 1)
+        {
             PopulateSingle();
+            return;
+        }
         if (Items.Count > 1)
             PopulateChest();
     }
+
+
+#endif
+    #endregion
+
     void PopulateChest()
     {
+        _graphics = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(CrateAddress), Vector3.zero, Quaternion.identity, transform);
+        _graphics.transform.localPosition = AssetDatabase.LoadAssetAtPath<GameObject>(CrateAddress).transform.position;
+        gameObject.name = $"Loot Chest-{Items.Count}-Items";
+        
+        if (_rigidBody == null)
+            _rigidBody = gameObject.AddComponent<Rigidbody>();
 
+        if (_collider == null)
+            _collider = gameObject.AddComponent<BoxCollider>();
+        Bounds bounds = _graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
+        _collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
     }
     void PopulateSingle()
     {
@@ -58,7 +77,7 @@ public class LootItemView : MonoBehaviour
             _graphics = Instantiate(_graphics, transform);
             _graphics.transform.localPosition = -_graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds.center;
         }
-        if (_graphics.GetComponentInChildren<MeshFilter>() != null)
+        else if (_graphics.GetComponentInChildren<MeshFilter>() != null)
         {
             bounds = _graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
             _graphics = Instantiate(_graphics, transform);
@@ -88,8 +107,6 @@ public class LootItemView : MonoBehaviour
         return staticRepresentation;
     }
 
-#endif
-    #endregion
 
     public void Inject(LootController lootControl)
     {
@@ -98,7 +115,7 @@ public class LootItemView : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<PlayerManager>() != null)
+        if (other.gameObject.GetComponent<PlayerManager>() == null)
             return;
 
         int ID = other.gameObject.GetComponent<PlayerManager>().ID;

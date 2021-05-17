@@ -504,9 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ca4bade3ec0644a9d3a743fa6ea255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testLootItems: []
   testSveLoot: 1
   DatabaseControl: {fileID: 1092200050}
+  LootSpawners: []
 --- !u!114 &1092200050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d6457cbb1ab974c86bb185015e9c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllAvalableItems: []
 --- !u!1 &1306106283
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +613,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 49.426003, y: -39.439003, z: 27.395}
+--- !u!1 &1420579893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420579895}
+  - component: {fileID: 1420579894}
+  m_Layer: 0
+  m_Name: Wearables-ItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420579894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420579893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575077b5f0329604bb1a4655344fe30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 6
+--- !u!4 &1420579895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420579893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 549.952, y: 114.5616, z: 652.7203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &796820640260529408
 CanvasRenderer:
   m_ObjectHideFlags: 0
