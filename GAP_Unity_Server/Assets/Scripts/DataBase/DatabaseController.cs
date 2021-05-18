@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class DatabaseController : MonoBehaviour
@@ -13,8 +14,8 @@ public class DatabaseController : MonoBehaviour
 
 private void Start()
     {
-        //SaveScriptableObjectItems();
-        //LoadWorldState();
+        LoadWorldState();
+        //CollectAllAvalableItems();
     }
 
     void CollectAllAvalableItems()
@@ -30,12 +31,43 @@ private void Start()
                 }
             }
         }
+        _database.AllItems = SortAndSerialize(_allAvalableItems);
+        SaveDatabade();
+    }
+
+    public List<Item> GetAllItems()
+    {
+        return _allAvalableItems;
+    }
+
+
+    public List<Wearable> GetAllWear()
+    {
+        return _database.AllItems.Wearables.ToList();
+    }
+    public List<Holdable> GetAllHoldables()
+    {
+        return _database.AllItems.Holdables.ToList();
+    }
+
+    public List<Consumable> GetAllConsumables()
+    {
+        return _database.AllItems.Consumable.ToList();
+    }
+
+    public List<Misc> GetAllMisc()
+    {
+        return _database.AllItems.Misc.ToList();
     }
 
     public void LoadWorldState()
     {
         string jsonString = File.ReadAllText(Application.persistentDataPath + "/GAPServerDatabase.json");
         DatabaseModel database = JsonConvert.DeserializeObject(jsonString, _settings) as DatabaseModel;
+        _allAvalableItems.AddRange(database.AllItems.Consumable);
+        _allAvalableItems.AddRange(database.AllItems.Wearables);
+        _allAvalableItems.AddRange(database.AllItems.Holdables);
+        _allAvalableItems.AddRange(database.AllItems.Misc);
         _database = database;
     }
 
@@ -51,23 +83,19 @@ private void Start()
         {
             if (item is Wearable)
             {
-                Wearable wearable = ScriptableObject.CreateInstance(typeof(Wearable)) as Wearable;
-                wearables.Add(wearable);
+                wearables.Add(item as Wearable);
             }
             if (item is Holdable)
             {
-                Holdable holdable = ScriptableObject.CreateInstance(typeof(Holdable)) as Holdable;
-                holdables.Add(holdable);
+                holdables.Add(item as Holdable);
             }
             if (item is Consumable)
             {
-                Consumable consumable = ScriptableObject.CreateInstance(typeof(Consumable)) as Consumable;
-                consumables.Add(consumable);
+                consumables.Add(item as Consumable);
             }
             if (item is Misc)
             {
-                Misc misc = ScriptableObject.CreateInstance(typeof(Misc)) as Misc;
-                miscs.Add(misc);
+                miscs.Add(item as Misc);
             }
         }
 
@@ -82,8 +110,7 @@ private void Start()
 
     void SaveDatabade()
     {
-        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        string json = JsonConvert.SerializeObject(_database, settings);
+        string json = JsonConvert.SerializeObject(_database, _settings);
         File.WriteAllText(Application.persistentDataPath + "/GAPServerDatabase.json", json);
         Debug.Log($"Saved inventory to: {Application.persistentDataPath}/GAPServerDatabase.json");
     }

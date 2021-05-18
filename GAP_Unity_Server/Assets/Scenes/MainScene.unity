@@ -273,8 +273,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.0977484, y: 0.8758276, z: -0.19990066, w: 0.42826524}
-  m_LocalPosition: {x: 526.9198, y: 119.66857, z: 642.03735}
+  m_LocalRotation: {x: 0.013246203, y: 0.98626894, z: -0.1309491, w: 0.099751785}
+  m_LocalPosition: {x: 537.3531, y: 118.70126, z: 666.2924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -507,6 +507,8 @@ MonoBehaviour:
   testSveLoot: 1
   DatabaseControl: {fileID: 1092200050}
   LootSpawners: []
+  MinItems: 1
+  MaxItems: 5
 --- !u!114 &1092200050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +521,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d6457cbb1ab974c86bb185015e9c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllAvalableItems: []
+  _database:
+    AllItems:
+      Holdables: []
+      Wearables: []
+      Consumable: []
+      Misc: []
+    WorldItems:
+      Holdables: []
+      Wearables: []
+      Consumable: []
+      Misc: []
+    PlayerItems:
+      Holdables: []
+      Wearables: []
+      Consumable: []
+      Misc: []
 --- !u!1 &1306106283
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +641,7 @@ GameObject:
   - component: {fileID: 1420579895}
   - component: {fileID: 1420579894}
   m_Layer: 0
-  m_Name: Wearables-ItemSpawner
+  m_Name: Random-ItemSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -642,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575077b5f0329604bb1a4655344fe30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 6
+  Type: 4
 --- !u!4 &1420579895
 Transform:
   m_ObjectHideFlags: 0

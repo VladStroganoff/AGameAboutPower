@@ -1,48 +1,46 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-
-public class LootItemView : MonoBehaviour
+public class LootItemView : MonoBehaviour, ItemReceiver
 {
 
-    public List<Item> Items = new List<Item>();
+    public List<RuntimeItem> Items = new List<RuntimeItem>();
     GameObject _graphics;
     BoxCollider _collider;
     Rigidbody _rigidBody;
     LootController _lootControl;
     public string CrateAddress = "Assets/Content/Character/Props/Containers/WhiteboxCrate/DefaultCreate.prefab";
 
-    #region Example
-#if UNITY_EDITOR
-    public void OnValidate() // just to illustrate that is there is just one Loot item it is displayed as one in the world, otherwhise its displayed as a "chest"
+    public void Initialize(List<Item> items) 
     {
+        LoadController.instance.LoadRuntimeItem(items, this);
+    }
+
+    public void Populate(List<RuntimeItem> runItems)
+    {
+        Items = runItems;
         if (transform.childCount != 0)
             return;
-        if (Items.Count == 0)
+        if (runItems.Count == 0)
             return;
-        if (Items[0] == null)
+        if (runItems[0] == null)
             return;
-        if (Items.Count == 1)
+        if (runItems.Count == 1)
         {
-            PopulateSingle();
+            PopulateSingle(runItems);
             return;
         }
-        if (Items.Count > 1)
-            PopulateChest();
+        if (runItems.Count > 1)
+            StartCoroutine(LoadController.instance.LoadSingle(CrateAddress, this));
     }
 
 
-#endif
-    #endregion
-
-    void PopulateChest()
+    void PopulateChest(GameObject chest)
     {
-        _graphics = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(CrateAddress), Vector3.zero, Quaternion.identity, transform);
-        _graphics.transform.localPosition = AssetDatabase.LoadAssetAtPath<GameObject>(CrateAddress).transform.position;
+        _graphics = Instantiate(chest, Vector3.zero, Quaternion.identity, transform);
+        _graphics.transform.localPosition = chest.transform.position;
         gameObject.name = $"Loot Chest-{Items.Count}-Items";
         
         if (_rigidBody == null)
@@ -53,18 +51,10 @@ public class LootItemView : MonoBehaviour
         Bounds bounds = _graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
         _collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
     }
-    void PopulateSingle()
+    void PopulateSingle(List<RuntimeItem> runItems)
     {
-        if (_graphics == null)
-        {
-            _graphics = AssetDatabase.LoadAssetAtPath<GameObject>(Items[0].PrefabAddress);
-            if (_graphics == null)
-            {
-                Debug.Log($"Could not load prefab at: {Items[0].PrefabAddress}");
-                return;
-            }
-            gameObject.name = $"{Items[0].Name}-Loot_Item";
-        }
+        _graphics = runItems[0].Prefab;
+        gameObject.name = $"{Items[0].Item.Name}-Loot_Item";
 
         if (_collider == null)
             _collider = gameObject.AddComponent<BoxCollider>();
@@ -85,7 +75,7 @@ public class LootItemView : MonoBehaviour
         }
         if (_graphics.GetComponentInChildren<SkinnedMeshRenderer>() != null)
         {
-            bounds = MakeStaticItem(_graphics.GetComponentInChildren<SkinnedMeshRenderer>(), _graphics, Items[0]).GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
+            bounds = MakeStaticItem(_graphics.GetComponentInChildren<SkinnedMeshRenderer>(), _graphics, Items[0].Item).GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
         }
         _collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
         if (_rigidBody == null)
@@ -123,7 +113,7 @@ public class LootItemView : MonoBehaviour
     }
 
    
-    void PrepNetItemPickup(List<Item> items, int id) // maybe this data prep shoud be done further up the line
+    void PrepNetItemPickup(List<RuntimeItem> items, int id) // maybe this data prep shoud be done further up the line
     {
         NetLootItem netLoot = new NetLootItem();
         List<NetItem> netItems = new List<NetItem>();
@@ -131,22 +121,22 @@ public class LootItemView : MonoBehaviour
         {
             if (item is Holdable)
             {
-                var netItem = item.MakeNetWear();
+                var netItem = item.Item.MakeNetWear();
                 netItems.Add(netItem);
             }
             if (item is Wearable)
             {
-                var netItem = item.MakeNetWear();
+                var netItem = item.Item.MakeNetWear();
                 netItems.Add(netItem);
             }
             if (item is Consumable)
             {
-                var netItem = item.MakeNetConsumable();
+                var netItem = item.Item.MakeNetConsumable();
                 netItems.Add(netItem);
             }
             if (item is Misc)
             {
-                var netItem = item.MakeNetMisc();
+                var netItem = item.Item.MakeNetMisc();
                 netItems.Add(netItem);
             }
         }
@@ -155,6 +145,11 @@ public class LootItemView : MonoBehaviour
         netLoot.Position = transform.position;
         netLoot.Rotation = transform.rotation;
         _lootControl.LootPickedUp(netLoot);
+    }
+
+    public void RecieveItem(GameObject loadedObject)
+    {
+        PopulateChest(loadedObject);
     }
 }
 
