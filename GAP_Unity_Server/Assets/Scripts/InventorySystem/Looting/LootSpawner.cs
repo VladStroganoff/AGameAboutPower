@@ -11,10 +11,12 @@ public class LootSpawner : MonoBehaviour
 {
     private List<Item> _loot = new List<Item>(); // just for debug
     public LootSpawnType Type = LootSpawnType.Random;
+    LootController _lootControl;
 
-    private void Start()
+    private void Awake()
     {
-        GameObject.FindObjectOfType<LootController>().AddLootSpawner(this);
+        _lootControl = GameObject.FindObjectOfType<LootController>();
+        _lootControl.AddLootSpawner(this);
     }
 
 #if UNITY_EDITOR
@@ -60,7 +62,7 @@ public class LootSpawner : MonoBehaviour
         GameObject lootGO = new GameObject();
         lootGO.transform.position = transform.position;
         LootItemView lootView = lootGO.AddComponent<LootItemView>();
-        lootView.Initialize(loot);
+        lootView.Initialize(loot, _lootControl);
     }
 
 }

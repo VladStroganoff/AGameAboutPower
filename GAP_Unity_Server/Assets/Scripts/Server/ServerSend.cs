@@ -161,6 +161,18 @@ public class ServerSend
         }
     }
 
+    public static void SpawnLoot(int player, NetLootItem spawnedLoot)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.jsonObject))
+        {
+            packet.Write(player);
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            string json = JsonConvert.SerializeObject(spawnedLoot, settings);
+            packet.Write(json);
+            SendTCPDataToAll(packet);
+        }
+    }
+
     public static void PlayerRespawn(PlayerManager player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRespawn))

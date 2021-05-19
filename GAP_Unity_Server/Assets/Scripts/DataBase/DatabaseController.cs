@@ -5,20 +5,22 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
+public delegate void DataDaseLoaded();
+
 public class DatabaseController : MonoBehaviour
 {
     List<Item> _allAvalableItems = new List<Item>();
     public DatabaseModel _database;
     JsonSerializerSettings _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
-
+    public DataDaseLoaded databaseLoaded;
 
 private void Start()
     {
         LoadWorldState();
-        //CollectAllAvalableItems();
+        //SaveNewAvalableItems();
     }
 
-    void CollectAllAvalableItems()
+    void SaveNewAvalableItems()
     {
         var AllItemIbjects = Resources.LoadAll("Items", typeof(ScriptableObject));
         foreach(var itemobject in AllItemIbjects)
@@ -69,6 +71,7 @@ private void Start()
         _allAvalableItems.AddRange(database.AllItems.Holdables);
         _allAvalableItems.AddRange(database.AllItems.Misc);
         _database = database;
+        databaseLoaded.Invoke(); // this event tells everybody that the database is loaded
     }
 
     JsonItemDictionary SortAndSerialize(List<Item> items)

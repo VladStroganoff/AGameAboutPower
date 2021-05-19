@@ -13,8 +13,9 @@ public class LootItemView : MonoBehaviour, ItemReceiver
     LootController _lootControl;
     public string CrateAddress = "Assets/Content/Character/Props/Containers/WhiteboxCrate/DefaultCreate.prefab";
 
-    public void Initialize(List<Item> items) 
+    public void Initialize(List<Item> items, LootController lootControl) 
     {
+        _lootControl = lootControl;
         LoadController.instance.LoadRuntimeItem(items, this);
     }
 
@@ -50,6 +51,8 @@ public class LootItemView : MonoBehaviour, ItemReceiver
             _collider = gameObject.AddComponent<BoxCollider>();
         Bounds bounds = _graphics.GetComponentInChildren<MeshFilter>().sharedMesh.bounds;
         _collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
+
+        StartCoroutine(CheckForLanding());
     }
     void PopulateSingle(List<RuntimeItem> runItems)
     {
@@ -80,6 +83,8 @@ public class LootItemView : MonoBehaviour, ItemReceiver
         _collider.size = new Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
         if (_rigidBody == null)
             _rigidBody = gameObject.AddComponent<Rigidbody>();
+
+        StartCoroutine(CheckForLanding());
     }
     GameObject MakeStaticItem(SkinnedMeshRenderer skinnedMesh, GameObject oldObject, Item item) // maybe we will have special item for static representation but for now.
     {
@@ -97,6 +102,17 @@ public class LootItemView : MonoBehaviour, ItemReceiver
         return staticRepresentation;
     }
 
+    IEnumerator CheckForLanding()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        while (_rigidBody.velocity.magnitude > 0.01f)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        _lootControl.LootUpdatePos(this);
+    }
 
     public void Inject(LootController lootControl)
     {
@@ -109,45 +125,16 @@ public class LootItemView : MonoBehaviour, ItemReceiver
             return;
 
         int ID = other.gameObject.GetComponent<PlayerManager>().ID;
-        PrepNetItemPickup(Items, ID);
+        _lootControl.LootPickedUp(Items, ID);
     }
 
-   
-    void PrepNetItemPickup(List<RuntimeItem> items, int id) // maybe this data prep shoud be done further up the line
+    void NetItemSpawn()
     {
-        NetLootItem netLoot = new NetLootItem();
-        List<NetItem> netItems = new List<NetItem>();
-        foreach (var item in items)
-        {
-            if (item is Holdable)
-            {
-                var netItem = item.Item.MakeNetWear();
-                netItems.Add(netItem);
-            }
-            if (item is Wearable)
-            {
-                var netItem = item.Item.MakeNetWear();
-                netItems.Add(netItem);
-            }
-            if (item is Consumable)
-            {
-                var netItem = item.Item.MakeNetConsumable();
-                netItems.Add(netItem);
-            }
-            if (item is Misc)
-            {
-                var netItem = item.Item.MakeNetMisc();
-                netItems.Add(netItem);
-            }
-        }
-        netLoot.ID = id;
-        netLoot.Items = netItems.ToArray();
-        netLoot.Position = transform.position;
-        netLoot.Rotation = transform.rotation;
-        _lootControl.LootPickedUp(netLoot);
-    }
 
-    public void RecieveItem(GameObject loadedObject)
+    }
+   
+   
+    public void RecieveItem(GameObject loadedObject) // graphics from loader
     {
         PopulateChest(loadedObject);
     }

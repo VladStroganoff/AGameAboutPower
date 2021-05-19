@@ -9,35 +9,42 @@ public class LootController : MonoBehaviour
 
     public DatabaseController DatabaseControl;
     public List<LootSpawner> LootSpawners = new List<LootSpawner>();
+    public List<LootItemView> Loot = new List<LootItemView>();
     public int MinItems;
     public int MaxItems;
 
+    private void Start()
+    {
+        DatabaseControl.databaseLoaded += InitializeLoot;
+    }
 
     public void AddLootSpawner(LootSpawner spawner)
     {
         LootSpawners.Add(spawner);
-        AddLoot(spawner);
     }
 
-    public void AddLoot(LootSpawner spawner)
+    public void InitializeLoot()
     {
-        switch (spawner.Type)
+        foreach(var spawner in LootSpawners)
         {
-            case LootSpawnType.Ammunition:
-                return;
-            case LootSpawnType.Food:
-                return;
-            case LootSpawnType.Player:
-                return;
-            case LootSpawnType.Random:
-                SpawnRandomLoot(spawner);
-                return;
-            case LootSpawnType.Rare:
-                return;
-            case LootSpawnType.Weapons:
-                return;
-            case LootSpawnType.Wearables:
-                return;
+            switch (spawner.Type)
+            {
+                case LootSpawnType.Ammunition:
+                    continue;
+                case LootSpawnType.Food:
+                    continue;
+                case LootSpawnType.Player:
+                    continue;
+                case LootSpawnType.Random:
+                    SpawnRandomLoot(spawner);
+                    continue;
+                case LootSpawnType.Rare:
+                    continue;
+                case LootSpawnType.Weapons:
+                    continue;
+                case LootSpawnType.Wearables:
+                    continue;
+            }
         }
     }
 
@@ -53,15 +60,41 @@ public class LootController : MonoBehaviour
         spawner.SpawnLoot(randItem);
     }
 
-    void InitializeLoot() // Maybe some day spawn loot only around Player
+    public void LootUpdatePos(LootItemView view)
     {
-       
+        Loot.Add(view);
     }
 
-
-
-    public void LootPickedUp(NetLootItem items)
+    public void LootPickedUp(List<RuntimeItem> items, int id)
     {
-
+        NetLootItem netLoot = new NetLootItem();
+        List<NetItem> netItems = new List<NetItem>();
+        foreach (var item in items)
+        {
+            if (item is Holdable)
+            {
+                var netItem = item.Item.MakeNetWear();
+                netItems.Add(netItem);
+            }
+            if (item is Wearable)
+            {
+                var netItem = item.Item.MakeNetWear();
+                netItems.Add(netItem);
+            }
+            if (item is Consumable)
+            {
+                var netItem = item.Item.MakeNetConsumable();
+                netItems.Add(netItem);
+            }
+            if (item is Misc)
+            {
+                var netItem = item.Item.MakeNetMisc();
+                netItems.Add(netItem);
+            }
+        }
+        netLoot.ID = id;
+        netLoot.Items = netItems.ToArray();
+        netLoot.Position = transform.position;
+        netLoot.Rotation = transform.rotation;
     }
 }
