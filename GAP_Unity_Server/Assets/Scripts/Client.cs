@@ -203,7 +203,9 @@ public class Client
             if (client.player != null)
             {
                 if (client.id != id)
+                {
                     ServerSend.SpawnPlayer(id, client.player);
+                }
             }
         }
 
@@ -213,6 +215,7 @@ public class Client
             if (client.player != null)
             {
                 ServerSend.SpawnPlayer(client.id, player);
+                ServerSend.SpawnLoot(id, DatabaseController._database.WorldItems.Loot);
             }
         }
 

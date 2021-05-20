@@ -151,6 +151,17 @@ public class LoadController : MonoBehaviour, ILoadController
         return runtimeItem;
     }
 
+    public void LoadRuntimeItem(List<Item> items, LootView lootView)
+    {
+        List<RuntimeItem> runItems = new List<RuntimeItem>();
+        foreach (var item in items)
+        {
+            runItems.Add(new RuntimeItem(item));
+        }
+
+        StartCoroutine(LoadItem(runItems, lootView));
+    }
+
     IEnumerator LoadItem(RuntimeItem rItem, int playerID)
     {
         UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Sprite> iconHandle = Addressables.LoadAssetAsync<Sprite>(rItem.Item.IconAddress);
@@ -178,6 +189,48 @@ public class LoadController : MonoBehaviour, ILoadController
 
 
         _signalBus.Fire(new ItemLoadedSignal() { LoadedItem = rItem, PlayerID = playerID });
+    }
+
+    IEnumerator LoadItem(List<RuntimeItem> rItems, LootView lootView)
+    {
+        foreach (var rItem in rItems)
+        {
+            UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(rItem.Item.PrefabAddress);
+            yield return prefabHandle;
+
+            while (!prefabHandle.IsDone)
+                yield return new WaitForEndOfFrame();
+
+
+            if (prefabHandle.Result != null)
+            {
+                rItem.Prefab = prefabHandle.Result;
+            }
+            else
+                Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
+
+        }
+        lootView.Populate(rItems);
+    }
+
+    public IEnumerator LoadSingle(string adddress, ItemReceiver recviever)
+    {
+        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(adddress);
+        yield return prefabHandle;
+
+        while (!prefabHandle.IsDone)
+            yield return new WaitForEndOfFrame();
+
+
+        GameObject thing2Load = null;
+        if (prefabHandle.Result != null)
+        {
+            thing2Load = prefabHandle.Result;
+        }
+        else
+            Debug.Log($"Failed to load {adddress}");
+
+        recviever.RecieveItem(thing2Load);
     }
 
     public void LoadBuilding(BuildingData building)

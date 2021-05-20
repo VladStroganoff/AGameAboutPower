@@ -142,8 +142,8 @@ public class ServerSend
         using (Packet packet = new Packet((int)ServerPackets.jsonObject))
         {
             packet.Write(player);
-            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-            string json = JsonConvert.SerializeObject(building, settings);
+            JsonSerializerSettings _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            string json = JsonConvert.SerializeObject(building, _settings);
             packet.Write(json);
             SendTCPDataToAll(packet);
         }
@@ -161,15 +161,18 @@ public class ServerSend
         }
     }
 
-    public static void SpawnLoot(int player, NetLootItem spawnedLoot)
+    public static void SpawnLoot(int player, NetLoot[] spawnedLoot)
     {
-        using (Packet packet = new Packet((int)ServerPackets.jsonObject))
+        foreach(var loot in spawnedLoot)
         {
-            packet.Write(player);
-            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-            string json = JsonConvert.SerializeObject(spawnedLoot, settings);
-            packet.Write(json);
-            SendTCPDataToAll(packet);
+            using (Packet packet = new Packet((int)ServerPackets.jsonObject))
+            {
+                packet.Write(player);
+                JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+                string json = JsonConvert.SerializeObject(loot, settings);
+                packet.Write(json);
+                SendTCPDataToAll(packet);
+            }
         }
     }
 

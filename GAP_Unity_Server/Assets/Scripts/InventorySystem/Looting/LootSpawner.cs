@@ -61,7 +61,7 @@ public class LootSpawner : MonoBehaviour
         _loot = loot;
         GameObject lootGO = new GameObject();
         lootGO.transform.position = transform.position;
-        LootItemView lootView = lootGO.AddComponent<LootItemView>();
+        LootView lootView = lootGO.AddComponent<LootView>();
         lootView.Initialize(loot, _lootControl);
     }
 

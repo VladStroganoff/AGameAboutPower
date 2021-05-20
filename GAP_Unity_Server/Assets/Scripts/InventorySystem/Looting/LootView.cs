@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class LootItemView : MonoBehaviour, ItemReceiver
+public class LootView : MonoBehaviour, ItemReceiver
 {
 
     public List<RuntimeItem> Items = new List<RuntimeItem>();
@@ -110,9 +110,10 @@ public class LootItemView : MonoBehaviour, ItemReceiver
         {
             yield return new WaitForEndOfFrame();
         }
-
+        Destroy(_rigidBody);
         _lootControl.LootUpdatePos(this);
     }
+
 
     public void Inject(LootController lootControl)
     {
@@ -125,26 +126,12 @@ public class LootItemView : MonoBehaviour, ItemReceiver
             return;
 
         int ID = other.gameObject.GetComponent<PlayerManager>().ID;
-        _lootControl.LootPickedUp(Items, ID);
+        _lootControl.LootPickedUp(this, ID);
     }
 
-    void NetItemSpawn()
-    {
-
-    }
-   
-   
     public void RecieveItem(GameObject loadedObject) // graphics from loader
     {
         PopulateChest(loadedObject);
     }
 }
 
-
-public class NetLootItem : NetEntity
-{
-    public int ID; // if null item is placed in world otherwhise its for an player to open.
-    public NetItem[] Items;
-    public Vector3 Position;
-    public Quaternion Rotation;
-}

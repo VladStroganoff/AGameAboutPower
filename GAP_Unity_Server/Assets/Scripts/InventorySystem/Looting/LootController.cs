@@ -9,7 +9,7 @@ public class LootController : MonoBehaviour
 
     public DatabaseController DatabaseControl;
     public List<LootSpawner> LootSpawners = new List<LootSpawner>();
-    public List<LootItemView> Loot = new List<LootItemView>();
+    public List<LootView> Loot = new List<LootView>();
     public int MinItems;
     public int MaxItems;
 
@@ -60,16 +60,22 @@ public class LootController : MonoBehaviour
         spawner.SpawnLoot(randItem);
     }
 
-    public void LootUpdatePos(LootItemView view)
+    public void LootUpdatePos(LootView view)
     {
         Loot.Add(view);
+        DatabaseControl.AddLoot(view);
     }
 
-    public void LootPickedUp(List<RuntimeItem> items, int id)
+ 
+
+    public void LootPickedUp(LootView view, int id)
     {
-        NetLootItem netLoot = new NetLootItem();
+        Debug.Log($"Player-{id} picked up Item {view.gameObject.name}");
+        NetLoot netLoot = new NetLoot();
+        netLoot.Position = view.transform.position;
+        netLoot.Rotation = view.transform.rotation;
         List<NetItem> netItems = new List<NetItem>();
-        foreach (var item in items)
+        foreach (var item in view.Items)
         {
             if (item is Holdable)
             {

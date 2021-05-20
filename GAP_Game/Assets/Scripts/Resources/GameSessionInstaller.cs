@@ -14,6 +14,7 @@ public class GameSessionInstaller : MonoInstaller
     public LoadController Loader;
     public InventoryController InventoryControl;
     public InventoryView InventoryView;
+    public LootController LootControl;
 
 
     public override void InstallBindings()
@@ -29,6 +30,8 @@ public class GameSessionInstaller : MonoInstaller
         Container.Bind<IInventoryController>().FromInstance(InventoryControl);
         Container.Bind<IInventoryView>().FromInstance(InventoryView);
         Container.DeclareSignal<PlayerDresserSpawned>();
+
+        Container.Bind<ILootController>().FromInstance(LootControl);
 
         Container.BindSignal<GameStateChangedSignal>()
           .ToMethod<IInventoryController>(x => x.CheckGameState).FromResolve();

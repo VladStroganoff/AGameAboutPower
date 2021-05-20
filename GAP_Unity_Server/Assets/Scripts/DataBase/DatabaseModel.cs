@@ -4,7 +4,7 @@ public class DatabaseModel
 {
     public JsonItemDictionary AllItems;
 
-    public JsonItemDictionary WorldItems;
+    public JsonWorldLoot WorldItems;
 
     public JsonItemDictionary PlayerItems;
 }

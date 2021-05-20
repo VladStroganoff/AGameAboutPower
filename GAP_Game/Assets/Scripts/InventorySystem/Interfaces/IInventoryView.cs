@@ -23,10 +23,7 @@ public interface IInventoryController
     void CheckGameState(GameStateChangedSignal signal);
 }
 
-public interface ILootController
-{
-    void ShowItems(List<Item> Items);
-}
+
 
 public interface IEquipController
 {

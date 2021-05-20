@@ -30,7 +30,7 @@ public class LoadController : MonoBehaviour
         return runtimeItem;
     }
 
-    public void LoadRuntimeItem(List<Item> items, LootItemView lootView)
+    public void LoadRuntimeItem(List<Item> items, LootView lootView)
     {
         List<RuntimeItem> runItems = new List<RuntimeItem>();
         foreach (var item in items)
@@ -60,7 +60,7 @@ public class LoadController : MonoBehaviour
         dresser.AddWear(rItem);
     }
 
-    IEnumerator LoadItem(List<RuntimeItem> rItems, LootItemView lootView)
+    IEnumerator LoadItem(List<RuntimeItem> rItems, LootView lootView)
     {
         foreach (var rItem in rItems)
         {

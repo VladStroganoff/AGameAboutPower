@@ -10,7 +10,7 @@ public delegate void DataDaseLoaded();
 public class DatabaseController : MonoBehaviour
 {
     List<Item> _allAvalableItems = new List<Item>();
-    public DatabaseModel _database;
+    public static DatabaseModel _database;
     JsonSerializerSettings _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
     public DataDaseLoaded databaseLoaded;
 
@@ -42,6 +42,7 @@ private void Start()
         return _allAvalableItems;
     }
 
+    
 
     public List<Wearable> GetAllWear()
     {
@@ -72,6 +73,47 @@ private void Start()
         _allAvalableItems.AddRange(database.AllItems.Misc);
         _database = database;
         databaseLoaded.Invoke(); // this event tells everybody that the database is loaded
+    }
+
+    public void AddLoot(LootView lootView)
+    {
+        NetLoot netLoot = new NetLoot();
+        netLoot.ID = 1-lootView.gameObject.GetInstanceID();
+        netLoot.Position = lootView.transform.position;
+        netLoot.Rotation = lootView.transform.rotation;
+        List<NetItem> netItems = new List<NetItem>();
+
+
+        foreach (var runItem in lootView.Items)
+        {
+            if (runItem.Item is Wearable)
+            {
+                netItems.Add(runItem.Item.MakeNetWear());
+            }
+            if (runItem.Item is Holdable)
+            {
+                netItems.Add(runItem.Item.MakeNetHoldable());
+            }
+            if (runItem.Item is Consumable)
+            {
+                netItems.Add(runItem.Item.MakeNetConsumable());
+            }
+            if (runItem.Item is Misc)
+            {
+                netItems.Add(runItem.Item.MakeNetMisc());
+            }
+        }
+        netLoot.Items = netItems.ToArray();
+        SaveLoot(netLoot);
+    }
+    void SaveLoot(NetLoot loot)
+    {
+        List<NetLoot> worldLoot = new List<NetLoot>();
+        if (_database.WorldItems.Loot != null)
+            worldLoot = _database.WorldItems.Loot.ToList();
+
+        worldLoot.Add(loot);
+        _database.WorldItems.Loot = worldLoot.ToArray(); // very very ugly baby!
     }
 
     JsonItemDictionary SortAndSerialize(List<Item> items)

@@ -20,15 +20,17 @@ public class GameManager : MonoBehaviour, IGameManager
     [SerializeField]
     private ConstructionController _constructionController;
     private IInventoryController _inventoryControl;
+    private ILootController _lootControl;
     public WorldModel Model { get; set; }
     public static GameManager instance;
 
     [Inject]
-    public void Inject(SignalBus bus, IInventoryController inventoryControl)
+    public void Inject(SignalBus bus, IInventoryController inventoryControl, ILootController lootControl)
     {
         Model  = new WorldModel(bus);
         instance = this;
         _inventoryControl = inventoryControl;
+        _lootControl = lootControl;
     }
 
     public void SpawnPlayer(int id, string playerData, Vector3 position, Quaternion rotation)
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour, IGameManager
     public void ChangeInventory(int playerID, Item item)
     {
         _inventoryControl.ChangeInventory(playerID, item);
+    }
+
+    public void SpawnLoot(NetLoot netLoot)
+    {
+        _lootControl.SpawnLoot(netLoot);
     }
 
     public void  TestConnectToServer()

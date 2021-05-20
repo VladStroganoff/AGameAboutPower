@@ -77,9 +77,15 @@ public class ClientHandle : MonoBehaviour
         NetEntity jsonObj = JsonConvert.DeserializeObject<NetEntity>(json, settings);
 
         if(jsonObj is NetAnimator)
+        {
             GameManager.players[id].Animator.Set(jsonObj as NetAnimator);
+            return;
+        }
         if (jsonObj is BuildingData)
+        {
             GameManager.instance.SpawnStructure(jsonObj as BuildingData);
+            return;
+        }
         if (jsonObj is NetItem)
         {
             NetItem netItem = jsonObj as NetItem;
@@ -97,7 +103,12 @@ public class ClientHandle : MonoBehaviour
                 hold.Initialize(netHold);
                 GameManager.instance.ChangeInventory(id, hold);
             }
-
+            return;
+        }
+        if(jsonObj is NetLoot)
+        {
+            NetLoot netLoot = jsonObj as NetLoot;
+            GameManager.instance.SpawnLoot(netLoot);
         }
     }
 }
