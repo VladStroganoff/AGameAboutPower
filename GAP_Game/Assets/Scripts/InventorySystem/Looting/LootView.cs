@@ -5,15 +5,16 @@ using UnityEngine.AddressableAssets;
 
 public class LootView : MonoBehaviour, ItemReceiver
 {
-
+    public int ID;
     public List<RuntimeItem> Items = new List<RuntimeItem>();
     GameObject _graphics;
     BoxCollider _collider;
     public string CrateAddress = "Assets/Content/Character/Props/Containers/RoughCrate/Crate.prefab";
 
-    public void Initialize(List<Item> items) 
+    public void Initialize(List<Item> items, int id) 
     {
         LoadController.instance.LoadRuntimeItem(items, this);
+        ID = id;
     }
 
     public void Populate(List<RuntimeItem> runItems)

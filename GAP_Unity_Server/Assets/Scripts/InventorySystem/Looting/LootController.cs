@@ -9,7 +9,7 @@ public class LootController : MonoBehaviour
 
     public DatabaseController DatabaseControl;
     public List<LootSpawner> LootSpawners = new List<LootSpawner>();
-    public List<LootView> Loot = new List<LootView>();
+    public Dictionary<int, LootView> Loot = new Dictionary<int, LootView>();
     public int MinItems;
     public int MaxItems;
 
@@ -62,45 +62,20 @@ public class LootController : MonoBehaviour
 
     public void LootUpdatePos(LootView view)
     {
-        Loot.Add(view);
+        Loot.Add(view.ID, view);
         DatabaseControl.AddLoot(view);
     }
 
  
 
-    public void LootPickedUp(LootView view, int id)
+    public void LootPickedUp(LootView view, int playerID)
     {
-        Debug.Log($"Player-{id} picked up Item {view.gameObject.name}");
-        NetLoot netLoot = new NetLoot();
-        netLoot.Position = view.transform.position;
-        netLoot.Rotation = view.transform.rotation;
-        List<NetItem> netItems = new List<NetItem>();
-        foreach (var item in view.Items)
-        {
-            if (item is Holdable)
-            {
-                var netItem = item.Item.MakeNetWear();
-                netItems.Add(netItem);
-            }
-            if (item is Wearable)
-            {
-                var netItem = item.Item.MakeNetWear();
-                netItems.Add(netItem);
-            }
-            if (item is Consumable)
-            {
-                var netItem = item.Item.MakeNetConsumable();
-                netItems.Add(netItem);
-            }
-            if (item is Misc)
-            {
-                var netItem = item.Item.MakeNetMisc();
-                netItems.Add(netItem);
-            }
-        }
-        netLoot.ID = id;
-        netLoot.Items = netItems.ToArray();
-        netLoot.Position = transform.position;
-        netLoot.Rotation = transform.rotation;
+        Debug.Log($"Player-{playerID} picked up Item {view.gameObject.name}");
+        NetLoot loot = DatabaseControl.GetLoot(view.ID);
+        loot.ownerID = playerID;
+        DatabaseControl.RemoveLoot(view.ID);
+        Destroy(Loot[loot.lootID].gameObject);
+        Loot.Remove(loot.lootID);
+        ServerSend.EditLoot(playerID, loot);
     }
 }

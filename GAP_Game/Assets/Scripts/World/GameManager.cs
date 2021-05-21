@@ -63,9 +63,19 @@ public class GameManager : MonoBehaviour, IGameManager
         _inventoryControl.ChangeInventory(playerID, item);
     }
 
-    public void SpawnLoot(NetLoot netLoot)
+    public void CheckLoot(NetLoot netLoot)
     {
-        _lootControl.SpawnLoot(netLoot);
+        if(netLoot.ownerID == -1)
+        {
+            _lootControl.SpawnLoot(netLoot);
+        }
+        else
+        {
+            if(netLoot.ownerID != GameClient.instance.myId)
+                _lootControl.DespawnLoot(netLoot.lootID);
+            if (netLoot.ownerID == GameClient.instance.myId)
+                _lootControl.PickUpLoot(netLoot);
+        }
     }
 
     public void  TestConnectToServer()

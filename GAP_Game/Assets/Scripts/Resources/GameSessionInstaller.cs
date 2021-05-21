@@ -29,7 +29,7 @@ public class GameSessionInstaller : MonoInstaller
         Container.Bind<ICursorController>().FromInstance(CursorControl);
         Container.Bind<IInventoryController>().FromInstance(InventoryControl);
         Container.Bind<IInventoryView>().FromInstance(InventoryView);
-        Container.DeclareSignal<PlayerDresserSpawned>();
+        Container.DeclareSignal<PlayerSpawned>();
 
         Container.Bind<ILootController>().FromInstance(LootControl);
 

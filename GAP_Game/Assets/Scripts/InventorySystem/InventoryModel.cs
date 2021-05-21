@@ -19,6 +19,11 @@ public class InventoryModel : MonoBehaviour
     {
         LoadController.instance.LoadRuntimeItem(item, ID);
     }
+
+    public void AddSlot(string slot)
+    {
+        Inventory.Add(slot, null);
+    }
     public void ItemLoaded(ItemLoadedSignal loadedRuntime)
     {
         if (loadedRuntime.PlayerID != ID)

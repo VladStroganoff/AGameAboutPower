@@ -108,7 +108,7 @@ public class ClientHandle : MonoBehaviour
         if(jsonObj is NetLoot)
         {
             NetLoot netLoot = jsonObj as NetLoot;
-            GameManager.instance.SpawnLoot(netLoot);
+            GameManager.instance.CheckLoot(netLoot);
         }
     }
 }

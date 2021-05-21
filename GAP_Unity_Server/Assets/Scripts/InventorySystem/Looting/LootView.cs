@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 public class LootView : MonoBehaviour, ItemReceiver
 {
-
+    public int ID;
     public List<RuntimeItem> Items = new List<RuntimeItem>();
     GameObject _graphics;
     BoxCollider _collider;
@@ -17,6 +17,7 @@ public class LootView : MonoBehaviour, ItemReceiver
     {
         _lootControl = lootControl;
         LoadController.instance.LoadRuntimeItem(items, this);
+        ID = 1 - gameObject.GetInstanceID();
     }
 
     public void Populate(List<RuntimeItem> runItems)
@@ -125,8 +126,8 @@ public class LootView : MonoBehaviour, ItemReceiver
         if (other.gameObject.GetComponent<PlayerManager>() == null)
             return;
 
-        int ID = other.gameObject.GetComponent<PlayerManager>().ID;
-        _lootControl.LootPickedUp(this, ID);
+        int playerID = other.gameObject.GetComponent<PlayerManager>().ID;
+        _lootControl.LootPickedUp(this, playerID);
     }
 
     public void RecieveItem(GameObject loadedObject) // graphics from loader

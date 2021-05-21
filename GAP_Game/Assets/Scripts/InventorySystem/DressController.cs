@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class PlayerDresserSpawned
+public class PlayerSpawned
 {
-    public DressController DressController;
+    public PlayerManager player;
 }
 
 
@@ -22,9 +22,8 @@ public class DressController : MonoBehaviour, IDressController
 
 
     [Inject]
-    public void Inject(SignalBus _signalBus, IInventoryView inventorView, ILoadController loadControl)
+    public void Inject(IInventoryView inventorView, ILoadController loadControl)
     {
-        _signalBus.Fire(new PlayerDresserSpawned() { DressController = this });
         Wear = inventorView.GetWearSlots();
         _boneCombine = new BoneCombiner(Rigg);
         _loadControl = loadControl;

@@ -16,9 +16,8 @@ public interface IInventoryView
 public interface IInventoryController
 {
     void SpawnPlayer(Dictionary<string, Item> items, PlayerManager player);
-
     public void ChangeInventory(int id, Item item);
-    void TakeItems(List<Item> Items);
+    void TakeItems(NetLoot Items);
     void DropItems(List<Item> Items);
     void CheckGameState(GameStateChangedSignal signal);
 }

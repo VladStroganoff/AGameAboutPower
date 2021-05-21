@@ -13,6 +13,7 @@ public class DatabaseController : MonoBehaviour
     public static DatabaseModel _database;
     JsonSerializerSettings _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
     public DataDaseLoaded databaseLoaded;
+    Dictionary<int, NetLoot> _loot = new Dictionary<int, NetLoot>();
 
 private void Start()
     {
@@ -77,43 +78,18 @@ private void Start()
 
     public void AddLoot(LootView lootView)
     {
-        NetLoot netLoot = new NetLoot();
-        netLoot.ID = 1-lootView.gameObject.GetInstanceID();
-        netLoot.Position = lootView.transform.position;
-        netLoot.Rotation = lootView.transform.rotation;
-        List<NetItem> netItems = new List<NetItem>();
-
-
-        foreach (var runItem in lootView.Items)
-        {
-            if (runItem.Item is Wearable)
-            {
-                netItems.Add(runItem.Item.MakeNetWear());
-            }
-            if (runItem.Item is Holdable)
-            {
-                netItems.Add(runItem.Item.MakeNetHoldable());
-            }
-            if (runItem.Item is Consumable)
-            {
-                netItems.Add(runItem.Item.MakeNetConsumable());
-            }
-            if (runItem.Item is Misc)
-            {
-                netItems.Add(runItem.Item.MakeNetMisc());
-            }
-        }
-        netLoot.Items = netItems.ToArray();
-        SaveLoot(netLoot);
+        NetLoot netLoot = new NetLoot(lootView);
+        AddLoot(netLoot);
     }
-    void SaveLoot(NetLoot loot)
+    void AddLoot(NetLoot loot)
     {
         List<NetLoot> worldLoot = new List<NetLoot>();
         if (_database.WorldItems.Loot != null)
             worldLoot = _database.WorldItems.Loot.ToList();
 
         worldLoot.Add(loot);
-        _database.WorldItems.Loot = worldLoot.ToArray(); // very very ugly baby!
+        _database.WorldItems.Loot = worldLoot.ToArray(); // very very ugly baby! this should be a database in the future.
+        _loot.Add(loot.lootID, loot);
     }
 
     JsonItemDictionary SortAndSerialize(List<Item> items)
@@ -151,6 +127,29 @@ private void Start()
 
        
         return playerSaveData;
+    }
+
+    public NetLoot GetLoot(int id)
+    {
+        return _loot[id];
+    }
+
+    public void RemoveLoot(int id)
+    {
+        _loot.Remove(id);
+
+        List<NetLoot> oldWorldLoot = new List<NetLoot>();
+        List<NetLoot> newWorldLoot = new List<NetLoot>();
+        if (_database.WorldItems.Loot != null)
+            oldWorldLoot = _database.WorldItems.Loot.ToList();
+
+        for(int i = 0; i < oldWorldLoot.Count; i++)
+        {
+            if (oldWorldLoot[i].lootID != id)
+                newWorldLoot.Add(oldWorldLoot[i]);
+        }    
+
+        _database.WorldItems.Loot = oldWorldLoot.ToArray(); // very very ugly baby! this should be a database in the future.
     }
 
     void SaveDatabade()

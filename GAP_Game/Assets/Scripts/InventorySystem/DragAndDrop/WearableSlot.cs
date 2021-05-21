@@ -1,20 +1,8 @@
 using UnityEngine;
-using Zenject;
 public class WearableSlot : ItemSlot
 {
     public BodyPart Type;
     DressController _dressControl;
-
-    [Inject]
-    public void Inject(SignalBus bus)
-    {
-        bus.Subscribe<PlayerDresserSpawned>(GetDresser);
-    }
-
-    public void GetDresser(PlayerDresserSpawned dresser)
-    {
-        _dressControl = dresser.DressController;
-    }
 
     protected override void Awake()
     {
@@ -26,6 +14,12 @@ public class WearableSlot : ItemSlot
     {
         base.Populate(ItemStandardSize);
         _dressControl.AddLoadedWear(RuntimeItem);
+    }
+
+    public override void PopulateSlot(PlayerSpawned playerSpanwed)
+    {
+        base.PopulateSlot(playerSpanwed);
+        _dressControl = playerSpanwed.player.GetComponent<DressController>();
     }
 
     public override void OnItemDropped(ItemView draggable)

@@ -18,23 +18,22 @@ public class InventoryController : MonoBehaviour, IInventoryController
         _loadControl = loadControl;
     }
 
-    public void TakeItems(List<Item> Items)
+    public void TakeItems(NetLoot netItems)
     {
+        List<Item> newItmes = netItems.GetItems();
+        foreach(var slot in _playerInventories[netItems.ownerID].Inventory)
+        {
+            
+        }
     }
     public void DropItems(List<Item> Items)
     {
     }
 
-    public void CheckGameState(GameStateChangedSignal signal)
+    public void CheckGameState(GameStateChangedSignal signal) // maybe I wont need this
     {
         if (signal.state == GameState.InLobby)
             return;
-
-        if (signal.state == GameState.InGame)
-        {
-            //Dictionary<string, Item> items = _loadControl.LoadInventory();
-            //_inventoryView.LoadInventiry(items);
-        }
     }
 
     void Start()
@@ -67,5 +66,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
             _playerInventories[id].LoadItem(item);
         }
     }
+
+
 }
 

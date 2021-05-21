@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class ItemSlot : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class ItemSlot : MonoBehaviour
     public bool inUse;
     RectTransform _RectTranfrom;
     float _padding;
+    [Inject]
+    public void Inject(SignalBus bus)
+    {
+        bus.Subscribe<PlayerSpawned>(PopulateSlot);
+    }
 
     public virtual void Populate(float padding) // maybe this should not be hard coded
     {
@@ -39,6 +45,11 @@ public class ItemSlot : MonoBehaviour
         _currentView.RuntimeItem = RuntimeItem;
         
 
+    }
+
+    public virtual void PopulateSlot(PlayerSpawned playerSpanwed)
+    {
+        playerSpanwed.player.GetComponent<InventoryModel>().AddSlot(gameObject.name);
     }
 
     protected virtual void Awake()

@@ -17,8 +17,9 @@ public class PlayerManager : MonoBehaviour
     string jsonInventory { get; set; }
 
     [Inject]
-    public void Inject(ILoadController loadControl, IInventoryController inventoryView)
+    public void Inject(SignalBus bus, ILoadController loadControl, IInventoryController inventoryView)
     {
+        bus.Fire(new PlayerSpawned() { player = this });
         Debug.Log($"player {gameObject.name} injected");
         _loadControl = loadControl;
         _inventoryControl = inventoryView;
