@@ -21,10 +21,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
     public void TakeItems(NetLoot netItems)
     {
         List<Item> newItmes = netItems.GetItems();
-        foreach(var slot in _playerInventories[netItems.ownerID].Inventory)
-        {
-            
-        }
+        _inventoryView.LoadLoot(newItmes);
     }
     public void DropItems(List<Item> Items)
     {

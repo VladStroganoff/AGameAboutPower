@@ -5,12 +5,9 @@ using UnityEngine;
 public interface IInventoryView
 {
     public Dictionary<string, ItemSlot> GetSlots();
-    void ShowPlayerInventiry(bool OnOff);
-    void ShowLootInventory(bool OnOff);
-    void CheckForLoot();
-
     Dictionary<string, GameObject> GetWearSlots();
     void LoadInventiry(Dictionary<string, Item> items, int playerID, InventoryModel model);
+    void LoadLoot(List<Item> items);
 }
 
 public interface IInventoryController

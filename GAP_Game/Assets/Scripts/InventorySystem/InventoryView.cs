@@ -15,7 +15,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public RectTransform ItemsRect;
     public float StandardPadding;
-    public InventoryModel Inventory;
+    public InventoryModel localPlayerInventory;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
     SignalBus _signalBus;
 
@@ -46,18 +46,6 @@ public class InventoryView : MonoBehaviour, IInventoryView
         }
     }
 
-    public void CheckForLoot()
-    {
-    }
-
-    public void ShowLootInventory(bool OnOff)
-    {
-    }
-
-    public void ShowPlayerInventiry(bool OnOff)
-    {
-    }
-
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.I))
@@ -78,7 +66,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
     }
     public void LoadInventiry(Dictionary<string, Item> items, int playerID, InventoryModel model)
     {
-        Inventory = model;
+        localPlayerInventory = model;
         foreach (var item in items)
         {
             RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value, playerID);
@@ -86,6 +74,10 @@ public class InventoryView : MonoBehaviour, IInventoryView
         }
     }
 
+    public void LoadLoot(List<Item> items)
+    {
+        throw new System.NotImplementedException();
+    }
 
     public void ItemLoaded(ItemLoadedSignal runItem)
     {
@@ -97,11 +89,6 @@ public class InventoryView : MonoBehaviour, IInventoryView
             ItemSlots[runItem.LoadedItem.Item.Slot].RuntimeItem = runItem.LoadedItem;
             ItemSlots[runItem.LoadedItem.Item.Slot].Populate(StandardPadding);
         }
-
-    }
-
-    public void AddItemToInventory(RuntimeItem newItem)
-    {
 
     }
 
@@ -135,4 +122,6 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
         return wearSlots;
     }
+
+  
 }

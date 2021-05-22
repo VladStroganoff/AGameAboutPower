@@ -7,8 +7,6 @@ public class InventoryModel : MonoBehaviour
 {
     public int ID;
     public Dictionary<string, RuntimeItem> Inventory { get; private set; } = new Dictionary<string, RuntimeItem>();
-    public List<RuntimeItem> InventoryDisplay = new List<RuntimeItem>();
-
 
     [Inject]
     public void Inject(SignalBus bus)
