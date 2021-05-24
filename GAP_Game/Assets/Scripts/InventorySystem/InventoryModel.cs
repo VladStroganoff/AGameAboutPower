@@ -18,6 +18,48 @@ public class InventoryModel : MonoBehaviour
         LoadController.instance.LoadRuntimeItem(item, ID);
     }
 
+    public NetInventory MakeNetCopy()
+    {
+        NetInventory netCopy = new NetInventory();
+
+        foreach(var item in Inventory)
+        {
+            if (item.Value.Item is Wearable)
+            {
+                for (int i = 0; i < netCopy.Wearables.Length; i++)
+                {
+                    if (netCopy.Wearables[i].Slot == item.Value.Item.Slot)
+                        netCopy.Wearables[i] = item.Value.Item as Wearable;
+                }
+            }
+            if (item.Value.Item is Holdable)
+            {
+                for (int i = 0; i < netCopy.Wearables.Length; i++)
+                {
+                    if (netCopy.Holdables[i].Slot == item.Value.Item.Slot)
+                        netCopy.Holdables[i] = item.Value.Item as Holdable;
+                }
+            }
+            if (item.Value.Item is Consumable)
+            {
+                for (int i = 0; i < netCopy.Wearables.Length; i++)
+                {
+                    if (netCopy.Consumable[i].Slot == item.Value.Item.Slot)
+                        netCopy.Consumable[i] = item.Value.Item as Consumable;
+                }
+            }
+            if (item.Value.Item is Misc)
+            {
+                for (int i = 0; i < netCopy.Wearables.Length; i++)
+                {
+                    if (netCopy.Misc[i].Slot == item.Value.Item.Slot)
+                        netCopy.Misc[i] = item.Value.Item as Misc;
+                }
+            }
+        }
+        return netCopy;
+    }
+
     public void AddSlot(string slot)
     {
         Inventory.Add(slot, null);

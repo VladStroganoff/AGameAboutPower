@@ -66,7 +66,15 @@ public class ServerHandle
             }
           
         }
-             
+        if(netPackage is NetInventory)
+        {
+            Debug.Log("got new inventory!");
+        }
+        if (netPackage is NetLoot)
+        {
+            Debug.Log("got new NetLoot!");
+        }
+
 
     }
 

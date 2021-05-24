@@ -17,7 +17,7 @@ public class DressController : MonoBehaviour
         _boneCombine = new BoneCombiner(Rigg);
     }
 
-    public void InitializeWear(JsonItemDictionary playerSaveData)
+    public void InitializeWear(NetInventory playerSaveData)
     {
         foreach (var wear in playerSaveData.Wearables)
         {

@@ -1,5 +1,5 @@
 [System.Serializable]
-public class JsonItemDictionary
+public class NetInventory
 {
     public Holdable[] Holdables;
     public Wearable[] Wearables;

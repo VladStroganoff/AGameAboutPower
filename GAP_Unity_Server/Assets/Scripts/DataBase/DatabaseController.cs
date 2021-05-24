@@ -23,6 +23,8 @@ private void Start()
 
     void SaveNewAvalableItems()
     {
+        _database = new DatabaseModel();
+
         var AllItemIbjects = Resources.LoadAll("Items", typeof(ScriptableObject));
         foreach(var itemobject in AllItemIbjects)
         {
@@ -83,6 +85,9 @@ private void Start()
     }
     void AddLoot(NetLoot loot)
     {
+        if (_database.WorldItems == null)
+            _database.WorldItems = new JsonWorldLoot();
+
         List<NetLoot> worldLoot = new List<NetLoot>();
         if (_database.WorldItems.Loot != null)
             worldLoot = _database.WorldItems.Loot.ToList();
@@ -92,9 +97,9 @@ private void Start()
         _loot.Add(loot.lootID, loot);
     }
 
-    JsonItemDictionary SortAndSerialize(List<Item> items)
+    NetInventory SortAndSerialize(List<Item> items)
     {
-        JsonItemDictionary playerSaveData = new JsonItemDictionary();
+        NetInventory playerSaveData = new NetInventory();
         List<Wearable> wearables = new List<Wearable>();
         List<Holdable> holdables = new List<Holdable>();
         List<Consumable> consumables = new List<Consumable>();

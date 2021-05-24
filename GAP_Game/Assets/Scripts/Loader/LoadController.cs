@@ -44,7 +44,7 @@ public class LoadController : MonoBehaviour, ILoadController
     public Dictionary<string, Item> LoadInventory(string playerData)
     {
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        JsonItemDictionary playerSaveData = JsonConvert.DeserializeObject(playerData, settings) as JsonItemDictionary;
+        NetInventory playerSaveData = JsonConvert.DeserializeObject(playerData, settings) as NetInventory;
 
         Dictionary<string, Item> runTimeDictionary = new Dictionary<string, Item>();
 
@@ -99,7 +99,7 @@ public class LoadController : MonoBehaviour, ILoadController
 
     public void SaveInventory(Dictionary<string, ItemSlot> slots) // save inherited data for wearable/holdable data as well 
     {
-        JsonItemDictionary playerSaveData = new JsonItemDictionary();
+        NetInventory playerSaveData = new NetInventory();
         List<Wearable> wearables = new List<Wearable>();
         List<Holdable> holdables = new List<Holdable>();
         List<Consumable> consumables = new List<Consumable>();

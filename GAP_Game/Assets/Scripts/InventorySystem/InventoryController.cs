@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,11 +19,32 @@ public class InventoryController : MonoBehaviour, IInventoryController
         _loadControl = loadControl;
     }
 
-    public void TakeItems(NetLoot netItems)
+    public void ShowLoot(NetLoot netItems)
     {
         List<Item> newItmes = netItems.GetItems();
-        _inventoryView.LoadLoot(newItmes);
+        _inventoryView.LoadLoot(newItmes, netItems.ownerID, netItems.lootID);
     }
+
+    public void TakeItems(InventoryModel inventory, List<ItemSlot> remainingLoot, int lootID)
+    {
+        List<Item> items = new List<Item>();
+        foreach(var loot in remainingLoot)
+        {
+            if(loot != null)
+            {
+                items.Add(loot.RuntimeItem.Item);
+            }
+        }
+        NetLoot netLoot = new NetLoot(items);
+        netLoot.lootID = lootID;
+        NetInventory netInventory = inventory.MakeNetCopy();
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+        string jsonInventory = JsonConvert.SerializeObject(netInventory, settings);
+        string Jsonloot = JsonConvert.SerializeObject(netLoot, settings);
+        ClientSend.SendJsonPackage(jsonInventory);
+        ClientSend.SendJsonPackage(Jsonloot);
+    }
+
     public void DropItems(List<Item> Items)
     {
     }
@@ -64,6 +86,6 @@ public class InventoryController : MonoBehaviour, IInventoryController
         }
     }
 
-
+   
 }
 

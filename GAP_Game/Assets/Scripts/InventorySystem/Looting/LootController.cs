@@ -25,6 +25,6 @@ public class LootController : MonoBehaviour, ILootController
 
     public void PickUpLoot(NetLoot loot)
     {
-        InventoryControl.TakeItems(loot);
+        InventoryControl.ShowLoot(loot);
     }
 }

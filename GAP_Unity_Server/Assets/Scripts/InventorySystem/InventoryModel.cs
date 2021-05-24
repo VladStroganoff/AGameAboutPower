@@ -6,16 +6,16 @@ using UnityEngine;
 public class InventoryModel : MonoBehaviour
 {
     public Dictionary<string, RuntimeItem> Inventory = new Dictionary<string, RuntimeItem>();
-    public JsonItemDictionary JsonInventory;
+    public NetInventory NetInventory;
     JsonSerializerSettings _settings;
     PlayerManager _player;
     public void InitializeInventory(string playerData, PlayerManager player)
     {
         _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        JsonInventory = JsonConvert.DeserializeObject(playerData, _settings) as JsonItemDictionary;
+        NetInventory = JsonConvert.DeserializeObject(playerData, _settings) as NetInventory;
         _player = player;
         player.playerData = playerData;
-        GetComponent<DressController>().InitializeWear(JsonInventory);
+        GetComponent<DressController>().InitializeWear(NetInventory);
     }
     public void AddItemToPlayer(RuntimeItem runItem)
     {
@@ -26,38 +26,38 @@ public class InventoryModel : MonoBehaviour
 
         if(runItem.Item is Wearable)
         {
-            for(int i =0; i < JsonInventory.Wearables.Length; i++)
+            for(int i =0; i < NetInventory.Wearables.Length; i++)
             {
-                if (JsonInventory.Wearables[i].Slot == runItem.Item.Slot)
-                    JsonInventory.Wearables[i] = runItem.Item as Wearable;
+                if (NetInventory.Wearables[i].Slot == runItem.Item.Slot)
+                    NetInventory.Wearables[i] = runItem.Item as Wearable;
             }
         }
         if (runItem.Item is Holdable)
         {
-            for (int i = 0; i < JsonInventory.Wearables.Length; i++)
+            for (int i = 0; i < NetInventory.Wearables.Length; i++)
             {
-                if (JsonInventory.Holdables[i].Slot == runItem.Item.Slot)
-                    JsonInventory.Holdables[i] = runItem.Item as Holdable;
+                if (NetInventory.Holdables[i].Slot == runItem.Item.Slot)
+                    NetInventory.Holdables[i] = runItem.Item as Holdable;
             }
         }
         if (runItem.Item is Consumable)
         {
-            for (int i = 0; i < JsonInventory.Wearables.Length; i++)
+            for (int i = 0; i < NetInventory.Wearables.Length; i++)
             {
-                if (JsonInventory.Consumable[i].Slot == runItem.Item.Slot)
-                    JsonInventory.Consumable[i] = runItem.Item as Consumable;
+                if (NetInventory.Consumable[i].Slot == runItem.Item.Slot)
+                    NetInventory.Consumable[i] = runItem.Item as Consumable;
             }
         }
         if (runItem.Item is Misc)
         {
-            for (int i = 0; i < JsonInventory.Wearables.Length; i++)
+            for (int i = 0; i < NetInventory.Wearables.Length; i++)
             {
-                if (JsonInventory.Misc[i].Slot == runItem.Item.Slot)
-                    JsonInventory.Misc[i] = runItem.Item as Misc;
+                if (NetInventory.Misc[i].Slot == runItem.Item.Slot)
+                    NetInventory.Misc[i] = runItem.Item as Misc;
             }
         }
 
-        _player.playerData = JsonConvert.SerializeObject(JsonInventory, _settings);
+        _player.playerData = JsonConvert.SerializeObject(NetInventory, _settings);
     }
 
 }

@@ -2,9 +2,9 @@
 [System.Serializable]
 public class DatabaseModel
 {
-    public JsonItemDictionary AllItems;
+    public NetInventory AllItems;
 
     public JsonWorldLoot WorldItems;
 
-    public JsonItemDictionary PlayerItems;
+    public NetInventory PlayerItems;
 }

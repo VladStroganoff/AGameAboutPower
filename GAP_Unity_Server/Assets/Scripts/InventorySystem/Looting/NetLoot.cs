@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class NetLoot : NetEntity
 {
+    public int lootID;
+    public int ownerID;
+    public NetItem[] Items;
+    public Vector3 Position;
+    public Quaternion Rotation;
     public NetLoot(LootView lootView)
     {
         lootID = lootView.ID;
@@ -73,9 +78,5 @@ public class NetLoot : NetEntity
         return items;
     }
 
-    public int lootID;
-    public int ownerID;
-    public NetItem[] Items;
-    public Vector3 Position;
-    public Quaternion Rotation;
+  
 }

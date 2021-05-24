@@ -11,72 +11,62 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public RectTransform LootPanel;
     Vector2 _lootOrigin;
-    bool _toggleLoot = false;
+    bool _updateLoot = false;
 
     public RectTransform ItemsRect;
     public float StandardPadding;
     public InventoryModel localPlayerInventory;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
+    public List<ItemSlot> LootSlots = new List<ItemSlot>();
+    int _lootID = 0;
     SignalBus _signalBus;
 
     ILoadController _loadControl;
+    IInventoryController _inventoryControl;
 
 
     [Inject]
-    public void Inject(ILoadController loadControl, SignalBus signalBus)
+    public void Inject(ILoadController loadControl, SignalBus signalBus, IInventoryController inventoryControl)
     {
         _loadControl = loadControl;
+        _inventoryControl = inventoryControl;
         signalBus.Subscribe<ItemLoadedSignal>(ItemLoaded);
         _signalBus = signalBus;
+        CollectItems();
     }
 
-    void Start()
-    {
-        CollectItems();
-        _inventoryOrigin = InventoryPanel.anchoredPosition;
-        _lootOrigin = LootPanel.anchoredPosition;
-    }
     void CollectItems()
     {
+        _inventoryOrigin = InventoryPanel.anchoredPosition;
+        _lootOrigin = LootPanel.anchoredPosition;
         ItemSlots.Clear();
+        LootSlots.Clear();
         ItemSlot[] slots = gameObject.GetComponentsInChildren<ItemSlot>();
         foreach (var slot in slots)
         {
-            ItemSlots.Add(slot.gameObject.name.ToString(), slot);
+            if(slot is LootSlot)
+            {
+                LootSlots.Add(slot);
+            }
+            else
+            {
+                ItemSlots.Add(slot.gameObject.name.ToString(), slot);
+            }
         }
     }
-
-    void Update()
+   
+    public void LoadLoot(List<Item> items, int ownerID, int lootID)
     {
-        if (Input.GetKeyUp(KeyCode.I))
-        {
-            ToggleInventory();
-        }
-
-    }
-
-    public Dictionary<string, ItemSlot> GetSlots()
-    {
-        foreach (var item in ItemSlots)
-        {
-            if (item.Value.RuntimeItem.Item != null)
-                item.Value.RuntimeItem.Item.Slot = item.Key;
-        }
-        return ItemSlots;
-    }
-    public void LoadInventiry(Dictionary<string, Item> items, int playerID, InventoryModel model)
-    {
-        localPlayerInventory = model;
+        int lootI = 0;
         foreach (var item in items)
         {
-            RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item.Value, playerID);
-            ItemSlots[item.Key].RuntimeItem = runtimeItem;
+            item.Slot = lootI.ToString();
+            RuntimeItem runtimeItem = _loadControl.LoadRuntimeItem(item, ownerID);
+            LootSlots[lootI].RuntimeItem = runtimeItem;
+            lootI++;
         }
-    }
-
-    public void LoadLoot(List<Item> items)
-    {
-        throw new System.NotImplementedException();
+        _lootID = lootID;
+        ToggleInventory(true);
     }
 
     public void ItemLoaded(ItemLoadedSignal runItem)
@@ -89,25 +79,15 @@ public class InventoryView : MonoBehaviour, IInventoryView
             ItemSlots[runItem.LoadedItem.Item.Slot].RuntimeItem = runItem.LoadedItem;
             ItemSlots[runItem.LoadedItem.Item.Slot].Populate(StandardPadding);
         }
-
-    }
-
-    void ToggleInventory()
-    {
-        if (!_toggleInventory)
-        {
-            InventoryPanel.anchoredPosition = new Vector2(InventoryPanel.anchoredPosition.x, 0);
-            _toggleInventory = !_toggleInventory;
-            _signalBus.Fire(new CameraStateSignal() { state = CameraState.Menu });
-        }
         else
         {
-            _signalBus.Fire(new CameraStateSignal() { state = CameraState.TPS });
-            InventoryPanel.anchoredPosition = _inventoryOrigin;
-            _toggleInventory = !_toggleInventory;
+            int slot = 0;
+            int.TryParse(runItem.LoadedItem.Item.Slot, out slot);
+            LootSlots[slot].RuntimeItem = runItem.LoadedItem;
+            LootSlots[slot].Populate(StandardPadding);
         }
     }
-
+    
     public Dictionary<string, GameObject> GetWearSlots()
     {
         Dictionary<string, GameObject> wearSlots = new Dictionary<string, GameObject>();
@@ -118,10 +98,55 @@ public class InventoryView : MonoBehaviour, IInventoryView
                 wearSlots.Add(slot.Key, null);
 
         }
-
-
         return wearSlots;
     }
 
-  
+    void UpdateInventory()
+    {
+        _inventoryControl.TakeItems(localPlayerInventory, LootSlots, _lootID);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+            ToggleInventory(false);
+        }
+    }
+    void ToggleInventory(bool withLoot)
+    {
+        if (!_toggleInventory)
+        {
+            InventoryPanel.anchoredPosition = new Vector2(InventoryPanel.anchoredPosition.x, 0);
+            _toggleInventory = !_toggleInventory;
+            _signalBus.Fire(new CameraStateSignal() { state = CameraState.Menu });
+            if(withLoot)
+            {
+                LootPanel.anchoredPosition = new Vector2(LootPanel.anchoredPosition.x, 0);
+                _updateLoot = true;
+            }
+        }
+        else
+        {
+            _signalBus.Fire(new CameraStateSignal() { state = CameraState.TPS });
+            InventoryPanel.anchoredPosition = _inventoryOrigin;
+            _toggleInventory = !_toggleInventory;
+            LootPanel.anchoredPosition = _lootOrigin;
+            if (_updateLoot)
+            {
+                _updateLoot = false;
+                UpdateInventory();
+            }
+        }
+    }
+
+    public Dictionary<string, ItemSlot> GetSlots()
+    {
+        foreach (var item in ItemSlots)
+        {
+            if (item.Value.RuntimeItem.Item != null)
+                item.Value.RuntimeItem.Item.Slot = item.Key;
+        }
+        return ItemSlots;
+    }
 }

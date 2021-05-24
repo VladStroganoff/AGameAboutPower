@@ -4,17 +4,17 @@ using UnityEngine;
 
 public interface IInventoryView
 {
-    public Dictionary<string, ItemSlot> GetSlots();
+    public Dictionary<string, ItemSlot> GetSlots();// for testing
     Dictionary<string, GameObject> GetWearSlots();
-    void LoadInventiry(Dictionary<string, Item> items, int playerID, InventoryModel model);
-    void LoadLoot(List<Item> items);
+    void LoadLoot(List<Item> items, int playrID, int lootID);
 }
 
 public interface IInventoryController
 {
     void SpawnPlayer(Dictionary<string, Item> items, PlayerManager player);
     public void ChangeInventory(int id, Item item);
-    void TakeItems(NetLoot Items);
+    void ShowLoot(NetLoot Items);
+    void TakeItems(InventoryModel inventory, List<ItemSlot> remainingLoot, int lootID);
     void DropItems(List<Item> Items);
     void CheckGameState(GameStateChangedSignal signal);
 }
