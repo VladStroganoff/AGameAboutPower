@@ -11,6 +11,7 @@ public class NetworkManager : MonoBehaviour
     public Transform PlayerSpawnPoint;
     public ConstructionController ConstructionControl;
     public InventoryController InventoryControl;
+    public LootController LootControl;
     public int Port;
 
     private void Awake()

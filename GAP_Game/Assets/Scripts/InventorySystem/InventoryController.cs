@@ -25,19 +25,30 @@ public class InventoryController : MonoBehaviour, IInventoryController
         _inventoryView.LoadLoot(newItmes, netItems.ownerID, netItems.lootID);
     }
 
-    public void TakeItems(InventoryModel inventory, List<ItemSlot> remainingLoot, int lootID)
+    public void TakeItems(Dictionary<string, ItemSlot> inventory, List<ItemSlot> remainingLoot, int lootID)
     {
-        List<Item> items = new List<Item>();
+        List<Item> lootItems = new List<Item>();
         foreach(var loot in remainingLoot)
         {
             if(loot != null)
             {
-                items.Add(loot.RuntimeItem.Item);
+                lootItems.Add(loot.RuntimeItem.Item);
             }
         }
-        NetLoot netLoot = new NetLoot(items);
+        List<Item> inventoryItems = new List<Item>();
+        foreach (var item in inventory)
+        {
+            if (item.Value != null)
+            {
+                inventoryItems.Add(item.Value.RuntimeItem.Item);
+            }
+        }
+        NetLoot netLoot = new NetLoot(lootItems);
         netLoot.lootID = lootID;
-        NetInventory netInventory = inventory.MakeNetCopy();
+        netLoot.ownerID = -1;
+        NetLoot netInventory = new NetLoot(inventoryItems);
+        netInventory.lootID = -1;
+        netInventory.ownerID = GameClient.instance.myId;
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
         string jsonInventory = JsonConvert.SerializeObject(netInventory, settings);
         string Jsonloot = JsonConvert.SerializeObject(netLoot, settings);

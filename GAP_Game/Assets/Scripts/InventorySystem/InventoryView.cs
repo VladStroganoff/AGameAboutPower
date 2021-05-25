@@ -15,7 +15,6 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     public RectTransform ItemsRect;
     public float StandardPadding;
-    public InventoryModel localPlayerInventory;
     public Dictionary<string, ItemSlot> ItemSlots = new Dictionary<string, ItemSlot>();
     public List<ItemSlot> LootSlots = new List<ItemSlot>();
     int _lootID = 0;
@@ -51,6 +50,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
             else
             {
                 ItemSlots.Add(slot.gameObject.name.ToString(), slot);
+                
             }
         }
     }
@@ -103,7 +103,7 @@ public class InventoryView : MonoBehaviour, IInventoryView
 
     void UpdateInventory()
     {
-        _inventoryControl.TakeItems(localPlayerInventory, LootSlots, _lootID);
+        _inventoryControl.TakeItems(ItemSlots, LootSlots, _lootID);
     }
 
     void Update()

@@ -38,7 +38,10 @@ public class LootView : MonoBehaviour, ItemReceiver
             StartCoroutine(LoadController.instance.LoadSingle(CrateAddress, this));
     }
 
-
+    public void UpdateLoot(List<Item> items)
+    {
+        
+    }
     void PopulateChest(GameObject chest)
     {
         _graphics = Instantiate(chest, Vector3.zero, Quaternion.identity, transform);
@@ -115,22 +118,17 @@ public class LootView : MonoBehaviour, ItemReceiver
         _lootControl.LootUpdatePos(this);
     }
 
-
-    public void Inject(LootController lootControl)
-    {
-        _lootControl = lootControl;
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<PlayerManager>() == null)
             return;
 
+        _collider.enabled = false;
         int playerID = other.gameObject.GetComponent<PlayerManager>().ID;
-        _lootControl.LootPickedUp(this, playerID);
+        _lootControl.LookAtLoot(this, playerID);
     }
 
-    public void RecieveItem(GameObject loadedObject) // graphics from loader
+    public void ItemLoaded(GameObject loadedObject) // graphics from loader
     {
         PopulateChest(loadedObject);
     }

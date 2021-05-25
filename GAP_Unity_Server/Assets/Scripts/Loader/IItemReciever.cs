@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface ItemReceiver
 {
-    public void RecieveItem(GameObject loadedObject);
+    public void ItemLoaded(GameObject loadedObject);
 }

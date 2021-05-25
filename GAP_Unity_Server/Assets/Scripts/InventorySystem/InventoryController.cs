@@ -17,6 +17,11 @@ public class InventoryController : MonoBehaviour
         _dressControllers.Remove(player.ID);
     }
 
+    public void UpdatePlayerInventory(NetLoot newInventory)
+    {
+        Debug.Log($"Inventorycontroller updating loot{newInventory.ownerID}");
+    }
+
     public void ChangeWear(Netwearable netWear, int id)
     {
         Wearable wear = new Wearable();

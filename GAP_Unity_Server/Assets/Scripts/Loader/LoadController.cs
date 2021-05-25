@@ -99,7 +99,7 @@ public class LoadController : MonoBehaviour
         else
             Debug.Log($"Failed to load {adddress}");
 
-        recviever.RecieveItem(thing2Load);
+        recviever.ItemLoaded(thing2Load);
     }
 
     public void LoadBuilding(BuildingData building)

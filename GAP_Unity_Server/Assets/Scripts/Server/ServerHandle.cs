@@ -48,10 +48,13 @@ public class ServerHandle
         NetEntity netPackage = JsonConvert.DeserializeObject<NetEntity>(json, settings);
         
         if(netPackage is BuildingData)
+        {
             NetworkManager.instance.ConstructionControl.BuildBuilding(id, (BuildingData)netPackage);
+        }
         if (netPackage is NetItem)
         {
             NetItem netItem = netPackage as NetItem;
+
             if(netItem is Netwearable)
             {
                 Netwearable netWear = netItem as Netwearable;
@@ -62,17 +65,16 @@ public class ServerHandle
             {
                 NetHoldable netHold = netItem as NetHoldable;
                 Debug.Log($"got holdable: {netHold.Name}");
-
             }
-          
-        }
-        if(netPackage is NetInventory)
-        {
-            Debug.Log("got new inventory!");
         }
         if (netPackage is NetLoot)
         {
-            Debug.Log("got new NetLoot!");
+            NetLoot netLoot = netPackage as NetLoot;
+
+            if (netLoot.ownerID == -1)
+                NetworkManager.instance.LootControl.UpdateLoot(netLoot);
+            else
+                NetworkManager.instance.InventoryControl.UpdatePlayerInventory(netLoot);
         }
 
 

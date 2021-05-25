@@ -631,6 +631,7 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 64265278}
   ConstructionControl: {fileID: 1092200046}
   InventoryControl: {fileID: 1092200048}
+  LootControl: {fileID: 1092200049}
   Port: 26950
 --- !u!114 &1092200046
 MonoBehaviour:
@@ -683,7 +684,6 @@ MonoBehaviour:
   testSveLoot: 1
   DatabaseControl: {fileID: 1092200050}
   LootSpawners: []
-  Loot: []
   MinItems: 1
   MaxItems: 5
 --- !u!114 &1092200050
@@ -698,22 +698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d6457cbb1ab974c86bb185015e9c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _database:
-    AllItems:
-      Holdables: []
-      Wearables: []
-      Consumable: []
-      Misc: []
-    WorldItems:
-      Holdables: []
-      Wearables: []
-      Consumable: []
-      Misc: []
-    PlayerItems:
-      Holdables: []
-      Wearables: []
-      Consumable: []
-      Misc: []
 --- !u!1 &1262327859
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,11 @@ public class NetLoot : NetEntity
     public NetItem[] Items;
     public Vector3 Position;
     public Quaternion Rotation;
+
+    public NetLoot()
+    {
+    }
+
     public NetLoot(List<Item> items)
     {
         ownerID = -1;
@@ -30,6 +35,37 @@ public class NetLoot : NetEntity
             if (item is Misc)
             {
                 netItems.Add(item.MakeNetMisc());
+            }
+        }
+        Items = netItems.ToArray();
+    }
+
+    public NetLoot(LootView lootView)
+    {
+        lootID = lootView.ID;
+        ownerID = -1;
+        Position = lootView.transform.position;
+        Rotation = lootView.transform.rotation;
+        List<NetItem> netItems = new List<NetItem>();
+
+
+        foreach (var runItem in lootView.Items)
+        {
+            if (runItem.Item is Wearable)
+            {
+                netItems.Add(runItem.Item.MakeNetWear());
+            }
+            if (runItem.Item is Holdable)
+            {
+                netItems.Add(runItem.Item.MakeNetHoldable());
+            }
+            if (runItem.Item is Consumable)
+            {
+                netItems.Add(runItem.Item.MakeNetConsumable());
+            }
+            if (runItem.Item is Misc)
+            {
+                netItems.Add(runItem.Item.MakeNetMisc());
             }
         }
         Items = netItems.ToArray();
