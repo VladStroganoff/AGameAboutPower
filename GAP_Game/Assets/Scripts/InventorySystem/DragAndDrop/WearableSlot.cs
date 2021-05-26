@@ -28,10 +28,12 @@ public class WearableSlot : ItemSlot
         {
             _currentView.transform.position = draggable.currentParent.position;
             _currentView.transform.SetParent(draggable.currentParent);
+            _currentView.RuntimeItem.Item.Slot = draggable.currentParent.gameObject.name;
         }
         base.OnItemDropped(draggable);
+        ItemView oldView = _currentView;
         _currentView = draggable;
-        _dressControl.SendSwapRequest(draggable.RuntimeItem);
+        _dressControl.SendSwapRequest(draggable.RuntimeItem, oldView.RuntimeItem);
     }
 
 }

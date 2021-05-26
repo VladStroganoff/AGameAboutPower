@@ -58,7 +58,6 @@ public class ServerHandle
             if(netItem is Netwearable)
             {
                 Netwearable netWear = netItem as Netwearable;
-                Debug.Log($"got wearable: {netWear.Name}");
                 NetworkManager.instance.InventoryControl.ChangeWear(netWear, id);
             }
             if(netItem is NetHoldable)
@@ -74,7 +73,7 @@ public class ServerHandle
             if (netLoot.ownerID == -1)
                 NetworkManager.instance.LootControl.UpdateLoot(netLoot);
             else
-                NetworkManager.instance.InventoryControl.UpdatePlayerInventory(netLoot);
+                NetworkManager.instance.InventoryControl.TakeLoot(netLoot);
         }
 
 

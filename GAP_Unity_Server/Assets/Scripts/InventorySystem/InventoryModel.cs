@@ -60,4 +60,50 @@ public class InventoryModel : MonoBehaviour
         _player.playerData = JsonConvert.SerializeObject(NetInventory, _settings);
     }
 
+    public void AddItemsToPlayer(List<RuntimeItem> runItems)
+    {
+        foreach(var runItem in runItems)
+        {
+            if (!Inventory.ContainsKey(runItem.Item.Slot))
+                Inventory.Add(runItem.Item.Slot, runItem);
+            else
+                Inventory[runItem.Item.Slot] = runItem;
+
+            if (runItem.Item is Wearable)
+            {
+                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                {
+                    if (NetInventory.Wearables[i].Slot == runItem.Item.Slot)
+                        NetInventory.Wearables[i] = runItem.Item as Wearable;
+                }
+            }
+            if (runItem.Item is Holdable)
+            {
+                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                {
+                    if (NetInventory.Holdables[i].Slot == runItem.Item.Slot)
+                        NetInventory.Holdables[i] = runItem.Item as Holdable;
+                }
+            }
+            if (runItem.Item is Consumable)
+            {
+                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                {
+                    if (NetInventory.Consumable[i].Slot == runItem.Item.Slot)
+                        NetInventory.Consumable[i] = runItem.Item as Consumable;
+                }
+            }
+            if (runItem.Item is Misc)
+            {
+                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                {
+                    if (NetInventory.Misc[i].Slot == runItem.Item.Slot)
+                        NetInventory.Misc[i] = runItem.Item as Misc;
+                }
+            }
+
+            _player.playerData = JsonConvert.SerializeObject(NetInventory, _settings);
+        }
+    }
+
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class LootView : MonoBehaviour, ItemReceiver
+public class LootView : ItemReceiver
 {
     public int ID;
     public List<RuntimeItem> Items = new List<RuntimeItem>();
@@ -16,7 +16,7 @@ public class LootView : MonoBehaviour, ItemReceiver
     public void Initialize(List<Item> items, LootController lootControl) 
     {
         _lootControl = lootControl;
-        LoadController.instance.LoadRuntimeItem(items, this);
+        LoadController.instance.LoadRuntimeItems(items, this);
         ID = 1 - gameObject.GetInstanceID();
     }
 
@@ -35,7 +35,7 @@ public class LootView : MonoBehaviour, ItemReceiver
             return;
         }
         if (runItems.Count > 1)
-            StartCoroutine(LoadController.instance.LoadSingle(CrateAddress, this));
+            LoadController.instance.LoadGameObject(CrateAddress, this);
     }
 
     public void UpdateLoot(List<Item> items)
@@ -128,9 +128,14 @@ public class LootView : MonoBehaviour, ItemReceiver
         _lootControl.LookAtLoot(this, playerID);
     }
 
-    public void ItemLoaded(GameObject loadedObject) // graphics from loader
+    public override void ItemLoaded(GameObject loadedObject) // graphics from loader
     {
         PopulateChest(loadedObject);
+    }
+
+    public override void RunItemsLoaded(List<RuntimeItem> runtimeItems)
+    {
+        Populate(runtimeItems);
     }
 }
 

@@ -23,14 +23,7 @@ public class LoadController : MonoBehaviour
         }
     }
 
-    public RuntimeItem LoadRuntimeItem(Item item, DressController dresser)
-    {
-        RuntimeItem runtimeItem = new RuntimeItem(item);
-        StartCoroutine(LoadItem(runtimeItem, dresser));
-        return runtimeItem;
-    }
-
-    public void LoadRuntimeItem(List<Item> items, LootView lootView)
+    public void LoadRuntimeItems(List<Item> items, ItemReceiver reciever)
     {
         List<RuntimeItem> runItems = new List<RuntimeItem>();
         foreach (var item in items)
@@ -38,29 +31,10 @@ public class LoadController : MonoBehaviour
             runItems.Add(new RuntimeItem(item));
         }
 
-        StartCoroutine(LoadItem(runItems, lootView));
+        StartCoroutine(LoadItem(runItems, reciever));
     }
 
-    IEnumerator LoadItem(RuntimeItem rItem, DressController dresser)
-    {
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(rItem.Item.PrefabAddress);
-        yield return prefabHandle;
-
-        while (!prefabHandle.IsDone)
-            yield return new WaitForEndOfFrame();
-
-
-        if (prefabHandle.Result != null)
-        {
-            rItem.Prefab = prefabHandle.Result;
-        }
-        else
-            Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
-
-        dresser.AddWear(rItem);
-    }
-
-    IEnumerator LoadItem(List<RuntimeItem> rItems, LootView lootView)
+    IEnumerator LoadItem(List<RuntimeItem> rItems, ItemReceiver reciever)
     {
         foreach (var rItem in rItems)
         {
@@ -79,7 +53,12 @@ public class LoadController : MonoBehaviour
                 Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
 
         }
-        lootView.Populate(rItems);
+        reciever.RunItemsLoaded(rItems);
+    }
+
+    public void LoadGameObject(string address, ItemReceiver reciever)
+    {
+        StartCoroutine(LoadSingle(address, reciever));
     }
 
     public IEnumerator LoadSingle(string adddress, ItemReceiver recviever)

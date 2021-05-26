@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
 
-public class DressController : MonoBehaviour
+public class DressController : ItemReceiver
 {
     Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
 
@@ -19,35 +20,14 @@ public class DressController : MonoBehaviour
 
     public void InitializeWear(NetInventory playerSaveData)
     {
-        foreach (var wear in playerSaveData.Wearables)
-        {
-            var runTime = LoadController.instance.LoadRuntimeItem(wear, this);
-        }
+        List<Wearable> wearables = playerSaveData.Wearables.ToList();
+        List<Item> asItems = new List<Item>();
+        foreach (var wearable in wearables)
+            asItems.Add(wearable as Item);
+
+
+        LoadController.instance.LoadRuntimeItems(asItems, this);
     }
-
-    public void EquipItem(RuntimeItem runTime)
-    {
-      
-    }
-
-    public void AddWear(RuntimeItem runItem)
-    {
-        Inventory.AddItemToPlayer(runItem);
-
-        if (runItem.Item.Slot == "Head_Slot" || runItem.Item.Slot == "Torso_Slot" || runItem.Item.Slot == "Legs_Slot" ||
-            runItem.Item.Slot == "Right_Arm_Slot" || runItem.Item.Slot == "Left_Arm_Slot")
-        {
-            if (!Wear.ContainsKey(runItem.Item.Slot))
-                Wear.Add(runItem.Item.Slot, _boneCombine.AddLimb(runItem.Prefab).gameObject);
-            else
-            {
-                Destroy(Wear[runItem.Item.Slot]);
-                Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
-            }
-        }
-
-    }
-
     public void SwapWear(RuntimeItem runItem)
     {
         Debug.Log(runItem.Item.Name);
@@ -64,4 +44,25 @@ public class DressController : MonoBehaviour
             Debug.Log($"Itemslot missmatch Item: {runItem.Item.Name}, Slot: {runItem.Item.Slot}");
         }
     }
+
+    public override void RunItemsLoaded(List<RuntimeItem> runtimeItems)
+    {
+        foreach(var runItem in runtimeItems)
+        {
+            Inventory.AddItemToPlayer(runItem);
+
+            if (runItem.Item.Slot == "Head_Slot" || runItem.Item.Slot == "Torso_Slot" || runItem.Item.Slot == "Legs_Slot" ||
+                runItem.Item.Slot == "Right_Arm_Slot" || runItem.Item.Slot == "Left_Arm_Slot")
+            {
+                if (!Wear.ContainsKey(runItem.Item.Slot))
+                    Wear.Add(runItem.Item.Slot, _boneCombine.AddLimb(runItem.Prefab).gameObject);
+                else
+                {
+                    Destroy(Wear[runItem.Item.Slot]);
+                    Wear[runItem.Item.Slot] = _boneCombine.AddLimb(runItem.Prefab).gameObject;
+                }
+            }
+        }
+    }
+
 }

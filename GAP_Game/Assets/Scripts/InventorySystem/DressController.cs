@@ -44,13 +44,16 @@ public class DressController : MonoBehaviour, IDressController
         }
     }
 
-    public void SendSwapRequest(RuntimeItem runItem)
+    public void SendSwapRequest(RuntimeItem newWear, RuntimeItem oldWear)
     {
-        Debug.Log("Send swap wear request to server: " + runItem.Item.Name);
+        Debug.Log("Send swap wear request to server: " + newWear.Item.Name);
         JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-        Netwearable netItem = runItem.Item.MakeNetWear();
-        string json = JsonConvert.SerializeObject(netItem, settings);
-        ClientSend.SendJsonPackage(json);
+        Netwearable netItem = newWear.Item.MakeNetWear();
+        Netwearable netItemOld = oldWear.Item.MakeNetWear();
+        string newWearjson = JsonConvert.SerializeObject(netItem, settings);
+        string oldWearjson = JsonConvert.SerializeObject(netItemOld, settings);
+        ClientSend.SendJsonPackage(newWearjson);
+        ClientSend.SendJsonPackage(oldWearjson);
     }
 
     public void RecieveSwapWear(RuntimeItem runItem)

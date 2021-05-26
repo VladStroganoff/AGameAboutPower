@@ -13,7 +13,7 @@ public class NetLoot : NetEntity
     {
     }
 
-        public NetLoot(List<Item> items)
+    public NetLoot(List<Item> items)
     {
         ownerID = -1;
         List<NetItem> netItems = new List<NetItem>();
@@ -109,5 +109,5 @@ public class NetLoot : NetEntity
         return items;
     }
 
-  
+
 }

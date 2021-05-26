@@ -29,7 +29,7 @@ public interface IDressController
 {
     void InitializePlayer(Dictionary<string, Item> items, int playerID);
     void AddLoadedWear(RuntimeItem runItem);
-    void SendSwapRequest(RuntimeItem runItem);
+    void SendSwapRequest(RuntimeItem newWear, RuntimeItem oldWear);
     void RecieveSwapWear(RuntimeItem runItem);
     void EquipItem(Wearable wearableItem);
 }
