@@ -68,16 +68,22 @@ public class LootController : MonoBehaviour
 
     public void UpdateLoot(NetLoot loot)
     {
-        Debug.Log($"lootcontroller updating loot{loot.ownerID}");
+        if(loot.Items.Length < 1)
+        {
+            DatabaseControl.RemoveLoot(Loot[loot.lootID].gameObject.GetComponent<LootView>().ID);
+            Destroy(Loot[loot.lootID].gameObject);
+            Loot.Remove(loot.lootID);
+            return;
+        }
+
+
+
     }
 
     public void LookAtLoot(LootView view, int playerID)
     {
         NetLoot loot = DatabaseControl.GetLoot(view.ID);
         loot.ownerID = playerID;
-        //DatabaseControl.RemoveLoot(view.ID);
-        //Destroy(Loot[loot.lootID].gameObject);
-        //Loot.Remove(loot.lootID);
         ServerSend.EditLoot(playerID, loot);
         loot.ownerID = -1;
     }

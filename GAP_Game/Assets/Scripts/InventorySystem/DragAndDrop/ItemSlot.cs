@@ -17,6 +17,7 @@ public class ItemSlot : MonoBehaviour
     public void Inject(SignalBus bus)
     {
         bus.Subscribe<PlayerSpawned>(PopulateSlot);
+        RuntimeItem = null;
     }
 
     public virtual void Populate(float padding) // maybe this should not be hard coded
@@ -60,6 +61,8 @@ public class ItemSlot : MonoBehaviour
     }
     public virtual void OnItemDropped(ItemView draggable)
     {
+        draggable.currentParent.GetComponent<ItemSlot>().RuntimeItem = null;
+
         draggable.transform.position = transform.position;
 
         draggable.transform.SetParent(transform);

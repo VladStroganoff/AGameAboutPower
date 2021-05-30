@@ -5,11 +5,6 @@ using Zenject;
 
 public class ClientSend : MonoBehaviour
 {
-
-
-
-
-
     private static void SendTCPData(Packet packet)
     {
         packet.WriteLength();

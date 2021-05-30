@@ -30,7 +30,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
         List<Item> lootItems = new List<Item>();
         foreach(var loot in remainingLoot)
         {
-            if(loot != null)
+            if(loot.RuntimeItem != null)
             {
                 lootItems.Add(loot.RuntimeItem.Item);
             }
@@ -38,7 +38,7 @@ public class InventoryController : MonoBehaviour, IInventoryController
         List<Item> inventoryItems = new List<Item>();
         foreach (var item in inventory)
         {
-            if (item.Value != null)
+            if (item.Value.RuntimeItem != null)
             {
                 inventoryItems.Add(item.Value.RuntimeItem.Item);
             }

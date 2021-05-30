@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,7 +51,10 @@ public class InventoryController : ItemReceiver
     void UpdateInventory(List<RuntimeItem> items)
     {
         if(focusPlayer != -1)
+        {
             _playerInventories[focusPlayer].AddItemsToPlayer(items);
+            ServerSend.UpdatePlayerInventory(focusPlayer, _playerInventories[focusPlayer].NetInventory);
+        }
         else
             Debug.Log("focus player was -1");
 
@@ -63,3 +67,31 @@ public class InventoryController : ItemReceiver
         UpdateInventory(runtimeItems);
     }
 }
+
+//public class Class1
+//{
+//    public int Method1(string input)
+//    {
+//        //... do something
+//        return 0;
+//    }
+
+//    public int Method2(string input)
+//    {
+//        //... do something different
+//        return 1;
+//    }
+
+//    public bool RunTheMethod(Func<string, int> myMethodName)
+//    {
+//        //... do stuff
+//        int i = myMethodName("My String");
+//        //... do more stuff
+//        return true;
+//    }
+
+//    public bool Test()
+//    {
+//        return RunTheMethod(Method1);
+//    }
+//}

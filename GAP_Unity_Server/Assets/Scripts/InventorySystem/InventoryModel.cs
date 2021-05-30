@@ -79,7 +79,7 @@ public class InventoryModel : MonoBehaviour
             }
             if (runItem.Item is Holdable)
             {
-                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                for (int i = 0; i < NetInventory.Holdables.Length; i++)
                 {
                     if (NetInventory.Holdables[i].Slot == runItem.Item.Slot)
                         NetInventory.Holdables[i] = runItem.Item as Holdable;
@@ -87,7 +87,7 @@ public class InventoryModel : MonoBehaviour
             }
             if (runItem.Item is Consumable)
             {
-                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                for (int i = 0; i < NetInventory.Consumable.Length; i++)
                 {
                     if (NetInventory.Consumable[i].Slot == runItem.Item.Slot)
                         NetInventory.Consumable[i] = runItem.Item as Consumable;
@@ -95,7 +95,7 @@ public class InventoryModel : MonoBehaviour
             }
             if (runItem.Item is Misc)
             {
-                for (int i = 0; i < NetInventory.Wearables.Length; i++)
+                for (int i = 0; i < NetInventory.Misc.Length; i++)
                 {
                     if (NetInventory.Misc[i].Slot == runItem.Item.Slot)
                         NetInventory.Misc[i] = runItem.Item as Misc;
