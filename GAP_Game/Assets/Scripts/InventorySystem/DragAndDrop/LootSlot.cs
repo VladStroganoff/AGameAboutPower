@@ -19,8 +19,8 @@ public class LootSlot : ItemSlot
         base.PopulateSlot(playerSpanwed);
     }
 
-    public override void OnItemDropped(ItemView draggable)
+    public override void OnItemDropped(ItemView draggable, bool isLoot)
     {
-        base.OnItemDropped(draggable);
+        base.OnItemDropped(draggable, isLoot);
     }
 }

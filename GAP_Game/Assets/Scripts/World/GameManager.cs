@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public enum GameState { InLobby, InGame, Paused, InMenues}
+public enum GameState { InLobby, InGame, Paused, InMenues }
 
 public interface IGameManager
 {
@@ -15,7 +15,7 @@ public interface IGameManager
 public class GameManager : MonoBehaviour, IGameManager
 {
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
-    public GameObject Player; 
+    public GameObject Player;
     public GameObject OtherPlayer;
     [SerializeField]
     private ConstructionController _constructionController;
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour, IGameManager
     [Inject]
     public void Inject(SignalBus bus, IInventoryController inventoryControl, ILootController lootControl)
     {
-        Model  = new WorldModel(bus);
+        Model = new WorldModel(bus);
         instance = this;
         _inventoryControl = inventoryControl;
         _lootControl = lootControl;
@@ -65,20 +65,28 @@ public class GameManager : MonoBehaviour, IGameManager
 
     public void CheckLoot(NetLoot netLoot)
     {
-        if(netLoot.ownerID == -1)
+        if (netLoot.ownerID == -1)
         {
             _lootControl.SpawnLoot(netLoot);
+            return;
         }
-        else
+
+        if (netLoot.Items.Length < 1)
         {
-            if(netLoot.ownerID != GameClient.instance.myId)
-                _lootControl.DespawnLoot(netLoot.lootID);
-            if (netLoot.ownerID == GameClient.instance.myId)
-                _lootControl.PickUpLoot(netLoot);
+            _lootControl.DespawnLoot(netLoot.lootID);
+            return;
         }
+
+        if (netLoot.ownerID == GameClient.instance.myId)
+        {
+            _lootControl.PickUpLoot(netLoot);
+            return;
+        }
+
+       
     }
 
-    public void  TestConnectToServer()
+    public void TestConnectToServer()
     {
         GameClient.instance.ConnectToServer("127.0.0.1", 26950);
         GameObject.Find("Menu").SetActive(false);

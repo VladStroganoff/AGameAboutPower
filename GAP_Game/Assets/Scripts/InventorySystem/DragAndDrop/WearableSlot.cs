@@ -22,15 +22,10 @@ public class WearableSlot : ItemSlot
         _dressControl = playerSpanwed.player.GetComponent<DressController>();
     }
 
-    public override void OnItemDropped(ItemView draggable)
+    public override void OnItemDropped(ItemView draggable, bool isLoot)
     {
-        if (_currentView != null) 
-        {
-            _currentView.transform.position = draggable.currentParent.position;
-            _currentView.transform.SetParent(draggable.currentParent);
-            _currentView.RuntimeItem.Item.Slot = draggable.currentParent.gameObject.name;
-        }
-        base.OnItemDropped(draggable);
+        base.OnItemDropped(draggable, isLoot);
+        draggable.CanDrag = false;
         ItemView oldView = _currentView;
         _currentView = draggable;
         _dressControl.SendSwapRequest(draggable.RuntimeItem, oldView.RuntimeItem);

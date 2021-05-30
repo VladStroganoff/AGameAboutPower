@@ -76,8 +76,8 @@ public class LootController : MonoBehaviour
             return;
         }
 
-
-
+        Loot[loot.lootID].UpdateLoot(loot);
+        Loot[loot.lootID].GetComponent<BoxCollider>().enabled = true;
     }
 
     public void LookAtLoot(LootView view, int playerID)

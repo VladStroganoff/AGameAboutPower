@@ -14,8 +14,8 @@ public class HoldableSlot : ItemSlot
         base.Populate(ItemStandardSize);
     }
 
-    public override void OnItemDropped(ItemView draggable)
+    public override void OnItemDropped(ItemView draggable, bool isLoot)
     {
-        base.OnItemDropped(draggable);
+        base.OnItemDropped(draggable, isLoot);
     }
 }

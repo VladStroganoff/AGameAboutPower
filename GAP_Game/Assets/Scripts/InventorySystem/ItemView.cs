@@ -23,25 +23,29 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
 
     void Start()
     {
+        currentParent = transform.parent;
+
         if (gameObject.GetComponent<RectTransform>() != null)
         {
             _rectTransfrom = gameObject.GetComponent<RectTransform>();
             _canvas = GetComponentInParent<Canvas>();
+            
+            if (transform.parent.GetComponent<WearableSlot>() != null)
+                CanDrag = false;
         }
         else
         {
             FDebug.Log.Message("No Rect Transform on object m8");
             return;
         }
+
     }
     void OnValidate()
     {
-       
         if (RuntimeItem != null)
         {
             gameObject.name = RuntimeItem.Item.Name + "-Item";
         }
-
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -91,6 +95,9 @@ public class ItemView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDr
         }
         _rectTransfrom.transform.SetParent(currentParent); // revert back to old parent
         _rectTransfrom.anchoredPosition = _startPos;
+        
+
+
         OnEndDragHandler?.Invoke(eventData, false);
     }
 

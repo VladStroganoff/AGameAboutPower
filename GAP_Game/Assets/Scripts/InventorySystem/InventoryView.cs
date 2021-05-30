@@ -69,6 +69,29 @@ public class InventoryView : MonoBehaviour, IInventoryView
         ToggleInventory(true);
     }
 
+    public void TakeAll() // from button
+    {
+        foreach(var lootSlot in LootSlots)
+        {
+            if(lootSlot._currentView != null)
+            {
+                foreach(var invSlot in ItemSlots)
+                {
+                    if (invSlot.Value is WearableSlot)
+                        continue;
+                    if (invSlot.Value is HoldableSlot)
+                        continue;
+
+                    if (invSlot.Value._currentView == null)
+                    {
+                        invSlot.Value.OnItemDropped(lootSlot._currentView, true);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     public void ItemLoaded(ItemLoadedSignal runItem)
     {
         if (runItem.PlayerID != GameClient.instance.myId)

@@ -38,9 +38,9 @@ public class LootView : ItemReceiver
             LoadController.instance.LoadGameObject(CrateAddress, this);
     }
 
-    public void UpdateLoot(List<Item> items)
+    public void UpdateLoot(NetLoot items)
     {
-        
+        Debug.Log("Im updting the items");
     }
     void PopulateChest(GameObject chest)
     {

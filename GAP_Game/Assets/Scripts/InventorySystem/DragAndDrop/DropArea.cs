@@ -6,7 +6,7 @@ using UnityEngine;
 public class DropArea : MonoBehaviour
 {
     public List<DropCondition> DropCondition = new List<DropCondition>();
-    public event Action<ItemView> OnDropHandler;
+    public event Action<ItemView, bool> OnDropHandler;
 
 
     public bool Accepts(ItemView draggable)
@@ -16,6 +16,6 @@ public class DropArea : MonoBehaviour
 
     public void Drop(ItemView draggable)
     {
-        OnDropHandler?.Invoke(draggable);
+        OnDropHandler?.Invoke(draggable, false);
     }
 }

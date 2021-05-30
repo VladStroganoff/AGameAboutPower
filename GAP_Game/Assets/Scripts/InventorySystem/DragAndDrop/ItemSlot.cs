@@ -9,7 +9,7 @@ public class ItemSlot : MonoBehaviour
 {
     protected DropArea _dropArea;
     public RuntimeItem RuntimeItem;
-    protected ItemView _currentView;
+    public ItemView _currentView { set; get; }
     public bool inUse;
     RectTransform _RectTranfrom;
     float _padding;
@@ -59,8 +59,16 @@ public class ItemSlot : MonoBehaviour
         _dropArea.OnDropHandler += OnItemDropped;
         _RectTranfrom = GetComponent<RectTransform>();
     }
-    public virtual void OnItemDropped(ItemView draggable)
+    public virtual void OnItemDropped(ItemView draggable, bool isLoot)
     {
+        if (_currentView != null)
+        {
+            _currentView.transform.position = draggable.currentParent.position;
+            _currentView.transform.SetParent(draggable.currentParent);
+            _currentView.RuntimeItem.Item.Slot = draggable.currentParent.gameObject.name;
+            if(!isLoot)
+                _currentView.CanDrag = true;
+        }
         draggable.currentParent.GetComponent<ItemSlot>().RuntimeItem = null;
 
         draggable.transform.position = transform.position;
@@ -68,6 +76,7 @@ public class ItemSlot : MonoBehaviour
         draggable.transform.SetParent(transform);
 
         RuntimeItem = draggable.RuntimeItem;
-        draggable.RuntimeItem.Item.Slot = gameObject.name; 
+        draggable.RuntimeItem.Item.Slot = gameObject.name;
+        _currentView = draggable;
     }
 }
