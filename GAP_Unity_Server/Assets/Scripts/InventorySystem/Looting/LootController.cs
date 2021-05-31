@@ -68,23 +68,46 @@ public class LootController : MonoBehaviour
 
     public void UpdateLoot(NetLoot loot)
     {
-        if(loot.Items.Length < 1)
+        NetLoot[] updatedLoot = new NetLoot[1] { loot };
+        UpdateLootForPlayers(updatedLoot);
+
+        if (loot.Items.Length < 1)
         {
-            DatabaseControl.RemoveLoot(Loot[loot.lootID].gameObject.GetComponent<LootView>().ID);
-            Destroy(Loot[loot.lootID].gameObject);
-            Loot.Remove(loot.lootID);
+            DestroyLoot(loot);
             return;
         }
 
+        ReActivateLoot(loot);
+    }
+
+    void UpdateLootForPlayers(NetLoot[] updatedLoot)
+    {
+        foreach (Client client in Server.clients.Values)
+        {
+            if (client.player != null)
+            {
+                ServerSend.SpawnLoot(client.id, updatedLoot);
+            }
+        }
+    }
+    void ReActivateLoot(NetLoot loot)
+    {
         Loot[loot.lootID].UpdateLoot(loot);
         Loot[loot.lootID].GetComponent<BoxCollider>().enabled = true;
+    }
+
+    private void DestroyLoot(NetLoot loot)
+    {
+        DatabaseControl.RemoveLoot(Loot[loot.lootID].gameObject.GetComponent<LootView>().ID);
+        Destroy(Loot[loot.lootID].gameObject);
+        Loot.Remove(loot.lootID);
     }
 
     public void LookAtLoot(LootView view, int playerID)
     {
         NetLoot loot = DatabaseControl.GetLoot(view.ID);
         loot.ownerID = playerID;
-        ServerSend.EditLoot(playerID, loot);
+        ServerSend.LookAtLoot(playerID, loot);
         loot.ownerID = -1;
     }
 }

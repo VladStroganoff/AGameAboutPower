@@ -190,7 +190,7 @@ public class ServerSend
         }
     }
 
-    public static void EditLoot(int player, NetLoot loot)
+    public static void LookAtLoot(int player, NetLoot loot)
     {
             using (Packet packet = new Packet((int)ServerPackets.jsonObject))
             {

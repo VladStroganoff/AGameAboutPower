@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -23,20 +24,19 @@ public class LoadController : MonoBehaviour
         }
     }
 
-    public void LoadRuntimeItems(List<Item> items, ItemReceiver reciever)
+    public void LoadRuntimeItems(List<Item> items, Func<List<RuntimeItem>, int> callback)
     {
         List<RuntimeItem> runItems = new List<RuntimeItem>();
         foreach (var item in items)
         {
             runItems.Add(new RuntimeItem(item));
         }
-
-        StartCoroutine(LoadItem(runItems, reciever));
+        StartCoroutine(LoadItems(runItems, callback));
     }
 
-    IEnumerator LoadItem(List<RuntimeItem> rItems, ItemReceiver reciever)
+    IEnumerator LoadItems(List<RuntimeItem> runItems, Func<List<RuntimeItem>, int> callback)
     {
-        foreach (var rItem in rItems)
+        foreach (var rItem in runItems)
         {
             UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(rItem.Item.PrefabAddress);
             yield return prefabHandle;
@@ -53,15 +53,15 @@ public class LoadController : MonoBehaviour
                 Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
 
         }
-        reciever.RunItemsLoaded(rItems);
+        callback(runItems);
     }
 
-    public void LoadGameObject(string address, ItemReceiver reciever)
+    public void LoadGameObject(string address, Func<GameObject, int> callback)
     {
-        StartCoroutine(LoadSingle(address, reciever));
+        StartCoroutine(LoadSingle(address, callback));
     }
 
-    public IEnumerator LoadSingle(string adddress, ItemReceiver recviever)
+    public IEnumerator LoadSingle(string adddress, Func<GameObject, int> callback)
     {
         UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(adddress);
         yield return prefabHandle;
@@ -78,8 +78,10 @@ public class LoadController : MonoBehaviour
         else
             Debug.Log($"Failed to load {adddress}");
 
-        recviever.ItemLoaded(thing2Load);
+        callback(thing2Load);
     }
+
+
 
     public void LoadBuilding(BuildingData building)
     {

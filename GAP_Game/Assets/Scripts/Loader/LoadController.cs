@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -151,7 +152,7 @@ public class LoadController : MonoBehaviour, ILoadController
         return runtimeItem;
     }
 
-    public void LoadRuntimeItem(List<Item> items, LootView lootView)
+    public void LoadRuntimeItem(List<Item> items, Func<List<RuntimeItem>, int> callback)
     {
         List<RuntimeItem> runItems = new List<RuntimeItem>();
         foreach (var item in items)
@@ -159,7 +160,7 @@ public class LoadController : MonoBehaviour, ILoadController
             runItems.Add(new RuntimeItem(item));
         }
 
-        StartCoroutine(LoadItem(runItems, lootView));
+        StartCoroutine(LoadItem(runItems, callback));
     }
 
     IEnumerator LoadItem(RuntimeItem rItem, int playerID)
@@ -191,7 +192,7 @@ public class LoadController : MonoBehaviour, ILoadController
         _signalBus.Fire(new ItemLoadedSignal() { LoadedItem = rItem, PlayerID = playerID });
     }
 
-    IEnumerator LoadItem(List<RuntimeItem> rItems, LootView lootView)
+    IEnumerator LoadItem(List<RuntimeItem> rItems, Func<List<RuntimeItem>, int> callback)
     {
         foreach (var rItem in rItems)
         {
@@ -210,10 +211,10 @@ public class LoadController : MonoBehaviour, ILoadController
                 Debug.Log($"Failed to load {rItem.Item.PrefabAddress}");
 
         }
-        lootView.Populate(rItems);
+        callback(rItems);
     }
 
-    public IEnumerator LoadSingle(string adddress, ItemReceiver recviever)
+    public IEnumerator LoadSingle(string adddress, Func<GameObject, int> callback)
     {
         UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> prefabHandle = Addressables.LoadAssetAsync<GameObject>(adddress);
         yield return prefabHandle;
@@ -230,7 +231,7 @@ public class LoadController : MonoBehaviour, ILoadController
         else
             Debug.Log($"Failed to load {adddress}");
 
-        recviever.RecieveItem(thing2Load);
+        callback(thing2Load);
     }
 
     public void LoadBuilding(BuildingData building)

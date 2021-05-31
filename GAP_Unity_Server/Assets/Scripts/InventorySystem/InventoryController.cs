@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryController : ItemReceiver
+public class InventoryController : MonoBehaviour
 {
     Dictionary<int, InventoryModel> _playerInventories = new Dictionary<int, InventoryModel>();
     int focusPlayer = -1;
@@ -22,7 +22,7 @@ public class InventoryController : ItemReceiver
     public void TakeLoot(NetLoot newInventory)
     {
         List<Item> items = newInventory.GetItems();
-        LoadController.instance.LoadRuntimeItems(items, this);
+        LoadController.instance.LoadRuntimeItems(items, ItemsLoaded);
         focusPlayer = newInventory.ownerID;
     }
 
@@ -39,12 +39,12 @@ public class InventoryController : ItemReceiver
            netWear.Slot == "Left_Arm_Slot")
         {
             Debug.Log($"was in wear slot: {netWear.Slot}");
-            LoadController.instance.LoadRuntimeItems(items, _playerInventories[id].GetComponent<DressController>()); // items recieved in the Dress controller
+            LoadController.instance.LoadRuntimeItems(items, ItemsLoaded);
             ServerSend.ChangeWearable(id, netWear);
             return;
         }
 
-        LoadController.instance.LoadRuntimeItems(items, this); // send only the function instead of the class
+        LoadController.instance.LoadRuntimeItems(items, ItemsLoaded);
         Debug.Log($"was NOT in wear slot: {netWear.Slot}");
     }
 
@@ -61,37 +61,12 @@ public class InventoryController : ItemReceiver
         focusPlayer = -1;
     }
 
-
-    public override void RunItemsLoaded(List<RuntimeItem> runtimeItems)
+    public int ItemsLoaded(List<RuntimeItem> runtimeItems)
     {
         UpdateInventory(runtimeItems);
+        return 1;
     }
+
+  
 }
 
-//public class Class1
-//{
-//    public int Method1(string input)
-//    {
-//        //... do something
-//        return 0;
-//    }
-
-//    public int Method2(string input)
-//    {
-//        //... do something different
-//        return 1;
-//    }
-
-//    public bool RunTheMethod(Func<string, int> myMethodName)
-//    {
-//        //... do stuff
-//        int i = myMethodName("My String");
-//        //... do more stuff
-//        return true;
-//    }
-
-//    public bool Test()
-//    {
-//        return RunTheMethod(Method1);
-//    }
-//}

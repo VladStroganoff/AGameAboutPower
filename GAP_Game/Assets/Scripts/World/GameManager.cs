@@ -65,18 +65,16 @@ public class GameManager : MonoBehaviour, IGameManager
 
     public void CheckLoot(NetLoot netLoot)
     {
-        if (netLoot.ownerID == -1)
-        {
-            _lootControl.SpawnLoot(netLoot);
-            return;
-        }
-
         if (netLoot.Items.Length < 1)
         {
             _lootControl.DespawnLoot(netLoot.lootID);
             return;
         }
-
+        if (netLoot.ownerID == -1)
+        {
+            _lootControl.SpawnLoot(netLoot);
+            return;
+        }
         if (netLoot.ownerID == GameClient.instance.myId)
         {
             _lootControl.PickUpLoot(netLoot);

@@ -110,5 +110,9 @@ public class ClientHandle : MonoBehaviour
             NetLoot netLoot = jsonObj as NetLoot;
             GameManager.instance.CheckLoot(netLoot);
         }
+        if(jsonObj is NetInventory)
+        {
+            Debug.Log("update inventory");
+        }
     }
 }

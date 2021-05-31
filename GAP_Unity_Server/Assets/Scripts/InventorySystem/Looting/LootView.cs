@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class LootView : ItemReceiver
+public class LootView : MonoBehaviour
 {
     public int ID;
     public List<RuntimeItem> Items = new List<RuntimeItem>();
@@ -16,7 +16,7 @@ public class LootView : ItemReceiver
     public void Initialize(List<Item> items, LootController lootControl) 
     {
         _lootControl = lootControl;
-        LoadController.instance.LoadRuntimeItems(items, this);
+        LoadController.instance.LoadRuntimeItems(items, RunItemsLoaded);
         ID = 1 - gameObject.GetInstanceID();
     }
 
@@ -35,12 +35,13 @@ public class LootView : ItemReceiver
             return;
         }
         if (runItems.Count > 1)
-            LoadController.instance.LoadGameObject(CrateAddress, this);
+            LoadController.instance.LoadGameObject(CrateAddress, ItemLoaded);
     }
 
-    public void UpdateLoot(NetLoot items)
+    public void UpdateLoot(NetLoot netItems)
     {
-        Debug.Log("Im updting the items");
+        List<Item> items = netItems.GetItems();
+        LoadController.instance.LoadRuntimeItems(items, RunItemsLoaded);
     }
     void PopulateChest(GameObject chest)
     {
@@ -128,14 +129,18 @@ public class LootView : ItemReceiver
         _lootControl.LookAtLoot(this, playerID);
     }
 
-    public override void ItemLoaded(GameObject loadedObject) // graphics from loader
+
+    public int ItemLoaded(GameObject loadedObject)
     {
         PopulateChest(loadedObject);
+        return 1;
     }
 
-    public override void RunItemsLoaded(List<RuntimeItem> runtimeItems)
+    public int RunItemsLoaded(List<RuntimeItem> runtimeItems)
     {
         Populate(runtimeItems);
+        return 1;
     }
+
 }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class LootView : MonoBehaviour, ItemReceiver
+public class LootView : MonoBehaviour
 {
     public int ID;
     public List<RuntimeItem> Items = new List<RuntimeItem>();
@@ -13,26 +13,35 @@ public class LootView : MonoBehaviour, ItemReceiver
 
     public void Initialize(List<Item> items, int id) 
     {
-        LoadController.instance.LoadRuntimeItem(items, this);
+        LoadController.instance.LoadRuntimeItem(items, Populate);
         ID = id;
     }
 
-    public void Populate(List<RuntimeItem> runItems)
+    public void UpdateLoot(List<Item> items)
+    {
+        LoadController.instance.LoadRuntimeItem(items, Populate);
+    }
+
+
+
+    public int Populate(List<RuntimeItem> runItems)
     {
         Items = runItems;
         if (transform.childCount != 0)
-            return;
+            return 1;
         if (runItems.Count == 0)
-            return;
+            return 1;
         if (runItems[0] == null)
-            return;
+            return 1;
         if (runItems.Count == 1)
         {
             PopulateSingle(runItems);
-            return;
+            return 1;
         }
         if (runItems.Count > 1)
-            StartCoroutine(LoadController.instance.LoadSingle(CrateAddress, this));
+            StartCoroutine(LoadController.instance.LoadSingle(CrateAddress, RecieveItem));
+
+        return 1;
     }
     void PopulateChest(GameObject chest)
     {
@@ -93,9 +102,10 @@ public class LootView : MonoBehaviour, ItemReceiver
         return staticRepresentation;
     }
 
-    public void RecieveItem(GameObject loadedObject) // graphics from loader
+    public int RecieveItem(GameObject loadedObject) // graphics from loader
     {
         PopulateChest(loadedObject);
+        return 1;
     }
 }
 

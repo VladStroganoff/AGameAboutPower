@@ -9,6 +9,11 @@ public class LootController : MonoBehaviour, ILootController
     public InventoryController InventoryControl;
     public void SpawnLoot(NetLoot netLoot)
     {
+        if (Loot.ContainsKey(netLoot.lootID))
+        {
+            UpdateLoot(netLoot);
+            return;
+        }
         GameObject lootGO = new GameObject();
         LootView lootView = lootGO.AddComponent<LootView>();
         lootView.Initialize(netLoot.GetItems(), netLoot.lootID);
@@ -17,9 +22,14 @@ public class LootController : MonoBehaviour, ILootController
         Loot.Add(netLoot.lootID, lootView);
     }
 
+    void UpdateLoot(NetLoot netLoot)
+    {
+        //Loot[netLoot.lootID].Items = netLoot.GetItems();
+    }
+
     public void DespawnLoot(int id)
     {
-        Destroy(Loot[id]);
+        Destroy(Loot[id].gameObject);
         Loot.Remove(id);
     }
 

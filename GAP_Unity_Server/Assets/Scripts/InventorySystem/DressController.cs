@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class DressController : ItemReceiver
+public class DressController : MonoBehaviour
 {
     Dictionary<string, GameObject> Wear = new Dictionary<string, GameObject>();
 
@@ -25,8 +25,7 @@ public class DressController : ItemReceiver
         foreach (var wearable in wearables)
             asItems.Add(wearable as Item);
 
-
-        LoadController.instance.LoadRuntimeItems(asItems, this);
+        LoadController.instance.LoadRuntimeItems(asItems, RunItemsLoaded);
     }
     public void SwapWear(RuntimeItem runItem)
     {
@@ -45,9 +44,10 @@ public class DressController : ItemReceiver
         }
     }
 
-    public override void RunItemsLoaded(List<RuntimeItem> runtimeItems)
+
+    public int RunItemsLoaded(List<RuntimeItem> runtimeItems)
     {
-        foreach(var runItem in runtimeItems)
+        foreach (var runItem in runtimeItems)
         {
             Inventory.AddItemToPlayer(runItem);
 
@@ -63,6 +63,7 @@ public class DressController : ItemReceiver
                 }
             }
         }
+        return 1;
     }
 
 }

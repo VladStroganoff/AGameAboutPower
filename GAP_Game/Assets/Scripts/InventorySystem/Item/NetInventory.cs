@@ -1,5 +1,5 @@
 [System.Serializable]
-public class NetInventory
+public class NetInventory : NetEntity
 {
     public Holdable[] Holdables;
     public Wearable[] Wearables;
